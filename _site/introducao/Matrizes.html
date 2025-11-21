@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Matrizes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="matrizes_files/libs/clipboard/clipboard.min.js"></script>
+<script src="matrizes_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="matrizes_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="matrizes_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="matrizes_files/libs/quarto-html/popper.min.js"></script>
+<script src="matrizes_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="matrizes_files/libs/quarto-html/anchor.min.js"></script>
+<link href="matrizes_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="matrizes_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="matrizes_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="matrizes_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="matrizes_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Conteúdos da página</h2>
+   
+  <ul>
+  <li><a href="#o-que-são-matrizes" id="toc-o-que-são-matrizes" class="nav-link active" data-scroll-target="#o-que-são-matrizes">O que são Matrizes?</a>
+  <ul class="collapse">
+  <li><a href="#como-acessar-os-elementos-de-uma-matriz" id="toc-como-acessar-os-elementos-de-uma-matriz" class="nav-link" data-scroll-target="#como-acessar-os-elementos-de-uma-matriz">Como acessar os elementos de uma matriz?</a></li>
+  </ul></li>
+  <li><a href="#matrizes-em-python" id="toc-matrizes-em-python" class="nav-link" data-scroll-target="#matrizes-em-python">Matrizes em Python</a>
+  <ul class="collapse">
+  <li><a href="#como-acessar-um-elemento-em-uma-matriz" id="toc-como-acessar-um-elemento-em-uma-matriz" class="nav-link" data-scroll-target="#como-acessar-um-elemento-em-uma-matriz">Como acessar um elemento em uma matriz?</a></li>
+  <li><a href="#acessando-elementos-de-uma-matriz-de-forma-generalizada" id="toc-acessando-elementos-de-uma-matriz-de-forma-generalizada" class="nav-link" data-scroll-target="#acessando-elementos-de-uma-matriz-de-forma-generalizada">Acessando Elementos de uma Matriz de Forma Generalizada</a></li>
+  <li><a href="#iteração-em-matrizes-com-estruturas-de-repetição" id="toc-iteração-em-matrizes-com-estruturas-de-repetição" class="nav-link" data-scroll-target="#iteração-em-matrizes-com-estruturas-de-repetição">Iteração em Matrizes com Estruturas de Repetição</a></li>
+  </ul></li>
+  <li><a href="#o-que-uma-matriz-pode-representar" id="toc-o-que-uma-matriz-pode-representar" class="nav-link" data-scroll-target="#o-que-uma-matriz-pode-representar">O que uma Matriz pode Representar?</a>
+  <ul class="collapse">
+  <li><a href="#tabela-de-pontuação-de-times-em-um-campeonato" id="toc-tabela-de-pontuação-de-times-em-um-campeonato" class="nav-link" data-scroll-target="#tabela-de-pontuação-de-times-em-um-campeonato">Tabela de Pontuação de Times em um Campeonato</a></li>
+  <li><a href="#representação-de-imagens-preto-e-branco" id="toc-representação-de-imagens-preto-e-branco" class="nav-link" data-scroll-target="#representação-de-imagens-preto-e-branco">Representação de Imagens (Preto e Branco)</a></li>
+  <li><a href="#tabela-de-multiplicação" id="toc-tabela-de-multiplicação" class="nav-link" data-scroll-target="#tabela-de-multiplicação">Tabela de Multiplicação</a></li>
+  </ul></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios">Exercícios</a>
+  <ul class="collapse">
+  <li><a href="#exercício-1" id="toc-exercício-1" class="nav-link" data-scroll-target="#exercício-1">Exercício 1</a></li>
+  <li><a href="#exercício-2" id="toc-exercício-2" class="nav-link" data-scroll-target="#exercício-2">Exercício 2</a></li>
+  <li><a href="#exercício-3" id="toc-exercício-3" class="nav-link" data-scroll-target="#exercício-3">Exercício 3</a></li>
+  <li><a href="#exercício-4" id="toc-exercício-4" class="nav-link" data-scroll-target="#exercício-4">Exercício 4</a></li>
+  <li><a href="#exercício-5" id="toc-exercício-5" class="nav-link" data-scroll-target="#exercício-5">Exercício 5</a></li>
+  <li><a href="#exercício-6" id="toc-exercício-6" class="nav-link" data-scroll-target="#exercício-6">Exercício 6</a></li>
+  <li><a href="#exercício-7" id="toc-exercício-7" class="nav-link" data-scroll-target="#exercício-7">Exercício 7</a></li>
+  <li><a href="#exercício-8" id="toc-exercício-8" class="nav-link" data-scroll-target="#exercício-8">Exercício 8</a></li>
+  <li><a href="#exercício-9" id="toc-exercício-9" class="nav-link" data-scroll-target="#exercício-9">Exercício 9</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Matrizes</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="o-que-são-matrizes" class="level2">
+<h2 class="anchored" data-anchor-id="o-que-são-matrizes">O que são Matrizes?</h2>
+<p>Uma matriz é uma estrutura matemática bidimensional composta por linhas e colunas. Cada elemento de uma matriz é identificado por dois índices: o índice da linha (geralmente chamado de <span class="math inline">\(i\)</span>) e o índice da coluna (geralmente chamado de <span class="math inline">\(j\)</span>).</p>
+<p>Uma matriz pode ser representada como uma tabela de números, e a sua principal característica é que ela organiza os dados de forma estruturada. A matriz é uma ferramenta amplamente usada em áreas como álgebra linear, computação gráfica, estatísticas, e muitos outros campos da matemática e ciência da computação.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Coluna 1</th>
+<th>Coluna 2</th>
+<th>Coluna 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Linha 1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>Linha 2</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<p>Neste caso, a matriz tem 2 linhas e 3 colunas. Podemos referir-nos a cada valor dessa tabela através de dois índices: o índice da linha (que nos diz em qual linha o número está) e o índice da coluna (que nos diz em qual coluna o número está).</p>
+<section id="como-acessar-os-elementos-de-uma-matriz" class="level3">
+<h3 class="anchored" data-anchor-id="como-acessar-os-elementos-de-uma-matriz">Como acessar os elementos de uma matriz?</h3>
+<p>Para acessar um número específico na matriz, usamos um par de índices: o primeiro índice corresponde à linha, e o segundo índice corresponde à coluna.</p>
+<p>Vamos ver como funciona com o exemplo acima:</p>
+<ul>
+<li><p>O valor 1 está na primeira linha e na primeira coluna. Logo, podemos referir-se a ele como o elemento (1,1).</p></li>
+<li><p>O valor 6 está na segunda linha e na terceira coluna, então ele é o elemento (2,3).</p></li>
+</ul>
+<p>A estrutura de uma matriz pode ser estendida para dimensões maiores (com mais linhas e colunas), dependendo da necessidade, e seu uso é muito comum em várias áreas da matemática e ciência da computação, como:</p>
+<ul>
+<li><p>Álgebra Linear: Matrizes são fundamentais para resolver sistemas de equações e operações com vetores.</p></li>
+<li><p>Computação Gráfica: Para transformar, rotacionar ou redimensionar imagens e objetos em gráficos 3D.</p></li>
+<li><p>Estatísticas e Análise de Dados: Para organizar grandes quantidades de dados de maneira tabular, como uma planilha de cálculo.</p></li>
+</ul>
+</section>
+</section>
+<section id="matrizes-em-python" class="level2">
+<h2 class="anchored" data-anchor-id="matrizes-em-python">Matrizes em Python</h2>
+<p>No contexto da programação, uma matriz pode ser representada como uma estrutura de dados chamada lista de listas. Essencialmente, você pode pensar em uma lista de listas como uma tabela, onde cada linha da tabela é representada por uma lista, e todas as listas juntas formam a matriz.</p>
+<p>Por exemplo, em Python, uma matriz de 3 linhas e 3 colunas poderia ser representada da seguinte forma:</p>
+<p>Matriz 3x3:</p>
+<div id="fa2775a0" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> [ [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>      [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>      [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>] ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Aqui, a primeira linha é [1, 2, 3], a segunda linha é [4, 5, 6] e a terceira linha é [7, 8, 9].</p>
+<section id="como-acessar-um-elemento-em-uma-matriz" class="level3">
+<h3 class="anchored" data-anchor-id="como-acessar-um-elemento-em-uma-matriz">Como acessar um elemento em uma matriz?</h3>
+<p>Na programação, quando queremos acessar um elemento específico de uma matriz, usamos dois índices: o primeiro índice corresponde à linha e o segundo índice à coluna. Esses índices nos permitem “navegar” pela matriz de forma organizada.</p>
+<p>Por exemplo, para acessar o valor 5 da matriz acima, precisamos olhar na segunda linha e segunda coluna. Assim, o valor 5 pode ser acessado através dos índices 1 e 1 (lembrando que em Python, as contagens de índices começam a partir de 0).</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Índices</th>
+<th>Linha 1</th>
+<th>Linha 2</th>
+<th>Linha 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Coluna 1</td>
+<td>1</td>
+<td>4</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>Coluna 2</td>
+<td>2</td>
+<td>5</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td>Coluna 3</td>
+<td>3</td>
+<td>6</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<p>Então, para acessar o número 5, usamos:</p>
+<div id="dd2923b4" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>matriz[<span class="dv">1</span>][<span class="dv">1</span>]  <span class="co"># Saída: 5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Aqui:</p>
+<p><code>matriz[1]</code> se refere à segunda linha: [4, 5, 6].</p>
+<p><code>matriz[1][1]</code> nos dá o segundo elemento da segunda linha, que é 5.</p>
+<p>Este conceito de acessar dados em posições específicas é fundamental quando estamos lidando com grandes conjuntos de dados ou estruturas organizadas.</p>
+</section>
+<section id="acessando-elementos-de-uma-matriz-de-forma-generalizada" class="level3">
+<h3 class="anchored" data-anchor-id="acessando-elementos-de-uma-matriz-de-forma-generalizada">Acessando Elementos de uma Matriz de Forma Generalizada</h3>
+<p>Como vimos anteriormente, para acessar elementos de uma matriz, usamos dois índices: o primeiro índice <span class="math inline">\(i\)</span> representa a linha e o segundo índice <span class="math inline">\(j\)</span> representa a coluna. De forma geral, podemos acessar qualquer elemento da matriz M na posição de linha <span class="math inline">\(i\)</span> e coluna <span class="math inline">\(j\)</span> da seguinte forma:</p>
+<div id="d5417817" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>M[i][j]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Onde:</p>
+<ul>
+<li><p><span class="math inline">\(i\)</span> é o índice da linha, que começa em 0.</p></li>
+<li><p><span class="math inline">\(j\)</span> é o índice da coluna, que também começa em 0.</p></li>
+</ul>
+<section id="generalização-para-uma-matriz-de-qualquer-tamanho" class="level4">
+<h4 class="anchored" data-anchor-id="generalização-para-uma-matriz-de-qualquer-tamanho">Generalização para uma Matriz de Qualquer Tamanho</h4>
+<p>Independentemente do tamanho da matriz (seja 2x2, 3x3, 4x4 ou maior), o processo para acessar os elementos permanece o mesmo. Suponhamos que temos uma matriz M de m linhas e n colunas. Para acessar um elemento específico M[i][j]:</p>
+<ul>
+<li><p><span class="math inline">\(i\)</span> varia de 0 até m-1 (porque os índices começam em 0).</p></li>
+<li><p><span class="math inline">\(j\)</span> varia de 0 até n-1 (também por causa do início do índice em 0).</p></li>
+</ul>
+<section id="exemplo-com-uma-matriz-4x3" class="level5">
+<h5 class="anchored" data-anchor-id="exemplo-com-uma-matriz-4x3">Exemplo com uma Matriz 4x3</h5>
+<p>Considere a seguinte matriz 4x3 (com 4 linhas e 3 colunas):</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Coluna 1</th>
+<th>Coluna 2</th>
+<th>Coluna 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Linha 1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>Linha 2</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>Linha 3</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td>Linha 4</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<p>A matriz em Python seria representada como:</p>
+<div id="a287d9d7" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>matriz <span class="op">=</span> [</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>],</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Agora, para acessar qualquer posição específica na matriz, basta usar os índices correspondentes.</p>
+<p>Para acessar o valor 5, que está na segunda linha e segunda coluna, usamos:</p>
+<div id="08b444d3" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>matriz[<span class="dv">1</span>][<span class="dv">1</span>]  <span class="co"># Resultado: 5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Para acessar o valor 8, que está na terceira linha e segunda coluna, usamos:</p>
+<div id="62b394e7" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>matriz[<span class="dv">2</span>][<span class="dv">1</span>]  <span class="co"># Resultado: 8</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Para acessar o valor 12, que está na quarta linha e terceira coluna, usamos:</p>
+<div id="5c76cdf7" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>matriz[<span class="dv">3</span>][<span class="dv">2</span>]  <span class="co"># Resultado: 12</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Esse padrão se aplica a qualquer matriz, independentemente do seu tamanho.</p>
+</section>
+</section>
+</section>
+<section id="iteração-em-matrizes-com-estruturas-de-repetição" class="level3">
+<h3 class="anchored" data-anchor-id="iteração-em-matrizes-com-estruturas-de-repetição">Iteração em Matrizes com Estruturas de Repetição</h3>
+<p>Ao trabalhar com matrizes, uma das tarefas mais comuns é iterar sobre os elementos para preencher ou ler dados. Como as matrizes têm uma estrutura bidimensional (linhas e colunas), isso implica percorrer as linhas e as colunas de maneira sistemática. Para isso, podemos usar estruturas de repetição como o <em>loop</em> for (ou while) para acessar cada elemento individualmente.</p>
+<section id="iteração-para-preencher-uma-matriz" class="level4">
+<h4 class="anchored" data-anchor-id="iteração-para-preencher-uma-matriz">Iteração para Preencher uma Matriz</h4>
+<p>Para preencher uma matriz, basta utilizar um laço for aninhado: o primeiro laço percorre as linhas e o segundo percorre as colunas. Este processo pode ser útil quando precisamos gerar ou modificar dados em uma matriz.</p>
+<p>Exemplo: Preenchendo uma Matriz com Multiplicação de Índices</p>
+<p>Vamos preencher uma matriz 3x3 com o produto dos índices das linhas e das colunas. A matriz inicial contém apenas valores 0.</p>
+<div id="6234b9c9" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definindo uma matriz 3x3 com todos os elementos iguais a 0</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>matriz <span class="op">=</span> [[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]]</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Preenchendo a matriz com o produto de i e j</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):  <span class="co"># Laço para as linhas</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):  <span class="co"># Laço para as colunas</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        matriz[i][j] <span class="op">=</span> i <span class="op">*</span> j  <span class="co"># Preenchendo o elemento na linha i, coluna j</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Exibindo a matriz preenchida</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> linha <span class="kw">in</span> matriz:</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(linha)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Resultado:</p>
+<div id="8c91135c" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>]</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Explicação:</p>
+<ul>
+<li><p>O primeiro for percorre as linhas da matriz.</p></li>
+<li><p>O segundo for percorre as colunas de cada linha.</p></li>
+<li><p>A matriz é preenchida com o produto de <span class="math inline">\(i\)</span> (índice da linha) e <span class="math inline">\(j\)</span> (índice da coluna).</p></li>
+</ul>
+</section>
+<section id="iteração-para-ler-os-elementos-de-uma-matriz" class="level4">
+<h4 class="anchored" data-anchor-id="iteração-para-ler-os-elementos-de-uma-matriz">Iteração para Ler os Elementos de uma Matriz</h4>
+<p>Agora, vamos ver como podemos ler os dados de uma matriz já preenchida utilizando apenas o laço for.</p>
+<p>Exemplo: Lendo uma Matriz 3x3</p>
+<p>Aqui, temos uma matriz 3x3 com valores predefinidos. O objetivo é percorrer cada linha e coluna para imprimir o valor de cada elemento.</p>
+<div id="2a8645e5" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definindo uma matriz 3x3 com valores predefinidos</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>matriz <span class="op">=</span> [</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Lendo e imprimindo os elementos da matriz</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):  <span class="co"># Laço para as linhas</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):  <span class="co"># Laço para as colunas</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Elemento na linha:"</span>, i, <span class="st">"coluna:"</span>, j, <span class="st">": "</span>, matriz[i][j])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Resultado:</p>
+<pre class="{ObjectiveC}"><code>Elemento na linha 0, coluna 0: 1
+Elemento na linha 0, coluna 1: 2
+Elemento na linha 0, coluna 2: 3
+Elemento na linha 1, coluna 0: 4
+Elemento na linha 1, coluna 1: 5
+Elemento na linha 1, coluna 2: 6
+Elemento na linha 2, coluna 0: 7
+Elemento na linha 2, coluna 1: 8
+Elemento na linha 2, coluna 2: 9</code></pre>
+<p>Explicação:</p>
+<ul>
+<li><p>O primeiro for percorre as linhas da matriz.</p></li>
+<li><p>O segundo for percorre as colunas de cada linha.</p></li>
+<li><p>A matriz é lida e cada valor é acessado e impresso na tela com a posição de linha e coluna correspondente</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="o-que-uma-matriz-pode-representar" class="level2">
+<h2 class="anchored" data-anchor-id="o-que-uma-matriz-pode-representar">O que uma Matriz pode Representar?</h2>
+<p>Agora que entendemos como as matrizes são estruturadas e como acessamos seus elementos, vamos explorar alguns exemplos simples de como elas são usadas no mundo real. Matrizes são bastante comuns em diversas áreas, como ciência de dados, computação gráfica, álgebra e muito mais. Vamos ver alguns exemplos de como elas podem ser aplicadas fora da programação.</p>
+<section id="tabela-de-pontuação-de-times-em-um-campeonato" class="level3">
+<h3 class="anchored" data-anchor-id="tabela-de-pontuação-de-times-em-um-campeonato">Tabela de Pontuação de Times em um Campeonato</h3>
+<p>Uma matriz pode ser usada para representar a pontuação de diferentes times em várias rodadas de um campeonato. Cada linha pode corresponder a um time, e as colunas podem representar a pontuação de cada time em diferentes partidas.</p>
+<p>Imagine um campeonato com 3 times (Time A, Time B e Time C) e 3 rodadas. A tabela de pontuação ficaria assim:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Time</th>
+<th>Rodada 1</th>
+<th>Rodada 2</th>
+<th>Rodada 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Time A</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Time B</td>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>Time C</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Em Python, isso poderia ser representado da seguinte forma:</p>
+<div id="9b97e109" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pontuacoes <span class="op">=</span> [</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>],  <span class="co"># Time A</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>],  <span class="co"># Time B</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>]   <span class="co"># Time C</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Explicação:</p>
+<ul>
+<li><p>Cada linha da matriz corresponde a um time (Time A, Time B, Time C).</p></li>
+<li><p>Cada coluna da matriz representa a pontuação do time em uma rodada do campeonato.</p></li>
+<li><p>Para acessar a pontuação do Time A na segunda rodada, por exemplo, podemos acessar o elemento pontuacoes[0][1], que nos dá o valor 2.</p></li>
+</ul>
+<p>Este exemplo mostra como uma matriz pode ser útil para organizar dados de várias variáveis (neste caso, pontuações de diferentes times em diferentes rodadas) de forma compacta e eficiente.</p>
+</section>
+<section id="representação-de-imagens-preto-e-branco" class="level3">
+<h3 class="anchored" data-anchor-id="representação-de-imagens-preto-e-branco">Representação de Imagens (Preto e Branco)</h3>
+<p>Em computação gráfica, as imagens podem ser representadas como matrizes, onde cada célula da matriz é um pixel. Em uma imagem em preto e branco, cada pixel pode ser representado por um valor numérico: 0 para preto e 1 para branco.</p>
+<p>Vamos usar uma matriz 3x3 para representar uma imagem simples em preto e branco:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Coluna 1</th>
+<th>Coluna 2</th>
+<th>Coluna 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Linha 1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>Linha 2</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>Linha 3</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>A representação em Python seria:</p>
+<div id="b68bfa18" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>imagem_pb <span class="op">=</span> [</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Explicação:</p>
+<ul>
+<li><p>Cada número na matriz corresponde a um pixel da imagem.</p></li>
+<li><p>O valor 0 representa o preto, e o valor 1 representa o branco.</p></li>
+</ul>
+<p>Manipular essa matriz, como inverter as cores ou aplicar filtros, pode ser feito facilmente modificando os valores dessa matriz.</p>
+</section>
+<section id="tabela-de-multiplicação" class="level3">
+<h3 class="anchored" data-anchor-id="tabela-de-multiplicação">Tabela de Multiplicação</h3>
+<p>Matrizes também podem ser usadas para representar a tabela de multiplicação. Em uma matriz 10x10, por exemplo, cada elemento seria o produto de dois números.</p>
+<p>Aqui está a tabela de multiplicação de 1 a 3 representada em uma matriz 3x3:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Coluna 1</th>
+<th>Coluna 2</th>
+<th>Coluna 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Linha 1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>Linha 2</td>
+<td>2</td>
+<td>4</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>Linha 3</td>
+<td>3</td>
+<td>6</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<p>A matriz em Python seria:</p>
+<div id="1efd6d6b" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tabela_multiplicacao <span class="op">=</span> [</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>],</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">9</span>]</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Explicação:</p>
+<ul>
+<li><p>Cada linha e cada coluna representam um número multiplicado por outro.</p></li>
+<li><p>Por exemplo, o valor na segunda linha e terceira coluna é 6, que é o produto de 2 * 3.</p></li>
+<li><p>Este é um exemplo simples de como as matrizes podem ser usadas para representar tabelas matemáticas e ajudar na visualização de operações matemáticas.</p></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Observação">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Observação
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Apesar de este exemplo ser útil, é importante ressaltar que como índices em python iniciam do 0, seria necessário levar este ajuste em consideração para pensar em cálculos deste tipo de matriz.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="exercícios" class="level2">
+<h2 class="anchored" data-anchor-id="exercícios">Exercícios</h2>
+<section id="exercício-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-1">Exercício 1</h3>
+<p>Complete a matriz abaixo com os índices de cada posição (considerando a indexação de python):</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+- &amp; - &amp; - \\
+- &amp; - &amp; - \\
+- &amp; - &amp; -
+\end{bmatrix}
+\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>As indexações corretas para esta matriz são as seguintes:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+(0, 0) &amp; (0, 1) &amp; (0, 2) \\
+(1, 0) &amp; (1, 1) &amp; (1, 2) \\
+(2, 0) &amp; (2, 1) &amp; (2, 2)
+\end{bmatrix}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-2" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-2">Exercício 2</h3>
+<p>Responda as perguntados considerando a seguinte matriz (e utilizando indexação de python):</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6 \\
+7 &amp; 8 &amp; 9
+\end{bmatrix}
+\]</span></p>
+<ol type="1">
+<li>Qual elemento está na posição <span class="math inline">\((0, 0)\)</span>?</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\((0, 0)\)</span> se refere ao elemento <span class="math inline">\(1\)</span>.</p>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Qual elemento está na posição <span class="math inline">\((2, 1)\)</span>?</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\((2, 1)\)</span> se refere ao elemento <span class="math inline">\(8\)</span></p>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Qual é a posição do elemento <span class="math inline">\(9\)</span>?</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\((2, 2)\)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-3" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-3">Exercício 3</h3>
+<p>Escreva em Python a seguinte matriz:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+10 &amp; 20 &amp; 30 \\
+40 &amp; 50 &amp; 60 \\
+70 &amp; 80 &amp; 90
+\end{bmatrix}
+\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="7fab100d" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>matriz <span class="op">=</span> [</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>],</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>],</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">70</span>, <span class="dv">80</span>, <span class="dv">90</span>]</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-4" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-4">Exercício 4</h3>
+<p>Em uma matriz <span class="math inline">\(n \times n\)</span>, responda (considerando indexação de Python):</p>
+<ol type="1">
+<li><p>Qual é o índice do elemento localizado na posição mais à direita e mais embaixo da matriz?</p></li>
+<li><p>Qual é o índice do elemento localizado na posição mais à esquerda e mais acima da matriz?</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Uma matriz <span class="math inline">\(n \times n\)</span> em Python possui a seguinte indexação:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+a_{00} &amp; a_{01} &amp; \cdots &amp; a_{0(n-1)} \\
+a_{10} &amp; a_{11} &amp; \cdots &amp; a_{1(n-1)} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{(n-1)0} &amp; a_{(n-1)1} &amp; \cdots &amp; a_{(n-1)(n-1)}
+\end{bmatrix}
+\]</span></p>
+<p>Portanto, as respostas são:</p>
+<ol type="1">
+<li>O elemento mais a direita e mais embaixo é o elemento com índice <span class="math inline">\(((n-1), (n-1))\)</span>:</li>
+</ol>
+<p><span class="math display">\[
+\begin{bmatrix}
+a_{00} &amp; a_{01} &amp; \cdots &amp; a_{0(n-1)} \\
+a_{10} &amp; a_{11} &amp; \cdots &amp; a_{1(n-1)} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{(n-1)0} &amp; a_{(n-1)1} &amp; \cdots &amp; \boxed{a_{(n-1)(n-1)}}
+\end{bmatrix}
+\]</span></p>
+<ol start="2" type="1">
+<li>O elemento mais a esquerda e mais acima da matriz é o elemento com índice <span class="math inline">\((0, 0)\)</span>:</li>
+</ol>
+<p><span class="math display">\[
+\begin{bmatrix}
+\boxed{a_{00}} &amp; a_{01} &amp; \cdots &amp; a_{0(n-1)} \\
+a_{10} &amp; a_{11} &amp; \cdots &amp; a_{1(n-1)} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{(n-1)0} &amp; a_{(n-1)1} &amp; \cdots &amp; a_{(n-1)(n-1)}
+\end{bmatrix}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-5" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-5">Exercício 5</h3>
+<p>Considerando a seguinte matriz:</p>
+<p><span class="math display">\[
+\text{A} = \begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 1\\
+0 &amp; 1 &amp; 1 &amp; 0 &amp; 1\\
+1 &amp; 0 &amp; 0 &amp; 1 &amp; 1
+\end{bmatrix}
+\]</span></p>
+<ol type="1">
+<li>Declare esta matriz em Python</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="1919a623" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>]</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Escreva o código em Python que seja capaz de acessar a matriz A na posição <span class="math inline">\((0, 0)\)</span>:</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="f7306c82" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">0</span>][<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Escreva o código que seja capaz de acessar a matriz A na posição <span class="math inline">\((1, 3)\)</span>:</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="84ea387e" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">1</span>][<span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-6" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-6">Exercício 6</h3>
+<p>Considere a seguinte matriz em Python:</p>
+<div id="d987a0f8" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> [</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>],</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol type="1">
+<li>Indique o resultado da expressão: <code>M[1][2]</code></li>
+<li>Indique o resultado da expressão: <code>M[2][3]</code></li>
+<li>Indique o resultado da expressão: <code>M[0][3]</code></li>
+<li>Indique o resultado da expressão: <code>M[2][0]</code></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Considerando que esta é a matriz M representada:</p>
+<p><span class="math display">\[
+M = \begin{bmatrix}
+1 &amp; 2 &amp; 3 &amp; 4 \\
+5 &amp; 6 &amp; 7 &amp; 8 \\
+9 &amp; 10 &amp; 11 &amp; 12
+\end{bmatrix}
+\]</span></p>
+<p>Aqui estão os índices corretos da matriz:</p>
+<p><span class="math display">\[
+M = \begin{bmatrix}
+1_{00} &amp; 2_{01} &amp; 3_{02} &amp; 4_{03} \\
+5_{10} &amp; 6_{11} &amp; 7_{12} &amp; 8_{13} \\
+9_{20} &amp; 10_{21} &amp; 11_{22} &amp; 12_{23}
+\end{bmatrix}
+\]</span></p>
+<ol type="1">
+<li>Acessar <code>M[1][2]</code> significa acessar a matriz na linha 1 (começando de 0) e coluna 2 (começando de 0). Aqui está este elemeto:</li>
+</ol>
+<p><span class="math display">\[
+M = \begin{bmatrix}
+1_{00} &amp; 2_{01} &amp; 3_{02} &amp; 4_{03} \\
+5_{10} &amp; 6_{11} &amp; \boxed{7_{12}} &amp; 8_{13} \\
+9_{20} &amp; 10_{21} &amp; 11_{22} &amp; 12_{23}
+\end{bmatrix}
+\]</span></p>
+<p>Ou seja, acessar <code>M[1][2]</code> significa acessar o elemento igual a <span class="math inline">\(7\)</span>.</p>
+<ol start="2" type="1">
+<li>Acessar <code>M[2][3]</code> significa acessar a matriz na linha 2 (começando de 0) e coluna 3 (começando de 0). Aqui está este elemeto:</li>
+</ol>
+<p><span class="math display">\[
+M = \begin{bmatrix}
+1_{00} &amp; 2_{01} &amp; 3_{02} &amp; 4_{03} \\
+5_{10} &amp; 6_{11} &amp; 7_{12} &amp; 8_{13} \\
+9_{20} &amp; 10_{21} &amp; 11_{22} &amp; \boxed{12_{23}}
+\end{bmatrix}
+\]</span></p>
+<p>Ou seja, acessar <code>M[2][3]</code> significa acessar o elemento igual a <span class="math inline">\(12\)</span>.</p>
+<ol start="3" type="1">
+<li>Acessar <code>M[0][3]</code> significa acessar a matriz na linha 2 (começando de 0) e coluna 3 (começando de 0). Aqui está este elemeto:</li>
+</ol>
+<p><span class="math display">\[
+M = \begin{bmatrix}
+1_{00} &amp; 2_{01} &amp; 3_{02} &amp; \boxed{4_{03}} \\
+5_{10} &amp; 6_{11} &amp; 7_{12} &amp; 8_{13} \\
+9_{20} &amp; 10_{21} &amp; 11_{22} &amp; 12_{23}
+\end{bmatrix}
+\]</span></p>
+<p>Ou seja, acessar <code>M[0][3]</code> significa acessar o elemento igual a <span class="math inline">\(4\)</span>.</p>
+<ol start="4" type="1">
+<li>Acessar <code>M[2][0]</code> significa acessar a matriz na linha 2 (começando de 0) e coluna 3 (começando de 0). Aqui está este elemeto:</li>
+</ol>
+<p><span class="math display">\[
+M = \begin{bmatrix}
+1_{00} &amp; 2_{01} &amp; 3_{02} &amp; 4_{03} \\
+5_{10} &amp; 6_{11} &amp; 7_{12} &amp; 8_{13} \\
+\boxed{9_{20}} &amp; 10_{21} &amp; 11_{22} &amp; 12_{23}
+\end{bmatrix}
+\]</span></p>
+<p>Ou seja, acessar <code>M[2][0]</code> significa acessar o elemento igual a <span class="math inline">\(9\)</span>.</p>
+</div>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Qual será o resultado do seguinte código:</li>
+</ol>
+<div id="b554d3a7" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M[<span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Como na programação uma matriz é nada mais que uma lista de listas (pelo menos por enquanto), acessar a matriz M na posição 1, sem especificar um segundo índice, siginifica acessar uma lista inteira da lista de listas.</p>
+<p>Ou seja, o resultado deste código é:</p>
+<div id="c20bf636" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Execute o código na sua máquina!</strong></p>
+</div>
+</div>
+</div>
+<ol start="6" type="1">
+<li>Escreva o código de python que altere o elemento <span class="math inline">\((0, 0)\)</span> da matriz M para o valor de 90.</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Para alterar um elemento da matriz, basta acessá-lo e alterar seu valor, portanto, este é o código que altera o elemento <span class="math inline">\((0, 0)\)</span> para 90:</p>
+<div id="2398aa9c" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">0</span>][<span class="dv">0</span>] <span class="op">=</span> <span class="dv">90</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Execute o código na sua máquina!</strong></p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-7" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-7">Exercício 7</h3>
+<p>Considere a seguinte matriz:</p>
+<div id="8a5386fb" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> [</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">2</span>],</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol type="1">
+<li>Escreva um código que, utilizando duas estruturas de repetição do tipo for com range(), seja capaz de imprimir todos os elementos, ou seja, a saída deve ser:</li>
+</ol>
+<div id="d5f90b61" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Aqui está o código capaz de realizar isto:</p>
+<div id="0445bfd1" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># declaração da matriz</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> [</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">2</span>],</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># declaração de variáveis auxiliares</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>quantidade_de_linhas: <span class="bu">int</span> <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>quantidade_de_colunas: <span class="bu">int</span> <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co"># estrutura de repetição para as linhas</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(quantidade_de_colunas):</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># estrutura de repetição para as colunas</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(quantidade_de_colunas):</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># impressão dos elementos</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(M[i][j])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Execute este código na sua máquina!</strong></p>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Agora adapte o código para funcionar com duas estruturas de repetição do tipo <em>for each</em>.</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Aqui está o código adaptado:</p>
+<div id="220af310" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># declaração da matriz</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> [</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">2</span>],</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># estrutura de repetição para as linhas</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> linha <span class="kw">in</span> M:</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># estrutura de repetição para os elementos das linhas</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> elemento <span class="kw">in</span> linha:</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># impressão dos elementos</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(elemento)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Execute este código na sua máquina!</strong></p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-8" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-8">Exercício 8</h3>
+<p>Considerando a seguinte matriz:</p>
+<div id="07c40400" class="cell" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>],</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>]</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Escreva um código que seja capaz de passar linha a linha desta matriz, imprimindo uma linha inteira cada vez.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Aqui está o código capaz de realizar isto:</p>
+<div id="994ed8b6" class="cell" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># declaração da matriz</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>],</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>]</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># estrutura para passar pelas linhas da matriz</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> linha <span class="kw">in</span> A:</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># impressão das linhas</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(linha)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Execute este código na sua máquina!</strong></p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-9" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-9">Exercício 9</h3>
+<p>Considerando a seguinte matriz:</p>
+<div id="e3f558fe" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>matriz_valores <span class="op">=</span> [</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol type="1">
+<li>Utilizando estruturas de repetição do tipo for com a função range(), escreva um código que seja capaz de percorrer cada posição da matriz e somar todos os seus valores (ou seja, o resutlado deve ser <span class="math inline">\(6\)</span>).</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Aqui está um código capaz de realizar isto:</p>
+<div id="d5b375e9" class="cell" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># declaração da matriz</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>matriz_valores <span class="op">=</span> [</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co"># variáveis auxiliares para clareza do código</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>quantidade_de_linhas: <span class="bu">int</span> <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>quantidade_de_colunas: <span class="bu">int</span> <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>soma_total: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co"># estrutura de repetição para linhas</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(quantidade_de_linhas):</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># estrutura de repetição para colunas</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(quantidade_de_colunas):</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># adicionar o valor de cada elemento à soma</span></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>        soma_total <span class="op">+=</span> matriz_valores[i][j]</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a><span class="co"># imprimir o valor final da soma</span></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(soma_total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Execute este código na sua máquina!</strong></p>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Agora adapte o código para que ao ínves de somar todos os números, ele multiplique todos os números (ou seja, o resultado deve ser <span class="math inline">\(0\)</span>).</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>As únicas modificações necessárias são a troca do valor inicial da variável de multiplicação para 1 e a troca do operador <code>+=</code> para <code>*=</code>. Aqui está o código adaptado:</p>
+<div id="a219c884" class="cell" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># declaração da matriz</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>matriz_valores <span class="op">=</span> [</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># variáveis auxiliares para clareza do código</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>quantidade_de_linhas: <span class="bu">int</span> <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>quantidade_de_colunas: <span class="bu">int</span> <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>multiplicacao_total: <span class="bu">int</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="co"># estrutura de repetição para linhas</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(quantidade_de_linhas):</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># estrutura de repetição para colunas</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(quantidade_de_colunas):</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># multiplicar o valor de cada elemento</span></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>        multiplicacao_total <span class="op">*=</span> matriz_valores[i][j]</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a><span class="co"># imprimir o valor final da soma</span></span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(multiplicacao_total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Execute este código na sua máquina!</strong></p>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Adapte o código do item 2 para utilizar estruturas do tipo <em>for each</em>:</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Aqui está o código adaptado:</p>
+<div id="1b900362" class="cell" data-execution_count="31">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># declaração da matriz</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>matriz_valores <span class="op">=</span> [</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co"># variáveis auxiliares</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>multiplicacao_total: <span class="bu">int</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co"># estrutura de repetição para as linhas</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> linha <span class="kw">in</span> matriz_valores:</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># estrutura de repetição para os elementos das linhas</span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> elemento <span class="kw">in</span> linha:</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># multiplicação dos elementos</span></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>        multiplicacao_total <span class="op">*=</span> elemento</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a><span class="co"># imprimir o valor final da soma</span></span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(multiplicacao_total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Execute este código na sua máquina!</strong></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

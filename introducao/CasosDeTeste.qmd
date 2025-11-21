@@ -1,0 +1,280 @@
+---
+title: "Casos de Teste — TP1"
+toc: true
+toc-title: "Conteúdos da página"
+---
+
+### Introdução aos Casos de Teste
+
+Os **casos de teste** são cenários ou exemplos que são utilizados para verificar se o comportamento de um programa ou sistema está de acordo com o esperado. Em programação, os casos de teste são essenciais para validar que a implementação de uma funcionalidade está correta, funcionando corretamente e atendendo aos requisitos especificados.
+
+#### O que é um Caso de Teste?
+
+Um **caso de teste** é uma descrição de uma entrada (ou várias entradas) que um programa deve processar, o comportamento esperado do sistema para essas entradas e o resultado que deve ser gerado. Os casos de teste podem ser utilizados para:
+
+1. **Verificar a correção do código**: Garantir que as funções ou métodos estejam funcionando conforme o esperado.
+2. **Validar o comportamento esperado**: Testar se o sistema responde corretamente a diferentes cenários ou entradas.
+3. **Identificar falhas**: Detectar erros ou falhas que podem ocorrer em partes do código, ajudando a melhorar a qualidade do software.
+
+#### Como Utilizar um Caso de Teste?
+
+Para utilizar um caso de teste, o processo geralmente envolve as seguintes etapas:
+
+1. **Definir as entradas**: Estabelecer o conjunto de dados que serão usados como entrada para o sistema. Isso pode incluir variáveis, parâmetros ou dados de teste predefinidos.
+   
+2. **Executar o teste**: Submeter as entradas ao sistema ou programa, observando como ele reage às entradas e qual saída é gerada.
+
+3. **Comparar os resultados**: Comparar a saída do sistema com a saída esperada. Se o comportamento do sistema corresponder ao esperado, o caso de teste é considerado **bem-sucedido**. Caso contrário, é necessário investigar e corrigir os erros.
+
+4. **Documentar o caso de teste**: Registrar os detalhes do teste, incluindo entradas, saídas esperadas, comportamento observado e resultados. Isso pode ser feito de forma estruturada, utilizando ferramentas de testes automatizados ou, como neste caso, de forma manual para testes mais simples.
+
+### Como Interpretar os Casos de Teste
+
+Cada caso de teste foi projetado para testar um conjunto específico de entradas e condições, e verificar se o programa reage conforme o esperado. Eles ajudam a garantir que a implementação do software esteja funcionando corretamente sob diferentes condições e com diferentes tipos de dados.
+
+A seguir, serão apresentados casos de teste específicos para um sistema de análise de insolação, cada um com entradas e resultados esperados. Estes testes ajudam a validar a precisão e confiabilidade do programa desenvolvido.
+
+### Caso de teste 1
+
+#### Todos os Andares e Apartamentos com Insolação:
+
+| Andar | Janela 1 | Janela 2 | Janela 3 |
+|-------|----------|----------|----------|
+| 10°   | 7        | 5        | 1        |
+| 9°    | 1        | 2        | 0        |
+| 8°    | 6        | 0        | 8        |
+| 7°    | 3        | 3        | 1        |
+| 6°    | 8        | 7        | 0        |
+| 5°    | 7        | 3        | 4        |
+| 4°    | 7        | 3        | 7        |
+| 3°    | 4        | 5        | 7        |
+| 2°    | 7        | 7        | 7        |
+| 1°    | 9        | 3        | 6        |
+
+#### Soma das Insolações de Cada janela:
+
+   $\sum{\text{insolação de cada janela}} = 138$
+
+#### Insolação Média Geral:
+
+   $I_{media} = \frac{\sum{\text{insolação de cada janela}}}{\text{quantidade de janelas}} = \frac{138}{30} = 4.6$
+
+#### Quantidade de Janelas com Insolação Excessiva:
+
+   $Q_{exc} = 3$
+
+#### Quantidade de Janelas com Insolação Insuficiente:
+
+   $Q_{ins} = 7$
+
+#### Porcentagem de Janelas com Insolação Excessiva:
+
+   $P_{exc} = \frac{Q_{exc}}{\text{total de janelas}} = \frac{3}{30} = 0.1$
+
+#### Porcentagem de Janelas com Insolação Insuficiente:
+
+   $P_{ins} = \frac{Q_{ins}}{\text{total de janelas}} = \frac{7}{30} = 0.23333333333333334$ 
+
+#### Porcentagem de Janelas Problemáticas:
+
+   $P_{prob} = \frac{Q_{exc} + Q_{ins}}{\text{total de janelas}} = \frac{3 + 7}{30} = \frac{10}{30} = 0.3333333333333333$
+
+#### Mensagem:
+
+   "Porcentagem aceitável de janelas problemáticas."
+
+### Caso de teste 2
+
+#### Todos os Andares e Apartamentos com Insolação:
+
+| Andar | Janela 1 | Janela 2 | Janela 3 |
+|-------|----------|----------|----------|
+| 10°   | 5        | 3        | 6        |
+| 9°    | 7        | 3        | 3        |
+| 8°    | 5        | 8        | 10       |
+| 7°    | 5        | 4        | 7        |
+| 6°    | 1        | 3        | 9        |
+| 5°    | 2        | 7        | 9        |
+| 4°    | 5        | 6        | 6        |
+| 3°    | 3        | 7        | 7        |
+| 2°    | 6        | 6        | 8        |
+| 1°    | 4        | 9        | 9        |
+
+#### Soma das Insolações de Cada janela:
+
+   $\sum{\text{insolação de cada janela}} = 173$
+
+#### Insolação Média Geral:
+
+   $I_{media} = \frac{\sum{\text{insolação de cada janela}}}{\text{quantidade de janelas}} = \frac{173}{30} = 5.766666666666667$
+
+#### Quantidade de Janelas com Insolação Excessiva:
+
+   $Q_{exc} = 7$
+
+#### Quantidade de Janelas com Insolação Insuficiente:
+
+   $Q_{ins} = 2$
+
+#### Porcentagem de Janelas com Insolação Excessiva:
+
+   $P_{exc} = \frac{Q_{exc}}{\text{total de janelas}} = \frac{7}{30} = 0.23333333333333334$
+
+#### Porcentagem de Janelas com Insolação Insuficiente:
+
+   $P_{ins} = \frac{Q_{ins}}{\text{total de janelas}} = \frac{2}{30} = 0.06666666666666667$
+
+#### Porcentagem de Janelas Problemáticas:
+
+   $P_{prob} = \frac{Q_{exc} + Q_{ins}}{\text{total de janelas}} = \frac{7 + 2}{30} = \frac{9}{30} = 0.3$
+
+#### Mensagem:
+
+   "Porcentagem aceitável de janelas problemáticas."
+
+### Caso de teste 3
+
+#### Todos os Andares e Apartamentos com Insolação:
+
+| Andar | Janela 1 | Janela 2 | Janela 3 |
+|-------|----------|----------|----------|
+| 10°   | 2        | 7        | 9        |
+| 9°    | 5        | 8        | 6        |
+| 8°    | 3        | 8        | 6        |
+| 7°    | 5        | 0        | 6        |
+| 6°    | 0        | 0        | 4        |
+| 5°    | 7        | 1        | 3        |
+| 4°    | 9        | 8        | 3        |
+| 3°    | 2        | 0        | 3        |
+| 2°    | 5        | 9        | 6        |
+| 1°    | 7        | 2        | 2        |
+
+#### Soma das Insolações de Cada janela:
+
+   $\sum{\text{insolação de cada janela}} = 136$
+
+#### Insolação Média Geral:
+
+   $I_{media} = \frac{\sum{\text{insolação de cada janela}}}{\text{quantidade de janelas}} = \frac{136}{30} = 4.533333333333333$
+
+#### Quantidade de Janelas com Insolação Excessiva:
+
+   $Q_{exc} = 6$
+
+#### Quantidade de Janelas com Insolação Insuficiente:
+
+   $Q_{ins} = 9$
+
+#### Porcentagem de Janelas com Insolação Excessiva:
+
+   $P_{exc} = \frac{Q_{exc}}{\text{total de janelas}} = \frac{6}{30} = 0.2$
+
+#### Porcentagem de Janelas com Insolação Insuficiente:
+
+   $P_{ins} = \frac{Q_{ins}}{\text{total de janelas}} = \frac{9}{30} = 0.3$
+
+#### Porcentagem de Janelas Problemáticas:
+
+   $P_{prob} = \frac{Q_{exc} + Q_{ins}}{\text{total de janelas}} = \frac{6 + 9}{30} = \frac{15}{30} = 0.5$
+
+#### Mensagem:
+
+   "Maior porcentagem de janelas problemáticas do que é permitido!"
+
+### Caso de teste 4
+
+#### Todos os Andares e Apartamentos com Insolação:
+
+| Andar | Janela 1 | Janela 2 | Janela 3 |
+|-------|----------|----------|----------|
+| 10°   | 7        | 5        | 6        |
+| 9°    | 6        | 0        | 0        |
+| 8°    | 6        | 6        | 3        |
+| 7°    | 6        | 9        | 8        |
+| 6°    | 5        | 6        | 4        |
+| 5°    | 3        | 1        | 7        |
+| 4°    | 9        | 2        | 7        |
+| 3°    | 4        | 0        | 5        |
+| 2°    | 1        | 6        | 3        |
+| 1°    | 8        | 5        | 10       |
+
+#### Soma das Insolações de Cada janela:
+
+   $\sum{\text{insolação de cada janela}} = 148$
+
+#### Insolação Média Geral:
+
+   $I_{media} = \frac{\sum{\text{insolação de cada janela}}}{\text{quantidade de janelas}} = \frac{148}{30} = 4.933333333333334$
+
+#### Quantidade de Janelas com Insolação Excessiva:
+
+   $Q_{exc} = 5$
+
+#### Quantidade de Janelas com Insolação Insuficiente:
+
+   $Q_{ins} = 6$
+
+#### Porcentagem de Janelas com Insolação Excessiva:
+
+   $P_{exc} = \frac{Q_{exc}}{\text{total de janelas}} = \frac{5}{30} = 0.16666666666666666$
+
+#### Porcentagem de Janelas com Insolação Insuficiente:
+
+   $P_{ins} = \frac{Q_{ins}}{\text{total de janelas}} = \frac{6}{30} = 0.2$
+
+#### Porcentagem de Janelas Problemáticas:
+
+   $P_{prob} = \frac{Q_{exc} + Q_{ins}}{\text{total de janelas}} = \frac{5 + 6}{30} = \frac{11}{30} = 0.36666666666666664$
+
+#### Mensagem:
+
+   "Porcentagem aceitável de janelas problemáticas."
+
+### Caso de teste 5
+
+#### Todos os Andares e Apartamentos com Insolação:
+
+| Andar | Janela 1 | Janela 2 | Janela 3 |
+|-------|----------|----------|----------|
+| 10°   | 8        | 9        | 4        |
+| 9°    | 8        | 10       | 6        |
+| 8°    | 4        | 8        | 5        |
+| 7°    | 6        | 4        | 1        |
+| 6°    | 2        | 8        | 6        |
+| 5°    | 3        | 5        | 3        |
+| 4°    | 9        | 8        | 1        |
+| 3°    | 0        | 7        | 5        |
+| 2°    | 3        | 6        | 8        |
+| 1°    | 6        | 2        | 10       |
+
+#### Soma das Insolações de Cada janela:
+
+   $\sum{\text{insolação de cada janela}} = 165$
+
+#### Insolação Média Geral:
+
+   $I_{media} = \frac{\sum{\text{insolação de cada janela}}}{\text{quantidade de janelas}} = \frac{165}{30} = 5.5$
+
+#### Quantidade de Janelas com Insolação Excessiva:
+
+   $Q_{exc} = 10$
+
+#### Quantidade de Janelas com Insolação Insuficiente:
+
+   $Q_{ins} = 5$
+
+#### Porcentagem de Janelas com Insolação Excessiva:
+
+   $P_{exc} = \frac{Q_{exc}}{\text{total de janelas}} = \frac{10}{30} = 0.3333333333333333$
+
+#### Porcentagem de Janelas com Insolação Insuficiente:
+
+   $P_{ins} = \frac{Q_{ins}}{\text{total de janelas}} = \frac{5}{30} = 0.16666666666666666$
+
+#### Porcentagem de Janelas Problemáticas:
+
+   $P_{prob} = \frac{Q_{exc} + Q_{ins}}{\text{total de janelas}} = \frac{10 + 5}{30} = \frac{15}{30} = 0.5$
+
+#### Mensagem:
+
+   "Maior porcentagem de janelas problemáticas do que é permitido!"

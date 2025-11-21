@@ -1,0 +1,46 @@
+project:
+  type: website
+
+website:
+  title: "PDS-0"
+  sidebar:
+    title: "PDS-0"
+    collapse-level: 1
+    contents:
+      - index.qmd
+      - section: "Introdução"
+        contents:
+          - introducao/Algoritmos.qmd
+          - introducao/RepresentacoesDeAlgoritmos.qmd
+          - introducao/OrganizacaoDeComputadores.qmd
+          - introducao/IntroducaoAProgramacao.qmd
+          - introducao/IntroducaoAPython.qmd
+          - introducao/CondicionaisEmPython.qmd
+          - introducao/EstruturasDeRepeticaoEmPython.qmd
+          - introducao/Matrizes.qmd  
+          - introducao/Exercicios.qmd
+          - section: "Projeto"
+            contents:
+              - introducao/Projeto.qmd
+              - introducao/CasosDeTeste.qmd
+      - section: "Funções"
+        contents:
+          - funcoes/IntroducaoAFuncoes.qmd
+          - funcoes/Exercicios.qmd
+      - section: "Módulos"
+        contents:
+          - modulos/Exercicios.qmd
+      - section: "Objetos e classes"
+        contents:
+          - ObjetosEClasses/Exercicios.qmd
+      - section: "Programação orientada a objetos (POO)"
+        contents:
+          - POO/Exercicios.qmd
+      - section: "Introdução a estruturas de dados"
+        contents:
+          - introducaoAED/Exercicios.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true

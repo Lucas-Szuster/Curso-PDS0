@@ -1,0 +1,755 @@
+---
+title: "Exercícios"
+toc: true
+toc-title: "Secções de exercícios"
+---
+
+## Exercícios de variáveis
+
+### Exercício 1
+
+Defina o melhor tipo de variável para se utilizar nos seguintes casos:
+
+1. A quantidade de pessoas que existem no planeta;
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+`int` - pois o número de pessoas que existem no planeta é inteiro.
+
+:::
+
+2. O nome de uma pessoa;
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+`string` - pois um nome é uma sequência de caracteres.
+
+:::
+
+3. O peso (medido com alta precisão) de um prego;
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+`float` - pois um peso medido com alta precisão, idependente da unidade de medição (kg, g, etc), muito provavelmente terá casas decimais.
+
+:::
+
+4. Uma lista que contém todas as notas de alunos associadas aos seus nomes;
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+`dict` - pois queremos associas pares de chave (nome) com valor (nota do aluno).
+
+:::
+
+5. A média entre dois números;
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+`float` - pois a média entre quaisquer dois números tem alta probabilidade de conter casas decimais.
+
+:::
+
+### Exercício 2 
+
+Leia os valores abaixo e diga qual seria o tipo de variável ideal para armazenar cada um deles:
+
+1. 42
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+`int` - pois é um número inteiro.
+
+:::
+
+2. "Olá, mundo!"
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+`string` - pois é uma sequência de caracteres.
+
+:::
+
+3. 3.1415
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+`float` - pois é um número não-inteiro.
+
+:::
+
+4. True
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+`bool` - pois é um valor booleano.
+
+:::
+
+5. -1200
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+`int` - pois é um número inteiro.
+
+:::
+
+### Exercício 3 
+
+Leia as sentenças e separe o nome da variável e o valor armazenado:
+
+1. cidade = "Recife"
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+cidade é o nome da variável e a `string` "Recife" é seu valor.
+
+:::
+
+2. populacao = 1600000
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+populacao é o nome da variável e o seu valor é 1600000 (tipo `int`).
+
+:::
+
+3. capital = True
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+capital é o nome da variável e o seu valor é True (tipo `bool`).
+
+:::
+
+### Exercício 4
+
+Explique o que acontece se tentarmos somar "5" (string) com 5 (inteiro). Como você poderia corrigir o código para que a soma funcione corretamente?
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+A operação `"5" + 5` não funciona porque os dois elementos são de tipos diferentes, e a operação de somar um `int` a uma `string` não está definida. Para corrigir o erro, ambos os valores devem ser do mesmo tipo. Para isso, podem ser feitas duas correções diferentes:
+* `"5" + "5"` -> resulta em `"55"`
+* `5 + 5` -> resulta em `10` 
+
+:::
+
+### Exercício 5 
+
+Sem executar, diga qual tipo de dado cada variável deve ter no código abaixo:
+
+```{python}
+nome = "Maria"
+idade = 17
+altura = 1.63
+maior_de_idade = False
+```
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+* nome: `string`, pois é uma sequência de caracteres
+* idade: `int`, pois é um número inteiro
+* altura: `float`, pois é um número não inteiro
+* maior_de_idade: `bool`, pois é um valor booleano
+
+:::
+
+### Exercício 6 
+
+Observe os exemplos abaixo e diga se cada um representa uma lista ou um dicionário:
+
+1. ["maçã", "banana", "uva"]
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+`list` - pois não temos pares de chave e valor, somente valores.
+
+:::
+
+2. {"nome": "Maria", "idade": 20}
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+`dict` - pois temos pares de chave e valor.
+
+:::
+
+3. [10, 20, 30, 40, 50]
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+`list` - pois não temos pares de chave e valor, somente valores.
+
+:::
+
+4. {"cor": "azul", "tamanho": "M", "estoque": 12}
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+`dict` - pois temos pares de chave e valor.
+
+:::
+
+5. [True, False, True, False]
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+`list` - pois não temos pares de chave e valor, somente valores.
+
+:::
+
+### Exercício 7 
+
+Analise a seguinte estrutura e responda os items 1, 2 e 3:
+
+```{python}
+animais = ["gato", "cachorro", "papagaio", "peixe"]
+```
+
+1. Quantos elementos essa lista possui?
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+4 elementos.
+
+:::
+
+2. Qual elemento está na posição 0?
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+"gato".
+
+:::
+
+3. Qual elemento está na última posição?
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+"peixe".
+
+:::
+
+### Exercício 8 
+
+Observe o dicionário abaixo e responda os items 1, 2 e 3:
+
+```{python}
+aluno = {"nome": "Pedro", "idade": 19, "curso": "Física"}
+```
+
+Responda:
+1. Quantas chaves ele possui?
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+3 chaves - "nome", "idade" e "curso".
+
+:::
+
+2. Quais são os valores associados a essas chaves?
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+o valor associado a "nome" é "Pedro", o valor associado a "idade" é 19 e o valor associado a "curso" é "Física".
+
+:::
+
+3. Quais são os tipos dos valores deste `dict`?
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+* o tipo do valor "Pedro" é `string`, pois "Pedro" é uma sequência de caracteres.
+* o tipo do valor 19 é `int`, pois 19 é um número inteiro.
+* o tipo do valor "Física" é `string`, pois "Física" é uma sequência de caracteres.
+
+:::
+
+### Exercício 9
+
+Leia as situações e identifique se seria mais adequado usar uma lista ou um dicionário:
+
+1. Guardar as notas de uma prova em ordem (sem nomes, apenas os valores).
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+`list` - pois não queremos associar valores a uma chave.
+
+:::
+
+2. Armazenar o nome e a nota de cada aluno em uma turma.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+`dict` - pois queremos associar valores (os nomes dos alunos) a chaves (as notas).
+
+:::
+
+3. Guardar uma sequência de números sorteados em um jogo.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+`list` - pois não queremos associar valores a uma chave.
+
+:::
+
+4. Representar as informações de um produto (nome, preço, categoria).
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+`dict` - pois queremos associar valores (os atributos do produto) a chaves (os valores destes atributos).
+
+Por exemplo:
+
+```{python}
+# produto carro
+produto_carro = {"modelo" : "Polo", "marca" : "Volkswagen", "ano" : 2019}
+
+# produto celular
+produto_celular = {"modelo" : "A12", "marca" : "Samsung", "ano" : 2021}
+```
+
+:::
+
+5. Armazenar todas as cidades que uma pessoa já visitou.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+`list` - pois não queremos associar valores a uma chave.
+
+:::
+
+
+## Exercícios de interpretação de fluxograma
+
+### Exercício 1 
+
+Descreva o funcionamento do algoritmo representado neste fluxograma:
+
+```{mermaid}
+flowchart LR
+    A([Início]) --> B[/Ler valor de a e b/]
+    B --> C[c = a + b]
+    C --> D[Imprimir c]
+    D --> E([Término])
+```
+
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+O fluxograma descreve um algorítmo que primeiramente lê valores de duas variáveis, a e b. Com estas variáveis, o algorítmo calcula um terceiro valor, a soma de a e b, armazenado em c. Por fim, o algorítmo imprime a variável c e termina.
+
+:::
+
+### Exercício 2 
+
+Descreva o funcionamento do algoritmo representado neste fluxograma:
+
+```{mermaid}
+flowchart LR
+    A([Início]) --> B[/Ler valor de a e b/]
+    B --> C["média = (a + b) / 2"]
+    C --> D[Imprimir média]
+    D --> E([Término]) 
+```
+
+::: {.callout-warning title="Observação importante"}
+
+No fluxograma acima, é utilizada uma variável cahamada "média", com acento em seu nome. Para a implementação deste fluxograma em código, é correto alterar seu nome para "media", sem acento, pois nomes de variáveis em programas não devem conter caracteres especiais.
+
+:::
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+O fluxograma descreve um algorítmo que primeiramente lê valores de duas variáveis, a e b. Com estas variáveis, o algorítmo calcula um terceiro valor, a média entre a e b, armazenado na varíavel média. Por fim, o algorítmo imprime a variável média e termina.
+
+:::
+
+### Exercício 3
+
+Descreva o funcionamento do algoritmo representado neste fluxograma:
+
+```{mermaid}
+flowchart LR
+    A([Início]) --> B[/ler a e b/]
+    B --> C[temp = a]
+    C --> D[a = b]
+    D --> E[b = temp]
+    E --> F[Imprimir a e b]
+    F --> G([Término])
+```
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+O fluxograma descreve um algorítmo que troca os valores de duas variáveis. Para isto, o alogrítmo inicialmente lê dois valores para variáveis a e b. Após isto, uma nova variável chamada temp é declarada com o valor de a. Isto permite que a tenha seu valor alterado para o valor de b, e depois que b tenha seu valor alterado para o valor guardado em temp (que é o valor inicial de a). Após isto, os valores de a e b são impressos e o algorítmo termina.
+
+:::
+
+## Exercícios de implementação simples (sem condicional)
+
+### Exercício 1 
+
+Implemente um algoritmo que leia uma temperatura em Celsius e converta para Kelvin usando a fórmula: $K = C + 273$, onde $K$ é a temperatura em graus Kelvin e $C$ é a temperatura em graus celsius.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+```{python}
+#| eval: false
+C: float = float(input('Insira a temperatura em graus Celsius: '))
+K: float = C + 273
+
+print('A temperatura em graus Kelvin é: ', K)
+```
+
+Neste bloco de código, uma variável chamada C é inicializada com um valor lido do terminal, através da função input(). Após ler a entrada, é feito o cálculo de conversão dos graus Celsius para Kelvin e o valor da conversão é armazenado em uma variável chamada K. Por fim, o valor de K é impresso na tela.
+
+::: {.callout-note title="Observação"}
+
+* Neste código, os nomes das variáveis são pouco descritíveis, e foram escolhidos somente para exemplificar com clareza o que o enunciado pede. Nomes melhores de variáveis seriam "temperaturaEmGrausCelsius" ao invés de "C" e "temperaturaEmGrausKelvin" ao invés de K. 
+
+* Nomes de variáveis inteiramente escritos em letras maiúsculas são geralmente reservados para constantes, assim há um outro motivo pelo qual os nomes "C" e "K" não são boas escolhas.
+
+:::
+
+:::
+
+### Exercício 2
+
+Implemente o código que realiza o algorítmo descrito pelo seguinte fluxograma:
+
+```{mermaid}
+    flowchart LR
+        A([Início]) --> B[/Ler largura e altura/]
+        B --> C[area = largura * altura]
+        C --> D[Imprimir area]
+        D --> E([Término])
+```
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+```{python}
+#| eval: false
+largura: float = float(input('Insira a largura: '))
+altura: float = float(input('Insira a altura: '))
+
+area: float = largura * altura
+
+print('A área do retangulo é: ', area)
+```
+
+Neste bloco de código, são declaradas duas variáveis do tipo float, largura e altura, e ambas são inicializadas com valores lidos do terminal. Após ler valores para largura e altura, a fórmula de área de um retângulo ($A = B \times h$) é aplicada e o novo valor calculado é salvo em uma variavel chamada area. Por fim, o valor da área é impresso e algorítmo termina sua execução.
+
+::: {.callout-note title="Observação"}
+
+É importante observar que o nome da variável que guarda a área do retângulo descrito no código é area e não área. Isto se deve porque não é uma boa prática de programação implementar variáveis que possuam nomes com caracteres especiais (neste caso o "á").
+
+:::
+
+:::
+
+### Exercício 3
+
+Implemente o código que realiza o algorítmo descrito pelo seguinte fluxograma:
+
+```{mermaid}
+flowchart LR
+    A([Início]) --> B[/Ler valor de raio/]
+    B --> C[area = 3.1416 * raio * raio]
+    C --> D[Imprimir area]
+    D --> E([Término])
+```
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+```{python}
+#| eval: false
+raio: float = float(input('Insira o valor do raio do círculo: '))
+pi: float = 3.14
+
+area: float = pi * raio * raio
+
+print('A área do retangulo é: ', area)
+```
+
+Neste bloco de código, são declaradas duas variáveis, raio e pi. A variável pi é incializada com uma aproximação de $\pi$ para duas casas decimais, enquanto a variável raio é inicializada com um valor lido do terminal. Após obter os valores de $\pi$ e raio, basta aplicar a fórmula de cálculo de área de um círculo ($A = \pi r^2$) e armazenar o resultado em uma variável chamada area. Por fim, o valor da área é impresso e o programa termina sua execução
+
+::: {.callout-note title="Observação"}
+
+* É importante observar que o nome da variável que guarda a área do círculo descrito no código é area e não área. Isto se deve porque não é uma boa prática de programação implementar variáveis que possuam nomes com caracteres especiais (neste caso o "á").
+
+* Uma melhoria a este código é utilizar uma definição de $\pi$ que venha de algum módulo (como o módulo *math*), entretanto isto não foi estudado ainda, então será relevado.
+
+:::
+
+:::
+
+### Exercício 4 
+
+Implemente o código que realiza o algorítmo descrito pelo seguinte fluxograma: 
+
+```{mermaid}
+flowchart LR
+    A([Início]) --> B[/Ler quantidade de horas/]
+    B --> C[minutos = horas * 60]
+    C --> D[Imprimir minutos]
+    D --> E([Término])
+```
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+```{python}
+#| eval: false
+horas: int = int(input('Insira a quantidade de horas: '))
+
+minutos: int = horas * 60
+
+print('A quantidade de minutos é: ', minutos)
+```
+
+Neste bloco de código, é declarada uma variável horas, do tipo inteiro (*int*), que é incializada com um valor lido do terminal. Após isto, outra variável, minutos, é definida como a $\text{horas} \times 60$. Por fim, o valor de minutos é impresso e o programa termina sua execução.
+
+::: {.callout-note title="Observação"}
+
+Para imprimir a quantidade de minutos, foi utilizado uma forma da função print() que imprime os parâmetros passados em ordem. Entretanto, para imprimir uma resposta mais completa, seria mais adequado a utilização de [f-string](https://www.w3schools.com/python/python_string_formatting.asp), como descrito abaixo:
+
+```{python}
+#| eval: false
+print(f'Em {horas} horas são {minutos} minutos')
+```
+
+:::
+
+:::
+
+### Exercício 5
+
+Implemente o código que realiza o algorítmo descrito pelo seguinte fluxograma: 
+
+```{mermaid}
+flowchart LR
+    A([Início]) --> B[/Ler valor de n/]
+    B --> C[soma = 1 + 2 + ... + n]
+    C --> D[Imprimir soma]
+    D --> E([Término])
+```
+
+::: {.callout-tip title="Dica"}
+Lembre-se da [soma de Gauss](https://letstalkscience.ca/educational-resources/backgrounders/gauss-summation)
+
+:::
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+```{python}
+#| eval: false
+n: int = int(input('Insira o valor de n: '))
+soma: int = (n * (n + 1)) / 2
+
+print('A soma dos números até n é: ', soma)
+```
+
+Neste bloco de código, é declarada uma variável n (do tipo *int*), inicializada com um valor lido do terminal. Com este valor estabelecido, a soma de todos os números inteiros começando de 1 até n é calculada com base na soma de Gauss. Após calcular a soma, o valor é impreso na tela e o programa termina sua execução.
+
+
+::: {.callout-note title="Observação"}
+
+Para imprimir a soma, foi utilizado uma forma da função print() que imprime os parâmetros passados em ordem. Entretanto, para imprimir uma resposta mais completa, seria mais adequado a utilização de [f-string](https://www.w3schools.com/python/python_string_formatting.asp), como descrito abaixo:
+
+```{python}
+#| eval: false
+print(f'A soma de 1 até {n} é: {soma}')
+```
+
+:::
+
+:::
+
+## Exercícios de implementação com condicional
+
+### Exercício 1 
+
+Com base no fluxograma abaixo, faça o que se pede:
+
+```{mermaid}
+flowchart TD
+    A([Início]) --> B[/Ler valor de n/]
+    B --> C{n >= 0}
+    C -->|Verdadeiro| D["Imprimir: Número positivo"]
+    C -->|Falso| E["Imprimir: Número negativo"]
+    D --> F([Término])
+    E --> F
+
+```
+
+1. Descreva o que este algorítmo faz;
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+O algorítmo descrito recebe um número n como entrada e descobre se este número é negativo ou positivo, indicando o resultado na saída
+
+:::
+
+2. Implemente em código o algorítmo descrito pelo fluxograma.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+Abaixo está a implementação do algorítmo descrita no item 1:
+
+```{python}
+#| eval: false
+n: int = int(input('Insira o valor de n: '))
+
+if(n >= 0):
+    print('Número positivo')
+else:
+    print('Número negativo')
+```
+
+:::
+
+### Exercício 2 
+
+Com base no fluxograma abaixo, faça o que se pede: 
+
+```{mermaid}
+flowchart TD
+    A([Início]) --> B[/Ler valor de n/]
+    B --> C{n % 2 == 0?}
+    C -->|Verdadeiro| D["Imprimir: Número par"]
+    C -->|Falso| E["Imprimir: Número ímpar"]
+    D --> F([Término])
+    E --> F
+```
+
+::: {.callout-note title="Observação"}
+
+O operador módulo "%" retorna o resto de uma divisão. Por exemplo: 7 % 5 = 2, pois 2 é o resto que sobra ao realizar a divisão inteira de 7 por 5.
+
+:::
+
+1. Descreva o que este algorítmo faz;
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+O algorítmo descrito recebe um número n como entrada e descobre se este número é part ou ímpar, indicando o resultado na saída.
+
+:::
+
+2. Implemente em código o algorítmo descrito pelo fluxograma.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+Abaixo está a implementação do algorítmo descrita no item 1:
+
+```{python}
+#| eval: false
+n: int = int(input('Insira o valor de n: '))
+
+if(n % 2 == 0):
+    print('Número par')
+else:
+    print('Número ímpar')
+```
+
+:::
+
+### Exercício 3 
+
+Com base no fluxograma abaixo, faça o que se pede:
+
+```{mermaid}
+flowchart TD
+    A([Início]) --> B[/Ler valores a e b/]
+    B --> C{a > b?}
+    C -->|Verdadeiro| D["Imprimir: a é maior"]
+    C -->|Falso| E["Imprimir: b é maior ou igual a a"]
+    D --> F([Término])
+    E --> F
+```
+
+::: {.callout-note title="Observação"}
+
+O operador maior ">" retorna verdadeiro caso o número a esquerda seja estritamente maior que o número a direita e falso caso contrário.
+
+:::
+
+1. Descreva o que este algorítmo faz;
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+O algorítmo descrito recebe dois números na entrada, a e b, e descobre qual deles é o maior, indicando o resultado na saída.
+
+:::
+
+2. Implemente em código o algorítmo descrito pelo fluxograma.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+Abaixo está a implementação do algorítmo descrita no item 1:
+
+```{python}
+#| eval: false
+a: int = int(input('Insira o valor de a: '))
+b: int = int(input('Insira o valor de b: '))
+
+if(a > b):
+    print('a é maior')
+else:
+    print('b é maior ou igual a a')
+```
+
+:::
+
+### Exercício 4 
+
+Com base no fluxograma abaixo, faça o que se pede:
+
+```{mermaid}
+flowchart TD
+    A([Início]) --> B[/Ler valor de n/]
+    B --> C{n > 0?}
+    C -->|Verdadeiro| D["Imprimir: Número positivo"]
+    C -->|Falso| E{n < 0}
+    E -->|Verdadeiro| F["Imprimir: Número negativo"]
+    E -->|Falso| G["Imprimir: Zero"]
+    D --> H([Término])
+    F --> H
+    G --> H
+```
+
+::: {.callout-note title="Observação"}
+
+O operador maior ">" retorna verdadeiro caso o número a esquerda seja estritamente maior que o número a direita e falso caso contrário.
+
+Da mesma forma, o operador "<" retorna verdadeiro caso o número a direita seja estritamente maior que o número a direita e falso caso contrário.
+
+:::
+
+1. Descreva o que este algorítmo faz;
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+O algorítmo descrito recebe um valor n e descobre se ele é maior, menor ou igual a 0, indicando o resultado na saída.
+
+:::
+
+2. Implemente em código o algorítmo descrito pelo fluxograma.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+Abaixo está a implementação do algorítmo descrita no item 1:
+
+```{python}
+#| eval: false
+n: int = int(input('Insira o valor de n: '))
+
+if(n > 0):
+    print('Número postivo')
+else:
+    if(n < 0):
+        print('Número negativo')
+    else:
+        print('Zero')
+```
+
+:::

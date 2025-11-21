@@ -1,0 +1,1817 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Estruturas de repetição em python – PDS-0</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../introducao/Algoritmos.html">Introdução</a></li><li class="breadcrumb-item"><a href="../introducao/EstruturasDeRepeticaoEmPython.html">Estruturas de repetição em python</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">PDS-0</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sobre o curso</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Introdução</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/Algoritmos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Algorítmos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/RepresentacoesDeAlgoritmos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Representações de Algorítmos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/OrganizacaoDeComputadores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fundamentos de computadores</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/IntroducaoAProgramacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdução A Programação</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/IntroducaoAPython.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdução A Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/CondicionaisEmPython.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Condicionais em Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/EstruturasDeRepeticaoEmPython.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Estruturas de repetição em python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/Matrizes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Matrizes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/Exercicios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercícios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Projeto</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/Projeto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Trabalho Prático 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/CasosDeTeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Casos de Teste — TP1</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Funções</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../funcoes/IntroducaoAFuncoes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdução a funções</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text">funcoes/Exercicios.qmd</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Módulos</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+ <span class="menu-text">modulos/Exercicios.qmd</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Objetos e classes</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+ <span class="menu-text">ObjetosEClasses/Exercicios.qmd</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Programação orientada a objetos (POO)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+ <span class="menu-text">POO/Exercicios.qmd</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Introdução a estruturas de dados</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+ <span class="menu-text">introducaoAED/Exercicios.qmd</span>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Conteúdos da página</h2>
+   
+  <ul>
+  <li><a href="#estruturas-de-repetição-em-python" id="toc-estruturas-de-repetição-em-python" class="nav-link active" data-scroll-target="#estruturas-de-repetição-em-python">Estruturas de repetição em Python</a>
+  <ul class="collapse">
+  <li><a href="#while-loop-repetição-controlada-por-condição" id="toc-while-loop-repetição-controlada-por-condição" class="nav-link" data-scroll-target="#while-loop-repetição-controlada-por-condição">while <em>loop</em> (repetição controlada por condição)</a></li>
+  <li><a href="#for-loop-repetição-controlada-por-contagem-ou-iteração" id="toc-for-loop-repetição-controlada-por-contagem-ou-iteração" class="nav-link" data-scroll-target="#for-loop-repetição-controlada-por-contagem-ou-iteração">for loop (repetição controlada por contagem ou iteração)</a></li>
+  </ul></li>
+  <li><a href="#diferença-entre-for-com-range-e-for-each" id="toc-diferença-entre-for-com-range-e-for-each" class="nav-link" data-scroll-target="#diferença-entre-for-com-range-e-for-each">Diferença entre for com range() e for each</a></li>
+  <li><a href="#considerações-e-observações" id="toc-considerações-e-observações" class="nav-link" data-scroll-target="#considerações-e-observações">Considerações e Observações</a></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios">Exercícios</a>
+  <ul class="collapse">
+  <li><a href="#exercício-1" id="toc-exercício-1" class="nav-link" data-scroll-target="#exercício-1">Exercício 1</a></li>
+  <li><a href="#exercício-2" id="toc-exercício-2" class="nav-link" data-scroll-target="#exercício-2">Exercício 2</a></li>
+  <li><a href="#exercício-3" id="toc-exercício-3" class="nav-link" data-scroll-target="#exercício-3">Exercício 3</a></li>
+  <li><a href="#exercício-4" id="toc-exercício-4" class="nav-link" data-scroll-target="#exercício-4">Exercício 4</a></li>
+  <li><a href="#exercício-5" id="toc-exercício-5" class="nav-link" data-scroll-target="#exercício-5">Exercício 5</a></li>
+  <li><a href="#exercício-6" id="toc-exercício-6" class="nav-link" data-scroll-target="#exercício-6">Exercício 6</a></li>
+  <li><a href="#exercício-7" id="toc-exercício-7" class="nav-link" data-scroll-target="#exercício-7">Exercício 7</a></li>
+  <li><a href="#exercício-8" id="toc-exercício-8" class="nav-link" data-scroll-target="#exercício-8">Exercício 8</a></li>
+  <li><a href="#exercício-9" id="toc-exercício-9" class="nav-link" data-scroll-target="#exercício-9">Exercício 9</a></li>
+  <li><a href="#exercício-10" id="toc-exercício-10" class="nav-link" data-scroll-target="#exercício-10">Exercício 10</a></li>
+  <li><a href="#exercício-11" id="toc-exercício-11" class="nav-link" data-scroll-target="#exercício-11">Exercício 11</a></li>
+  <li><a href="#exercício-12" id="toc-exercício-12" class="nav-link" data-scroll-target="#exercício-12">Exercício 12</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../introducao/Algoritmos.html">Introdução</a></li><li class="breadcrumb-item"><a href="../introducao/EstruturasDeRepeticaoEmPython.html">Estruturas de repetição em python</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Estruturas de repetição em python</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="estruturas-de-repetição-em-python" class="level2">
+<h2 class="anchored" data-anchor-id="estruturas-de-repetição-em-python">Estruturas de repetição em Python</h2>
+<p>Em Python, as repetições são realizadas principalmente com duas estruturas: while (controlada por condição) e for (controlada por contagem ou iteração sobre coleções).</p>
+<section id="while-loop-repetição-controlada-por-condição" class="level3">
+<h3 class="anchored" data-anchor-id="while-loop-repetição-controlada-por-condição">while <em>loop</em> (repetição controlada por condição)</h3>
+<p>O comando while repete um bloco de instruções enquanto uma condição lógica for verdadeira. É ideal quando não se sabe quantas vezes será necessário repetir o processo, mas existe uma condição de parada bem definida.</p>
+<p>Abaixo segue sintaxe de um <em>loop</em> do tipo while e o mesmo trecho escrito em pseudocódigo:</p>
+</section>
+<div class="columns">
+<div class="column">
+<section id="pseudocódigo" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocódigo">Pseudocódigo</h3>
+<pre class="{ObjectiveC}"><code>INÍCIO
+    ENQUANTO condição FAÇA
+        // bloco de instruções
+    FIM ENQUANTO
+FIM</code></pre>
+</section>
+</div><div class="column">
+<section id="python" class="level3">
+<h3 class="anchored" data-anchor-id="python">Python</h3>
+<div id="689cf6fa" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> condição:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># bloco de instruções</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</div>
+</div>
+<ul>
+<li><p>A condição deve resultar em um valor booleano (True ou False).</p></li>
+<li><p>Quando a condição se torna False, o laço é encerrado.</p></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Observação importante">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Observação importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>É de extrema importância garantir que a condição de parada se torne em algum momento falsa, pois se isso não ocorrer, o <em>loop</em> nunca é encerrado.</p>
+</div>
+</div>
+<section id="exemplo-1-contagem-simples" class="level4">
+<h4 class="anchored" data-anchor-id="exemplo-1-contagem-simples">Exemplo 1: contagem simples</h4>
+<p>O código abaixo simplesmente conta de 1 até 5, imprimindo o resultado a cada iteração.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Pseudocódigo</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="a1fa0ff1" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>contador <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> contador <span class="op">&lt;=</span> <span class="dv">5</span>:</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(contador)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    contador <span class="op">+=</span> <span class="dv">1</span>  <span class="co"># incrementa o contador, evitando o loop infinito</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Fim do loop!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<pre class="{ObjectiveC}"><code>INÍCIO
+    contador ← 1
+
+    ENQUANTO contador ≤ 5 FAÇA
+        ESCREVA contador
+        contador ← contador + 1 //incrementa o contador, evitando o loop infinito
+    FIM ENQUANTO
+
+    ESCREVA("Fim do loop!")
+FIM</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="exemplo-2-leitura-até-condição-de-parada" class="level4">
+<h4 class="anchored" data-anchor-id="exemplo-2-leitura-até-condição-de-parada">Exemplo 2: leitura até condição de parada</h4>
+<p>O código abaixo permanece no <em>loop</em> até que a palavra “sair” seja digitada.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Pseudocódigo</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div id="a35d584c" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>resposta <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> resposta <span class="op">!=</span> <span class="st">"sair"</span>:</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    resposta <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Digite algo (ou 'sair' para encerrar): "</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Programa encerrado."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<pre class="{ObjectiveC}"><code>INÍCIO
+    resposta ← ""
+
+    ENQUANTO contador != "sair" FAÇA
+        ESCREVA "Digite algo (ou 'sair para encerrar): "
+        resposta ← LEIA resposta
+    FIM ENQUANTO
+
+    ESCREVA "Programa encerrado."
+FIM</code></pre>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Observação">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Observação
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>O uso deste tipo de estrutura mais simples é quando a quantidade de repetições é desconhecida, mas a continuidade destas repetições é altamente dependente de alguma condição conhecida.</p>
+</div>
+</div>
+</section>
+<section id="for-loop-repetição-controlada-por-contagem-ou-iteração" class="level3">
+<h3 class="anchored" data-anchor-id="for-loop-repetição-controlada-por-contagem-ou-iteração">for loop (repetição controlada por contagem ou iteração)</h3>
+<p>O comando for em Python é utilizado para realizar iterações sobre uma sequência de itens, como listas, strings (que são, na verade, coleções de caracteres), ou outros objetos iteráveis. Ele é ideal quando você sabe exatamente quantas vezes precisa repetir um bloco de código ou quando precisa percorrer todos os elementos de uma sequência.</p>
+<p>O for em Python pode ser utilizado de duas formas principais:</p>
+<ul>
+<li><p>For com range(): controla o número de iterações, ou seja, repete o bloco de código um número específico de vezes.</p></li>
+<li><p>For “each”: percorre diretamente os elementos de uma sequência (lista, string, etc.), um a um.</p></li>
+</ul>
+<p>A seguir, vamos entender as diferenças entre essas duas abordagens.</p>
+<section id="for-com-range-controle-por-contagem" class="level4">
+<h4 class="anchored" data-anchor-id="for-com-range-controle-por-contagem"><strong>For com range() (Controle por contagem)</strong></h4>
+<p>O for com range() é usado quando você deseja realizar uma iteração com um número específico de repetições. A função range() gera uma sequência de números, que é utilizada para controlar o número de iterações.</p>
+<p>A sintaxe básica do for com range() é a seguinte:</p>
+</section>
+</section>
+<div class="columns">
+<div class="column">
+<section id="pseudocódigo-3" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocódigo-3">Pseudocódigo</h3>
+<pre class="{ObjectiveC}"><code>INÍCIO
+    PARA i ← início ATÉ fim - 1 PASSO passo FAÇA
+        // bloco de instruções
+    FIM PARA
+FIM</code></pre>
+</section>
+</div><div class="column">
+<section id="python-3" class="level3">
+<h3 class="anchored" data-anchor-id="python-3">Python</h3>
+<div id="706b8565" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(início, fim, passo):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># bloco de instruções</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</div>
+</div>
+<ul>
+<li><p>início: valor inicial (inclusivo) da sequência (padrão é 0).</p></li>
+<li><p>fim: valor final (exclusivo) da sequência.</p></li>
+<li><p>passo: o intervalo entre os números (padrão é 1).</p></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Observação">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Observação
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A função range(início, fim, passo) gera uma sequência de números inteiros que começa em início, avança de acordo com o valor definido em passo e termina antes de alcançar o valor de fim.</p>
+<p>Ela não cria exatamente uma lista, mas sim um objeto especial do tipo iterável, que pode ser percorrido em estruturas de repetição como o for. Caso seja necessário visualizar todos os valores da sequência de uma só vez, é possível convertê-lo em uma lista utilizando: <code>list(range(...))</code></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 28%">
+<col style="width: 52%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Forma</th>
+<th>Exemplo</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>range(fim)</code></td>
+<td><code>range(5)</code> → gera <code>0, 1, 2, 3, 4</code></td>
+<td>Começa em <code>0</code> e vai até antes de <code>fim</code> (passo padrão = <code>1</code>)</td>
+</tr>
+<tr class="even">
+<td><code>range(início, fim)</code></td>
+<td><code>range(2, 6)</code> → gera <code>2, 3, 4, 5</code></td>
+<td>Começa em <code>início</code> e vai até antes de <code>fim</code> (passo padrão = <code>1</code>)</td>
+</tr>
+<tr class="odd">
+<td><code>range(início, fim, passo)</code></td>
+<td><code>range(1, 10, 2)</code> → gera <code>1, 3, 5, 7, 9</code></td>
+<td>Começa em <code>início</code>, vai até antes de <code>fim</code>, saltando de <code>passo</code> em <code>passo</code></td>
+</tr>
+</tbody>
+</table>
+<p>Ou seja, alguns dos valores passados entre os parênteses da função range() são opcionais, e o Python preenche automaticamente os que não forem informados, dependendo da necessidade e da saída desejada. A tabela a seguir mostra quais parâmetros são obrigatórios e quais são opcionais:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 14%">
+<col style="width: 76%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parâmetro</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>início</code></td>
+<td>(opcional)</td>
+<td>Indica o primeiro número da sequência (padrão = 0).</td>
+</tr>
+<tr class="even">
+<td><code>fim</code></td>
+<td>(obrigatório)</td>
+<td>Indica <strong>onde parar</strong> — <strong>não é incluído</strong> na sequência.</td>
+</tr>
+<tr class="odd">
+<td><code>passo</code></td>
+<td>(opcional)</td>
+<td>Indica o <strong>incremento</strong> (ou decremento) entre os números (padrão = 1).</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="por-exemplo" class="level6">
+<h6 class="anchored" data-anchor-id="por-exemplo">Por exemplo:</h6>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Pseudocódigo</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div id="d385ca41" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">1</span>): <span class="co">#gera a sequência 1, 2, 3, 4, 5</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<pre class="{ObjectiveC}"><code>INÍCIO
+    PARA i ← 1 ATÉ 5 FAÇA
+        ESCREVA(i)
+    FIM PARA
+FIM</code></pre>
+</div>
+</div>
+</div>
+<p>Este código imprime os números de 1 a 5. O valor 6 não é incluído, pois o range é exclusivo do valor final.</p>
+</section>
+<section id="for-each-iteração-sobre-sequência-de-elementos" class="level4">
+<h4 class="anchored" data-anchor-id="for-each-iteração-sobre-sequência-de-elementos"><strong>For “each” (Iteração sobre sequência de elementos)</strong></h4>
+<p>O for “each” é uma forma de percorrer diretamente os elementos de uma sequência (lista, string, etc.). Ao invés de usar o índice, o for percorre diretamente os elementos da sequência, um por um, sem a necessidade de controlar manualmente o índice.</p>
+<p>A sintaxe básica é:</p>
+</section>
+</section>
+<div class="columns">
+<div class="column">
+<section id="pseudocódigo-5" class="level2">
+<h2 class="anchored" data-anchor-id="pseudocódigo-5">Pseudocódigo</h2>
+<pre class="{ObjectiveC}"><code>INÍCIO
+    PARA CADA item EM sequência FAÇA
+        // bloco de instruções
+    FIM PARA
+FIM</code></pre>
+</section>
+</div><div class="column">
+<section id="python-5" class="level2">
+<h2 class="anchored" data-anchor-id="python-5">Python</h2>
+<div id="12c2b8a0" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> item <span class="kw">in</span> sequência:</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># bloco de instruções</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</div>
+</div>
+<p>Onde:</p>
+<ul>
+<li><p>item: a variável que irá representar cada elemento da sequência, em cada iteração.</p></li>
+<li><p>sequência: o objeto iterável (pode ser uma lista, string, etc.).</p></li>
+</ul>
+<section id="por-exemplo-1" class="level5">
+<h5 class="anchored" data-anchor-id="por-exemplo-1">Por exemplo:</h5>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Pseudocódigo</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div id="b120375d" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>nomes <span class="op">=</span> [<span class="st">"João"</span>, <span class="st">"Maria"</span>, <span class="st">"Pedro"</span>, <span class="st">"Ana"</span>]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> nome <span class="kw">in</span> nomes:</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Olá, "</span>, nome)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<pre class="{ObjectiveC}"><code>INÍCIO
+    nomes ← ["João", "Maria", "Pedro", "Ana"]
+
+    PARA CADA nome EM nomes FAÇA
+        ESCREVA("Olá, ", nome, "!")
+    FIM PARA
+FIM</code></pre>
+</div>
+</div>
+</div>
+<p>Este código irá gerar como saída o seguinte:</p>
+<pre class="{ObjectiveC}"><code>Olá, João
+Olá, Maria
+Olá, Pedro
+Olá, Ana</code></pre>
+<p>Neste caso, o for percorre a lista nomes e imprime cada nome um por um, sem a necessidade de usar índices explicitamente. O for “each” é a forma mais simples e mais comum de iterar sobre uma sequência de elementos.</p>
+</section>
+<section id="diferença-entre-for-com-range-e-for-each" class="level3">
+<h3 class="anchored" data-anchor-id="diferença-entre-for-com-range-e-for-each">Diferença entre for com range() e for each</h3>
+<p>A principal diferença entre os dois tipos de for está na forma como os dados são manipulados:</p>
+<section id="for-com-range-é-utilizado-quando-você-precisa-controlar-a-quantidade-exata-de-repetições.-você-trabalha-com-índices-ou-números-específicos-o-que-é-útil-quando-a-quantidade-de-iterações-é-conhecida-ou-quando-você-precisa-acessar-os-elementos-pela-posição." class="level5">
+<h5 class="anchored" data-anchor-id="for-com-range-é-utilizado-quando-você-precisa-controlar-a-quantidade-exata-de-repetições.-você-trabalha-com-índices-ou-números-específicos-o-que-é-útil-quando-a-quantidade-de-iterações-é-conhecida-ou-quando-você-precisa-acessar-os-elementos-pela-posição.">For com range(): é utilizado quando você precisa controlar a quantidade exata de repetições. Você trabalha com índices ou números específicos, o que é útil quando a quantidade de iterações é conhecida ou quando você precisa acessar os elementos pela posição.</h5>
+<p>Exemplo de uso:</p>
+<div id="fdfa8596" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">5</span>):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)  <span class="co"># Imprime os números de 0 a 4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="for-each-é-utilizado-para-iterar-diretamente-sobre-os-elementos-de-uma-sequência-sem-a-necessidade-de-se-preocupar-com-índices-ou-contagem.-ele-é-mais-simples-e-natural-quando-você-não-precisa-da-posição-do-item-mas-sim-do-item-em-si." class="level5">
+<h5 class="anchored" data-anchor-id="for-each-é-utilizado-para-iterar-diretamente-sobre-os-elementos-de-uma-sequência-sem-a-necessidade-de-se-preocupar-com-índices-ou-contagem.-ele-é-mais-simples-e-natural-quando-você-não-precisa-da-posição-do-item-mas-sim-do-item-em-si.">For “each”: é utilizado para iterar diretamente sobre os elementos de uma sequência, sem a necessidade de se preocupar com índices ou contagem. Ele é mais simples e natural quando você não precisa da posição do item, mas sim do item em si.</h5>
+<p>Exemplo de uso:</p>
+<div id="cc0a2107" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>nomes <span class="op">=</span> [<span class="st">"João"</span>, <span class="st">"Maria"</span>, <span class="st">"Pedro"</span>, <span class="st">"Ana"</span>]</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> nome <span class="kw">in</span> nomes:</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(nome)  <span class="co"># Imprime cada nome na lista</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="considerações-e-observações" class="level3">
+<h3 class="anchored" data-anchor-id="considerações-e-observações">Considerações e Observações</h3>
+<p>Uso do range():</p>
+<ul>
+<li><p>Ideal quando você precisa de um número específico de iterações, como em um contador ou em operações de repetição controladas por intervalo.</p></li>
+<li><p>Útil quando você precisa do índice para acessar elementos em uma lista ou sequência.</p></li>
+</ul>
+<p>Uso do for each:</p>
+<ul>
+<li><p>Mais direto e legível quando você está apenas interessado nos elementos de uma sequência.</p></li>
+<li><p>Evita a necessidade de gerenciar manualmente índices ou contadores, tornando o código mais simples e limpo.</p></li>
+</ul>
+</section>
+<section id="exercícios" class="level2">
+<h2 class="anchored" data-anchor-id="exercícios">Exercícios</h2>
+<section id="exercício-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-1">Exercício 1</h3>
+<p>Utilize uma estrutura do tipo <em>for each</em> para exibir no terminal todos os elementos da seguinte lista:</p>
+<div id="572ea42d" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>lista_de_nomes: <span class="bu">list</span> <span class="op">=</span> [<span class="st">'João'</span>, <span class="st">'Pedro'</span>, <span class="st">'Augusto'</span>, <span class="st">'Yuri'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">Solução (Python)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">Pseudocódigo</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<p>Código isolado (sem a definição da lista):</p>
+<div id="03b691ad" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># estrutura de repetição para os nomes da lista de nomes</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> nome <span class="kw">in</span> lista_de_nomes:</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># exibir cada nome</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(nome)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Execute este código na sua máquina!</strong></p>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<pre class="{ObjectiveC}"><code>INÍCIO
+    PARA CADA nome EM lista_de_nomes FAÇA
+        ESCREVA(nome)
+    FIM PARA
+FIM</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-2" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-2">Exercício 2</h3>
+<p>Recebe números inteiros do usuário até que ele digite 0, e calcule a soma de todos estes números. No final, exiba esta soma. (Dica: lembre-se de utilizar int(input()) para converter entradas no terminal para números do tipo <code>int</code>).</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">Solução (Python)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">Pseudocódigo</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div id="291446f1" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inicializar a soma como 0</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>soma <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># adiquirir o número inicial</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>numero <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Digite um número inteiro (0 para encerrar): "</span>))</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># estrutura de repetição que se repete até numero ser 0</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> numero <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># adicionar o número à soma</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    soma <span class="op">+=</span> numero</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># adiquirir o novo número</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    numero <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Digite outro número inteiro (0 para encerrar): "</span>))</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="co"># exibir o resultado final</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Soma total ="</span>, soma)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Execute este código na sua máquina!</strong></p>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<pre class="{ObjectiveC}"><code>INÍCIO
+    soma ← 0
+    ESCREVA "Digite um número inteiro (0 para encerrar): "
+    LEIA numero
+
+    ENQUANTO numero != 0 FAÇA
+        soma += numero
+        ESCREVA "Digite outro número inteiro (0 para encerrar): "
+        LEIA numero
+    FIM ENQUANTO
+
+    ESCREVA "Soma total = ", soma
+FIM</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-3" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-3">Exercício 3</h3>
+<p>Crie um algoritmo que utilize um for com range() para imprimir todo os números de 1 a 10.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href="">Solução (Python)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href="">Pseudocódigo</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<div id="99c2cb52" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># estrutura de repetição que vai de 1 a 10</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># exibir cada número</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Execute este código na sua máquina!</strong></p>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<pre class="{ObjectiveC}"><code>INÍCIO
+    PARA i ← 1 ATÉ 10 FAÇA
+        ESCREVA i
+    FIM PARA
+FIM</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-4" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-4">Exercício 4</h3>
+<p>Crie um algoritmo que utilize um for com range() para imprimir todo os números de 10 a 1, em ordem decrescente.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true" href="">Solução (Python)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false" href="">Pseudocódigo</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<div id="79cff763" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># estrutura de repetição que vai de 10 a 1</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># exibir cada número</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Execute este código na sua máquina!</strong></p>
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<pre class="{ObjectiveC}"><code>INÍCIO
+    PARA i ← 10 ATÉ 1 PASSO -1 FAÇA
+        ESCREVA i
+    FIM PARA
+FIM</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-5" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-5">Exercício 5</h3>
+<p>Adapte a resposta do exercício 4 para que o ponto de início da contagem regressiva seja um número escolhido pelo usuário. Ou seja, seu código deve perguntar um número ao usuário e contar regressivamente até 1 a partir do número informado.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true" href="">Solução (Python)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false" href="">Pseudocódigo</a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<div id="d44a57b1" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inicializar o número com a entrada do usuário</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>numero <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">'Digite um número inteiro: '</span>))</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># estrutura de repetição que vai de numero até 1 </span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(numero, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># exibir o número</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Execute este código na sua máquina!</strong></p>
+</div>
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<pre class="{ObjectiveC}"><code>INÍCIO
+    ESCREVA 'Digite um número inteiro: '
+    LEIA numero
+
+    PARA i ← numero ATÉ 1 PASSO -1 FAÇA
+        ESCREVA i
+    FIM PARA
+FIM</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-6" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-6">Exercício 6</h3>
+<p>Utilize alguma estrutura de repetição para somar os números de 1 até 10 e depois escrever o resultado desta operação.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true" href="">Solução (Python)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false" href="">Pseudocódigo</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
+<div id="bc6f094c" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inicializar a soma como 0</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>soma: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># estrutura de repetição que vai de 1 a 10</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># adicionar cada número à soma</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    soma <span class="op">+=</span> i</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="co"># exibir o resultado final</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'O resultado da soma é: '</span>, soma)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Execute este código na sua máquina!</strong></p>
+</div>
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
+<pre class="{ObjectiveC}"><code>INÍCIO
+    soma ← 0
+
+    PARA i ← 1 ATÉ 10 FAÇA
+        soma ← soma + i
+    FIM PARA
+
+    ESCREVA "O resultado da soma é: ", soma
+FIM</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-7" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-7">Exercício 7</h3>
+<p>Dada a seguinte lista:</p>
+<div id="84b6a9e1" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>lista: <span class="bu">list</span> <span class="op">=</span> [<span class="st">"elemento 1"</span>, <span class="st">"elemento 2"</span>, <span class="st">"elemento 3"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Faça um programa capaz de imprimir os elementos e suas posições, com indexação de computador. Ou seja, a saída esperada para a lista acima é:</p>
+<pre class="{ObjetiveC}"><code>0 elemento 1
+1 elemento 2
+2 elemento 3</code></pre>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true" href="">Solução (Python)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false" href="">Pseudocódigo</a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
+<p>Código isolado (sem a definição da lista):</p>
+<div id="8303ec10" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># estrutura de repetição que vai de 0 a 2</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">3</span>):</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># exibir o índice e o elemento no índice</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i, lista[i])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Execute este código na sua máquina!</strong></p>
+</div>
+<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
+<pre class="{ObjectiveC}"><code>INÍCIO
+    PARA i ← 0 ATÉ 2 FAÇA
+        ESCREVA i, lista[i]
+    FIM PARA
+FIM</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-8" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-8">Exercício 8</h3>
+<p>Use uma estrutura do tipo <em>for each</em> para contar a quantidade de letras em uma palavra digitada pelo usuário (lembre-se da função input()).</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-12-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-1" role="tab" aria-controls="tabset-12-1" aria-selected="true" href="">Solução (Python)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-2" role="tab" aria-controls="tabset-12-2" aria-selected="false" href="">Pseudocódigo</a></li></ul>
+<div class="tab-content">
+<div id="tabset-12-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-12-1-tab">
+<div id="adb9f03e" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># adquirir a palavra</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>palavra: <span class="bu">str</span> <span class="op">=</span> <span class="bu">input</span>(<span class="st">'Insira uma palavra: '</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># incializar o contador com 0</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>contador: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co"># estrutura de repetição para cada letra na palavra</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> letra <span class="kw">in</span> palavra:</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># incrementar o contador a cada letra</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    contador <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="co"># exibir o resultado</span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(contador)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Execute este código na sua máquina!</strong></p>
+</div>
+<div id="tabset-12-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-2-tab">
+<pre class="{ObjectiveC}"><code>INÍCIO
+    LER palavra
+    contador ← 0
+
+    PARA CADA letra EM palavra FAÇA
+        contador ← contador + 1
+    FIM PARA
+
+    escrever contador
+FIM</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-9" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-9">Exercício 9</h3>
+<p>Dada a seguinte lista:</p>
+<div id="8d0cb924" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>numeros <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol type="1">
+<li>Escreva um código que seja capaz de imprimir cada valor da lista multiplicado por 2.</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-13-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-1" role="tab" aria-controls="tabset-13-1" aria-selected="true" href="">Solução (Python)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-13-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-2" role="tab" aria-controls="tabset-13-2" aria-selected="false" href="">Pseudocódigo</a></li></ul>
+<div class="tab-content">
+<div id="tabset-13-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-13-1-tab">
+<div id="7be5da70" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># declaração da lista</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>numeros <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>]</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># estrutura de repetição que passa por cada número</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> numero <span class="kw">in</span> numeros:</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># exibir o número multiplicado por 2</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(numero <span class="op">*</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Execute este código na sua máquina!</strong></p>
+</div>
+<div id="tabset-13-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-13-2-tab">
+<pre class="{ObjectiveC}"><code>INÍCIO
+    numeros ← [10, 20, 30, 40, 50]
+
+    PARA CADA numero EM numeros FAÇA
+        escrever (numero * 2)
+    FIM PARA
+FIM</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Adapate o código para que ele altere os valores na lista (e depois imprima a lista toda)</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-14-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-1" role="tab" aria-controls="tabset-14-1" aria-selected="true" href="">Solução (Python)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-2" role="tab" aria-controls="tabset-14-2" aria-selected="false" href="">Pseudocódigo</a></li></ul>
+<div class="tab-content">
+<div id="tabset-14-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-14-1-tab">
+<div id="9ac7580a" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># declaração da lista</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>numeros <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>]</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># declaração de uma variável auxiliar</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>quantidade_de_numeros: <span class="bu">int</span> <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># estrutura de repetição que percorre toda a lista</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(quantidade_de_numeros):</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># alterar cada posição pelo seu valor vezes 2</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>    numeros[i] <span class="op">=</span> numeros[i] <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="co"># exibir o resultado final</span></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numeros)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Execute este código na sua máquina!</strong></p>
+</div>
+<div id="tabset-14-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-14-2-tab">
+<pre class="{ObjectiveC}"><code>INÍCIO
+    numeros ← [10, 20, 30, 40, 50]
+    quantidade_de_numeros ← 5
+
+    PARA i DE 0 ATÉ quantidade_de_numeros - 1 FAÇA
+        numeros[i] ← numeros[i] * 2
+    FIM PARA
+
+    escrever numeros
+FIM</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-10" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-10">Exercício 10</h3>
+<ol type="1">
+<li>Crie um programa que leia um número n e imprima os números de 1 até n (não inclui n), mas apenas os que sejam múltiplos de 2.</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-15-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-1" role="tab" aria-controls="tabset-15-1" aria-selected="true" href="">Solução (Python)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-15-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-2" role="tab" aria-controls="tabset-15-2" aria-selected="false" href="">Pseudocódigo</a></li></ul>
+<div class="tab-content">
+<div id="tabset-15-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-15-1-tab">
+<div id="b97c191d" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ler o número n</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>n: <span class="bu">int</span> <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">'Insira um número: '</span>))</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># estrutura de repetição que percorre valores de 0 até n, de 2 em 2</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, n, <span class="dv">2</span>):</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># imprimir o número</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Execute este código na sua máquina!</strong></p>
+</div>
+<div id="tabset-15-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-15-2-tab">
+<pre class="{ObjectiveC}"><code>INÍCIO
+    ler n
+
+    PARA i DE 0 ATÉ n PASSO 2 FAÇA
+        escrever i
+    FIM PARA
+FIM
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Adapate o programa para incluir n.</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-16-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-16-1" role="tab" aria-controls="tabset-16-1" aria-selected="true" href="">Solução (Python)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-16-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-16-2" role="tab" aria-controls="tabset-16-2" aria-selected="false" href="">Pseudocódigo</a></li></ul>
+<div class="tab-content">
+<div id="tabset-16-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-16-1-tab">
+<div id="bf68def4" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ler o número n</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>n: <span class="bu">int</span> <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">'Insira um número: '</span>))</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># estrutura de repetição que percorre valores de 0 até n + 1, de 2 em 2</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, n <span class="op">+</span> <span class="dv">1</span>, <span class="dv">2</span>):</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># imprimir o número</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Execute este código na sua máquina!</strong></p>
+</div>
+<div id="tabset-16-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-16-2-tab">
+<pre class="{ObjectiveC}"><code>INÍCIO
+    ler n
+
+    PARA i DE 0 ATÉ n PASSO 2 FAÇA
+        escrever i
+    FIM PARA
+FIM</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-11" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-11">Exercício 11</h3>
+<p>Utilizando um while, exiba a contagem de 1 a 20.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-17-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-17-1" role="tab" aria-controls="tabset-17-1" aria-selected="true" href="">Solução (Python)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-17-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-17-2" role="tab" aria-controls="tabset-17-2" aria-selected="false" href="">Pseudocódigo</a></li></ul>
+<div class="tab-content">
+<div id="tabset-17-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-17-1-tab">
+<div id="eca54f8d" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inicializar o contador com 1</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>contador: <span class="bu">int</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># estrutura de repetição que para quanto contador é maior que 20</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (contador <span class="op">&lt;=</span> <span class="dv">20</span>):</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># exibir o contador</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(contador)</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># incrementar o contador</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>    contador <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Execute este código na sua máquina!</strong></p>
+</div>
+<div id="tabset-17-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-17-2-tab">
+<pre class="{ObjectiveC}"><code>INÍCIO
+    contador ← 1
+
+    ENQUANTO contador ≤ 20 FAÇA
+        escrever contador
+        contador ← contador + 1
+    FIM ENQUANTO
+FIM</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-12" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-12">Exercício 12</h3>
+<p>Peça ao usuário uma palavra e repita-a 5 vezes, usando while.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-18-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-18-1" role="tab" aria-controls="tabset-18-1" aria-selected="true" href="">Solução (Python)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-18-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-18-2" role="tab" aria-controls="tabset-18-2" aria-selected="false" href="">Pseudocódigo</a></li></ul>
+<div class="tab-content">
+<div id="tabset-18-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-18-1-tab">
+<div id="a93ef963" class="cell" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># receber a palavra</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>palavra: <span class="bu">str</span> <span class="op">=</span> <span class="bu">input</span>(<span class="st">'Insira um palavra: '</span>)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inicializar o contador de impressões da palavra</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>contador_palavra: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="co"># estrutura while para repetir isto 5 vezes</span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> contador_palavra <span class="op">&lt;</span> <span class="dv">5</span>:</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># exibir a palavra</span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(palavra)</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># incrementar o contador</span></span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>    contador_palavra <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>É importante destacar que isto também pode ser feito incializando contador_palavra com o valor 1 e utilizando uma condição no while de &lt;= 5.</p>
+<p><strong>Execute este código na sua máquina!</strong></p>
+</div>
+<div id="tabset-18-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-18-2-tab">
+<pre class="{ObjectiveC}"><code>INÍCIO
+    ler palavra
+    contador_palavra ← 0
+
+    ENQUANTO contador_palavra &lt; 5 FAÇA
+        escrever palavra
+        contador_palavra ← contador_palavra + 1
+    FIM ENQUANTO
+FIM</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

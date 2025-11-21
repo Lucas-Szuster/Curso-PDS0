@@ -1,0 +1,666 @@
+---
+title: "Condicionais em Python"
+toc: true
+toc-title: "Conteúdos da página"
+---
+
+## Condicionais em Python
+
+As **condicionais** são estruturas que permitem que um programa tome decisões com base em **condições**.  
+Elas controlam o fluxo do código, executando diferentes blocos dependendo de expressões booleanas (`True` ou `False`).
+
+Em Python, usamos principalmente: `if`, `elif` e `else`.
+
+
+## 1. `if`
+
+O `if` verifica uma condição e executa um bloco de código **somente se a condição for verdadeira**. Esta estrutura é equivalente à um bloco SE em pseudocódico e se assemelha a avaliar somente a seta verdadeira de um condicional em um fluxograma.
+
+::: {.columns}
+
+::: {.column}
+
+### Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+  idade ← 18
+  SE idade >= 18 ENTÃO
+    ESCREVER "Você é maior de idade."
+  FIM SE
+FIM
+```
+
+:::
+
+::: {.column}
+
+### Python
+
+```{python}
+#| eval: false
+idade = 18
+
+if idade >= 18:
+    print("Você é maior de idade.")
+```
+
+:::
+
+:::
+
+
+::: {.callout-note title="Observações Importantes"}
+
+* O bloco dentro do `if` deve sempre ser indentado (4 espaços ou 1 tabulação).
+
+* Se a condição for `False`, o Python ignora o bloco.
+
+* A condição deve retornar `True` ou `False`.
+
+A função nativa de python print() é análoga ao "ESCREVER" do pseudocódigo, e exibe no terminal o que foi passado para ela. 
+
+:::
+
+## 2. `else`
+
+O else permite executar um bloco quando a condição do if não for verdadeira. O `else` é diretamente equivalente ao SENÃO encontrado no pseudocódigo.
+
+::: {.columns}
+
+::: {.column}
+
+### Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+  idade ← 16
+  SE idade >= 18 ENTÃO
+    ESCREVER "Você é maior de idade."
+  SENÃO
+    ESCREVER "Você é menor de idade"
+  FIM SE
+FIM
+```
+
+:::
+
+::: {.column}
+
+### Python
+
+```{python}
+#| eval: false
+idade = 16
+
+if idade >= 18:
+    print("Você é maior de idade.")
+else:
+    print("Você é menor de idade.")
+```
+
+:::
+
+:::
+
+::: {.callout-note title="Observações Importantes"}
+
+* O bloco dentro do `else` deve sempre ser indentado (4 espaços ou 1 tabulação).
+
+* A combinação simples de blocos do tipo `if` e `else` é ideal para casos onde há apenas duas possibilidades, pois a condição sempre cairá em alguma delas.
+
+:::
+
+## 3. `elsif` (else if)
+
+O elif permite verificar múltiplas condições em sequência, sendo diretamente equvivalente ao bloco SE SENÃO no pseudocódigo.
+
+::: {.columns}
+
+::: {.column}
+
+### Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+  nota ← 85
+  SE nota >= 90 ENTÃO
+    ESCREVER "Excelente!"
+  SENÃO SE nota >= 70 ENTÃO
+    ESCREVER "Bom desempenho."
+  SENÃO SE nota >= 60 ENTÃO
+    ESCREVER "Você passou, mas precisa melhorar."
+  SENÃO
+    ESCREVER "Reprovado."
+  FIM SE
+FIM
+```
+
+:::
+
+::: {.column}
+
+### Python
+
+```{python}
+#| eval: false
+nota = 85
+
+if nota >= 90:
+    print("Excelente!")
+elif nota >= 70:
+    print("Bom desempenho.")
+elif nota >= 60:
+    print("Você passou, mas precisa melhorar.")
+else:
+    print("Reprovado.")
+```
+
+:::
+
+:::
+
+::: {.callout-note title="Observações Importantes"}
+
+* O bloco dentro do `elsif` deve sempre ser indentado (4 espaços ou 1 tabulação).
+
+:::
+
+## Operadores lógicos em condicionais
+
+Em Python (assim como em diversas outras linguagens de programação), é muito comum precisarmos testar mais de uma condição ao mesmo tempo. Isso acontece porque, na prática, a execução de um algoritmo raramente depende de apenas um único caso simples. Em muitos programas, a decisão sobre o que fazer a seguir depende de várias situações sendo verdadeiras ou falsas ao mesmo tempo.
+
+Para realizar esse tipo de verificação, utilizamos os operadores lógicos, que são os “elos” responsáveis por conectar diferentes condições dentro de uma mesma estrutura de decisão — como o comando if. Esses operadores trabalham com valores booleanos, ou seja, com os dois estados lógicos possíveis:`True`(verdadeiro) e`False`(falso).
+
+De forma geral, eles permitem que o programa combine ou compare resultados de expressões lógicas, possibilitando tomadas de decisão mais complexas.
+
+### Operador `and` – Representa o operador lógico E.
+
+Retorna`True`apenas se todas as condições forem verdadeiras.
+
+#### Exemplo:
+
+::: {.panel-tabset}
+
+## Python
+
+```{python}
+#| eval: false
+if idade >= 18 and possui_carteira:
+    print("Pode dirigir.")
+```
+
+## Pesudocódigo
+
+```{ObjectiveC}
+INÍCIO
+  SE idade >= 18 E possui_carteira ENTÃO
+      ESCREVA "Pode dirigir."
+  FIM SE
+FIM
+```
+
+:::
+
+::: {.callout-note title="Observação"}
+
+No código exibido acima, as variáveis idade e possui_carteira não foram declaras ou inicializadas, portanto, se você tentar executar este código, ele não irá funcionar.
+Entretanto, abaixo segue uma tabela com as possíveis saídas com base em alguns valores que estas variáveis podem ter.
+
+:::
+
+Aqui estão as possíveis combinações que este código pode gerar:
+
+| idade | possui_carteira | idade >= 18 **and** possui_carteira | saída           |
+| ----- | --------------- | ----------------------------------- | --------------- |
+| 17    | `False`         | `False` **and** `False` -> `False`  | (Nenhuma saída) |
+| 17    | `True`          | `False` **and** `True` -> `False`   | (Nenhuma saída) |
+| 18    | `False`         | `True` **and** `False` -> `False`   | (Nenhuma saída) |
+| 18    | `True`          | `True` **and** `True` -> `True`     | "Pode dirigir"  |
+
+### `or` – Representa o operador lógico OU.
+
+Retorna`True`se pelo menos uma das condições for verdadeira.
+
+#### Exemplo:
+
+::: {.panel-tabset}
+
+## Python
+
+```{python}
+#| eval: false
+if temperatura < 10 or chovendo:
+    print("Leve um casaco.")
+```
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+  SE temperatura < 10 OU chovendo ENTÃO
+      ESCREVA "Leve um casaco."
+  FIM SE
+FIM
+```
+
+:::
+
+::: {.callout-note title="Observação"}
+
+No código exibido acima, as variáveis temperatura, e chovendo não foram declaras ou inicializadas, portanto, se você tentar executar este código, ele não irá funcionar.
+Entretanto, abaixo segue uma tabela com as possíveis saídas com base em alguns valores que estas variáveis podem ter.
+
+:::
+
+Aqui estão as possíveis combinações deste código:
+
+| temperatura | chovendo | temperatura < 10 **or** chovendo  | saída             |
+| ----------- | -------- | --------------------------------- | ----------------- |
+| 11          | `False`  | `False` **or** `False` -> `False` | (Nenhuma saída)   |
+| 11          | `True`   | `False` **or** `True` -> `True`   | "Leve um casaco." |
+| 9           | `False`  | `True` **or** `False` -> `True`   | "Leve um casaco." |
+| 9           | `True`   | `True` **or** `True` -> `True`    | "Leve um casaco." |
+
+### Operador `not` – Representa o operador lógico NÃO.
+
+Inverte o valor lógico de uma expressão, transformando`True`em`False`e vice-versa.
+
+#### Exemplo:
+
+::: {.panel-tabset}
+
+## Python
+
+```{python}
+#| eval: false
+if not conectado:
+    print("Sem conexão com a internet.")
+```
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+  SE NÃO conectado ENTÃO
+      ESCREVA "Sem conexão com a internet."
+  FIM SE
+FIM
+```
+
+:::
+
+::: {.callout-note title="Observação"}
+
+No código exibido acima, a variável conectado não foi declaras ou inicializadas, portanto, se você tentar executar este código, ele não irá funcionar.
+Entretanto, abaixo segue uma tabela com as possíveis saídas com base em alguns valores que estas variáveis podem ter.
+
+:::
+
+Aqui estão todas as possíveis combinações do código acima
+
+| conectado | **not** conectado | saída                         |
+| --------- | ----------------- | ----------------------------- |
+| `False`   | `True`            | "Sem conexão com a internet." |
+| `True`    | `False`           | (Nehuma saída)                |
+
+### Condição composta
+
+Uma condição pode ser composta pela combinação de vários operadores lógicos diferentes.
+
+::: {.panel-tabset}
+
+## Python
+
+```{python}
+#| eval: false
+if((idade >= 18 or tem_permissao_dos_pais) and tem_ingresso):
+    print('Pode entrar no evento')
+else:
+    print('Acesso Negado')
+```
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+  SE (idade >= 18 OU tem_permissao_dos_pais) E tem_ingresso ENTÃO
+      ESCREVA "Pode entrar no evento"
+  SENÃO
+      ESCREVA "Acesso Negado"
+  FIM SE
+FIM
+```
+
+:::
+
+::: {.callout-note title="Observação"}
+
+No código exibido acima, as variáveis idade, tem_permissao_dos_pais e tem_ingresso não foram declaras ou inicializadas, portanto, se você tentar executar este código, ele não irá funcionar.
+Entretanto, abaixo segue uma tabela com as possíveis saídas com base em alguns valores que estas variáveis podem ter.
+
+:::
+
+
+Aqui seguem os possíveis valores e saídas do código acima:
+
+<div style="overflow-x: auto; white-space: nowrap; word-break: keep-all;">
+
+| idade | idade ≥ 18 | tem_permissao_dos_pais | tem_ingresso | (idade ≥ 18 **or** tem_permissao_dos_pais) | Condição final ( (idade ≥ 18 **or** tem_permissao_dos_pais) **and** tem_ingresso) |           Saída           |
+| :---: | :--------: | :--------------------: | :----------: | :----------------------------------------: | :-------------------------------------------------------------------------------: | :-----------------------: |
+|   17  |   `False`  |       `False`          |    `False`   |                 `False`                    |                  `False`                                                          |    **Acesso Negado**      |
+|   17  |   `False`  |       `False`          |    `True`    |                 `False`                    |                  `False`                                                          |    **Acesso Negado**      |
+|   17  |   `False`  |       `True`           |    `False`   |                 `True`                     |                  `False`                                                          |    **Acesso Negado**      |
+|   17  |   `False`  |       `True`           |    `True`    |                 `True`                     |                  `True`                                                           | **Pode entrar no evento** |
+|   19  |   `True`   |       `False`          |    `False`   |                 `True`                     |                  `False`                                                          |    **Acesso Negado**      |
+|   19  |   `True`   |       `False`          |    `True`    |                 `True`                     |                  `True`                                                           | **Pode entrar no evento** |
+|   19  |   `True`   |       `True`           |    `False`   |                 `True`                     |                  `False`                                                          |    **Acesso Negado**      |
+|   19  |   `True`   |       `True`           |    `True`    |                 `True`                     |                  `True`                                                           | **Pode entrar no evento** |
+
+</div>
+
+## Exercícios
+
+### Exercício 1
+
+Crie um programa que pergunte a idade do usuário (um número inteiro) e escreva no terminal "Maior de idade" caso a idade seja maior ou igual a 18 anos e "Menor de idade" caso contrário.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+Aqui segue a solução do problema e o seu pseudocódigo para facilitar o entendimento.
+
+::: {.panel-tabset}
+
+## Solução (Python)
+
+```{python}
+#| eval: false
+idade = int(input('Insira a sua idade: '))
+
+if(idade >= 18):
+    print('Maior de idade')
+else:
+    print('Menor de idade')
+```
+
+**Execute este código na sua máquina!**
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+  ESCREVA "Insira a sua idade: "
+  LEIA idade
+
+  SE idade >= 18 ENTÃO
+      ESCREVA "Maior de idade"
+  SENÃO
+      ESCREVA "Menor de idade"
+  FIM SE
+FIM
+```
+
+:::
+
+:::
+
+### Exercício 2
+
+Peça ao usuário um número inteiro e exiba “Número positivo” se for maior que zero.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+Aqui segue a solução do problema e o seu pseudocódigo para facilitar o entendimento.
+
+::: {.panel-tabset}
+
+## Solução (Python)
+
+```{python}
+#| eval: false
+numero = int(input('Insira um número inteiro: '))
+
+if(numero > 0):
+    print('Número maior que 0')
+else:
+    print('Número menor que 0')
+```
+
+**Execute este código na sua máquina!**
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+  ESCREVA "Insira um número inteiro: "
+  LEIA numero
+
+  SE numero > 0 ENTÃO
+      ESCREVA "Número maior que 0"
+  SENÃO
+      ESCREVA "Número menor que 0"
+  FIM SE
+FIM
+```
+
+:::
+
+:::
+
+### Exercício 3
+
+Faça um programa que pergunte a temperatura (um número que pode conter casas decimais) e exiba “Está calor!” se for maior que 30 °C e não faça nada caso contrário.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+Aqui segue a solução do problema e o seu pseudocódigo para facilitar o entendimento.
+
+::: {.panel-tabset}
+
+## Solução (Python)
+
+```{python}
+#| eval: false
+temperatura = float(input('Insira a temperatura: '))
+
+if(temperatura > 30):
+    print('Está calor!')
+```
+
+**Execute este código na sua máquina!**
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+  ESCREVA "Insira a temperatura: "
+  LEIA temperatura
+
+  SE temperatura > 30 ENTÃO
+      ESCREVA "Está calor!"
+  FIM SE
+FIM
+```
+
+:::
+
+:::
+
+### Exercício 4
+
+Crie um programa que peça ao usuário um nome de usuário e uma senha. 
+Se o nome for "admin" e a senha "1234", exiba “Acesso permitido”. Caso contrário, exiba “Acesso negado”.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+Aqui segue a solução do problema e o seu pseudocódigo para facilitar o entendimento.
+
+::: {.panel-tabset}
+
+## Solução (Python)
+
+```{python}
+#| eval: false
+nome_de_usuario = input('Insira o nome de usuário: ')
+senha = input('Insira a senha: ')
+
+if((nome_de_usuario == 'admin') and (senha == '1234')):
+    print('Acesso permitido')
+else:
+    print('Acesso negado')
+```
+
+**Execute este código na sua máquina!**
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+  ESCREVA "Insira o nome de usuário: "
+  LEIA nome_de_usuario
+
+  ESCREVA "Insira a senha: "
+  LEIA senha
+
+  SE (nome_de_usuario == "admin") E (senha == "1234") ENTÃO
+      ESCREVA "Acesso perimitido"
+  SENÃO
+      ESCREVA "Acesso negado"
+  FIM SE
+FIM
+```
+
+:::
+
+:::
+
+### Exercício 5
+
+Crie uma lista de frutas com os seguintes valores: ["maçã", "banana", "laranja", "uva"]. Pergunte ao usuário o nome de uma fruta.
+
+* Se a fruta estiver na lista, exiba “Fruta disponível”.
+
+* Caso contrário, exiba “Fruta indisponível”.
+
+::: {.callout-note title="Dica"}
+
+Lembre-se do operador `in` para listas!
+
+:::
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+Aqui segue a solução do problema e o seu pseudocódigo para facilitar o entendimento.
+
+::: {.panel-tabset}
+
+## Solução (Python)
+
+```{python}
+#| eval: false
+lista_de_frutas: list = ["maçã", "banana", "laranja", "uva"]
+
+fruta = input('Insira o nome de uma fruta: ')
+
+if(fruta in lista_de_frutas):
+    print('Fruta disponível')
+else:
+    print('Fruta indisponível')
+```
+
+::: {.callout-note title="Observação"}
+
+Este código também pode ser implementado utilizando uma estrutura de repetição. Tente imageinar como isto seria feito (o fluxograma/pseudocódigo de tal estrutura).
+
+:::
+
+**Execute este código na sua máquina!**
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    lista_de_frutas ← ["maçã", "banana", "laranja", "uva"]
+
+    ESCREVA: "Insira o nome de uma fruta:"
+    LEIA fruta
+
+    SE fruta ESTÁ EM lista_de_frutas ENTÃO
+        ESCREVA "Fruta disponível"
+    SENÃO
+        ESCREVA "Fruta indisponível"
+    FIM SE
+FIM
+```
+
+:::
+
+:::
+
+### Exercício 6
+Utilizando o seguinte dicionário que relaciona alunos com suas notas: 
+
+```{python}
+notas = {"Ana": 9, "Bruno": 7, "Carla": 6} 
+```
+
+Implemente um algoritmo que faça o seguinte:
+
+* Pergunte ao usuário o nome de um aluno.
+
+* Exiba a nota do aluno se existir no dicionário; caso contrário, exiba “Aluno não encontrado”.
+
+::: {.callout-note title="Dica"}
+
+Lembre-se do operador `in` para dicionários!
+
+:::
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+Aqui segue a solução do problema e o seu pseudocódigo para facilitar o entendimento.
+
+::: {.panel-tabset}
+
+## Solução (Python)
+
+```{python}
+#| eval: false
+notas = {"Ana": 9, "Bruno": 7, "Carla": 6}
+
+aluno = input('Insira o nome de um aluno: ')
+
+if(aluno in notas):
+    print(notas[aluno])
+else:
+    print('Aluno não encontrado')
+```
+
+::: {.callout-note title="Observação"}
+
+Este código também pode ser implementado utilizando uma estrutura de repetição. Tente imageinar como isto seria feito (o fluxograma/pseudocódigo de tal estrutura).
+
+:::
+
+**Execute este código na sua máquina!**
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    notas ← {"Ana": 9, "Bruno": 7, "Carla": 6}
+
+    ESCREVER "Insira o nome de um aluno:"
+    LER aluno
+
+    SE aluno ESTÁ EM notas ENTÃO
+        ESCREVER notas[aluno]
+    SENÃO
+        ESCREVER "Aluno não encontrado"
+    FIM SE
+FIM
+```
+
+:::
+
+:::

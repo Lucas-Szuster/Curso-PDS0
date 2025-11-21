@@ -1,0 +1,74 @@
+{
+  "about.qmd": {
+    "about.html": "389a34a8"
+  },
+  "index.qmd": {
+    "index.html": "f37ac38f"
+  },
+  "blog.qmd": {
+    "blog.html": "7ce67c78"
+  },
+  "contact.qmd": {
+    "contact.html": "21884692"
+  },
+  "projects.qmd": {
+    "projects.html": "4211b029"
+  },
+  "section1/page1.qmd": {
+    "page1.html": "70ded98b"
+  },
+  "section1/page2.qmd": {
+    "page2.html": "1e78ef7e"
+  },
+  "section2/page1.qmd": {
+    "page1.html": "e8aea5ec"
+  },
+  "section2/page2.qmd": {
+    "page2.html": "80eb4114"
+  },
+  "introducao/page1.qmd": {
+    "page1.html": "6062de65"
+  },
+  "introducao/page2.qmd": {
+    "page2.html": "c5c9a0d9"
+  },
+  "introducao/Exercicios.qmd": {
+    "Exercicios.html": "ca3c590c"
+  },
+  "introducao/fluxograma.qmd": {
+    "fluxograma.html": "58fbc8df"
+  },
+  "introducao/Algoritmos.qmd": {
+    "Algoritmos.html": "39eee809"
+  },
+  "introducao/OrganizacaoDeComputadores.qmd": {
+    "OrganizacaoDeComputadores.html": "315ab327"
+  },
+  "introducao/RepresentacoesDeAlgoritmos.qmd": {
+    "RepresentacoesDeAlgoritmos.html": "6a51f860"
+  },
+  "introducao/IntroducaoAProgramacao.qmd": {
+    "IntroducaoAProgramacao.html": "aa5adbff"
+  },
+  "introducao/IntroducaoAPython.qmd": {
+    "IntroducaoAPython.html": "cc7cf071"
+  },
+  "funcoes/IntroducaoAFuncoes.qmd": {
+    "IntroducaoAFuncoes.html": "163162d2"
+  },
+  "introducao/CondicionaisEmPython.qmd": {
+    "CondicionaisEmPython.html": "9eebe935"
+  },
+  "introducao/EstruturasDeRepeticaoEmPython.qmd": {
+    "EstruturasDeRepeticaoEmPython.html": "4b62ff1d"
+  },
+  "introducao/Matrizes.qmd": {
+    "Matrizes.html": "b51745f4"
+  },
+  "introducao/Projeto.qmd": {
+    "Projeto.html": "704c7773"
+  },
+  "introducao/CasosDeTeste.qmd": {
+    "CasosDeTeste.html": "17f810ae"
+  }
+}

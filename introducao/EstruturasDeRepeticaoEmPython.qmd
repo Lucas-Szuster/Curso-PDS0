@@ -1,0 +1,964 @@
+---
+title: "Estruturas de repetição em python"
+toc: true
+toc-title: "Conteúdos da página"
+---
+
+## Estruturas de repetição em Python
+
+Em Python, as repetições são realizadas principalmente com duas estruturas:
+while (controlada por condição) e for (controlada por contagem ou iteração sobre coleções).
+
+### while *loop* (repetição controlada por condição)
+
+O comando while repete um bloco de instruções enquanto uma condição lógica for verdadeira.
+É ideal quando não se sabe quantas vezes será necessário repetir o processo, mas existe uma condição de parada bem definida.
+
+Abaixo segue sintaxe de um *loop* do tipo while e o mesmo trecho escrito em pseudocódigo:
+
+::: {.columns}
+
+::: {.column}
+
+### Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    ENQUANTO condição FAÇA
+        // bloco de instruções
+    FIM ENQUANTO
+FIM
+```
+
+:::
+
+::: {.column}
+
+### Python
+
+```{python}
+#| eval: false
+while condição:
+    # bloco de instruções
+```
+
+:::
+
+:::
+
+
+* A condição deve resultar em um valor booleano (True ou False).
+
+* Quando a condição se torna False, o laço é encerrado.
+
+::: {.callout-note title="Observação importante"}
+
+É de extrema importância garantir que a condição de parada se torne em algum momento falsa, pois se isso não ocorrer, o *loop* nunca é encerrado.
+
+:::
+
+#### Exemplo 1: contagem simples
+
+O código abaixo simplesmente conta de 1 até 5, imprimindo o resultado a cada iteração.
+
+::: {.panel-tabset}
+
+## Python
+
+```{python}
+#| eval: false
+contador = 1
+while contador <= 5:
+    print(contador)
+    contador += 1  # incrementa o contador, evitando o loop infinito
+print("Fim do loop!")
+```
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    contador ← 1
+
+    ENQUANTO contador ≤ 5 FAÇA
+        ESCREVA contador
+        contador ← contador + 1 //incrementa o contador, evitando o loop infinito
+    FIM ENQUANTO
+
+    ESCREVA("Fim do loop!")
+FIM
+```
+
+:::
+
+#### Exemplo 2: leitura até condição de parada
+
+O código abaixo permanece no *loop* até que a palavra "sair" seja digitada.
+
+::: {.panel-tabset}
+
+## Python
+
+```{python}
+#| eval: false
+resposta = ""
+while resposta != "sair":
+    resposta = input("Digite algo (ou 'sair' para encerrar): ")
+print("Programa encerrado.")
+```
+
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    resposta ← ""
+
+    ENQUANTO contador != "sair" FAÇA
+        ESCREVA "Digite algo (ou 'sair para encerrar): "
+        resposta ← LEIA resposta
+    FIM ENQUANTO
+
+    ESCREVA "Programa encerrado."
+FIM
+```
+
+:::
+
+::: {.callout-note title="Observação"}
+
+O uso deste tipo de estrutura mais simples é quando a quantidade de repetições é desconhecida, mas a continuidade destas repetições é altamente dependente de alguma condição conhecida.
+
+:::
+
+### for loop (repetição controlada por contagem ou iteração)
+
+O comando for em Python é utilizado para realizar iterações sobre uma sequência de itens, como listas, strings (que são, na verade, coleções de caracteres), ou outros objetos iteráveis. Ele é ideal quando você sabe exatamente quantas vezes precisa repetir um bloco de código ou quando precisa percorrer todos os elementos de uma sequência.
+
+O for em Python pode ser utilizado de duas formas principais:
+
+* For com range(): controla o número de iterações, ou seja, repete o bloco de código um número específico de vezes.
+
+* For "each": percorre diretamente os elementos de uma sequência (lista, string, etc.), um a um.
+
+A seguir, vamos entender as diferenças entre essas duas abordagens.
+
+#### **For com range() (Controle por contagem)**
+
+O for com range() é usado quando você deseja realizar uma iteração com um número específico de repetições. A função range() gera uma sequência de números, que é utilizada para controlar o número de iterações.
+
+A sintaxe básica do for com range() é a seguinte:
+
+::: {.columns}
+
+::: {.column}
+
+### Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    PARA i ← início ATÉ fim - 1 PASSO passo FAÇA
+        // bloco de instruções
+    FIM PARA
+FIM
+```
+
+:::
+
+::: {.column}
+
+### Python
+
+```{python}
+#| eval: false
+for i in range(início, fim, passo):
+    # bloco de instruções
+```
+
+:::
+
+:::
+
+* início: valor inicial (inclusivo) da sequência (padrão é 0).
+
+* fim: valor final (exclusivo) da sequência.
+
+* passo: o intervalo entre os números (padrão é 1).
+
+::: {.callout-note title="Observação"}
+
+A função range(início, fim, passo) gera uma sequência de números inteiros que começa em início, avança de acordo com o valor definido em passo e termina antes de alcançar o valor de fim.
+
+Ela não cria exatamente uma lista, mas sim um objeto especial do tipo iterável, que pode ser percorrido em estruturas de repetição como o for.
+Caso seja necessário visualizar todos os valores da sequência de uma só vez, é possível convertê-lo em uma lista utilizando: `list(range(...))`
+
+| Forma                       | Exemplo                                  | Significado                                                                |
+| --------------------------- | ---------------------------------------- | -------------------------------------------------------------------------- |
+| `range(fim)`                | `range(5)` → gera `0, 1, 2, 3, 4`        | Começa em `0` e vai até antes de `fim` (passo padrão = `1`)                |
+| `range(início, fim)`        | `range(2, 6)` → gera `2, 3, 4, 5`        | Começa em `início` e vai até antes de `fim` (passo padrão = `1`)           |
+| `range(início, fim, passo)` | `range(1, 10, 2)` → gera `1, 3, 5, 7, 9` | Começa em `início`, vai até antes de `fim`, saltando de `passo` em `passo` |
+
+Ou seja, alguns dos valores passados entre os parênteses da função range() são opcionais, e o Python preenche automaticamente os que não forem informados, dependendo da necessidade e da saída desejada.
+A tabela a seguir mostra quais parâmetros são obrigatórios e quais são opcionais:
+
+| Parâmetro | Obrigatório   | Descrição                                                              |
+| --------- | ------------- | ---------------------------------------------------------------------- |
+| `início`  | (opcional)    | Indica o primeiro número da sequência (padrão = 0).                    |
+| `fim`     | (obrigatório) | Indica **onde parar** — **não é incluído** na sequência.               |
+| `passo`   | (opcional)    | Indica o **incremento** (ou decremento) entre os números (padrão = 1). |
+
+:::
+
+###### Por exemplo:
+
+::: {.panel-tabset}
+
+## Python
+
+```{python}
+#| eval: false
+for i in range(1, 6, 1): #gera a sequência 1, 2, 3, 4, 5
+    print(i)
+```
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    PARA i ← 1 ATÉ 5 FAÇA
+        ESCREVA(i)
+    FIM PARA
+FIM
+```
+
+:::
+
+Este código imprime os números de 1 a 5. O valor 6 não é incluído, pois o range é exclusivo do valor final.
+
+#### **For "each" (Iteração sobre sequência de elementos)**
+
+O for "each" é uma forma de percorrer diretamente os elementos de uma sequência (lista, string, etc.). Ao invés de usar o índice, o for percorre diretamente os elementos da sequência, um por um, sem a necessidade de controlar manualmente o índice.
+
+A sintaxe básica é:
+
+::: {.columns}
+
+::: {.column}
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    PARA CADA item EM sequência FAÇA
+        // bloco de instruções
+    FIM PARA
+FIM
+```
+
+:::
+
+::: {.column}
+
+## Python
+
+```{python}
+#| eval: false
+for item in sequência:
+    # bloco de instruções
+```
+
+:::
+
+:::
+
+Onde:
+
+* item: a variável que irá representar cada elemento da sequência, em cada iteração.
+
+* sequência: o objeto iterável (pode ser uma lista, string, etc.).
+
+##### Por exemplo:
+
+::: {.panel-tabset}
+
+## Python
+
+```{python}
+#| eval: false
+nomes = ["João", "Maria", "Pedro", "Ana"]
+for nome in nomes:
+    print("Olá, ", nome)
+```
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    nomes ← ["João", "Maria", "Pedro", "Ana"]
+
+    PARA CADA nome EM nomes FAÇA
+        ESCREVA("Olá, ", nome, "!")
+    FIM PARA
+FIM
+```
+
+:::
+
+Este código irá gerar como saída o seguinte:
+
+```{ObjectiveC}
+Olá, João
+Olá, Maria
+Olá, Pedro
+Olá, Ana
+```
+
+Neste caso, o for percorre a lista nomes e imprime cada nome um por um, sem a necessidade de usar índices explicitamente. O for "each" é a forma mais simples e mais comum de iterar sobre uma sequência de elementos.
+
+### Diferença entre for com range() e for each
+
+A principal diferença entre os dois tipos de for está na forma como os dados são manipulados:
+
+##### For com range(): é utilizado quando você precisa controlar a quantidade exata de repetições. Você trabalha com índices ou números específicos, o que é útil quando a quantidade de iterações é conhecida ou quando você precisa acessar os elementos pela posição.
+
+Exemplo de uso:
+
+```{python}
+#| eval: false
+for i in range(0, 5):
+    print(i)  # Imprime os números de 0 a 4
+```
+
+
+##### For "each": é utilizado para iterar diretamente sobre os elementos de uma sequência, sem a necessidade de se preocupar com índices ou contagem. Ele é mais simples e natural quando você não precisa da posição do item, mas sim do item em si.
+
+Exemplo de uso:
+
+```{python}
+#| eval: false
+nomes = ["João", "Maria", "Pedro", "Ana"]
+for nome in nomes:
+    print(nome)  # Imprime cada nome na lista
+```
+
+### Considerações e Observações
+
+Uso do range():
+
+* Ideal quando você precisa de um número específico de iterações, como em um contador ou em operações de repetição controladas por intervalo.
+
+* Útil quando você precisa do índice para acessar elementos em uma lista ou sequência.
+
+Uso do for each:
+
+* Mais direto e legível quando você está apenas interessado nos elementos de uma sequência.
+
+* Evita a necessidade de gerenciar manualmente índices ou contadores, tornando o código mais simples e limpo.
+
+## Exercícios
+
+### Exercício 1
+
+Utilize uma estrutura do tipo *for each* para exibir no terminal todos os elementos da seguinte lista:
+
+```{python}
+#| eval: false
+lista_de_nomes: list = ['João', 'Pedro', 'Augusto', 'Yuri']
+```
+
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+::: {.panel-tabset}
+
+## Solução (Python)
+
+Código isolado (sem a definição da lista):
+
+```{python}
+#| eval: false
+# estrutura de repetição para os nomes da lista de nomes
+for nome in lista_de_nomes:
+    # exibir cada nome
+    print(nome)
+```
+
+**Execute este código na sua máquina!**
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    PARA CADA nome EM lista_de_nomes FAÇA
+        ESCREVA(nome)
+    FIM PARA
+FIM
+```
+
+:::
+
+:::
+
+### Exercício 2
+
+Recebe números inteiros do usuário até que ele digite 0, e calcule a soma de todos estes números. No final, exiba esta soma. (Dica: lembre-se de utilizar int(input()) para converter entradas no terminal para números do tipo `int`).
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+::: {.panel-tabset}
+
+## Solução (Python)
+
+```{python}
+#| eval: false
+# inicializar a soma como 0
+soma = 0
+
+# adiquirir o número inicial
+numero = int(input("Digite um número inteiro (0 para encerrar): "))
+
+# estrutura de repetição que se repete até numero ser 0
+while numero != 0:
+    # adicionar o número à soma
+    soma += numero
+
+    # adiquirir o novo número
+    numero = int(input("Digite outro número inteiro (0 para encerrar): "))
+
+# exibir o resultado final
+print("Soma total =", soma)
+```
+
+**Execute este código na sua máquina!**
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    soma ← 0
+    ESCREVA "Digite um número inteiro (0 para encerrar): "
+    LEIA numero
+
+    ENQUANTO numero != 0 FAÇA
+        soma += numero
+        ESCREVA "Digite outro número inteiro (0 para encerrar): "
+        LEIA numero
+    FIM ENQUANTO
+
+    ESCREVA "Soma total = ", soma
+FIM
+```
+
+:::
+
+:::
+
+### Exercício 3
+
+Crie um algoritmo que utilize um for com range() para imprimir todo os números de 1 a 10.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+::: {.panel-tabset}
+
+## Solução (Python)
+
+```{python}
+#| eval: false
+# estrutura de repetição que vai de 1 a 10
+for i in range(1, 11):
+    # exibir cada número
+    print(i)
+```
+
+**Execute este código na sua máquina!**
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    PARA i ← 1 ATÉ 10 FAÇA
+        ESCREVA i
+    FIM PARA
+FIM
+```
+
+:::
+
+:::
+
+### Exercício 4
+
+Crie um algoritmo que utilize um for com range() para imprimir todo os números de 10 a 1, em ordem decrescente.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+::: {.panel-tabset}
+
+## Solução (Python)
+
+```{python}
+#| eval: false
+# estrutura de repetição que vai de 10 a 1
+for i in range(10, 0, -1):
+    # exibir cada número
+    print(i)
+```
+
+**Execute este código na sua máquina!**
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    PARA i ← 10 ATÉ 1 PASSO -1 FAÇA
+        ESCREVA i
+    FIM PARA
+FIM
+```
+
+:::
+
+:::
+
+### Exercício 5
+
+Adapte a resposta do exercício 4 para que o ponto de início da contagem regressiva seja um número escolhido pelo usuário. Ou seja, seu código deve perguntar um número ao usuário e contar regressivamente até 1 a partir do número informado. 
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+::: {.panel-tabset}
+
+## Solução (Python)
+
+```{python}
+#| eval: false
+# inicializar o número com a entrada do usuário
+numero = int(input('Digite um número inteiro: '))
+
+# estrutura de repetição que vai de numero até 1 
+for i in range(numero, 0, -1):
+    # exibir o número
+    print(i)
+```
+
+**Execute este código na sua máquina!**
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    ESCREVA 'Digite um número inteiro: '
+    LEIA numero
+
+    PARA i ← numero ATÉ 1 PASSO -1 FAÇA
+        ESCREVA i
+    FIM PARA
+FIM
+```
+
+:::
+
+:::
+
+### Exercício 6
+
+Utilize alguma estrutura de repetição para somar os números de 1 até 10 e depois escrever o resultado desta operação.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+::: {.panel-tabset}
+
+## Solução (Python)
+
+```{python}
+#| eval: false
+# inicializar a soma como 0
+soma: int = 0
+
+# estrutura de repetição que vai de 1 a 10
+for i in range(1, 11):
+    # adicionar cada número à soma
+    soma += i
+
+# exibir o resultado final
+print('O resultado da soma é: ', soma)
+```
+
+**Execute este código na sua máquina!**
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    soma ← 0
+
+    PARA i ← 1 ATÉ 10 FAÇA
+        soma ← soma + i
+    FIM PARA
+
+    ESCREVA "O resultado da soma é: ", soma
+FIM
+```
+
+:::
+
+:::
+
+### Exercício 7
+
+Dada a seguinte lista:
+
+```{python}
+#| eval: false
+lista: list = ["elemento 1", "elemento 2", "elemento 3"]
+```
+
+Faça um programa capaz de imprimir os elementos e suas posições, com indexação de computador. Ou seja, a saída esperada para a lista acima é:
+
+```{ObjetiveC}
+0 elemento 1
+1 elemento 2
+2 elemento 3
+```
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+::: {.panel-tabset}
+
+## Solução (Python)
+
+Código isolado (sem a definição da lista):
+
+
+```{python}
+#| eval: false
+# estrutura de repetição que vai de 0 a 2
+for i in range(0, 3):
+    # exibir o índice e o elemento no índice
+    print(i, lista[i])
+```
+
+**Execute este código na sua máquina!**
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    PARA i ← 0 ATÉ 2 FAÇA
+        ESCREVA i, lista[i]
+    FIM PARA
+FIM
+```
+
+:::
+
+:::
+
+### Exercício 8
+
+Use uma estrutura do tipo *for each* para contar a quantidade de letras em uma palavra digitada pelo usuário (lembre-se da função input()).
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+::: {.panel-tabset}
+
+## Solução (Python)
+
+```{python}
+#| eval: false
+# adquirir a palavra
+palavra: str = input('Insira uma palavra: ')
+
+# incializar o contador com 0
+contador: int = 0
+
+# estrutura de repetição para cada letra na palavra
+for letra in palavra:
+    # incrementar o contador a cada letra
+    contador += 1
+
+# exibir o resultado
+print(contador)
+```
+
+**Execute este código na sua máquina!**
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    LER palavra
+    contador ← 0
+
+    PARA CADA letra EM palavra FAÇA
+        contador ← contador + 1
+    FIM PARA
+
+    escrever contador
+FIM
+```
+
+:::
+
+:::
+
+### Exercício 9
+
+Dada a seguinte lista:
+
+```{python}
+numeros = [10, 20, 30, 40, 50]
+```
+
+1. Escreva um código que seja capaz de imprimir cada valor da lista multiplicado por 2.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+::: {.panel-tabset}
+
+## Solução (Python)
+
+```{python}
+#| eval: false
+# declaração da lista
+numeros = [10, 20, 30, 40, 50]
+
+# estrutura de repetição que passa por cada número
+for numero in numeros:
+    # exibir o número multiplicado por 2
+    print(numero * 2)
+```
+
+**Execute este código na sua máquina!**
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    numeros ← [10, 20, 30, 40, 50]
+
+    PARA CADA numero EM numeros FAÇA
+        escrever (numero * 2)
+    FIM PARA
+FIM
+```
+
+:::
+
+:::
+
+2. Adapate o código para que ele altere os valores na lista (e depois imprima a lista toda)
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+::: {.panel-tabset}
+
+## Solução (Python)
+
+```{python}
+#| eval: false
+# declaração da lista
+numeros = [10, 20, 30, 40, 50]
+
+# declaração de uma variável auxiliar
+quantidade_de_numeros: int = 5
+
+# estrutura de repetição que percorre toda a lista
+for i in range(quantidade_de_numeros):
+    # alterar cada posição pelo seu valor vezes 2
+    numeros[i] = numeros[i] * 2
+
+# exibir o resultado final
+print(numeros)
+```
+
+**Execute este código na sua máquina!**
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    numeros ← [10, 20, 30, 40, 50]
+    quantidade_de_numeros ← 5
+
+    PARA i DE 0 ATÉ quantidade_de_numeros - 1 FAÇA
+        numeros[i] ← numeros[i] * 2
+    FIM PARA
+
+    escrever numeros
+FIM
+```
+
+:::
+
+:::
+
+### Exercício 10
+
+1. Crie um programa que leia um número n e imprima os números de 1 até n (não inclui n), mas apenas os que sejam múltiplos de 2.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+::: {.panel-tabset}
+
+## Solução (Python)
+
+```{python}
+#| eval: false
+# ler o número n
+n: int = int(input('Insira um número: '))
+
+# estrutura de repetição que percorre valores de 0 até n, de 2 em 2
+for i in range(0, n, 2):
+    # imprimir o número
+    print(i)
+```
+
+**Execute este código na sua máquina!**
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    ler n
+
+    PARA i DE 0 ATÉ n PASSO 2 FAÇA
+        escrever i
+    FIM PARA
+FIM
+
+```
+
+:::
+
+:::
+
+2. Adapate o programa para incluir n.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+::: {.panel-tabset}
+
+## Solução (Python)
+
+```{python}
+#| eval: false
+# ler o número n
+n: int = int(input('Insira um número: '))
+
+# estrutura de repetição que percorre valores de 0 até n + 1, de 2 em 2
+for i in range(0, n + 1, 2):
+    # imprimir o número
+    print(i)
+```
+
+**Execute este código na sua máquina!**
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    ler n
+
+    PARA i DE 0 ATÉ n PASSO 2 FAÇA
+        escrever i
+    FIM PARA
+FIM
+```
+
+:::
+
+:::
+
+### Exercício 11
+
+Utilizando um while, exiba a contagem de 1 a 20.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+::: {.panel-tabset}
+
+## Solução (Python)
+
+```{python}
+#| eval: false
+# inicializar o contador com 1
+contador: int = 1
+
+# estrutura de repetição que para quanto contador é maior que 20
+while (contador <= 20):
+    # exibir o contador
+    print(contador)
+
+    # incrementar o contador
+    contador += 1
+```
+
+**Execute este código na sua máquina!**
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    contador ← 1
+
+    ENQUANTO contador ≤ 20 FAÇA
+        escrever contador
+        contador ← contador + 1
+    FIM ENQUANTO
+FIM
+```
+
+:::
+
+:::
+
+### Exercício 12
+
+Peça ao usuário uma palavra e repita-a 5 vezes, usando while.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+::: {.panel-tabset}
+
+## Solução (Python)
+
+```{python}
+#| eval: false
+# receber a palavra
+palavra: str = input('Insira um palavra: ')
+
+# inicializar o contador de impressões da palavra
+contador_palavra: int = 0
+
+# estrutura while para repetir isto 5 vezes
+while contador_palavra < 5:
+    # exibir a palavra
+    print(palavra)
+
+    # incrementar o contador
+    contador_palavra += 1
+```
+
+É importante destacar que isto também pode ser feito incializando contador_palavra com o valor 1 e utilizando uma condição no while de <= 5.
+
+**Execute este código na sua máquina!**
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    ler palavra
+    contador_palavra ← 0
+
+    ENQUANTO contador_palavra < 5 FAÇA
+        escrever palavra
+        contador_palavra ← contador_palavra + 1
+    FIM ENQUANTO
+FIM
+```
+
+:::
+
+:::

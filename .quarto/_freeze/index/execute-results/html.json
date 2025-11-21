@@ -1,0 +1,12 @@
+{
+  "hash": "e32d5bce89381a5f8bc1980ec8c262dc",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Interactive Quiz Example\"\nformat: html\nfilters: \n    - quizdown\n---\n\n## A {.tabset}\n\n### AA\n```{quizdown}\n# Python Lists (multiple choice)\n\nWhat is the value of `x[2]`?\n\n> Python lists are mutable!\n\n~~~python\nx = [2, 3, 4]\nx[2] = 4\nprint(x[2])\n~~~\n\n- [ ] 1\n- [ ] 2\n- [ ] 3\n- [x] 4\n\n# What is the capital of Germany (single choice)? \n\n![](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Siegessaeule_Aussicht_10-13_img4_Tiergarten.jpg/405px-Siegessaeule_Aussicht_10-13_img4_Tiergarten.jpg)\n\n> It's the largest city in Germany!         \n\n1. [ ] Frankfurt\n1. [x] Berlin\n1. [ ] Hamburg\n1. [ ] Munich\n\n\n# Put the [days](https://en.wikipedia.org/wiki/Day) in order (sequence)!\n\nQuizdown also renders formulas:\n\n$$\nx = \\frac{a+b^2}{\\sqrt{b+c}}\n$$\n\n> Monday is the *first* day of the week.\n\n1. Monday\n2. Tuesday\n3. Wednesday\n4. Friday\n5. Saturday\n```\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

@@ -1,0 +1,54 @@
+---
+title: "Fundamentos de computadores"
+toc: true
+toc-title: "Conteúdos da página"
+bibliography: OrganizacaoDeComputadores.bib
+nocite: "@*"
+---
+
+## O que é um computador?
+
+Um computador é uma máquina projetada para processar dados automaticamente. Ele recebe entradas, realiza operações e fornece saídas. A principal função de um computador é seguir instruções de forma precisa e repetitiva, o que permite a execução de tarefas complexas com rapidez e confiabilidade.
+
+Essas instruções são transformadas em algoritmos que o computador interpreta e executa. A máquina processa informações através de cálculos e operações lógicas de acordo com as regras definidas pelos algoritmos. Diferente de um ser humano, que toma decisões de forma subjetiva, o computador executa essas operações com base no que foi programado.
+
+## Componentes Básicos de um Computador
+### Hardware
+
+O hardware são os componentes físicos do computador, como o processador, a memória, o disco rígido e a tela. Cada um desses elementos desempenha um papel essencial no funcionamento da máquina, permitindo que ela armazene dados, execute operações e interaja com o usuário e outros dispositivos.
+
+### Software
+
+O software é o conjunto de programas e instruções que indicam ao hardware como operar. Ele inclui o sistema operacional, programas de aplicativos e scripts. O software organiza e controla os recursos de hardware, traduzindo os comandos do usuário e as lógicas de programação em ações executáveis pela máquina.
+
+## Como os Computadores Processam Dados?
+
+Os computadores funcionam com o sistema binário, o que significa que eles trabalham com apenas dois estados: "ligado" (1) e "desligado" (0). Esses estados são usados para representar todos os tipos de dados, como números, letras, imagens e até sons. O processamento de dados é feito por meio de sequências de bits, as unidades básicas de informação, agrupadas em bytes.
+
+### Sistema Binário e Representação de Dados
+#### Bits e Bytes
+
+Os dados são representados em sequências de 1s e 0s, conhecidos como bits. Oito bits formam um byte, que é a unidade básica de armazenamento e processamento de informações. Esses bits e bytes são usados para codificar tudo o que um computador pode processar, como texto, imagens e som.
+
+### Algoritmos
+
+Algoritmos são sequências de instruções que guiam o computador para resolver problemas ou realizar tarefas. Eles são fundamentais para todas as operações de um computador, desde cálculos simples até tarefas complexas como aprendizado de máquina e inteligência artificial.
+
+### Importância do Processador (CPU)
+
+O processador, ou CPU (Central Processing Unit), é o cérebro do computador. Ele é responsável por interpretar e executar as instruções dos programas. A CPU realiza cálculos, toma decisões e gerencia os dados conforme as instruções do software.
+
+## Memória e Armazenamento
+### Memória RAM
+
+A memória RAM (Random Access Memory) é usada pelo computador para armazenar temporariamente dados e programas que estão sendo executados. Ela é volátil, ou seja, perde seu conteúdo quando o computador é desligado.
+
+### Armazenamento Permanente
+
+Os dados permanentes, como documentos e programas, são armazenados em dispositivos de armazenamento como discos rígidos (HDs) ou unidades de estado sólido (SSDs). Esses dispositivos têm a função de guardar dados de forma permanente, permitindo seu acesso a qualquer momento.
+
+### Entrada e Saída de Dados
+
+Os computadores interagem com o mundo exterior por meio de dispositivos de entrada e saída. Dispositivos de entrada incluem o teclado, mouse e microfone, enquanto dispositivos de saída incluem a tela e impressora. Eles permitem a comunicação entre o usuário e a máquina, tornando a experiência computacional interativa.
+
+## Referências

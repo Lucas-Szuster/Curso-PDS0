@@ -1,0 +1,2184 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Introdução A Python – PDS-0</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../introducao/Algoritmos.html">Introdução</a></li><li class="breadcrumb-item"><a href="../introducao/IntroducaoAPython.html">Introdução A Python</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">PDS-0</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sobre o curso</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Introdução</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/Algoritmos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Algorítmos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/RepresentacoesDeAlgoritmos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Representações de Algorítmos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/OrganizacaoDeComputadores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fundamentos de computadores</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/IntroducaoAProgramacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdução A Programação</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/IntroducaoAPython.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Introdução A Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/CondicionaisEmPython.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Condicionais em Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/EstruturasDeRepeticaoEmPython.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Estruturas de repetição em python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/Matrizes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Matrizes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/Exercicios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercícios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Projeto</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/Projeto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Trabalho Prático 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/CasosDeTeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Casos de Teste — TP1</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Funções</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../funcoes/IntroducaoAFuncoes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdução a funções</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text">funcoes/Exercicios.qmd</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Módulos</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+ <span class="menu-text">modulos/Exercicios.qmd</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Objetos e classes</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+ <span class="menu-text">ObjetosEClasses/Exercicios.qmd</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Programação orientada a objetos (POO)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+ <span class="menu-text">POO/Exercicios.qmd</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Introdução a estruturas de dados</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+ <span class="menu-text">introducaoAED/Exercicios.qmd</span>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Conteúdos da página</h2>
+   
+  <ul>
+  <li><a href="#variáveis-em-python" id="toc-variáveis-em-python" class="nav-link active" data-scroll-target="#variáveis-em-python">Variáveis em python</a>
+  <ul class="collapse">
+  <li><a href="#declaração-de-variáveis" id="toc-declaração-de-variáveis" class="nav-link" data-scroll-target="#declaração-de-variáveis">Declaração de variáveis</a></li>
+  <li><a href="#inteiros-int" id="toc-inteiros-int" class="nav-link" data-scroll-target="#inteiros-int">Inteiros (<code>int</code>):</a></li>
+  <li><a href="#ponto-flutuante-float" id="toc-ponto-flutuante-float" class="nav-link" data-scroll-target="#ponto-flutuante-float">Ponto flutuante (<code>float</code>):</a></li>
+  <li><a href="#texto-str" id="toc-texto-str" class="nav-link" data-scroll-target="#texto-str">Texto (<code>str</code>):</a></li>
+  <li><a href="#booleanos-bool" id="toc-booleanos-bool" class="nav-link" data-scroll-target="#booleanos-bool">Booleanos (<code>bool</code>):</a></li>
+  <li><a href="#listas-list" id="toc-listas-list" class="nav-link" data-scroll-target="#listas-list">Listas (<code>list</code>):</a></li>
+  <li><a href="#dicionários-dict" id="toc-dicionários-dict" class="nav-link" data-scroll-target="#dicionários-dict">Dicionários (<code>dict</code>)</a></li>
+  <li><a href="#outros-tipos" id="toc-outros-tipos" class="nav-link" data-scroll-target="#outros-tipos">Outros tipos</a></li>
+  </ul></li>
+  <li><a href="#operadores-por-tipo-de-variável" id="toc-operadores-por-tipo-de-variável" class="nav-link" data-scroll-target="#operadores-por-tipo-de-variável">Operadores por tipo de variável</a>
+  <ul class="collapse">
+  <li><a href="#tipo-inteiro-int" id="toc-tipo-inteiro-int" class="nav-link" data-scroll-target="#tipo-inteiro-int">Tipo Inteiro (<code>int</code>)</a></li>
+  <li><a href="#tipo-ponto-flutuante-float" id="toc-tipo-ponto-flutuante-float" class="nav-link" data-scroll-target="#tipo-ponto-flutuante-float">Tipo Ponto Flutuante (<code>float</code>)</a></li>
+  <li><a href="#tipo-string-str" id="toc-tipo-string-str" class="nav-link" data-scroll-target="#tipo-string-str">Tipo String (<code>str</code>)</a></li>
+  <li><a href="#tipo-booleano-bool" id="toc-tipo-booleano-bool" class="nav-link" data-scroll-target="#tipo-booleano-bool">Tipo Booleano (<code>bool</code>)</a></li>
+  <li><a href="#tipo-lista-list" id="toc-tipo-lista-list" class="nav-link" data-scroll-target="#tipo-lista-list">Tipo Lista (<code>list</code>)</a></li>
+  <li><a href="#tipo-dicionário-dict" id="toc-tipo-dicionário-dict" class="nav-link" data-scroll-target="#tipo-dicionário-dict">Tipo Dicionário (<code>dict</code>)</a></li>
+  <li><a href="#observações-gerais" id="toc-observações-gerais" class="nav-link" data-scroll-target="#observações-gerais">Observações gerais</a></li>
+  </ul></li>
+  <li><a href="#introdução-básica-a-entradas-e-saídas-de-dados" id="toc-introdução-básica-a-entradas-e-saídas-de-dados" class="nav-link" data-scroll-target="#introdução-básica-a-entradas-e-saídas-de-dados">Introdução básica a entradas e saídas de dados</a>
+  <ul class="collapse">
+  <li><a href="#exibindo-informações-com-print" id="toc-exibindo-informações-com-print" class="nav-link" data-scroll-target="#exibindo-informações-com-print">Exibindo informações com print()</a></li>
+  <li><a href="#lendo-informações-com-input" id="toc-lendo-informações-com-input" class="nav-link" data-scroll-target="#lendo-informações-com-input">Lendo informações com input()</a></li>
+  <li><a href="#tabela-de-consulta" id="toc-tabela-de-consulta" class="nav-link" data-scroll-target="#tabela-de-consulta">Tabela de consulta</a></li>
+  </ul></li>
+  <li><a href="#comentários-em-python" id="toc-comentários-em-python" class="nav-link" data-scroll-target="#comentários-em-python">Comentários em Python</a>
+  <ul class="collapse">
+  <li><a href="#comentários-de-uma-linha" id="toc-comentários-de-uma-linha" class="nav-link" data-scroll-target="#comentários-de-uma-linha">Comentários de uma linha</a></li>
+  <li><a href="#comentários-de-múltiplas-linhas" id="toc-comentários-de-múltiplas-linhas" class="nav-link" data-scroll-target="#comentários-de-múltiplas-linhas">Comentários de múltiplas linhas</a></li>
+  <li><a href="#quando-usar-comentários" id="toc-quando-usar-comentários" class="nav-link" data-scroll-target="#quando-usar-comentários">Quando usar comentários?</a></li>
+  </ul></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios">Exercícios</a>
+  <ul class="collapse">
+  <li><a href="#exercício-1" id="toc-exercício-1" class="nav-link" data-scroll-target="#exercício-1">Exercício 1</a></li>
+  <li><a href="#exercício-2" id="toc-exercício-2" class="nav-link" data-scroll-target="#exercício-2">Exercício 2</a></li>
+  <li><a href="#exercício-3" id="toc-exercício-3" class="nav-link" data-scroll-target="#exercício-3">Exercício 3</a></li>
+  <li><a href="#exercício-4" id="toc-exercício-4" class="nav-link" data-scroll-target="#exercício-4">Exercício 4</a></li>
+  <li><a href="#exercício-5" id="toc-exercício-5" class="nav-link" data-scroll-target="#exercício-5">Exercício 5</a></li>
+  </ul></li>
+  <li><a href="#desafio" id="toc-desafio" class="nav-link" data-scroll-target="#desafio">Desafio</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../introducao/Algoritmos.html">Introdução</a></li><li class="breadcrumb-item"><a href="../introducao/IntroducaoAPython.html">Introdução A Python</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Introdução A Python</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="variáveis-em-python" class="level2">
+<h2 class="anchored" data-anchor-id="variáveis-em-python">Variáveis em python</h2>
+<p>Em Python, as variáveis representam espaços na memória utilizados para armazenar dados que podem ser manipulados durante a execução de um programa. Esses dados podem ser de diferentes tipos, como números (<code>int</code> e <code>float</code>), textos (<code>string</code>), listas (<code>list</code>), dicionários (<code>dict</code>) ou até objetos mais complexos (cenas dos próximos capítulos). Uma das principais características da linguagem é sua tipagem dinâmica, o que significa que não é necessário declarar previamente o tipo de uma variável — o interpretador identifica automaticamente o tipo de dado com base no valor atribuído a ela. Assim, uma variável pode receber um número em um momento e, posteriormente, um texto, sem que o programador precise realizar uma redefinição explícita do tipo.</p>
+<p>Declarar uma variável, em termos conceituais, significa criar uma referência que aponta para um determinado valor armazenado na memória. Já inicializar uma variável consiste em atribuir-lhe um valor inicial, permitindo que o programa utilize essa informação. Em Python, a declaração e a inicialização geralmente ocorrem simultaneamente, pois basta atribuir um valor a um nome para que a variável seja criada.</p>
+<p>Apesar da flexibilidade proporcionada pela tipagem dinâmica, o Python também oferece a possibilidade de indicar explicitamente o tipo esperado de uma variável por meio das chamadas type hints. Esses indicadores não alteram o funcionamento do código em tempo de execução, mas servem como uma forma de documentação e auxiliam ferramentas de análise estática, tornando o código mais legível, seguro e fácil de manter. Essa prática é especialmente útil em projetos de maior porte, nos quais a clareza sobre o tipo de dados esperados em cada parte do programa contribui para reduzir erros e melhorar a colaboração entre desenvolvedores.</p>
+<section id="declaração-de-variáveis" class="level3">
+<h3 class="anchored" data-anchor-id="declaração-de-variáveis">Declaração de variáveis</h3>
+<p>Em Python, declarar uma variável é muito simples: basta escolher um nome e atribuir um valor a ele usando o sinal de igual (<code>=</code>), o operador de atribuição do Python. A linguagem cria automaticamente a variável e identifica seu tipo com base no valor atribuído. Não é necessário especificar o tipo antes, pois o Python faz isso automaticamente.</p>
+<p>O padrão de declaração, portanto é:</p>
+<div id="a0806e28" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>nome_da_variavel: tipo_da_variavel <span class="op">=</span> valor_da_variavel</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>ou (sem especificação do tipo da variável)</p>
+<div id="9e54fe00" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>nome_da_variavel <span class="op">=</span> valor_da_variavel</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>A seguir estão os principais tipos de variáveis que você pode declarar:</p>
+</section>
+<section id="inteiros-int" class="level3">
+<h3 class="anchored" data-anchor-id="inteiros-int">Inteiros (<code>int</code>):</h3>
+<p>Para declarar um <code>int</code> chamado “variavel_tipo_inteiro” inicializado com o valor 5, basta fazer o seguinte:</p>
+<div id="c5235ffd" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>variavel_tipo_inteiro: <span class="bu">int</span> <span class="op">=</span> <span class="dv">5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>ou</p>
+<div id="0fdb8e04" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>variavel_tipo_inteiro <span class="op">=</span> <span class="dv">5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ponto-flutuante-float" class="level3">
+<h3 class="anchored" data-anchor-id="ponto-flutuante-float">Ponto flutuante (<code>float</code>):</h3>
+<p>Para declarar um <code>float</code> chamado “variavel_tipo_float” incializado com o valor 3.14, basta fazer o seguinte:</p>
+<div id="09d91414" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>variavel_tipo_float: <span class="bu">float</span> <span class="op">=</span> <span class="fl">3.14</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>ou</p>
+<div id="907d6ad6" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>variavel_tipo_float <span class="op">=</span> <span class="fl">3.14</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="texto-str" class="level3">
+<h3 class="anchored" data-anchor-id="texto-str">Texto (<code>str</code>):</h3>
+<p>Para declarar uma <code>string</code> chamada “variavel_tipo_string” incializada com o valor “Minha string”, basta fazer o seguinte:</p>
+<div id="87f4bc63" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>variavel_tipo_string: <span class="bu">str</span> <span class="op">=</span> <span class="st">"Minha string"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>ou</p>
+<div id="2b77598d" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>variavel_tipo_string <span class="op">=</span> <span class="st">"Minha string"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Observação importante">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Observação importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>O tipo <code>string</code> em Python é chamado <code>str</code>, e, para incializá-lo com algum valor, este valor pode estar em aspas duplas (““) ou aspas simples. Assim, aqui estão outras duas maneiras de declarar as mesmas variáveis:</p>
+<div id="e4bf6897" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>variavel_tipo_string: <span class="bu">str</span> <span class="op">=</span> <span class="st">'Minha string'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>ou</p>
+<div id="e2c78e77" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>variavel_tipo_string <span class="op">=</span> <span class="st">'Minha string'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="booleanos-bool" class="level3">
+<h3 class="anchored" data-anchor-id="booleanos-bool">Booleanos (<code>bool</code>):</h3>
+<p>Para declarar um <code>bool</code> chamado “variavel_tipo_bool” incializado com o valor True, basta fazer o seguinte:</p>
+<div id="98e72cef" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>variavel_tipo_bool: <span class="bu">bool</span> <span class="op">=</span> <span class="va">True</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>ou</p>
+<div id="14a5b99b" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>variavel_tipo_bool <span class="op">=</span> <span class="va">True</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="listas-list" class="level3">
+<h3 class="anchored" data-anchor-id="listas-list">Listas (<code>list</code>):</h3>
+<p>Para declarar um <code>list</code> chamada “variavel_tipo_lista” e incializá-lo com algum(s) valor(es), basta fazer o seguinte:</p>
+<div id="020c3259" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>variavel_tipo_lista: <span class="bu">list</span> <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">89</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>ou</p>
+<div id="62f145c5" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>variavel_tipo_lista <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">89</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Observação importante">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Observação importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Uma lista pode conter conter qualquer tipo de variável nos seus elementos, poranto todas as listas seguintes são listas válidas em python:</p>
+<div id="dde86ff8" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>variavel_tipo_lista: <span class="bu">list</span> <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="3df4be00" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>variavel_tipo_lista: <span class="bu">list</span> <span class="op">=</span> [<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="73bda7f8" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>variavel_tipo_lista: <span class="bu">list</span> <span class="op">=</span> [<span class="va">True</span>, <span class="va">False</span>, <span class="va">True</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Portanto, como uma lista pode conter qualquer tipo de variável em seus elementos, isto nos leva a dois casos “extremos” que são completamente válidos em python (e quase toda lingugagem de programção):</p>
+<ol type="1">
+<li>Lista vazia, delcarada a seguir:</li>
+</ol>
+<div id="b73ae62f" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>variavel_tipo_lista: <span class="bu">list</span> <span class="op">=</span> []</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol start="2" type="1">
+<li>Lista de listas, declarada a seguir:</li>
+</ol>
+<div id="e5e6b3ab" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>variavel_tipo_lista: <span class="bu">list</span> <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Estas listas de listas são a base de estruturas chamadas <a href="https://www.geeksforgeeks.org/dsa/introduction-to-matrix-or-grid-data-structure-and-algorithms-tutorial/">matrizes</a>, que serão estudas posteriormente.</p>
+</div>
+</div>
+</section>
+<section id="dicionários-dict" class="level3">
+<h3 class="anchored" data-anchor-id="dicionários-dict">Dicionários (<code>dict</code>)</h3>
+<p>Para declarar um <code>dict</code> chamado “variavel_tipo_dict” e incializá-lo com algumas chaves e valores, basta fazer o seguinte:</p>
+<p>::: {#004f6e27 .cell execution_count=20} <code>{.python .cell-code}   variavel_tipo_dict: dict = {'chave_1' : 1, 'chave_2' : 2, 'chave_3' : 3}</code> :::</p>
+<p>ou</p>
+<p>::: {#640739c3 .cell execution_count=21} <code>{.python .cell-code}   variavel_tipo_dict = {'chave_1' : 1, 'chave_2' : 2, 'chave_3' : 3}</code> :::</p>
+</section>
+<section id="outros-tipos" class="level3">
+<h3 class="anchored" data-anchor-id="outros-tipos">Outros tipos</h3>
+<p>Existem ainda outros tipos de variáveis em python, com destaque o <a href="https://www.w3schools.com/python/python_tuples.asp"><code>tuple</code></a> e o <a href="https://www.w3schools.com/python/python_sets.asp"><code>set</code></a>, mas ester tipos serão estudados posteriormente.</p>
+</section>
+</section>
+<section id="operadores-por-tipo-de-variável" class="level2">
+<h2 class="anchored" data-anchor-id="operadores-por-tipo-de-variável">Operadores por tipo de variável</h2>
+<p>Em Python, cada tipo de variável possui um conjunto de operadores que podem ser utilizados com ele. Os operadores são símbolos ou palavras especiais que indicam ao interpretador que deve realizar uma operação sobre um ou mais valores. A seguir, apresentamos os principais tipos de variáveis e seus operadores, explicando o funcionamento de cada um.</p>
+<section id="tipo-inteiro-int" class="level3">
+<h3 class="anchored" data-anchor-id="tipo-inteiro-int">Tipo Inteiro (<code>int</code>)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 11%">
+<col style="width: 23%">
+<col style="width: 19%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operador</th>
+<th>Nome</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>+</code></td>
+<td>Adição</td>
+<td>Soma dois valores inteiros</td>
+<td><code>3 + 2</code></td>
+<td><code>5</code></td>
+</tr>
+<tr class="even">
+<td><code>-</code></td>
+<td>Subtração</td>
+<td>Subtrai o segundo número do primeiro</td>
+<td><code>5 - 3</code></td>
+<td><code>2</code></td>
+</tr>
+<tr class="odd">
+<td><code>*</code></td>
+<td>Multiplicação</td>
+<td>Multiplica dois números inteiros</td>
+<td><code>4 * 3</code></td>
+<td><code>12</code></td>
+</tr>
+<tr class="even">
+<td><code>/</code></td>
+<td>Divisão</td>
+<td>Divide o primeiro número pelo segundo (resultado <code>float</code>)</td>
+<td><code>7 / 2</code></td>
+<td><code>3.5</code></td>
+</tr>
+<tr class="odd">
+<td><code>//</code></td>
+<td>Divisão inteira</td>
+<td>Retorna apenas a parte inteira da divisão</td>
+<td><code>7 // 2</code></td>
+<td><code>3</code></td>
+</tr>
+<tr class="even">
+<td><code>%</code></td>
+<td>Módulo</td>
+<td>Retorna o resto da divisão inteira</td>
+<td><code>7 % 2</code></td>
+<td><code>1</code></td>
+</tr>
+<tr class="odd">
+<td><code>**</code></td>
+<td>Exponenciação</td>
+<td>Eleva o primeiro número à potência do segundo</td>
+<td><code>2 ** 3</code></td>
+<td><code>8</code></td>
+</tr>
+<tr class="even">
+<td><code>==</code></td>
+<td>Igualdade</td>
+<td>Verifica se dois valores são iguais</td>
+<td><code>3 == 3</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td><code>!=</code></td>
+<td>Diferente</td>
+<td>Verifica se dois valores são diferentes</td>
+<td><code>3 != 2</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="even">
+<td><code>&gt;</code></td>
+<td>Maior que</td>
+<td>Retorna <code>True</code> se o primeiro for maior</td>
+<td><code>5 &gt; 2</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td><code>&lt;</code></td>
+<td>Menor que</td>
+<td>Retorna <code>True</code> se o primeiro for menor</td>
+<td><code>2 &lt; 5</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="even">
+<td><code>&gt;=</code></td>
+<td>Maior ou igual</td>
+<td>Verifica se é maior ou igual</td>
+<td><code>4 &gt;= 4</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td><code>&lt;=</code></td>
+<td>Menor ou igual</td>
+<td>Verifica se é menor ou igual</td>
+<td><code>3 &lt;= 5</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="even">
+<td><code>+=</code></td>
+<td>Atribuição com soma</td>
+<td>Soma e atribui o resultado</td>
+<td><code>a = 5; a += 2</code></td>
+<td><code>a = 7</code></td>
+</tr>
+<tr class="odd">
+<td><code>-=</code></td>
+<td>Atribuição com subtração</td>
+<td>Subtrai e reatribui o resultado</td>
+<td><code>a = 5; a -= 2</code></td>
+<td><code>a = 3</code></td>
+</tr>
+</tbody>
+</table>
+<p><br><br></p>
+</section>
+<section id="tipo-ponto-flutuante-float" class="level3">
+<h3 class="anchored" data-anchor-id="tipo-ponto-flutuante-float">Tipo Ponto Flutuante (<code>float</code>)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 11%">
+<col style="width: 23%">
+<col style="width: 19%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operador</th>
+<th>Nome</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>+</code></td>
+<td>Adição</td>
+<td>Soma dois valores</td>
+<td><code>3.2 + 2.7</code></td>
+<td><code>5.9</code></td>
+</tr>
+<tr class="even">
+<td><code>-</code></td>
+<td>Subtração</td>
+<td>Subtrai o segundo número do primeiro</td>
+<td><code>5.0 - 3.1</code></td>
+<td><code>1.9</code></td>
+</tr>
+<tr class="odd">
+<td><code>*</code></td>
+<td>Multiplicação</td>
+<td>Multiplica dois números</td>
+<td><code>4.2 * 2.0</code></td>
+<td><code>8.4</code></td>
+</tr>
+<tr class="even">
+<td><code>/</code></td>
+<td>Divisão</td>
+<td>Divide o primeiro número pelo segundo (resultado <code>float</code>)</td>
+<td><code>7.0 / 2.0</code></td>
+<td><code>3.5</code></td>
+</tr>
+<tr class="odd">
+<td><code>//</code></td>
+<td>Divisão inteira</td>
+<td>Retorna apenas a parte inteira da divisão (como um <code>float</code>)</td>
+<td><code>7.0 // 2.0</code></td>
+<td><code>3.0</code></td>
+</tr>
+<tr class="even">
+<td><code>%</code></td>
+<td>Módulo</td>
+<td>Retorna o resto da divisão inteira</td>
+<td><code>7.25 % 3.5</code></td>
+<td><code>0.25</code></td>
+</tr>
+<tr class="odd">
+<td><code>**</code></td>
+<td>Exponenciação</td>
+<td>Eleva o primeiro número à potência do segundo</td>
+<td><code>2.0 ** 3.0</code></td>
+<td><code>8.0</code></td>
+</tr>
+<tr class="even">
+<td><code>==</code></td>
+<td>Igualdade</td>
+<td>Verifica se dois valores são iguais</td>
+<td><code>3.14 == 3.14</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td><code>!=</code></td>
+<td>Diferente</td>
+<td>Verifica se dois valores são diferentes</td>
+<td><code>7.34 != 5.67</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="even">
+<td><code>&gt;</code></td>
+<td>Maior que</td>
+<td>Retorna <code>True</code> se o primeiro for maior</td>
+<td><code>3.1 &gt; 3</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td><code>&lt;</code></td>
+<td>Menor que</td>
+<td>Retorna <code>True</code> se o primeiro for menor</td>
+<td><code>3.0 &lt; 8.6</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="even">
+<td><code>&gt;=</code></td>
+<td>Maior ou igual</td>
+<td>Verifica se é maior ou igual</td>
+<td><code>3.14 &gt;= 3.14</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td><code>&lt;=</code></td>
+<td>Menor ou igual</td>
+<td>Verifica se é menor ou igual</td>
+<td><code>2.7 &lt;= 5.0</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="even">
+<td><code>+=</code></td>
+<td>Atribuição com soma</td>
+<td>Soma e atribui o resultado</td>
+<td><code>a = 5.0; a += 2.2</code></td>
+<td><code>a = 7.2</code></td>
+</tr>
+<tr class="odd">
+<td><code>-=</code></td>
+<td>Atribuição com subtração</td>
+<td>Subtrai e reatribui o resultado</td>
+<td><code>a = 3.5; a -= 2.0</code></td>
+<td><code>a = 1.5</code></td>
+</tr>
+</tbody>
+</table>
+<p><br><br></p>
+</section>
+<section id="tipo-string-str" class="level3">
+<h3 class="anchored" data-anchor-id="tipo-string-str">Tipo String (<code>str</code>)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 11%">
+<col style="width: 23%">
+<col style="width: 19%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operador</th>
+<th>Nome</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>+</code></td>
+<td>Concatenação</td>
+<td>Junta duas strings</td>
+<td><code>"Olá, " + "mundo!"</code></td>
+<td><code>"Olá, mundo!"</code></td>
+</tr>
+<tr class="even">
+<td><code>*</code></td>
+<td>Repetição</td>
+<td>Repete uma string N vezes</td>
+<td><code>"Oi" * 3</code></td>
+<td><code>"OiOiOi"</code></td>
+</tr>
+<tr class="odd">
+<td><code>==</code></td>
+<td>Igualdade</td>
+<td>Verifica se duas strings são idênticas</td>
+<td><code>"abc" == "abc"</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="even">
+<td><code>!=</code></td>
+<td>Diferente</td>
+<td>Verifica se são diferentes</td>
+<td><code>"a" != "b"</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td><code>&lt;</code></td>
+<td>Comparação lexicográfica</td>
+<td>Compara pela ordem alfabética</td>
+<td><code>"a" &lt; "b"</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="even">
+<td><code>&gt;</code></td>
+<td>Comparação lexicográfica</td>
+<td>Compara pela ordem alfabética</td>
+<td><code>"b" &gt; "a"</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td><code>&lt;=</code></td>
+<td>Comparação lexicográfica</td>
+<td>Compara pela ordem alfabética</td>
+<td><code>"a" &lt;= "a"</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="even">
+<td><code>&gt;=</code></td>
+<td>Comparação lexicográfica</td>
+<td>Compara pela ordem alfabética</td>
+<td><code>"b" &gt;= "b"</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td><code>in</code></td>
+<td>Contém</td>
+<td>Verifica se uma substring existe</td>
+<td><code>"Py" in "Python"</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="even">
+<td><code>not in</code></td>
+<td>Não contém</td>
+<td>Verifica se uma substring não existe</td>
+<td><code>"java" not in "python"</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td><code>[ ]</code></td>
+<td>Acesso por índice</td>
+<td>Acessa um caractere da string</td>
+<td><code>"Python"[0]</code></td>
+<td><code>"P"</code></td>
+</tr>
+</tbody>
+</table>
+<p><br><br></p>
+</section>
+<section id="tipo-booleano-bool" class="level3">
+<h3 class="anchored" data-anchor-id="tipo-booleano-bool">Tipo Booleano (<code>bool</code>)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 11%">
+<col style="width: 23%">
+<col style="width: 19%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operador</th>
+<th>Nome</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>and</code></td>
+<td>E lógico</td>
+<td>Verdadeiro se <strong>ambos</strong> forem verdadeiros</td>
+<td><code>True and False</code></td>
+<td><code>False</code></td>
+</tr>
+<tr class="even">
+<td><code>or</code></td>
+<td>OU lógico</td>
+<td>Verdadeiro se <strong>um</strong> for verdadeiro</td>
+<td><code>True or False</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td><code>not</code></td>
+<td>Negação</td>
+<td>Inverte o valor lógico</td>
+<td><code>not True</code></td>
+<td><code>False</code></td>
+</tr>
+<tr class="even">
+<td><code>==</code></td>
+<td>Comparação</td>
+<td>Compara se dois valores booleanos sã iguais</td>
+<td><code>True == False</code></td>
+<td><code>False</code></td>
+</tr>
+<tr class="odd">
+<td><code>!=</code></td>
+<td>Comparação</td>
+<td>Compara se dois valores booleanos são diferentes</td>
+<td><code>True != False</code></td>
+<td><code>True</code></td>
+</tr>
+</tbody>
+</table>
+<p><br><br></p>
+</section>
+<section id="tipo-lista-list" class="level3">
+<h3 class="anchored" data-anchor-id="tipo-lista-list">Tipo Lista (<code>list</code>)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 11%">
+<col style="width: 23%">
+<col style="width: 19%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operador</th>
+<th>Nome</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>+</code></td>
+<td>Concatenação</td>
+<td>Junta duas listas</td>
+<td><code>[1, 2] + [3, 4]</code></td>
+<td><code>[1, 2, 3, 4]</code></td>
+</tr>
+<tr class="even">
+<td><code>*</code></td>
+<td>Repetição</td>
+<td>Repete os elementos</td>
+<td><code>[1, 2] * 2</code></td>
+<td><code>[1, 2, 1, 2]</code></td>
+</tr>
+<tr class="odd">
+<td><code>in</code></td>
+<td>Contém</td>
+<td>Verifica se um valor está na lista</td>
+<td><code>3 in [1, 2, 3]</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="even">
+<td><code>not in</code></td>
+<td>Não contém</td>
+<td>Verifica se um valor não está na lista</td>
+<td><code>5 not in [1, 2, 3]</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td><code>[ ]</code></td>
+<td>Acesso por índice</td>
+<td>Retorna o elemento em uma posição</td>
+<td><code>a = [10, 20, 30]; a[1]</code></td>
+<td><code>20</code></td>
+</tr>
+<tr class="even">
+<td><code>==</code></td>
+<td>Comparação</td>
+<td>Compara listas elemento a elemento, checando igualdade</td>
+<td><code>[1,2] == [1,2]</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td><code>!=</code></td>
+<td>Comparação</td>
+<td>Compara listas elemento a elemento, checando diferenças</td>
+<td><code>[1, 2] != [3, 4]</code></td>
+<td><code>True</code></td>
+</tr>
+</tbody>
+</table>
+<p><br><br></p>
+</section>
+<section id="tipo-dicionário-dict" class="level3">
+<h3 class="anchored" data-anchor-id="tipo-dicionário-dict">Tipo Dicionário (<code>dict</code>)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 11%">
+<col style="width: 23%">
+<col style="width: 19%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operador</th>
+<th>Nome</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>[ ]</code></td>
+<td>Acesso por chave</td>
+<td>Retorna o valor associado</td>
+<td><code>d = {"a": 1}; d["a"]</code></td>
+<td><code>1</code></td>
+</tr>
+<tr class="even">
+<td><code>in</code></td>
+<td>Verifica chave</td>
+<td>Retorna <code>True</code> se a chave existir</td>
+<td><code>"a" in {"a": 1}</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td><code>not in</code></td>
+<td>Verifica ausência</td>
+<td>Retorna <code>True</code> se a chave não existir</td>
+<td><code>"b" not in {"a": 1}</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="even">
+<td><code>==</code></td>
+<td>Comparação</td>
+<td>Compara dicionários por conteúdo, checando igualdade</td>
+<td><code>{'a' : 1} == {'a' : 1}</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td><code>!=</code></td>
+<td>Comparação</td>
+<td>Comparada dicionários por conteúdo, checando diferenças</td>
+<td><code>{'a' : 1} != {'b' : 2}</code></td>
+<td><code>True</code></td>
+</tr>
+</tbody>
+</table>
+<p><br><br></p>
+</section>
+<section id="observações-gerais" class="level3">
+<h3 class="anchored" data-anchor-id="observações-gerais">Observações gerais</h3>
+<p>Os operadores podem ter comportamentos diferentes dependendo do tipo de dado. Os exemplos mais importantes destas diferenças são os seguintes casos:</p>
+<ul>
+<li><p><code>+</code> soma números, mas <strong>concatena strings e listas</strong>;</p></li>
+<li><p><code>*</code> multiplica números, mas <strong>repete strings e listas</strong>;</p></li>
+<li><p><code>in</code> verifica <strong>pertencimento</strong> em strings, listas, tuplas, conjuntos e dicionários.</p></li>
+</ul>
+</section>
+</section>
+<section id="introdução-básica-a-entradas-e-saídas-de-dados" class="level2">
+<h2 class="anchored" data-anchor-id="introdução-básica-a-entradas-e-saídas-de-dados">Introdução básica a entradas e saídas de dados</h2>
+<p>Em Python, é comum precisarmos exibir informações na tela ou receber dados digitados pelo usuário. Para isso, utilizamos as funções print() e input().</p>
+<section id="exibindo-informações-com-print" class="level3">
+<h3 class="anchored" data-anchor-id="exibindo-informações-com-print">Exibindo informações com print()</h3>
+<p>A função print() é usada para mostrar mensagens, resultados de operações ou valores de variáveis na tela. Basta escrever o que você quer exibir entre parênteses e aspas.</p>
+<div id="44b5c786" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Olá, mundo!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Observação/Teste este código!">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Observação/Teste este código!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A saída do código acima é o texto “Olá, mundo!” impresso no terminal.</p>
+</div>
+</div>
+<p>Além de exibir texto escritos na função, é possível exibir o valor de variáveis utilizando a mesma lógica:</p>
+<div id="d2764c5b" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>texto: <span class="bu">str</span> <span class="op">=</span> <span class="st">"Olá, mundo!"</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(texto)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Observação/Teste este código!">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Observação/Teste este código!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A saída do código acima é o texto “Olá, mundo!” impresso no terminal.</p>
+</div>
+</div>
+<p>Também é possivel exibir mais de um texto, passando estes textos à função na ordem que você deseja que sejam mostrados, separados com vírgulas:</p>
+<div id="788c19f1" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>nome: <span class="bu">str</span> <span class="op">=</span> <span class="st">"Maria"</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Olá, "</span>, nome)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Observação/Teste este código!">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Observação/Teste este código!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A saída do código acima é o texto “Olá, Maria” impresso no terminal.</p>
+</div>
+</div>
+</section>
+<section id="lendo-informações-com-input" class="level3">
+<h3 class="anchored" data-anchor-id="lendo-informações-com-input">Lendo informações com input()</h3>
+<p>A função input() serve para coletar dados digitados pelo usuário. Tudo o que o usuário digitar será lido como uma <code>string</code> (<code>str</code>).</p>
+<div id="a222f28a" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>nome <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Digite seu nome: "</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Olá, "</span>, nome)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Observação/Teste este código!">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Observação/Teste este código!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ao executar este código, será exibida a mensagem <strong>“Digite seu nome:”</strong> no terminal.<br>
+O programa então aguardará que o usuário digite um valor e pressione <strong>Enter</strong>.<br>
+O texto digitado será armazenado como uma <code>string</code> na variável <code>nome</code> e, em seguida, exibido na tela junto à saudação <strong>“Olá,”</strong>.</p>
+<p><strong>Exemplo:</strong></p>
+<p>Se o usuário digitar “Pedro”, a saída será: “Olá, Pedro”.</p>
+</div>
+</div>
+<p>Como toda coleta de dados realizada pela função input() é uma <code>string</code>, se for necessário trabalhar com números, é preciso converter o valor digitado usando int() ou float():</p>
+<div id="ae20d4e5" class="cell" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>idade <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Digite sua idade: "</span>))</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>altura <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">"Digite sua altura: "</span>))</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Você tem"</span>, idade, <span class="st">"anos e mede"</span>, altura, <span class="st">"metros."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Observação/Teste este código!">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Observação/Teste este código!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ao executar este código, o programa solicitará duas entradas do usuário:</p>
+<ol type="1">
+<li><strong>Idade</strong>: será exibida a mensagem <strong>“Digite sua idade:”</strong> e o valor digitado será convertido para um número inteiro (<code>int</code>) e armazenado na variável <code>idade</code>.<br>
+</li>
+<li><strong>Altura</strong>: será exibida a mensagem <strong>“Digite sua altura:”</strong> e o valor digitado será convertido para um número decimal (<code>float</code>) e armazenado na variável <code>altura</code>.</li>
+</ol>
+<p>Após a coleta desses dados, o programa exibirá na tela a frase com os valores fornecidos:</p>
+<p><strong>Exemplo:</strong></p>
+<p>Se o usuário digitar <code>25</code> para a idade e <code>1.75</code> para a altura, a saída será: “Você tem 25 anos e mede 1.75 metros.”</p>
+</div>
+</div>
+</section>
+<section id="tabela-de-consulta" class="level3">
+<h3 class="anchored" data-anchor-id="tabela-de-consulta">Tabela de consulta</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Função</th>
+<th>Utilidade</th>
+<th>Tipo de dado retornado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>print()</code></td>
+<td>Exibe informações na tela</td>
+<td>(Não retorna nada)</td>
+</tr>
+<tr class="even">
+<td><code>input()</code></td>
+<td>Lê dados digitados pelo usuário</td>
+<td><code>str</code> (texto)</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="comentários-em-python" class="level2">
+<h2 class="anchored" data-anchor-id="comentários-em-python">Comentários em Python</h2>
+<p>Comentários são partes do código que não são executadas pelo Python. Eles servem para explicar trechos do programa, deixar observações importantes ou facilitar o entendimento do código para outras pessoas — ou para você mesmo no futuro.</p>
+<section id="comentários-de-uma-linha" class="level3">
+<h3 class="anchored" data-anchor-id="comentários-de-uma-linha">Comentários de uma linha</h3>
+<p>Para criar um comentário de uma linha, utiliza-se o símbolo #. Tudo o que estiver depois dele será ignorado pelo interpretador.</p>
+<div id="b6ab0ef7" class="cell" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Este é um comentário de uma linha</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>x: <span class="bu">int</span> <span class="op">=</span> <span class="dv">10</span>  <span class="co"># Também é possível comentar ao lado de um comando</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="comentários-de-múltiplas-linhas" class="level3">
+<h3 class="anchored" data-anchor-id="comentários-de-múltiplas-linhas">Comentários de múltiplas linhas</h3>
+<p>Python não possui um símbolo específico para comentários longos, mas é comum utilizar três aspas (simples ou duplas). Quando esse texto não é atribuído a nenhuma variável, ele é ignorado pelo interpretador e funciona como bloco de comentário.</p>
+<section id="usando-aspas-duplas" class="level4">
+<h4 class="anchored" data-anchor-id="usando-aspas-duplas">Usando aspas duplas</h4>
+<div id="0b0ab55d" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">Este é um comentário</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">de múltiplas linhas.</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">Ele é útil para explicações mais longas.</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="usando-aspas-simples" class="level4">
+<h4 class="anchored" data-anchor-id="usando-aspas-simples">Usando aspas simples</h4>
+<div id="30aa6f48" class="cell" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">'''</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co">Também funciona com aspas simples.</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">Use quando quiser escrever textos longos.</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co">'''</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Observação importante">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Observação importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Apesar de serem usados como comentários longos, esses blocos também são considerados strings multilinha. Eles só funcionam como comentário quando não são atribuídos a nenhuma variável.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="quando-usar-comentários" class="level3">
+<h3 class="anchored" data-anchor-id="quando-usar-comentários">Quando usar comentários?</h3>
+<p>Comentários são úteis quando:</p>
+<ul>
+<li><p>um trecho de código não é óbvio;</p></li>
+<li><p>é importante registrar o porquê de uma decisão;</p></li>
+<li><p>você quer facilitar a leitura para outras pessoas;</p></li>
+<li><p>deseja documentar partes específicas do algoritmo.</p></li>
+</ul>
+<p>Evite escrever comentários desnecessários, como explicar algo óbvio demais. Prefira comentários que realmente esclareçam a intenção do código.</p>
+</section>
+</section>
+<section id="exercícios" class="level2">
+<h2 class="anchored" data-anchor-id="exercícios">Exercícios</h2>
+<section id="exercício-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-1">Exercício 1</h3>
+<p>Classifique as seguintes variáveis com base em seu tipo:</p>
+<ol type="1">
+<li>idade = 25</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>int</code>, pois 25 é um número sem casas decimais.</p>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>altura = 1.82</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>float</code>, pois 1.82 é um número com casas decimais.</p>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>nome = “Maria”</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>str</code>, pois “Maria” é texto.</p>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>aprovado = True</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>bool</code>, pois True é um valor booleano.</p>
+</div>
+</div>
+</div>
+<ol start="5" type="1">
+<li>notas = [8.5, 7.0, 9.2]</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>list</code>, pois a variável notas contém 3 posições, em cada uma delas sendo armazenado um <code>float</code>.</p>
+</div>
+</div>
+</div>
+<ol start="6" type="1">
+<li>dados = {“nome”: “João”, “idade”: 20}</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>dict</code>, pois a variável dados tem pares de chaves e valores.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-2" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-2">Exercício 2</h3>
+<p>Assumindo que a é uma variável do tipo <code>int</code> com valor igual a 4 e b é uma variável do tipo <code>int</code> com valor igual a 2, complete a tabela:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Operação</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>a + b</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>a - b</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>a * b</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>a / b</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>a // b</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>a % b</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>a ** b</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Operação</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>a + b</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>a - b</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>a * b</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td>a / b</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>a // b</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>a % b</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>a ** b</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-3" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-3">Exercício 3</h3>
+<p>Analise o código a seguir e faça o que se pede:</p>
+<div id="0d40e9cf" class="cell" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>a: <span class="bu">str</span> <span class="op">=</span> <span class="st">'5'</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>b: <span class="bu">str</span> <span class="op">=</span> <span class="st">'5'</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> a <span class="op">+</span> b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol type="1">
+<li>Qual o valor da variável c?</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Como a e b são duas variáveis do tipo <code>str</code>, para avaliar a soma das duas, basta entender que o operador <code>+</code> concatena (junta) duas variáveis do tipo <code>str</code>. Ou seja, o resultado será a concatenação de ‘5’ com ‘5’, que é igual a ‘55’.</p>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Qual o tipo da variável c?</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Como a e b são duas variáveis do tipo <code>str</code>, a concatenação de a e b resultará em uma outra variável do tpo <code>str</code>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-4" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-4">Exercício 4</h3>
+<p>Avalie o seguinte código:</p>
+<div id="cdbbfed2" class="cell" data-execution_count="31">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>a: <span class="bu">int</span> <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">+=</span> <span class="dv">2</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>a <span class="op">*=</span> <span class="dv">2</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>a <span class="op">-=</span> <span class="dv">4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Qual é o valor final da variável a?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Para descobrir o valor de a, basta realizar todas as operações que foram feitas em a.</p>
+<ol type="1">
+<li><p>a += 2 -&gt; a = a + 2 -&gt; a = 5 + 2 -&gt; a = 7. Logo, após a execução da linha <code>a += 2</code>, o valor de a é 7.</p></li>
+<li><p>a <em>= 2 -&gt; a = a </em> 2 -&gt; a = 7 * 2 -&gt; a = 14. Logo, após a execução da linha <code>a *= 2</code>, o valor de a é 14.</p></li>
+<li><p>a -= 4 -&gt; a = a - 4 -&gt; a = 14 - 4 -&gt; a = 10. Logo, após a execução da linha <code>a -= 4</code>, o valor de a é 10.</p></li>
+</ol>
+<p>Portanto, o valor final da variável a é 10.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-5" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-5">Exercício 5</h3>
+<p>Dada a lista, faça o que se pede:</p>
+<div id="244d3353" class="cell" data-execution_count="32">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>numeros <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol type="1">
+<li>O que significa numeros[2]?</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>numeros[2] significa acessar o elemento armazenado no índice 2 da lista numeros. Como a contagem de índices inicia em 0, numeros[2] nos retorna o terceiro elemento, neste caso 30.</p>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>E numeros[0]?</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>numeros[0] significa acessar o primeiro elemento da lista numeros, que neste caso é 10.</p>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Como acessar o último elemento desta lista?</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Para acessar o último elemento de uma lista com n elementos, basta acessar a lista na posição n - 1. Neste caso, n é 4, pois a lista possui 4 elementos, então, o comando para acessar o último elemento é numeros[3].</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="desafio" class="level2">
+<h2 class="anchored" data-anchor-id="desafio">Desafio</h2>
+<p>Dado o código:</p>
+<div id="5dbfb665" class="cell" data-execution_count="33">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>aluno <span class="op">=</span> {<span class="st">"nome"</span>: <span class="st">"Lucas"</span>, <span class="st">"notas"</span>: [<span class="fl">7.5</span>, <span class="fl">8.0</span>, <span class="fl">9.0</span>]}</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>media <span class="op">=</span> (aluno[<span class="st">"notas"</span>][<span class="dv">0</span>] <span class="op">+</span> aluno[<span class="st">"notas"</span>][<span class="dv">1</span>] <span class="op">+</span> aluno[<span class="st">"notas"</span>][<span class="dv">2</span>]) <span class="op">/</span> <span class="dv">3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol type="1">
+<li>O que o programa faz?</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Este programa calcula a média de 3 notas: 7.5, 8.0 e 9.0, que estão armazenadas como uma lista, guardada dentro de um <code>dict</code>.</p>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>O que significa aluno[“notas”]?</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Acessar aluno[“notas”] significa acessar uma lista que está guardada na posição “notas” no <code>dict</code> aluno.</p>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Qual é o valor final da variável media?</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>O valor final é a soma de cada uma das posições de aluno[“notas”] dividido por 3. Vamos descobrir estes valores passo a passo:</p>
+<ol type="1">
+<li><p>aluno[“notas”][0] = 7.5</p></li>
+<li><p>aluno[“notas”][1] = 8.0</p></li>
+<li><p>aluno[“notas”][2] = 9.0</p></li>
+</ol>
+<p>Logo, o cálculo é: <span class="math inline">\(\frac{7.5 + 8.0 + 9.0}{3}\)</span> -&gt; <span class="math inline">\(\frac{24.5}{3}\)</span> -&gt; <span class="math inline">\(8.16666...\)</span></p>
+<p>Portanto, o valor final da variavel media é 8.166666</p>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Qual o tipo da variável media?</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A variável média é um float, pois o resultado da conta da média é um número com casas decimais.</p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

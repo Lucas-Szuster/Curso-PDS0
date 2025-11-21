@@ -1,0 +1,159 @@
+---
+title: "Trabalho Prático 1"
+toc: true
+toc-title: "Conteúdos da página"
+format: html
+---
+
+### Introdução
+
+O arquiteto Johanius Mazochus está conduzindo uma pesquisa detalhada sobre o impacto da insolação nas fachadas de diversos edifícios residenciais. O foco de seu estudo são prédios com 10 andares e 3 janelas por andar, nos quais cada janela recebe um nível de insolação variando entre 0 e 10. Para isso, ele coletará dados sobre os níveis de insolação em vários edifícios que seguem esse modelo. O objetivo é analisar os efeitos da insolação em cada edifício, identificar potenciais problemas críticos e fornecer recomendações arquitetônicas para otimizar o aproveitamento da luz natural e melhorar o conforto térmico nas construções.
+
+Para facilitar essa análise, o arquiteto te contratou para desenvolver um programa que será capaz de realizar as seguintes tarefas: coletar e armazenar as informações de insolação de um edifício dentro do formato especificado e calcular diversas métricas deste edifício a partir dos dados obtidos, fornecendo insights importantes sobre o impacto da insolação em cada caso.
+
+### Objetivos
+
+O programa deve:
+
+1. Coletar o nível de insolação de cada janela do edifício.
+2. Armazenar os dados em uma estrutura adequada.
+3. Identificar janelas e andares problemáticos com base na insolação.
+4. realizar cálculos com os dados obtidos e indicar um possível problema no edifício.
+
+### Parte 1 — Coleta e Armazenamento de Dados
+
+O edifício é disposto da seguinte maneira:
+
+| andar | janela 1          | janela 2          | janela 3          |
+| ----- | ----------------- | ----------------- | ----------------- |
+| 10°   | (valor informado) | (valor informado) | (valor informado) |
+| 9°    | (valor informado) | (valor informado) | (valor informado) |
+| 8°    | (valor informado) | (valor informado) | (valor informado) |
+| 7°    | (valor informado) | (valor informado) | (valor informado) |
+| 6°    | (valor informado) | (valor informado) | (valor informado) |
+| 5°    | (valor informado) | (valor informado) | (valor informado) |
+| 4°    | (valor informado) | (valor informado) | (valor informado) |
+| 3°    | (valor informado) | (valor informado) | (valor informado) |
+| 2°    | (valor informado) | (valor informado) | (valor informado) |
+| 1°    | (valor informado) | (valor informado) | (valor informado) |
+
+O programa deve solicitar ao usuário a quantidade de insolação de cada janela, conforme o exemplo:
+
+> “Insira o nível de insolação (0 a 10) da janela X do andar Y?”
+
+::: {.callout-note title="Dica"} 
+
+Para realizar esta impressão alterando o valor de X e Y, dentro de duas estrutura de repetição alinhadas que partem de (0, 0), utilize a seguinte `string` dentro da função input():
+
+```{python}
+#| eval: false
+f'Insira o nível de insolação (0 a 10) da janela {contador_de_janelas + 1} do andar {10 - contador_de_andares}: '
+```
+
+Onde contador_de_janelas e contador_de_andares são variáveis e podem possuir um nome diferente no seu código. (Tente entender a lógica do porque que são feitas as operações: contador_de_janelas + 1 e 10 - contador_de_andares)
+
+Leia mais sobre esta formatação de `string` aqui: [f-string](https://www.geeksforgeeks.org/python/formatted-string-literals-f-strings-python/)
+
+:::
+
+### Parte 2 — Cálculos de Insolação
+
+Com base nos dados coletados, o programa deve realizar os seguintes cálculos:
+
+* Insolação média geral
+
+  A **insolação média geral** do edifício é dada por: $I_{media} = \frac{\sum{\text{insolação de cada janela}}}{\text{total de janelas}}$.
+
+* Janelas com isolação execessiva, insuficiente e problemáticas
+
+  O programa deve calcular a porcentagem de janelas com insolação excessiva, a porcentagem de janelas com insolação insuficiente e a porcentagem de janelas problemáticas. Para isto, deve se considerar o seguinte:
+
+  * Quantidade de janelas com insolação excessiva: será denominado por $Q_{exc}$;
+  
+  * Quantidade de janelas com insolação insuficiente: será denominado por $Q_{ins}$;
+
+  * Porcentagem de janelas com insolação execessiva:
+
+    Uma janela possui insolação excessiva caso o valor seja **maior ou igual** a 8.
+    Portanto, a porcentagem de janelas com insolação excessiva é dada por: $P_{exc} = \frac{Q_{exc}}{\text{total de janelas}}$
+
+  * Porcentagem de janelas com insolação insuficiente:
+
+    Uma janela possui insolação insuficiente caso o valor seja **menor** que 3.
+    Portanto, a porcentagem de janelas com insolação insuficiente é dada por: $P_{ins} = \frac{Q_{ins}}{\text{total de janelas}}$ 
+
+  * Porcentagem de janelas problemáticas:
+
+    Uma janela é problemática se ela tem insolação insuficiente ou excessiva. 
+    Portanto, a porcentagem de janelas problemáticas é dada por: $P_{prob} = \frac{Q_{exc} + Q_{ins}}{\text{total de janelas}}$
+
+### Parte 3 - Descobrir possíveis problemas do edifício
+
+O programa deve, com base nos cálculos realizados, identificar possíveis problemas no edifício. Para isso, utilize o seguinte parâmetro:
+
+* Porcentagem aceitável de janelas problemáticas: $40\%$
+
+Com base nessa referência, o programa deve avaliar:
+
+* Se a porcentagem de janelas problemáticas é maior que a aceitável, e exibir a mensagem:
+  > "Maior porcentagem de janelas problemáticas do que é permitido!"
+
+* Se a porcentagem de janelas problemáticas é menor ou igual à aceitável, e exibir a mensagem:
+  > "Porcentagem aceitável de janelas problemáticas."
+
+### Parte 4 — Relatório Final
+
+O relatório final deve apresentar as seguintes informações:
+
+* Todos os andares e janelas, indicando qual a sua insolação.
+
+* A insolação média geral ($I_{media}$).
+
+* A quantidade de janelas com insolação excessiva e insuficiente.
+
+* A porcentagem de janelas com insolação excessiva e insuficiente.
+
+* A porcentagem de janelas problemáticas.
+
+* A indicação se a porcentagem de janelas problemáticas é aceitável ou não.
+
+### Dicas Importantes
+
+* Lembre-se que uma variável não precisa de ter o seu valor alterado, e pode ser utilizada para aumentar a clareza do código escrito.
+
+  Por exemplo, analise o código abaixo:
+
+  ```{python}
+  #| eval: false
+  v = (2 ** 2) * 3.14 * 5
+  ```
+
+  Não é possível identificar com facilidade o que está sendo feito. Uma melhoria possível para tornar este código simples muito mais claro é a utilização de variáveis com valores fixos:
+
+  ```{python}
+  #| eval: false
+  pi: float = 3.14
+  raio_do_cilindro: int = 2
+  altura_do_cilindro: int = 5
+
+  # calcular a área da base do cilíndro
+  area_da_base: float = pi * (raio_do_cilindro ** 2)
+
+  # calcular o volume do cilindro
+  volume_do_cilindro: float = area_da_base * altura_do_cilindro
+  ```
+
+* Pense na estrutura do projeto **antes** de começar a programar. Tente responder as seguintes questões sobre o projeto:
+  
+  1. Como os dados de entrada serão armazenados?
+
+  2. Quais tipos de variáveis podem ser utilizados para armazenar diferentes valores já informados no enunciado do projeto?
+
+  3. Deve haver algum tipo de conversão entre as entradas fornecidas e os dados armazenados?
+
+* Caso possível, divida o projeto em partes menores e teste cada uma delas isoladamente, antes de integrá-las na solução completa. Isso facilita a identificação de problemas, permitindo que você se concentre em uma área específica sem a complexidade do projeto como um todo. Por exemplo, se o cálculo da insolação média geral não estiver funcionando corretamente, mas você não consegue determinar se o erro está na soma das insolação de todas as janelas ou na lógica interna do cálculo, crie uma versão isolada deste pequeno algoritmo em um arquivo separado. Utilize dados de entrada que você já sabe que estão corretos, para poder verificar e depurar cada parte do cálculo com mais precisão. Isso ajudará a localizar o erro de forma mais eficiente e reduzirá o tempo gasto na solução do problema.
+
+## Entrega
+
+A entrega do proejto deverá ser realizada através deste [link](https://docs.google.com/forms/d/e/1FAIpQLSfyppF3j2VVbLx9qD5V0NkFsgqCB_84elFse84dNjXWnh3bMw/viewform?usp=publish-editor), onde você irá enviar o seu repositório do github. Lembre-se de deixar o respositório do github público.
+

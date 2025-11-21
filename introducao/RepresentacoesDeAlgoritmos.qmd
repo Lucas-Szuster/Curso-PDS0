@@ -1,0 +1,444 @@
+---
+title: "Representações de Algorítmos"
+toc: true
+toc-title: "Conteúdos da página"
+---
+
+## Pseudocódigo
+
+O pseudocódigo é uma forma simplificada e estruturada de descrever um algoritmo, usando uma linguagem próxima da linguagem humana, mas organizada de maneira lógica, semelhante à de um programa de computador. Ele serve como uma ponte entre o pensamento humano e a linguagem de programação, permitindo que a lógica de um problema seja planejada antes de ser implementada em código real.
+
+Em vez de usar uma sintaxe rígida e regras específicas de uma linguagem (como Python, Java ou C++), o pseudocódigo utiliza palavras e estruturas genéricas, fáceis de entender por qualquer pessoa com conhecimentos básicos de programação. O foco principal está em comunicar claramente os passos que devem ser seguidos para resolver um problema, e não em detalhes técnicos de implementação.
+
+Por exemplo, um algoritmo para somar dois números pode ser escrito em pseudocódigo assim:
+
+```{ObjectiveC}
+INÍCIO
+  LER número1
+  LER número2
+  SOMA ← número1 + número2
+  ESCREVER "O resultado é:", SOMA
+FIM
+```
+
+
+Esse exemplo mostra claramente o que o algoritmo faz, sem se preocupar com a linguagem de programação usada. Ele é fácil de compreender e de transformar depois em código real.
+
+O pseudocódigo também é amplamente usado no planejamento e ensino da lógica de programação, pois ajuda os estudantes e desenvolvedores a raciocinar sobre a sequência de passos de um problema sem se preocupar com erros de sintaxe.
+
+Em resumo, o pseudocódigo é uma ferramenta de planejamento e comunicação, que permite expressar ideias e soluções de forma estruturada, lógica e compreensível, sendo o primeiro passo natural antes da escrita do código em uma linguagem de programação real.
+
+### Condicionais em Pseudocódigo
+
+As estruturas condicionais são essenciais para a tomada de decisões dentro de um algoritmo. Elas permitem que o fluxo de execução de um programa siga diferentes caminhos, dependendo de uma condição ser verdadeira ou falsa.
+
+### Condicional Simples (SE)
+
+A estrutura condicional mais simples é o SE. Ela permite que uma ação seja executada apenas quando uma condição for verdadeira.
+
+Exemplo de pseudocódigo com condicional simples:
+
+```{ObjectiveC}
+INÍCIO
+  LER idade
+  SE idade >= 18 ENTÃO
+    ESCREVER "Maior de idade"
+  FIM SE
+FIM
+```
+
+Neste exemplo, o algoritmo lê a idade de uma pessoa e, caso a idade seja maior ou igual a 18, exibe a mensagem "Maior de idade". Se a condição não for satisfeita, nada é executado.
+
+### Condicional com SENÃO
+
+A estrutura condicional SE...SENÃO permite definir um caminho alternativo a ser seguido caso a condição não seja verdadeira.
+
+Exemplo de pseudocódigo com SE...SENÃO:
+
+```{ObjectiveC}
+INÍCIO
+  LER idade
+  SE idade >= 18 ENTÃO
+    ESCREVER "Maior de idade"
+  SENÃO
+    ESCREVER "Menor de idade"
+  FIM SE
+FIM
+```
+
+Aqui, o algoritmo verifica se a pessoa é maior de idade. Caso a condição idade >= 18 seja verdadeira, ele imprime "Maior de idade". Caso contrário, imprime "Menor de idade".
+
+### Condicional com múltiplas alternativas (SE...SENÃO SE...SENÃO)
+
+Em alguns casos, é necessário avaliar várias condições em sequência. Para isso, podemos usar a estrutura SE...SENÃO SE...SENÃO.
+
+Exemplo de pseudocódigo com múltiplas alternativas:
+
+```{ObjectiveC}
+INÍCIO
+  LER nota
+  SE nota >= 9 ENTÃO
+    ESCREVER "Excelente"
+  SENÃO SE nota >= 7 ENTÃO
+    ESCREVER "Bom"
+  SENÃO SE nota >= 5 ENTÃO
+    ESCREVER "Regular"
+  SENÃO
+    ESCREVER "Reprovado"
+  FIM SE
+FIM
+```
+
+
+Este exemplo verifica a nota de um aluno e classifica-o em uma das categorias: "Excelente", "Bom", "Regular" ou "Reprovado". A estrutura SE...SENÃO SE...SENÃO permite verificar várias condições sequencialmente.
+
+### Condicionais Aninhadas
+
+Às vezes, uma condição pode ser aninhada dentro de outra, ou seja, uma estrutura SE pode conter outra estrutura SE dentro de sua parte SENÃO.
+
+Exemplo de pseudocódigo com condicional aninhada:
+
+```{ObjectiveC}
+INÍCIO
+  LER idade
+  SE idade >= 18 ENTÃO
+    LER salario
+    SE salario >= 5000 ENTÃO
+      ESCREVER "Maior de idade e alta renda"
+    SENÃO
+      ESCREVER "Maior de idade, mas baixa renda"
+    FIM SE
+  SENÃO
+    ESCREVER "Menor de idade"
+  FIM SE
+FIM
+```
+
+Aqui, o algoritmo verifica se a pessoa é maior de idade. Se for, ele então verifica o salário da pessoa. Caso o salário seja maior ou igual a 5000, ele imprime "Maior de idade e alta renda"; caso contrário, imprime "Maior de idade, mas baixa renda". Se a pessoa for menor de idade, o programa imprime "Menor de idade".
+
+### Estruturas de repetição em pseudocódigo
+
+As estruturas de repetição são fundamentais para a execução de um bloco de código várias vezes, até que uma condição seja atendida. Elas são especialmente úteis quando se tem tarefas repetitivas ou quando se precisa de uma sequência de ações que dependem de algum critério, como a contagem ou uma verificação lógica.
+
+Em pseudocódigo, as repetições são implementadas de forma simples, com estruturas que controlam a execução repetida de comandos. Vamos explorar as formas mais comuns de estrutura de repetição.
+
+### Repetição Controlada por Condição (Enquanto - ENQUANTO)
+
+A estrutura ENQUANTO (ou WHILE em algumas linguagens de programação) permite que um conjunto de ações seja repetido enquanto uma condição for verdadeira. Quando a condição se torna falsa, o loop é interrompido.
+
+Exemplo de pseudocódigo com repetição controlada por condição:
+
+```{ObjectiveC}
+INÍCIO
+  LER número
+  ENQUANTO número >= 0 FAÇA
+    SOMA ← SOMA + número
+    LER número
+  FIM ENQUANTO
+  ESCREVER "A soma dos números positivos é:", SOMA
+FIM
+```
+
+
+Neste exemplo, o algoritmo lê números e vai somando-os enquanto o número informado for maior ou igual a zero. Quando um número negativo for digitado, o laço termina e o programa exibe a soma dos números positivos informados.
+
+### Repetição Controlada por Contagem (Para - PARA)
+
+A estrutura PARA (ou FOR) é usada quando você sabe o número de vezes que deseja repetir um conjunto de ações. Ela é controlada por um contador que incrementa ou decrementa a cada iteração, até atingir um limite predefinido.
+
+Exemplo de pseudocódigo com repetição controlada por contagem:
+
+```{ObjectiveC}
+INÍCIO
+  LER n
+  PARA i ← 1 ATÉ n FAÇA
+    ESCREVER "Repetição número:", i
+  FIM PARA
+FIM
+```
+
+Neste exemplo, o algoritmo vai repetir o processo de exibição da mensagem "Repetição número: i" um número de vezes igual a n, onde i vai de 1 até o valor de n.
+
+## Fluxogramas
+
+Fluxograma: é um tipo de diagrama, e pode ser entendido como uma representação esquemática de um processo ou algoritmo, muitas vezes feito através de gráficos que ilustram de forma descomplicada a transição de informações entre os elementos que o compõem, ou seja, é a sequência operacional do desenvolvimento de um processo, o qual caracteriza: o trabalho que está sendo realizado, o tempo necessário para sua realização, a distância percorrida pelos documentos, quem está realizando o trabalho e como ele flui entre os participantes deste processo.
+
+Os fluxogramas são muito utilizados em projetos de software para representar a lógica interna dos programas, mas podem também ser usados para desenhar processos de negócio e o workflow que envolve diversos atores corporativos no exercício de suas atribuições.[1]
+
+O diagrama de fluxo de dados (DFD) utiliza do fluxograma para modelagem e documentação de sistemas computacionais.
+
+O termo fluxograma designa uma representação gráfica de um determinado processo ou fluxo de trabalho, efetuado geralmente com recurso a figuras geométricas normalizadas e as setas unindo essas figuras geométricas. Através desta representação gráfica é possível compreender de forma rápida e fácil a transição de informações ou documentos entre os elementos que participam no processo em causa.
+
+O fluxograma pode ser definido também como o gráfico em que se representa o percurso ou caminho percorrido por certo elemento (por exemplo, um determinado documento), através dos vários departamentos da organização, bem como o tratamento que cada um vai lhe dando.
+
+A existência de fluxogramas para cada um dos processos é fundamental para a simplificação e racionalização do trabalho, permitindo a compreensão e posterior otimização dos processos desenvolvidos em cada departamento ou área da organização.
+
+### Funcionamento de fluxogramas simples
+
+Todos os fluxogramas possuem setas, que indicam para o onde a sequência lógica de execução do programa segue. Entre estas setas estão localizados nós, que podem ser agrupados em certos tipos:
+
+* Início/Fim: Indicam onde o fluxograma começa e onde o fluxograma termina.
+
+* Entrada de dados/Definição de dados: Indica quais dados serão utilizados e como devem ser definidos (seus nomes e possíveis valores).
+
+* Processamento de dados: Indica a lógica que deve ser efetuada com os dados do programa.
+
+
+#### Exemplo de fluxograma
+
+Descrição do algoritmo: Ler dois números (a e b), calcular a soma dos dois e armazenar o resultado em um terceiro número, c.
+
+<div style="text-align: center;">
+
+```{mermaid}
+flowchart TD
+A([Início]) --> B[/entrada de dados em a/]
+B --> C[/entrada de dados em b/]
+C --> D["c = a + b"]
+D --> E([Fim])
+```
+
+</div>
+
+### Fluxogramas com estruturas condicionais simples
+
+Nos fluxogramas, as estruturas condicionais são representadas de forma visual, permitindo compreender facilmente os pontos de decisão dentro de um processo. Em vez de apenas mostrar uma sequência linear de ações, o fluxograma passa a indicar bifurcações — momentos em que o fluxo pode seguir por caminhos diferentes dependendo de um resultado lógico.
+
+A condicional é representada pelo losango (◇), símbolo universal usado para indicar uma decisão.
+Dentro dele, é escrita a condição que será avaliada — por exemplo, “Idade ≥ 18?”.
+A partir do losango, saem normalmente duas setas, correspondendo às possíveis respostas da verificação:
+
+* Uma seta para o caminho verdadeiro (geralmente marcada com "Sim", “Verdadeiro” ou “True”).
+
+* Outra seta para o caminho falso (marcada com “Não”, "Falso" ou “False”).
+
+Cada um desses caminhos leva a blocos diferentes de instruções, que mostram o que o algoritmo deve fazer em cada situação.
+Depois de executadas as ações correspondentes, dependendo do algoritmo, os caminhos se unem novamente ou não (antes do fim).
+
+Essa forma de representação torna as decisões fáceis de visualizar, permitindo que qualquer pessoa — mesmo sem conhecer o código — entenda rapidamente onde o processo toma decisões e quais são as possíveis consequências de cada escolha.
+
+#### Exemplo de fluxograma com condicional
+
+Descrição do algoritmo: Ler a idade de uma pessoa e determinar se ela é maior de idade (idade ≥ 18).
+
+<div style="text-align: center;">
+
+```{mermaid}
+flowchart TD
+A([Início]) --> B[/Ler idade/]
+B --> C{Idade >= 18?}
+C -->|Verdadeiro| D["Exibir: Maior de idade"]
+C -->|Falso| E["Exibir: Menor de idade"]
+D --> F([Fim])
+E --> F
+```
+
+</div>
+
+::: {.callout-note title="Observação"}
+
+As estruturas condicionais são os principais elementos que conferem ramificações aos fluxogramas. Elas tornam o diagrama mais próximo da lógica real dos algoritmos, destacando pontos de decisão e possíveis alternativas de execução dentro do processo.
+
+:::
+
+### Fluxogramas com estruturas condicionais encadeadas
+
+Em muitos casos, um algoritmo não toma apenas uma decisão — ele precisa avaliar várias condições em sequência.
+Quando isso acontece, o fluxograma apresenta condicionais encadeadas, ou seja, um losango levando a outro, formando uma cadeia de verificações.
+Cada decisão depende do resultado da anterior, e o fluxo do processo segue até que todas as verificações tenham sido realizadas.
+
+Esse tipo de estrutura é comum em algoritmos que precisam classificar situações, determinar categorias ou escolher entre múltiplas alternativas.
+Visualmente, o fluxograma vai mostrando as “encruzilhadas” do processo, permitindo acompanhar a sequência de perguntas e respostas até chegar ao resultado final.
+
+#### Exemplo de fluxograma com condicionais encadeadas
+
+Descrição do algortmo: Descobrir qual o desempenho de um aluno com base na sua nota final, categorizando-o entre Excelente, Bom, Regular e Reprovado.
+
+1. Verificar se a nota é maior ou igual a 9 — caso seja, classificar como “Excelente”.
+
+2. Se não for, verificar se é maior ou igual a 7 — classificar como “Bom”.
+
+3. Caso contrário, verificar se é maior ou igual a 5 — classificar como “Regular”.
+
+4. Se nenhuma das condições anteriores for atendida, o resultado será “Reprovado”.
+
+Essa representação mostra claramente que cada decisão leva a outra, até que o algoritmo encontre a condição que se aplica à situação analisada.
+
+<div style="text-align: center;">
+
+```{mermaid}
+flowchart TD
+A([Início]) --> B[/Ler nota/]
+B --> C{Nota >= 9?}
+C -->|Verdadeiro| D["Exibir: Excelente"]
+C -->|Falso| E{Nota >= 7?}
+E -->|Verdadeiro| F["Exibir: Bom"]
+E -->|Falso| G{Nota >= 5?}
+G -->|Verdadeiro| H["Exibir: Regular"]
+G -->|Falso| I["Exibir: Reprovado"]
+D --> J([Fim])
+F --> J
+H --> J
+I --> J
+```
+
+</div>
+
+::: {.callout-note title="Observação"}
+
+Essas cadeias de decisões tornam os fluxogramas especialmente úteis para entender lógicas complexas de forma visual e intuitiva, facilitando o planejamento e a comunicação de algoritmos com múltiplos critérios de decisão.
+
+:::
+
+### Fluxogramas com estruturas de repetição simples
+
+Nos fluxogramas, as estruturas de repetição representam situações em que um conjunto de ações precisa ser executado diversas vezes, de forma controlada. Essas estruturas são fundamentais em algoritmos, pois permitem automatizar tarefas repetitivas e economizar etapas no processo lógico.
+
+Visualmente, a repetição é representada por um ciclo dentro do fluxograma, no qual o fluxo retorna a uma etapa anterior, formando um laço. Esse retorno é o que caracteriza o comportamento repetitivo da estrutura.
+
+#### Representação gráfica
+
+A estrutura de repetição é geralmente associada ao losango (◇), o mesmo símbolo usado para decisões, já que a repetição depende de uma condição lógica que determina se o ciclo continuará ou não. Enquanto a condição for verdadeira, o fluxo retorna ao início do bloco de instruções; quando a condição se torna falsa, o fluxo segue adiante, saindo do laço.
+
+Isso torna as estruturas de repetição visualmente distintas das condicionais simples: nelas, há um caminho que volta para um ponto anterior do fluxograma, evidenciando a ideia de repetição.
+
+#### Tipos de repetição representados em fluxogramas
+
+Existem diferentes formas de ilustrar a repetição em fluxogramas, de acordo com a lógica do algoritmo:
+
+Repetição controlada por condição (tipo “enquanto”) – O ciclo repete enquanto uma condição for verdadeira.
+O teste é feito antes da execução do bloco de instruções.
+
+Repetição controlada por contagem (tipo “para”) – O ciclo se repete um número pré-determinado de vezes.
+Visualmente, o laço indica que o fluxo volta até que o contador atinja o limite definido.
+
+#### Exemplo de fluxograma com repetição
+
+Descrição do algoritmo: Ler uma sequência de números e somá-los enquanto o número informado for positivo. Quando um número negativo for digitado, o processo deve parar e o resultado final ser exibido.
+
+<div style="text-align: center;">
+
+```{mermaid}
+flowchart TD
+A([Início]) --> B["Soma = 0"]
+B --> C[/Ler número/]
+C --> D{Número >= 0?}
+D -->|Verdadeiro| E["Soma = Soma + Número"]
+E --> C
+D -->|Falso| F["Exibir Soma"]
+F --> G([Fim])
+```
+
+</div>
+
+##### Interpretação
+
+Neste fluxograma, o losango representa a condição “Número ≥ 0?”.
+Enquanto essa condição é verdadeira, o fluxo retorna para a leitura de novos números, repetindo as etapas de leitura e soma.
+Quando a condição se torna falsa (ou seja, um número negativo é digitado), o laço é interrompido e o programa segue para o encerramento.
+
+## Exercícios
+
+### Exercício 1
+
+Transforme o pseudocódigo abaixo em fluxograma:
+
+```{Objectivec}
+INÍCIO
+  LER número1
+  LER número2
+  SE número1 > número2
+    ESCREVER "Entre os números, o maior é: ", número1
+  SENÃO
+    ESCREVER "Entre os números, ou são iguais ou o maior é: ", número2
+  FIM SE
+FIM
+```
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+![PNG](imagens/fluxogramafudidopqp.png)
+
+:::
+
+### Exercício 2
+
+Abaixo estão um pseudocógio e um floxograma:
+
+::: {.columns}
+
+::: {.column}
+
+### Fluxograma
+
+```{mermaid}
+flowchart TD
+A([Inicio]) --> B["a = 0"]
+B --> C{a < 3?}
+C -->|Verdadeiro| D["a = a + 1"]
+C -->|Falso| E([Fim])
+D --> C
+```
+
+:::
+
+::: {.column}
+
+### Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+  a ← 0
+  ENQUANTO a < 3 FAÇA
+    a ← a + 1
+  FIM ENQUANTO
+FIM
+```
+
+:::
+
+:::
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+Sim.
+
+No fluxograma, temos um valor a = 0, e, enquanto ele é menor que 3 ele é incrementado por 1. No momento que seu valor atinge 3, o algortimo termina, pois a condição "a < 3" se torna falsa. No pseudocódigo temos o mesmo efeito, pois assim que a assume o valor 3, o ENQUANTO acaba.
+
+:::
+
+### Exercício 3
+
+Com base no algorítmo abaixo responda:
+
+```{mermaid}
+flowchart TD
+A([Início]) --> B[/Ler um número/]
+B --> C{Número < 0?}
+C -->|Sim| D["Exibir: Número negativo"]
+C -->|Não| E{Número <= 50?}
+E -->|Sim| F["Exibir: Faixa 1"]
+E -->|Não| G{Número <= 100?}
+G -->|Sim| H["Exibir: Faixa 2"]
+G -->|Não| I["Exibir: Número fora da faixa permitida"]
+D --> J([Fim])
+F --> J
+H --> J
+I --> B
+```
+
+1. O que este algoritmo faz?
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+Ele lê um número e checa se este número está dentro da faixa aceitável de entradas, sendo a faixa: $(-\infty, 100]$. Caso um número esteja fora da faixa, o algoritmo é repetido, até que um número válido seja lido.
+
+:::
+
+2. O que acontecerá se o número lido pelo algoritmo fosse 105?
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+Como números maiores que 100 serão classificados como números fora da faixa, o resultado será uma repetição do algoritmo, lendo novamente o número para checar se ele está na faixa aceitável.
+
+:::
