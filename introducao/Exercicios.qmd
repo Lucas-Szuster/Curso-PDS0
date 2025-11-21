@@ -129,7 +129,9 @@ Explique o que acontece se tentarmos somar "5" (string) com 5 (inteiro). Como vo
 ::: {.callout-tip collapse="true" title="Ver Solução"}
 
 A operação `"5" + 5` não funciona porque os dois elementos são de tipos diferentes, e a operação de somar um `int` a uma `string` não está definida. Para corrigir o erro, ambos os valores devem ser do mesmo tipo. Para isso, podem ser feitas duas correções diferentes:
+
 * `"5" + "5"` -> resulta em `"55"`
+
 * `5 + 5` -> resulta em `10` 
 
 :::
