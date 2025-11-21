@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Algorítmos – PDS-0</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../introducao/Algoritmos.html">Introdução</a></li><li class="breadcrumb-item"><a href="../introducao/Algoritmos.html">Algorítmos</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">PDS-0</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sobre o curso</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Introdução</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/Algoritmos.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Algorítmos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/RepresentacoesDeAlgoritmos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Representações de Algorítmos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/OrganizacaoDeComputadores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fundamentos de computadores</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/IntroducaoAProgramacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdução A Programação</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/IntroducaoAPython.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdução A Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/CondicionaisEmPython.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Condicionais em Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/EstruturasDeRepeticaoEmPython.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Estruturas de repetição em python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/Matrizes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Matrizes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/Exercicios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercícios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Projeto</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/Projeto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Trabalho Prático 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/CasosDeTeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Casos de Teste — TP1</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Funções</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../funcoes/IntroducaoAFuncoes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdução a funções</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text">funcoes/Exercicios.qmd</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Módulos</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+ <span class="menu-text">modulos/Exercicios.qmd</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Objetos e classes</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+ <span class="menu-text">ObjetosEClasses/Exercicios.qmd</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Programação orientada a objetos (POO)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+ <span class="menu-text">POO/Exercicios.qmd</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Introdução a estruturas de dados</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+ <span class="menu-text">introducaoAED/Exercicios.qmd</span>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Conteúdos da página</h2>
+   
+  <ul>
+  <li><a href="#o-que-é-um-algoritmo" id="toc-o-que-é-um-algoritmo" class="nav-link active" data-scroll-target="#o-que-é-um-algoritmo">O que é um Algoritmo?</a>
+  <ul>
+  <li><a href="#principais-características-de-um-algoritmo" id="toc-principais-características-de-um-algoritmo" class="nav-link" data-scroll-target="#principais-características-de-um-algoritmo">Principais características de um algoritmo</a></li>
+  <li><a href="#exemplo-de-algoritmo" id="toc-exemplo-de-algoritmo" class="nav-link" data-scroll-target="#exemplo-de-algoritmo">Exemplo de algoritmo</a></li>
+  <li><a href="#eficiência-e-complexidade" id="toc-eficiência-e-complexidade" class="nav-link" data-scroll-target="#eficiência-e-complexidade">Eficiência e complexidade</a></li>
+  </ul></li>
+  <li><a href="#algoritmos-condicionais" id="toc-algoritmos-condicionais" class="nav-link" data-scroll-target="#algoritmos-condicionais">Algoritmos condicionais</a>
+  <ul>
+  <li><a href="#o-que-é-uma-condição" id="toc-o-que-é-uma-condição" class="nav-link" data-scroll-target="#o-que-é-uma-condição">O que é uma condição?</a></li>
+  <li><a href="#estrutura-básica-de-uma-decisão" id="toc-estrutura-básica-de-uma-decisão" class="nav-link" data-scroll-target="#estrutura-básica-de-uma-decisão">Estrutura básica de uma decisão</a></li>
+  <li><a href="#encadeamento-de-condições" id="toc-encadeamento-de-condições" class="nav-link" data-scroll-target="#encadeamento-de-condições">Encadeamento de condições</a></li>
+  </ul></li>
+  <li><a href="#importância-dos-operadores-lógicos-e-de-comparação" id="toc-importância-dos-operadores-lógicos-e-de-comparação" class="nav-link" data-scroll-target="#importância-dos-operadores-lógicos-e-de-comparação">Importância dos operadores lógicos e de comparação</a></li>
+  <li><a href="#algoritmos-com-estruturas-de-repetição-simples" id="toc-algoritmos-com-estruturas-de-repetição-simples" class="nav-link" data-scroll-target="#algoritmos-com-estruturas-de-repetição-simples">Algoritmos com estruturas de repetição simples</a>
+  <ul>
+  <li><a href="#o-que-é-uma-estutura-de-repetição" id="toc-o-que-é-uma-estutura-de-repetição" class="nav-link" data-scroll-target="#o-que-é-uma-estutura-de-repetição">O que é uma estutura de repetição?</a></li>
+  <li><a href="#para-que-servem-as-esturturas-de-repetição" id="toc-para-que-servem-as-esturturas-de-repetição" class="nav-link" data-scroll-target="#para-que-servem-as-esturturas-de-repetição">Para que servem as esturturas de repetição?</a></li>
+  <li><a href="#funcionamento-de-estruturas-de-repetição" id="toc-funcionamento-de-estruturas-de-repetição" class="nav-link" data-scroll-target="#funcionamento-de-estruturas-de-repetição">Funcionamento de estruturas de repetição</a></li>
+  <li><a href="#tipos-de-repetição" id="toc-tipos-de-repetição" class="nav-link" data-scroll-target="#tipos-de-repetição">Tipos de repetição</a>
+  <ul>
+  <li><a href="#repetição-controlada-por-condição" id="toc-repetição-controlada-por-condição" class="nav-link" data-scroll-target="#repetição-controlada-por-condição"><strong>Repetição controlada por condição</strong></a></li>
+  <li><a href="#repetição-controlada-por-contagem" id="toc-repetição-controlada-por-contagem" class="nav-link" data-scroll-target="#repetição-controlada-por-contagem"><strong>Repetição controlada por contagem</strong></a></li>
+  </ul></li>
+  <li><a href="#exemplo-visual" id="toc-exemplo-visual" class="nav-link" data-scroll-target="#exemplo-visual">Exemplo visual</a></li>
+  </ul></li>
+  <li><a href="#algoritmos-com-estruturas-de-repetição-encadeadas" id="toc-algoritmos-com-estruturas-de-repetição-encadeadas" class="nav-link" data-scroll-target="#algoritmos-com-estruturas-de-repetição-encadeadas">Algoritmos com estruturas de repetição encadeadas</a>
+  <ul>
+  <li><a href="#como-funcionam-as-estruturas-de-repetição-alinhadas" id="toc-como-funcionam-as-estruturas-de-repetição-alinhadas" class="nav-link" data-scroll-target="#como-funcionam-as-estruturas-de-repetição-alinhadas">Como funcionam as estruturas de repetição alinhadas</a></li>
+  <li><a href="#quando-utilizar-repetições-alinhadas" id="toc-quando-utilizar-repetições-alinhadas" class="nav-link" data-scroll-target="#quando-utilizar-repetições-alinhadas">Quando utilizar repetições alinhadas</a></li>
+  <li><a href="#exemplo-visual-1" id="toc-exemplo-visual-1" class="nav-link" data-scroll-target="#exemplo-visual-1">Exemplo visual</a></li>
+  </ul></li>
+  <li><a href="#algoritmos-na-computação" id="toc-algoritmos-na-computação" class="nav-link" data-scroll-target="#algoritmos-na-computação">Algoritmos na computação</a></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios">Exercícios</a>
+  <ul>
+  <li><a href="#exercício-1" id="toc-exercício-1" class="nav-link" data-scroll-target="#exercício-1">Exercício 1</a></li>
+  <li><a href="#exercício-2" id="toc-exercício-2" class="nav-link" data-scroll-target="#exercício-2">Exercício 2</a></li>
+  <li><a href="#exercício-3" id="toc-exercício-3" class="nav-link" data-scroll-target="#exercício-3">Exercício 3</a></li>
+  <li><a href="#exercício-4" id="toc-exercício-4" class="nav-link" data-scroll-target="#exercício-4">Exercício 4</a></li>
+  <li><a href="#exercício-5" id="toc-exercício-5" class="nav-link" data-scroll-target="#exercício-5">Exercício 5</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../introducao/Algoritmos.html">Introdução</a></li><li class="breadcrumb-item"><a href="../introducao/Algoritmos.html">Algorítmos</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Algorítmos</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="o-que-é-um-algoritmo" class="level2">
+<h2 class="anchored" data-anchor-id="o-que-é-um-algoritmo">O que é um Algoritmo?</h2>
+<p>Um algoritmo é um conjunto de instruções organizadas de maneira lógica e finita, criado para resolver um problema ou executar uma tarefa específica. Em termos simples, pode-se compará-lo a uma receita de cozinha: ele indica passo a passo o que deve ser feito, em que ordem e com quais dados, garantindo que qualquer pessoa ou sistema que siga essas instruções possa chegar ao resultado esperado. Cada passo tem um propósito claro, e a sequência completa define o caminho do início até a conclusão da tarefa.</p>
+<p>Na matemática, na ciência da computação e em diversas áreas da engenharia, os algoritmos são essenciais porque permitem que problemas sejam resolvidos de forma estruturada, eficiente e sem ambiguidades. Eles são capazes de lidar com situações simples, como somar dois números, até processos extremamente complexos, como organizar rotas de transporte, processar grandes volumes de dados, treinar modelos de inteligência artificial ou simular fenômenos naturais de alta complexidade.</p>
+<p>Além de simplesmente seguir uma sequência de passos, um algoritmo geralmente trabalha com entradas e saídas. As entradas correspondem aos dados ou informações que o algoritmo recebe para processar, enquanto as saídas representam os resultados ou respostas produzidos ao final do processamento. Isso significa que, para funcionar corretamente, um algoritmo depende de informações de entrada confiáveis e gera resultados que podem ser utilizados por pessoas, outros sistemas ou processos automatizados. Em muitas situações, a mesma lógica pode produzir diferentes saídas dependendo dos dados fornecidos, demonstrando a flexibilidade e a importância do conceito de entradas e saídas no design de algoritmos.</p>
+<p>Dessa forma, entender como projetar algoritmos claros, organizados e capazes de lidar adequadamente com entradas e saídas é fundamental para qualquer pessoa que trabalhe com resolução de problemas, programação ou análise de processos complexos, tornando o pensamento lógico uma habilidade central no desenvolvimento de soluções eficientes e confiáveis.</p>
+<section id="principais-características-de-um-algoritmo" class="level3">
+<h3 class="anchored" data-anchor-id="principais-características-de-um-algoritmo">Principais características de um algoritmo</h3>
+<p>Um algoritmo precisa obedecer a algumas regras essenciais para ser considerado válido:</p>
+<ol type="1">
+<li><p>Finitude: o algoritmo deve terminar em algum momento. Isso significa que ele não pode entrar em um ciclo infinito de instruções — deve sempre chegar a um resultado ou a uma conclusão.</p></li>
+<li><p>Precisão: cada etapa do algoritmo deve ser clara e bem definida. Não pode haver dúvidas sobre o que fazer em cada passo.</p></li>
+<li><p>Efetividade: as instruções devem ser simples e executáveis. Cada ação deve ser possível de ser realizada dentro de um tempo finito, usando os recursos disponíveis (computador, pessoa, máquina, etc.).</p></li>
+</ol>
+<p>Essas três propriedades garantem que o algoritmo seja entendível, funcional e confiável.</p>
+</section>
+<section id="exemplo-de-algoritmo" class="level3">
+<h3 class="anchored" data-anchor-id="exemplo-de-algoritmo">Exemplo de algoritmo</h3>
+<p>Um exemplo clássico para entender o conceito é uma receita de bolo. Pense: para assar um bolo, você segue um conjunto de instruções como:</p>
+<ol type="1">
+<li><p>Misture os ingredientes secos.</p></li>
+<li><p>Adicione os ovos e o leite.</p></li>
+<li><p>Bata até formar uma massa homogênea.</p></li>
+<li><p>Coloque em uma forma untada.</p></li>
+<li><p>Leve ao forno por 40 minutos.</p></li>
+</ol>
+<p>Cada um desses passos é bem definido e precisa ser executado em ordem. Se você mudar a sequência ou omitir um passo, o resultado provavelmente será diferente do esperado. O mesmo acontece com os algoritmos — eles precisam de passos bem organizados e corretos para chegar ao resultado desejado.</p>
+</section>
+<section id="eficiência-e-complexidade" class="level3">
+<h3 class="anchored" data-anchor-id="eficiência-e-complexidade">Eficiência e complexidade</h3>
+<p>Nem todos os algoritmos que resolvem o mesmo problema são igualmente bons. Dois algoritmos diferentes podem chegar à mesma resposta, mas um deles pode ser muito mais rápido ou usar menos memória do que o outro. Essa diferença é o que chamamos de eficiência.</p>
+<p>A eficiência de um algoritmo é estudada através da complexidade computacional, que mede o tempo e os recursos necessários para executá-lo. Por exemplo, há algoritmos de busca que examinam cada item de uma lista um por um, e outros que encontram o resultado em frações de tempo usando estruturas de dados mais adequadas.</p>
+</section>
+</section>
+<section id="algoritmos-condicionais" class="level2">
+<h2 class="anchored" data-anchor-id="algoritmos-condicionais">Algoritmos condicionais</h2>
+<p>Nem todos os algoritmos seguem uma sequência de passos fixa. Em muitas situações, é necessário tomar decisões durante a execução de um processo. Para isso, utilizam-se as estruturas condicionais, que permitem ao algoritmo escolher caminhos diferentes dependendo das condições apresentadas.</p>
+<p>Em termos simples, uma condicional é uma instrução que faz o algoritmo verificar uma situação — por exemplo, comparar valores, verificar um estado ou analisar uma escolha — e, com base nesse resultado, decidir o que fazer em seguida.</p>
+<p>Essas decisões tornam os algoritmos muito mais inteligentes e flexíveis, pois permitem que eles se adaptem a diferentes contextos ou dados de entrada.</p>
+<section id="o-que-é-uma-condição" class="level3">
+<h3 class="anchored" data-anchor-id="o-que-é-uma-condição">O que é uma condição?</h3>
+<p>Uma condição é uma expressão lógica que pode resultar apenas em dois valores possíveis: verdadeiro (True) ou falso (False). O algoritmo avalia essa condição e, dependendo do resultado, executa um determinado conjunto de instruções.</p>
+<p>Por exemplo:</p>
+<ul>
+<li><p>“Se a temperatura for maior que 30 graus, ligar o ventilador.”</p></li>
+<li><p>“Se o usuário digitar a senha correta, permitir o acesso.”</p></li>
+<li><p>“Se o saldo for menor que zero, mostrar mensagem de saldo insuficiente.”</p></li>
+</ul>
+<p>Essas decisões baseiam-se sempre em testes lógicos — comparações e verificações que determinam qual caminho o algoritmo seguirá.</p>
+</section>
+<section id="estrutura-básica-de-uma-decisão" class="level3">
+<h3 class="anchored" data-anchor-id="estrutura-básica-de-uma-decisão">Estrutura básica de uma decisão</h3>
+<p>A estrutura lógica de um algoritmo condicional pode ser descrita da seguinte forma:</p>
+<pre class="{less}"><code>Se (condição for verdadeira):
+    execute a ação A
+Senão:
+    execute a ação B</code></pre>
+<p>Em outras palavras:</p>
+<blockquote class="blockquote">
+<p>Se algo for verdade, faça isso; caso contrário, faça aquilo.</p>
+</blockquote>
+<p>Esse tipo de estrutura é fundamental para qualquer programa, pois quase todas as aplicações precisam lidar com situações alternativas ou respostas diferentes de acordo com os dados fornecidos.</p>
+</section>
+<section id="encadeamento-de-condições" class="level3">
+<h3 class="anchored" data-anchor-id="encadeamento-de-condições">Encadeamento de condições</h3>
+<p>Algumas vezes, é necessário verificar mais de uma possibilidade. Nesses casos, o algoritmo pode encadear várias condições, avaliando uma de cada vez até encontrar a que corresponde à situação atual.</p>
+<p>Por exemplo, em um algoritmo que determina o desempenho de um aluno:</p>
+<ol type="1">
+<li><p>Leia a nota final.</p></li>
+<li><p>Se a nota for maior ou igual a 9, exiba “Excelente.”</p></li>
+<li><p>Senão, se a nota for maior ou igual a 7, exiba “Bom.”</p></li>
+<li><p>Senão, se a nota for maior ou igual a 5, exiba “Regular.”</p></li>
+<li><p>Caso contrário, exiba “Reprovado.”</p></li>
+</ol>
+<p>Esse tipo de encadeamento permite que o algoritmo classifique diferentes situações e produza resultados variados com base nas condições fornecidas.</p>
+</section>
+</section>
+<section id="importância-dos-operadores-lógicos-e-de-comparação" class="level2">
+<h2 class="anchored" data-anchor-id="importância-dos-operadores-lógicos-e-de-comparação">Importância dos operadores lógicos e de comparação</h2>
+<p>Para formular condições, os algoritmos utilizam operadores de comparação, como:</p>
+<ul>
+<li><p>“==” (igual a)</p></li>
+<li><p>“!=” (diferente de)</p></li>
+<li><p>“&gt;” (maior que)</p></li>
+<li><p>“&lt;” (menor que)</p></li>
+<li><p>“&gt;=” (maior ou igual a)</p></li>
+<li><p>“&lt;=” (menor ou igual a)</p></li>
+</ul>
+<p>Além disso, também podem ser usados operadores lógicos, que combinam várias condições:</p>
+<ul>
+<li><p>and (e lógico) — todas as condições precisam ser verdadeiras.</p></li>
+<li><p>or (ou lógico) — basta que uma condição seja verdadeira.</p></li>
+<li><p>not (não lógico) — inverte o valor lógico de uma condição.</p></li>
+</ul>
+<p>Esses operadores permitem criar decisões complexas e precisas, aumentando a capacidade do algoritmo de reagir a diferentes situações.</p>
+</section>
+<section id="algoritmos-com-estruturas-de-repetição-simples" class="level2">
+<h2 class="anchored" data-anchor-id="algoritmos-com-estruturas-de-repetição-simples">Algoritmos com estruturas de repetição simples</h2>
+<section id="o-que-é-uma-estutura-de-repetição" class="level3">
+<h3 class="anchored" data-anchor-id="o-que-é-uma-estutura-de-repetição">O que é uma estutura de repetição?</h3>
+<p>Uma estrutura de repetição é um mecanismo que permite executar um conjunto de instruções diversas vezes de forma controlada. Cada repetição é chamada de iteração, e o processo continua até que uma condição específica indique que a repetição deve parar.</p>
+<p>Em termos conceituais, podemos imaginar uma estrutura de repetição como um ciclo que se mantém ativo enquanto algo for verdadeiro ou enquanto houver trabalho a ser feito. Esse ciclo garante que o algoritmo repita ações de forma organizada e previsível, economizando esforço e evitando redundâncias. Ao invés de escrever várias vezes a mesma instrução, podemos usar a repetição para executar a mesma ação diversas vezes de forma automática, clara e eficiente.</p>
+<p>É importante entender que, mesmo sendo uma estrutura específica, a repetição é um tipo de algoritmo. Isso significa que ela possui as mesmas características essenciais de um algoritmo: passos bem definidos, execução ordenada, capacidade de processar dados e de chegar a um resultado, e uma condição de término. A diferença é que, enquanto um algoritmo tradicional descreve uma sequência linear de ações, a estrutura de repetição permite que certas instruções sejam executadas múltiplas vezes de maneira controlada, dependendo de uma condição ou de um número determinado de repetições.</p>
+<p>Além disso, uma estrutura de repetição não existe isoladamente: ela é frequentemente uma parte de outros algoritmos maiores. Em muitos casos, um algoritmo complexo é formado por diversas estruturas de repetição combinadas com decisões condicionais e operações sequenciais. Por exemplo, um algoritmo de processamento de dados pode conter uma repetição para ler cada registro de uma lista e, dentro dessa repetição, uma segunda repetição para analisar os elementos de cada registro individualmente. Dessa forma, cada repetição funciona como um bloco de construção dentro de um algoritmo maior, contribuindo para a execução do processo completo.</p>
+<p>Essa característica torna as estruturas de repetição extremamente poderosas e flexíveis: elas permitem que algoritmos se adaptem a diferentes quantidades de dados, respondam a condições variáveis e evitem a repetição manual de instruções, mantendo o código organizado e eficiente. Podemos pensar nelas como “pequenos algoritmos dentro de um grande algoritmo”, que funcionam de forma autônoma, mas sempre integrados ao processo maior, colaborando para que o objetivo final seja alcançado.</p>
+<p>Em resumo, uma estrutura de repetição é ao mesmo tempo um algoritmo completo, com começo, meio e fim, e uma parte de outros algoritmos, ajudando a organizar e automatizar tarefas repetitivas de forma controlada e eficiente. Compreender esse conceito é fundamental para entender como os algoritmos modernos funcionam e como processos complexos podem ser resolvidos de forma estruturada e lógica.</p>
+</section>
+<section id="para-que-servem-as-esturturas-de-repetição" class="level3">
+<h3 class="anchored" data-anchor-id="para-que-servem-as-esturturas-de-repetição">Para que servem as esturturas de repetição?</h3>
+<p>As estruturas de repetição são essenciais para:</p>
+<ul>
+<li><p>Automatizar tarefas repetitivas: quando a mesma ação precisa ser executada várias vezes, como verificar todos os itens de uma lista, calcular totais ou processar registros.</p></li>
+<li><p>Controlar processos até que um objetivo seja alcançado: por exemplo, repetir um passo até que uma solução seja encontrada ou um resultado esperado seja atingido.</p></li>
+<li><p>Reduzir a redundância: evita escrever múltiplas vezes o mesmo conjunto de instruções, tornando o algoritmo mais compacto, legível e fácil de manter.</p></li>
+<li><p>Permitir interação dinâmica: em situações onde o número de repetições depende de dados fornecidos durante a execução do algoritmo ou de condições externas que mudam com o tempo.</p></li>
+<li><p>Garantir eficiência: com a repetição, o algoritmo consegue processar grandes volumes de dados sem precisar duplicar instruções, aumentando sua escalabilidade.</p></li>
+</ul>
+</section>
+<section id="funcionamento-de-estruturas-de-repetição" class="level3">
+<h3 class="anchored" data-anchor-id="funcionamento-de-estruturas-de-repetição">Funcionamento de estruturas de repetição</h3>
+<p>O funcionamento básico de uma repetição pode ser descrito em três etapas conceituais:</p>
+<ol type="1">
+<li><p>Verificação de condição: antes ou depois de cada ciclo, o algoritmo verifica se a condição para continuar a repetição ainda é verdadeira (tornando a esturtura de repetição uma espécie de algoritmo condicional).</p></li>
+<li><p>Execução do bloco de instruções: enquanto a condição for verdadeira, o algoritmo realiza todas as ações previstas no ciclo. Cada execução é chamada de iteração.</p></li>
+<li><p>Encerramento da repetição: quando a condição se torna falsa, o ciclo termina e o algoritmo segue para as instruções seguintes.</p></li>
+</ol>
+<p>Dessa forma, a repetição garante que o algoritmo repita apenas o necessário e pare no momento certo, evitando loops infinitos e garantindo eficiência.</p>
+</section>
+<section id="tipos-de-repetição" class="level3">
+<h3 class="anchored" data-anchor-id="tipos-de-repetição">Tipos de repetição</h3>
+<p>Existem diferentes formas de estruturar a repetição em algoritmos, dependendo da necessidade do problema que se deseja resolver. Cada tipo de repetição é mais adequado a uma situação específica e tem suas próprias características de funcionamento. Vamos detalhar as duas estruturas que são mais utilizadas na prática.</p>
+<section id="repetição-controlada-por-condição" class="level4">
+<h4 class="anchored" data-anchor-id="repetição-controlada-por-condição"><strong>Repetição controlada por condição</strong></h4>
+<p>Em estruturas de repetição controladas por uma condição, o ciclo continua enquanto uma condição lógica permanecer verdadeira Normalmente esta ideia corresponde ao que na programação é chamado de <em>loop</em> do tipo “while” ou repetição condicional. Para realização desta estrutura, um algoritmo verifica uma condição antes ou durante cada iteração. Enquanto essa condição for verdadeira, o bloco de instruções será repetido. Assim que a condição deixa de ser verdadeira, a repetição é interrompida.</p>
+<p>Quando usar: este tipo de repetição é ideal quando não se sabe exatamente quantas vezes será necessário repetir, mas existe uma regra clara que determina a continuidade (ou determina o caso de parada).</p>
+<p>Exemplos de uso real:</p>
+<ul>
+<li><p>Aguardar até que um sensor indique que uma tarefa foi concluída.</p></li>
+<li><p>Processar dados de um fluxo até que não haja mais informações disponíveis.</p></li>
+<li><p>Continuar realizando verificações em um sistema até que uma condição de segurança seja satisfeita.</p></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Dica didática">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Dica didática
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pense nessa repetição como uma situação do dia a dia em que você continua fazendo algo “enquanto for necessário”. Por exemplo: “continue estudando enquanto não entender o conceito completamente”.</p>
+</div>
+</div>
+</section>
+<section id="repetição-controlada-por-contagem" class="level4">
+<h4 class="anchored" data-anchor-id="repetição-controlada-por-contagem"><strong>Repetição controlada por contagem</strong></h4>
+<p>Em estruturas de repetição controladas por contagem, o ciclo é repetido um número pré-determinado de vezes. Este tipo de repetição corresponde ao que na programação é normalmente chamado de <em>loop</em> do tipo “for” ou repetição por contagem. Para o funcionamento desta estrutura, o algoritmo define antecipadamente quantas vezes o bloco de instruções deve ser executado. Cada repetição é contada até que o número estipulado seja atingido, momento em que a repetição termina automaticamente.</p>
+<p>Quando usar: este tipo de repetição é útil quando o número de repetições é conhecido de antemão e não depende de condições externas.</p>
+<p>Exemplos de uso real:</p>
+<ul>
+<li><p>Calcular a média de cinco notas (ou a média de n notas, pois quando o código for rodado, o número n será conhecido).</p></li>
+<li><p>Percorrer todos os itens de uma lista de registros conhecida.</p></li>
+<li><p>Repetir um teste ou procedimento um número fixo de vezes.</p></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Dica didática">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Dica didática
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>imagine como um cronômetro que conta até um número definido: você sabe exatamente quantas vezes precisa repetir a ação, e o ciclo termina assim que esse número é alcançado.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="exemplo-visual" class="level3">
+<h3 class="anchored" data-anchor-id="exemplo-visual">Exemplo visual</h3>
+<p>Abaixo está um gif de como um índice percorre uma lista utilizando uma estrutura de repetição controlada por contagem. Neste caso, estamos percorrendo uma lista com 10 elementos, um por um, ou seja, utilizamos uma estrutura de repetição controlada por contagem, onde o número de repetições é 10.</p>
+<details>
+<summary>
+Clique para ver a animação
+</summary>
+<img src="imagens/repeticao_quadrados_indices.gif" width="400">
+</details>
+<div class="callout callout-style-default callout-caution callout-titled" title="Observação">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Observação
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Geralmente na programação, os índices de acesso à listas não iniciam em 1, mas sim em 0. Isto será abordado postriormente, mas é importante destacar que o que está sendo mostrado neste gif não é usual.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="algoritmos-com-estruturas-de-repetição-encadeadas" class="level2">
+<h2 class="anchored" data-anchor-id="algoritmos-com-estruturas-de-repetição-encadeadas">Algoritmos com estruturas de repetição encadeadas</h2>
+<p>Nem sempre uma única estrutura de repetição é suficiente para resolver um problema. Em muitos algoritmos, é necessário repetir um conjunto de ações dentro de outro ciclo de repetições, criando o que chamamos de estruturas de repetição alinhadas (ou repetições encadeadas, também conhecidas como <em>loops</em> aninhados).</p>
+<p>Essas estruturas permitem que um algoritmo execute várias camadas de repetições, controlando diferentes níveis de iteração. Em outras palavras, uma repetição é executada inteiramente a cada vez que a repetição externa realiza uma iteração. Isso cria um comportamento em que o algoritmo percorre combinações de valores ou estruturas mais complexas, como matrizes, listas duplas e conjuntos de dados multidimensionais.</p>
+<section id="como-funcionam-as-estruturas-de-repetição-alinhadas" class="level3">
+<h3 class="anchored" data-anchor-id="como-funcionam-as-estruturas-de-repetição-alinhadas">Como funcionam as estruturas de repetição alinhadas</h3>
+<p>O princípio básico é simples:</p>
+<ul>
+<li><p>O algoritmo inicia o primeiro ciclo (o externo).</p></li>
+<li><p>Dentro dele, inicia outro ciclo (o interno) que realiza suas repetições completas.</p></li>
+<li><p>Quando o ciclo interno termina, o controle retorna ao ciclo externo, que avança para a próxima iteração.</p></li>
+<li><p>Esse processo se repete até que ambas as condições de parada — a do ciclo interno e a do ciclo externo — sejam satisfeitas.</p></li>
+</ul>
+<p>Assim, as repetições funcionam como “camadas” organizadas, em que cada nível depende do anterior. O número total de repetições realizadas é o produto das iterações de cada estrutura envolvida. Por exemplo, se a repetição externa ocorre 3 vezes e a interna 2 vezes, o algoritmo executará o bloco interno 6 vezes ao todo.</p>
+</section>
+<section id="quando-utilizar-repetições-alinhadas" class="level3">
+<h3 class="anchored" data-anchor-id="quando-utilizar-repetições-alinhadas">Quando utilizar repetições alinhadas</h3>
+<p>Esse tipo de estrutura é usado quando o problema envolve duas ou mais dimensões de repetição, como:</p>
+<ul>
+<li><p>Percorrer uma tabela (linhas e colunas).</p></li>
+<li><p>Comparar todos os elementos de uma lista com todos os elementos de outra lista.</p></li>
+<li><p>Executar um conjunto de testes para cada variável de entrada.</p></li>
+<li><p>Criar combinações possíveis entre dois ou mais conjuntos de dados.</p></li>
+</ul>
+<p>Em resumo, as repetições alinhadas são indispensáveis quando o algoritmo precisa lidar com relações entre conjuntos de informações ou operações cruzadas entre dados.</p>
+</section>
+<section id="exemplo-visual-1" class="level3">
+<h3 class="anchored" data-anchor-id="exemplo-visual-1">Exemplo visual</h3>
+<p>Abaixo está um gif de como um índice percorre duas listas, utilizando um sistema de encadeamento de estruturas de repetição. Para percorrer esta “tabela” com 5 linhas e 4 colunas, percorremos linha a linha, ou seja, um índice externo está fixo enquanto o outro é percorrido completamente até que o índice externo é incrementado.</p>
+<details>
+<summary>
+Clique para ver a animação
+</summary>
+<img src="imagens/loops_encadeados_indices.gif" width="400">
+</details>
+<div class="callout callout-style-default callout-caution callout-titled" title="Observação">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Observação
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Geralmente na programação, os índices de acesso à listas não iniciam em 1, mas sim em 0. Isto será abordado postriormente, mas é importante destacar que o que está sendo mostrado neste gif não é usual.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="algoritmos-na-computação" class="level2">
+<h2 class="anchored" data-anchor-id="algoritmos-na-computação">Algoritmos na computação</h2>
+<p>Nos computadores, os algoritmos são a base de todos os programas e sistemas. Quando você abre um aplicativo, faz uma busca na internet, assiste a um vídeo ou joga um jogo, há algoritmos trabalhando em segundo plano — organizando dados, processando informações e tomando decisões automaticamente.</p>
+<p>Por exemplo:</p>
+<ul>
+<li><p>Um algoritmo de busca no Google analisa milhões de páginas e encontra a mais relevante para sua pesquisa.</p></li>
+<li><p>Um algoritmo de redes sociais decide quais postagens aparecem primeiro no seu feed.</p></li>
+<li><p>Um algoritmo de GPS calcula a rota mais rápida para o seu destino.</p></li>
+</ul>
+<p>Esses algoritmos seguem regras precisas, usam dados de entrada (como o texto digitado ou sua localização) e produzem saídas (como resultados, imagens, recomendações ou trajetos).</p>
+</section>
+<section id="exercícios" class="level2">
+<h2 class="anchored" data-anchor-id="exercícios">Exercícios</h2>
+<section id="exercício-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-1">Exercício 1</h3>
+<p>Explique com suas próprias palavras o que é um algoritmo. Dê um exemplo do seu cotidiano que não envolva computadores.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Um algoritmo é um conjunto de instruções organizadas em uma sequência lógica e finita, criado para resolver um problema ou executar uma tarefa específica.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-2" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-2">Exercício 2</h3>
+<p>Dê um exemplo de algoritmo que não tenha relação com programação</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Receitas da culinária.</p></li>
+<li><p>Seguir uma rotina planejada</p></li>
+<li><p>Higiene do sono.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-3" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-3">Exercício 3</h3>
+<p>Cite as três características principais de um algoritmo e explique por que cada uma delas é importante.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Finitude, importante para que o algoritmo termine em algum momento do tempo.</p></li>
+<li><p>Precisão, importante para que as etapas não possuam um duplo sentido.</p></li>
+<li><p>Efetividade, importante para que um algoritmo não seja custoso demais (em termos de memória, tempo e/ou processamento, pois todo são recursos finitos).</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-4" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-4">Exercício 4</h3>
+<p>Descreva, como passos enumerados, um algorítmo que seja capaz de categorizar um número como negativo ou positivo</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Existem duas maneiras principais de implementar este algoritmo, variando com a escolha de condicional a se utilizar: checar se o número é maior ou igual a 0 ou checar se o número é menor ou igual a 0.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">caso 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">caso 2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<ol type="1">
+<li><p>Iníciar o algoritmo.</p></li>
+<li><p>Ler o número.</p></li>
+<li><p>Perguntar se o número é maior ou igual a 0 (número &gt;= 0).</p></li>
+<li><p>Caso seja, o número é positivo, caso contrário negativo.</p></li>
+<li><p>Exibir resultados</p></li>
+<li><p>Terminar execução.</p></li>
+</ol>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<ol type="1">
+<li><p>Iníciar o algoritmo.</p></li>
+<li><p>Ler o número.</p></li>
+<li><p>Perguntar se o número é menor ou igual a 0 (número &lt;= 0).</p></li>
+<li><p>Caso seja, o número é negativo, caso contrário positivo.</p></li>
+<li><p>Exibir resultados</p></li>
+<li><p>Terminar execução.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-5" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-5">Exercício 5</h3>
+<p>Explique com suas palavras para que servem as estruturas de repetição. Dê um exemplo que não seja relacionado a programação.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Estruturas de repetição são mecanismo que permite executar um conjunto de instruções diversas vezes de forma controlada.</p>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

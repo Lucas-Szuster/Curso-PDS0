@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Representações de Algorítmos – PDS-0</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../introducao/Algoritmos.html">Introdução</a></li><li class="breadcrumb-item"><a href="../introducao/RepresentacoesDeAlgoritmos.html">Representações de Algorítmos</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">PDS-0</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sobre o curso</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Introdução</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/Algoritmos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Algorítmos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/RepresentacoesDeAlgoritmos.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Representações de Algorítmos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/OrganizacaoDeComputadores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fundamentos de computadores</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/IntroducaoAProgramacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdução A Programação</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/IntroducaoAPython.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdução A Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/CondicionaisEmPython.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Condicionais em Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/EstruturasDeRepeticaoEmPython.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Estruturas de repetição em python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/Matrizes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Matrizes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/Exercicios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercícios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Projeto</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/Projeto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Trabalho Prático 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/CasosDeTeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Casos de Teste — TP1</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Funções</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../funcoes/IntroducaoAFuncoes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdução a funções</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text">funcoes/Exercicios.qmd</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Módulos</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+ <span class="menu-text">modulos/Exercicios.qmd</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Objetos e classes</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+ <span class="menu-text">ObjetosEClasses/Exercicios.qmd</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Programação orientada a objetos (POO)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+ <span class="menu-text">POO/Exercicios.qmd</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Introdução a estruturas de dados</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+ <span class="menu-text">introducaoAED/Exercicios.qmd</span>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Conteúdos da página</h2>
+   
+  <ul>
+  <li><a href="#pseudocódigo" id="toc-pseudocódigo" class="nav-link active" data-scroll-target="#pseudocódigo">Pseudocódigo</a>
+  <ul class="collapse">
+  <li><a href="#condicionais-em-pseudocódigo" id="toc-condicionais-em-pseudocódigo" class="nav-link" data-scroll-target="#condicionais-em-pseudocódigo">Condicionais em Pseudocódigo</a></li>
+  <li><a href="#condicional-simples-se" id="toc-condicional-simples-se" class="nav-link" data-scroll-target="#condicional-simples-se">Condicional Simples (SE)</a></li>
+  <li><a href="#condicional-com-senão" id="toc-condicional-com-senão" class="nav-link" data-scroll-target="#condicional-com-senão">Condicional com SENÃO</a></li>
+  <li><a href="#condicional-com-múltiplas-alternativas-sesenão-sesenão" id="toc-condicional-com-múltiplas-alternativas-sesenão-sesenão" class="nav-link" data-scroll-target="#condicional-com-múltiplas-alternativas-sesenão-sesenão">Condicional com múltiplas alternativas (SE…SENÃO SE…SENÃO)</a></li>
+  <li><a href="#condicionais-aninhadas" id="toc-condicionais-aninhadas" class="nav-link" data-scroll-target="#condicionais-aninhadas">Condicionais Aninhadas</a></li>
+  <li><a href="#estruturas-de-repetição-em-pseudocódigo" id="toc-estruturas-de-repetição-em-pseudocódigo" class="nav-link" data-scroll-target="#estruturas-de-repetição-em-pseudocódigo">Estruturas de repetição em pseudocódigo</a></li>
+  <li><a href="#repetição-controlada-por-condição-enquanto---enquanto" id="toc-repetição-controlada-por-condição-enquanto---enquanto" class="nav-link" data-scroll-target="#repetição-controlada-por-condição-enquanto---enquanto">Repetição Controlada por Condição (Enquanto - ENQUANTO)</a></li>
+  <li><a href="#repetição-controlada-por-contagem-para---para" id="toc-repetição-controlada-por-contagem-para---para" class="nav-link" data-scroll-target="#repetição-controlada-por-contagem-para---para">Repetição Controlada por Contagem (Para - PARA)</a></li>
+  </ul></li>
+  <li><a href="#fluxogramas" id="toc-fluxogramas" class="nav-link" data-scroll-target="#fluxogramas">Fluxogramas</a>
+  <ul class="collapse">
+  <li><a href="#funcionamento-de-fluxogramas-simples" id="toc-funcionamento-de-fluxogramas-simples" class="nav-link" data-scroll-target="#funcionamento-de-fluxogramas-simples">Funcionamento de fluxogramas simples</a></li>
+  <li><a href="#fluxogramas-com-estruturas-condicionais-simples" id="toc-fluxogramas-com-estruturas-condicionais-simples" class="nav-link" data-scroll-target="#fluxogramas-com-estruturas-condicionais-simples">Fluxogramas com estruturas condicionais simples</a></li>
+  <li><a href="#fluxogramas-com-estruturas-condicionais-encadeadas" id="toc-fluxogramas-com-estruturas-condicionais-encadeadas" class="nav-link" data-scroll-target="#fluxogramas-com-estruturas-condicionais-encadeadas">Fluxogramas com estruturas condicionais encadeadas</a></li>
+  <li><a href="#fluxogramas-com-estruturas-de-repetição-simples" id="toc-fluxogramas-com-estruturas-de-repetição-simples" class="nav-link" data-scroll-target="#fluxogramas-com-estruturas-de-repetição-simples">Fluxogramas com estruturas de repetição simples</a></li>
+  </ul></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios">Exercícios</a>
+  <ul class="collapse">
+  <li><a href="#exercício-1" id="toc-exercício-1" class="nav-link" data-scroll-target="#exercício-1">Exercício 1</a></li>
+  <li><a href="#exercício-2" id="toc-exercício-2" class="nav-link" data-scroll-target="#exercício-2">Exercício 2</a></li>
+  <li><a href="#exercício-3" id="toc-exercício-3" class="nav-link" data-scroll-target="#exercício-3">Exercício 3</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../introducao/Algoritmos.html">Introdução</a></li><li class="breadcrumb-item"><a href="../introducao/RepresentacoesDeAlgoritmos.html">Representações de Algorítmos</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Representações de Algorítmos</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="pseudocódigo" class="level2">
+<h2 class="anchored" data-anchor-id="pseudocódigo">Pseudocódigo</h2>
+<p>O pseudocódigo é uma forma simplificada e estruturada de descrever um algoritmo, usando uma linguagem próxima da linguagem humana, mas organizada de maneira lógica, semelhante à de um programa de computador. Ele serve como uma ponte entre o pensamento humano e a linguagem de programação, permitindo que a lógica de um problema seja planejada antes de ser implementada em código real.</p>
+<p>Em vez de usar uma sintaxe rígida e regras específicas de uma linguagem (como Python, Java ou C++), o pseudocódigo utiliza palavras e estruturas genéricas, fáceis de entender por qualquer pessoa com conhecimentos básicos de programação. O foco principal está em comunicar claramente os passos que devem ser seguidos para resolver um problema, e não em detalhes técnicos de implementação.</p>
+<p>Por exemplo, um algoritmo para somar dois números pode ser escrito em pseudocódigo assim:</p>
+<pre class="{ObjectiveC}"><code>INÍCIO
+  LER número1
+  LER número2
+  SOMA ← número1 + número2
+  ESCREVER "O resultado é:", SOMA
+FIM</code></pre>
+<p>Esse exemplo mostra claramente o que o algoritmo faz, sem se preocupar com a linguagem de programação usada. Ele é fácil de compreender e de transformar depois em código real.</p>
+<p>O pseudocódigo também é amplamente usado no planejamento e ensino da lógica de programação, pois ajuda os estudantes e desenvolvedores a raciocinar sobre a sequência de passos de um problema sem se preocupar com erros de sintaxe.</p>
+<p>Em resumo, o pseudocódigo é uma ferramenta de planejamento e comunicação, que permite expressar ideias e soluções de forma estruturada, lógica e compreensível, sendo o primeiro passo natural antes da escrita do código em uma linguagem de programação real.</p>
+<section id="condicionais-em-pseudocódigo" class="level3">
+<h3 class="anchored" data-anchor-id="condicionais-em-pseudocódigo">Condicionais em Pseudocódigo</h3>
+<p>As estruturas condicionais são essenciais para a tomada de decisões dentro de um algoritmo. Elas permitem que o fluxo de execução de um programa siga diferentes caminhos, dependendo de uma condição ser verdadeira ou falsa.</p>
+</section>
+<section id="condicional-simples-se" class="level3">
+<h3 class="anchored" data-anchor-id="condicional-simples-se">Condicional Simples (SE)</h3>
+<p>A estrutura condicional mais simples é o SE. Ela permite que uma ação seja executada apenas quando uma condição for verdadeira.</p>
+<p>Exemplo de pseudocódigo com condicional simples:</p>
+<pre class="{ObjectiveC}"><code>INÍCIO
+  LER idade
+  SE idade &gt;= 18 ENTÃO
+    ESCREVER "Maior de idade"
+  FIM SE
+FIM</code></pre>
+<p>Neste exemplo, o algoritmo lê a idade de uma pessoa e, caso a idade seja maior ou igual a 18, exibe a mensagem “Maior de idade”. Se a condição não for satisfeita, nada é executado.</p>
+</section>
+<section id="condicional-com-senão" class="level3">
+<h3 class="anchored" data-anchor-id="condicional-com-senão">Condicional com SENÃO</h3>
+<p>A estrutura condicional SE…SENÃO permite definir um caminho alternativo a ser seguido caso a condição não seja verdadeira.</p>
+<p>Exemplo de pseudocódigo com SE…SENÃO:</p>
+<pre class="{ObjectiveC}"><code>INÍCIO
+  LER idade
+  SE idade &gt;= 18 ENTÃO
+    ESCREVER "Maior de idade"
+  SENÃO
+    ESCREVER "Menor de idade"
+  FIM SE
+FIM</code></pre>
+<p>Aqui, o algoritmo verifica se a pessoa é maior de idade. Caso a condição idade &gt;= 18 seja verdadeira, ele imprime “Maior de idade”. Caso contrário, imprime “Menor de idade”.</p>
+</section>
+<section id="condicional-com-múltiplas-alternativas-sesenão-sesenão" class="level3">
+<h3 class="anchored" data-anchor-id="condicional-com-múltiplas-alternativas-sesenão-sesenão">Condicional com múltiplas alternativas (SE…SENÃO SE…SENÃO)</h3>
+<p>Em alguns casos, é necessário avaliar várias condições em sequência. Para isso, podemos usar a estrutura SE…SENÃO SE…SENÃO.</p>
+<p>Exemplo de pseudocódigo com múltiplas alternativas:</p>
+<pre class="{ObjectiveC}"><code>INÍCIO
+  LER nota
+  SE nota &gt;= 9 ENTÃO
+    ESCREVER "Excelente"
+  SENÃO SE nota &gt;= 7 ENTÃO
+    ESCREVER "Bom"
+  SENÃO SE nota &gt;= 5 ENTÃO
+    ESCREVER "Regular"
+  SENÃO
+    ESCREVER "Reprovado"
+  FIM SE
+FIM</code></pre>
+<p>Este exemplo verifica a nota de um aluno e classifica-o em uma das categorias: “Excelente”, “Bom”, “Regular” ou “Reprovado”. A estrutura SE…SENÃO SE…SENÃO permite verificar várias condições sequencialmente.</p>
+</section>
+<section id="condicionais-aninhadas" class="level3">
+<h3 class="anchored" data-anchor-id="condicionais-aninhadas">Condicionais Aninhadas</h3>
+<p>Às vezes, uma condição pode ser aninhada dentro de outra, ou seja, uma estrutura SE pode conter outra estrutura SE dentro de sua parte SENÃO.</p>
+<p>Exemplo de pseudocódigo com condicional aninhada:</p>
+<pre class="{ObjectiveC}"><code>INÍCIO
+  LER idade
+  SE idade &gt;= 18 ENTÃO
+    LER salario
+    SE salario &gt;= 5000 ENTÃO
+      ESCREVER "Maior de idade e alta renda"
+    SENÃO
+      ESCREVER "Maior de idade, mas baixa renda"
+    FIM SE
+  SENÃO
+    ESCREVER "Menor de idade"
+  FIM SE
+FIM</code></pre>
+<p>Aqui, o algoritmo verifica se a pessoa é maior de idade. Se for, ele então verifica o salário da pessoa. Caso o salário seja maior ou igual a 5000, ele imprime “Maior de idade e alta renda”; caso contrário, imprime “Maior de idade, mas baixa renda”. Se a pessoa for menor de idade, o programa imprime “Menor de idade”.</p>
+</section>
+<section id="estruturas-de-repetição-em-pseudocódigo" class="level3">
+<h3 class="anchored" data-anchor-id="estruturas-de-repetição-em-pseudocódigo">Estruturas de repetição em pseudocódigo</h3>
+<p>As estruturas de repetição são fundamentais para a execução de um bloco de código várias vezes, até que uma condição seja atendida. Elas são especialmente úteis quando se tem tarefas repetitivas ou quando se precisa de uma sequência de ações que dependem de algum critério, como a contagem ou uma verificação lógica.</p>
+<p>Em pseudocódigo, as repetições são implementadas de forma simples, com estruturas que controlam a execução repetida de comandos. Vamos explorar as formas mais comuns de estrutura de repetição.</p>
+</section>
+<section id="repetição-controlada-por-condição-enquanto---enquanto" class="level3">
+<h3 class="anchored" data-anchor-id="repetição-controlada-por-condição-enquanto---enquanto">Repetição Controlada por Condição (Enquanto - ENQUANTO)</h3>
+<p>A estrutura ENQUANTO (ou WHILE em algumas linguagens de programação) permite que um conjunto de ações seja repetido enquanto uma condição for verdadeira. Quando a condição se torna falsa, o loop é interrompido.</p>
+<p>Exemplo de pseudocódigo com repetição controlada por condição:</p>
+<pre class="{ObjectiveC}"><code>INÍCIO
+  LER número
+  ENQUANTO número &gt;= 0 FAÇA
+    SOMA ← SOMA + número
+    LER número
+  FIM ENQUANTO
+  ESCREVER "A soma dos números positivos é:", SOMA
+FIM</code></pre>
+<p>Neste exemplo, o algoritmo lê números e vai somando-os enquanto o número informado for maior ou igual a zero. Quando um número negativo for digitado, o laço termina e o programa exibe a soma dos números positivos informados.</p>
+</section>
+<section id="repetição-controlada-por-contagem-para---para" class="level3">
+<h3 class="anchored" data-anchor-id="repetição-controlada-por-contagem-para---para">Repetição Controlada por Contagem (Para - PARA)</h3>
+<p>A estrutura PARA (ou FOR) é usada quando você sabe o número de vezes que deseja repetir um conjunto de ações. Ela é controlada por um contador que incrementa ou decrementa a cada iteração, até atingir um limite predefinido.</p>
+<p>Exemplo de pseudocódigo com repetição controlada por contagem:</p>
+<pre class="{ObjectiveC}"><code>INÍCIO
+  LER n
+  PARA i ← 1 ATÉ n FAÇA
+    ESCREVER "Repetição número:", i
+  FIM PARA
+FIM</code></pre>
+<p>Neste exemplo, o algoritmo vai repetir o processo de exibição da mensagem “Repetição número: i” um número de vezes igual a n, onde i vai de 1 até o valor de n.</p>
+</section>
+</section>
+<section id="fluxogramas" class="level2">
+<h2 class="anchored" data-anchor-id="fluxogramas">Fluxogramas</h2>
+<p>Fluxograma: é um tipo de diagrama, e pode ser entendido como uma representação esquemática de um processo ou algoritmo, muitas vezes feito através de gráficos que ilustram de forma descomplicada a transição de informações entre os elementos que o compõem, ou seja, é a sequência operacional do desenvolvimento de um processo, o qual caracteriza: o trabalho que está sendo realizado, o tempo necessário para sua realização, a distância percorrida pelos documentos, quem está realizando o trabalho e como ele flui entre os participantes deste processo.</p>
+<p>Os fluxogramas são muito utilizados em projetos de software para representar a lógica interna dos programas, mas podem também ser usados para desenhar processos de negócio e o workflow que envolve diversos atores corporativos no exercício de suas atribuições.[1]</p>
+<p>O diagrama de fluxo de dados (DFD) utiliza do fluxograma para modelagem e documentação de sistemas computacionais.</p>
+<p>O termo fluxograma designa uma representação gráfica de um determinado processo ou fluxo de trabalho, efetuado geralmente com recurso a figuras geométricas normalizadas e as setas unindo essas figuras geométricas. Através desta representação gráfica é possível compreender de forma rápida e fácil a transição de informações ou documentos entre os elementos que participam no processo em causa.</p>
+<p>O fluxograma pode ser definido também como o gráfico em que se representa o percurso ou caminho percorrido por certo elemento (por exemplo, um determinado documento), através dos vários departamentos da organização, bem como o tratamento que cada um vai lhe dando.</p>
+<p>A existência de fluxogramas para cada um dos processos é fundamental para a simplificação e racionalização do trabalho, permitindo a compreensão e posterior otimização dos processos desenvolvidos em cada departamento ou área da organização.</p>
+<section id="funcionamento-de-fluxogramas-simples" class="level3">
+<h3 class="anchored" data-anchor-id="funcionamento-de-fluxogramas-simples">Funcionamento de fluxogramas simples</h3>
+<p>Todos os fluxogramas possuem setas, que indicam para o onde a sequência lógica de execução do programa segue. Entre estas setas estão localizados nós, que podem ser agrupados em certos tipos:</p>
+<ul>
+<li><p>Início/Fim: Indicam onde o fluxograma começa e onde o fluxograma termina.</p></li>
+<li><p>Entrada de dados/Definição de dados: Indica quais dados serão utilizados e como devem ser definidos (seus nomes e possíveis valores).</p></li>
+<li><p>Processamento de dados: Indica a lógica que deve ser efetuada com os dados do programa.</p></li>
+</ul>
+<section id="exemplo-de-fluxograma" class="level4">
+<h4 class="anchored" data-anchor-id="exemplo-de-fluxograma">Exemplo de fluxograma</h4>
+<p>Descrição do algoritmo: Ler dois números (a e b), calcular a soma dos dois e armazenar o resultado em um terceiro número, c.</p>
+<div style="text-align: center;">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+A([Início]) --&gt; B[/entrada de dados em a/]
+B --&gt; C[/entrada de dados em b/]
+C --&gt; D["c = a + b"]
+D --&gt; E([Fim])
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="fluxogramas-com-estruturas-condicionais-simples" class="level3">
+<h3 class="anchored" data-anchor-id="fluxogramas-com-estruturas-condicionais-simples">Fluxogramas com estruturas condicionais simples</h3>
+<p>Nos fluxogramas, as estruturas condicionais são representadas de forma visual, permitindo compreender facilmente os pontos de decisão dentro de um processo. Em vez de apenas mostrar uma sequência linear de ações, o fluxograma passa a indicar bifurcações — momentos em que o fluxo pode seguir por caminhos diferentes dependendo de um resultado lógico.</p>
+<p>A condicional é representada pelo losango (◇), símbolo universal usado para indicar uma decisão. Dentro dele, é escrita a condição que será avaliada — por exemplo, “Idade ≥ 18?”. A partir do losango, saem normalmente duas setas, correspondendo às possíveis respostas da verificação:</p>
+<ul>
+<li><p>Uma seta para o caminho verdadeiro (geralmente marcada com “Sim”, “Verdadeiro” ou “True”).</p></li>
+<li><p>Outra seta para o caminho falso (marcada com “Não”, “Falso” ou “False”).</p></li>
+</ul>
+<p>Cada um desses caminhos leva a blocos diferentes de instruções, que mostram o que o algoritmo deve fazer em cada situação. Depois de executadas as ações correspondentes, dependendo do algoritmo, os caminhos se unem novamente ou não (antes do fim).</p>
+<p>Essa forma de representação torna as decisões fáceis de visualizar, permitindo que qualquer pessoa — mesmo sem conhecer o código — entenda rapidamente onde o processo toma decisões e quais são as possíveis consequências de cada escolha.</p>
+<section id="exemplo-de-fluxograma-com-condicional" class="level4">
+<h4 class="anchored" data-anchor-id="exemplo-de-fluxograma-com-condicional">Exemplo de fluxograma com condicional</h4>
+<p>Descrição do algoritmo: Ler a idade de uma pessoa e determinar se ela é maior de idade (idade ≥ 18).</p>
+<div style="text-align: center;">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+A([Início]) --&gt; B[/Ler idade/]
+B --&gt; C{Idade &gt;= 18?}
+C --&gt;|Verdadeiro| D["Exibir: Maior de idade"]
+C --&gt;|Falso| E["Exibir: Menor de idade"]
+D --&gt; F([Fim])
+E --&gt; F
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Observação">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Observação
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As estruturas condicionais são os principais elementos que conferem ramificações aos fluxogramas. Elas tornam o diagrama mais próximo da lógica real dos algoritmos, destacando pontos de decisão e possíveis alternativas de execução dentro do processo.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="fluxogramas-com-estruturas-condicionais-encadeadas" class="level3">
+<h3 class="anchored" data-anchor-id="fluxogramas-com-estruturas-condicionais-encadeadas">Fluxogramas com estruturas condicionais encadeadas</h3>
+<p>Em muitos casos, um algoritmo não toma apenas uma decisão — ele precisa avaliar várias condições em sequência. Quando isso acontece, o fluxograma apresenta condicionais encadeadas, ou seja, um losango levando a outro, formando uma cadeia de verificações. Cada decisão depende do resultado da anterior, e o fluxo do processo segue até que todas as verificações tenham sido realizadas.</p>
+<p>Esse tipo de estrutura é comum em algoritmos que precisam classificar situações, determinar categorias ou escolher entre múltiplas alternativas. Visualmente, o fluxograma vai mostrando as “encruzilhadas” do processo, permitindo acompanhar a sequência de perguntas e respostas até chegar ao resultado final.</p>
+<section id="exemplo-de-fluxograma-com-condicionais-encadeadas" class="level4">
+<h4 class="anchored" data-anchor-id="exemplo-de-fluxograma-com-condicionais-encadeadas">Exemplo de fluxograma com condicionais encadeadas</h4>
+<p>Descrição do algortmo: Descobrir qual o desempenho de um aluno com base na sua nota final, categorizando-o entre Excelente, Bom, Regular e Reprovado.</p>
+<ol type="1">
+<li><p>Verificar se a nota é maior ou igual a 9 — caso seja, classificar como “Excelente”.</p></li>
+<li><p>Se não for, verificar se é maior ou igual a 7 — classificar como “Bom”.</p></li>
+<li><p>Caso contrário, verificar se é maior ou igual a 5 — classificar como “Regular”.</p></li>
+<li><p>Se nenhuma das condições anteriores for atendida, o resultado será “Reprovado”.</p></li>
+</ol>
+<p>Essa representação mostra claramente que cada decisão leva a outra, até que o algoritmo encontre a condição que se aplica à situação analisada.</p>
+<div style="text-align: center;">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+A([Início]) --&gt; B[/Ler nota/]
+B --&gt; C{Nota &gt;= 9?}
+C --&gt;|Verdadeiro| D["Exibir: Excelente"]
+C --&gt;|Falso| E{Nota &gt;= 7?}
+E --&gt;|Verdadeiro| F["Exibir: Bom"]
+E --&gt;|Falso| G{Nota &gt;= 5?}
+G --&gt;|Verdadeiro| H["Exibir: Regular"]
+G --&gt;|Falso| I["Exibir: Reprovado"]
+D --&gt; J([Fim])
+F --&gt; J
+H --&gt; J
+I --&gt; J
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Observação">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Observação
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Essas cadeias de decisões tornam os fluxogramas especialmente úteis para entender lógicas complexas de forma visual e intuitiva, facilitando o planejamento e a comunicação de algoritmos com múltiplos critérios de decisão.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="fluxogramas-com-estruturas-de-repetição-simples" class="level3">
+<h3 class="anchored" data-anchor-id="fluxogramas-com-estruturas-de-repetição-simples">Fluxogramas com estruturas de repetição simples</h3>
+<p>Nos fluxogramas, as estruturas de repetição representam situações em que um conjunto de ações precisa ser executado diversas vezes, de forma controlada. Essas estruturas são fundamentais em algoritmos, pois permitem automatizar tarefas repetitivas e economizar etapas no processo lógico.</p>
+<p>Visualmente, a repetição é representada por um ciclo dentro do fluxograma, no qual o fluxo retorna a uma etapa anterior, formando um laço. Esse retorno é o que caracteriza o comportamento repetitivo da estrutura.</p>
+<section id="representação-gráfica" class="level4">
+<h4 class="anchored" data-anchor-id="representação-gráfica">Representação gráfica</h4>
+<p>A estrutura de repetição é geralmente associada ao losango (◇), o mesmo símbolo usado para decisões, já que a repetição depende de uma condição lógica que determina se o ciclo continuará ou não. Enquanto a condição for verdadeira, o fluxo retorna ao início do bloco de instruções; quando a condição se torna falsa, o fluxo segue adiante, saindo do laço.</p>
+<p>Isso torna as estruturas de repetição visualmente distintas das condicionais simples: nelas, há um caminho que volta para um ponto anterior do fluxograma, evidenciando a ideia de repetição.</p>
+</section>
+<section id="tipos-de-repetição-representados-em-fluxogramas" class="level4">
+<h4 class="anchored" data-anchor-id="tipos-de-repetição-representados-em-fluxogramas">Tipos de repetição representados em fluxogramas</h4>
+<p>Existem diferentes formas de ilustrar a repetição em fluxogramas, de acordo com a lógica do algoritmo:</p>
+<p>Repetição controlada por condição (tipo “enquanto”) – O ciclo repete enquanto uma condição for verdadeira. O teste é feito antes da execução do bloco de instruções.</p>
+<p>Repetição controlada por contagem (tipo “para”) – O ciclo se repete um número pré-determinado de vezes. Visualmente, o laço indica que o fluxo volta até que o contador atinja o limite definido.</p>
+</section>
+<section id="exemplo-de-fluxograma-com-repetição" class="level4">
+<h4 class="anchored" data-anchor-id="exemplo-de-fluxograma-com-repetição">Exemplo de fluxograma com repetição</h4>
+<p>Descrição do algoritmo: Ler uma sequência de números e somá-los enquanto o número informado for positivo. Quando um número negativo for digitado, o processo deve parar e o resultado final ser exibido.</p>
+<div style="text-align: center;">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+A([Início]) --&gt; B["Soma = 0"]
+B --&gt; C[/Ler número/]
+C --&gt; D{Número &gt;= 0?}
+D --&gt;|Verdadeiro| E["Soma = Soma + Número"]
+E --&gt; C
+D --&gt;|Falso| F["Exibir Soma"]
+F --&gt; G([Fim])
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<section id="interpretação" class="level5">
+<h5 class="anchored" data-anchor-id="interpretação">Interpretação</h5>
+<p>Neste fluxograma, o losango representa a condição “Número ≥ 0?”. Enquanto essa condição é verdadeira, o fluxo retorna para a leitura de novos números, repetindo as etapas de leitura e soma. Quando a condição se torna falsa (ou seja, um número negativo é digitado), o laço é interrompido e o programa segue para o encerramento.</p>
+</section>
+</section>
+</section>
+</section>
+<section id="exercícios" class="level2">
+<h2 class="anchored" data-anchor-id="exercícios">Exercícios</h2>
+<section id="exercício-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-1">Exercício 1</h3>
+<p>Transforme o pseudocódigo abaixo em fluxograma:</p>
+<pre class="{Objectivec}"><code>INÍCIO
+  LER número1
+  LER número2
+  SE número1 &gt; número2
+    ESCREVER "Entre os números, o maior é: ", número1
+  SENÃO
+    ESCREVER "Entre os números, ou são iguais ou o maior é: ", número2
+  FIM SE
+FIM</code></pre>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="imagens/fluxogramafudidopqp.png" class="img-fluid figure-img"></p>
+<figcaption>PNG</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-2" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-2">Exercício 2</h3>
+<p>Abaixo estão um pseudocógio e um floxograma:</p>
+</section>
+<div class="columns">
+<div class="column">
+<section id="fluxograma" class="level3">
+<h3 class="anchored" data-anchor-id="fluxograma">Fluxograma</h3>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+A([Inicio]) --&gt; B["a = 0"]
+B --&gt; C{a &lt; 3?}
+C --&gt;|Verdadeiro| D["a = a + 1"]
+C --&gt;|Falso| E([Fim])
+D --&gt; C
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+</div><div class="column">
+<section id="pseudocódigo-1" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocódigo-1">Pseudocódigo</h3>
+<pre class="{ObjectiveC}"><code>INÍCIO
+  a ← 0
+  ENQUANTO a &lt; 3 FAÇA
+    a ← a + 1
+  FIM ENQUANTO
+FIM</code></pre>
+</section>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sim.</p>
+<p>No fluxograma, temos um valor a = 0, e, enquanto ele é menor que 3 ele é incrementado por 1. No momento que seu valor atinge 3, o algortimo termina, pois a condição “a &lt; 3” se torna falsa. No pseudocódigo temos o mesmo efeito, pois assim que a assume o valor 3, o ENQUANTO acaba.</p>
+</div>
+</div>
+</div>
+<section id="exercício-3" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-3">Exercício 3</h3>
+<p>Com base no algorítmo abaixo responda:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+A([Início]) --&gt; B[/Ler um número/]
+B --&gt; C{Número &lt; 0?}
+C --&gt;|Sim| D["Exibir: Número negativo"]
+C --&gt;|Não| E{Número &lt;= 50?}
+E --&gt;|Sim| F["Exibir: Faixa 1"]
+E --&gt;|Não| G{Número &lt;= 100?}
+G --&gt;|Sim| H["Exibir: Faixa 2"]
+G --&gt;|Não| I["Exibir: Número fora da faixa permitida"]
+D --&gt; J([Fim])
+F --&gt; J
+H --&gt; J
+I --&gt; B
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ol type="1">
+<li>O que este algoritmo faz?</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Ele lê um número e checa se este número está dentro da faixa aceitável de entradas, sendo a faixa: <span class="math inline">\((-\infty, 100]\)</span>. Caso um número esteja fora da faixa, o algoritmo é repetido, até que um número válido seja lido.</p>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>O que acontecerá se o número lido pelo algoritmo fosse 105?</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Como números maiores que 100 serão classificados como números fora da faixa, o resultado será uma repetição do algoritmo, lendo novamente o número para checar se ele está na faixa aceitável.</p>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
