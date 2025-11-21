@@ -921,7 +921,7 @@ $$
 A matriz transposta é:
 
 $$
-M = \begin{bmatrix}
+M^{T} = \begin{bmatrix}
 1 & 4 & 7 \\
 2 & 5 & 8  \\
 3 & 6 & 9
