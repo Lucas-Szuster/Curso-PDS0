@@ -410,6 +410,10 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="o-que-são-matrizes">O que são Matrizes?</h2>
 <p>Uma matriz é uma estrutura matemática bidimensional composta por linhas e colunas. Cada elemento de uma matriz é identificado por dois índices: o índice da linha (geralmente chamado de <span class="math inline">\(i\)</span>) e o índice da coluna (geralmente chamado de <span class="math inline">\(j\)</span>).</p>
 <p>Uma matriz pode ser representada como uma tabela de números, e a sua principal característica é que ela organiza os dados de forma estruturada. A matriz é uma ferramenta amplamente usada em áreas como álgebra linear, computação gráfica, estatísticas, e muitos outros campos da matemática e ciência da computação.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Representação de tabela</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Representação matemática</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -434,6 +438,17 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p><span class="math display">\[
+\begin{bmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6
+\end{bmatrix}
+\]</span></p>
+</div>
+</div>
+</div>
 <p>Neste caso, a matriz tem 2 linhas e 3 colunas. Podemos referir-nos a cada valor dessa tabela através de dois índices: o índice da linha (que nos diz em qual linha o número está) e o índice da coluna (que nos diz em qual coluna o número está).</p>
 <section id="como-acessar-os-elementos-de-uma-matriz" class="level3">
 <h3 class="anchored" data-anchor-id="como-acessar-os-elementos-de-uma-matriz">Como acessar os elementos de uma matriz?</h3>
@@ -456,7 +471,7 @@ window.Quarto = {
 <p>No contexto da programação, uma matriz pode ser representada como uma estrutura de dados chamada lista de listas. Essencialmente, você pode pensar em uma lista de listas como uma tabela, onde cada linha da tabela é representada por uma lista, e todas as listas juntas formam a matriz.</p>
 <p>Por exemplo, em Python, uma matriz de 3 linhas e 3 colunas poderia ser representada da seguinte forma:</p>
 <p>Matriz 3x3:</p>
-<div id="10f2187e" class="cell" data-execution_count="1">
+<div id="5e12ef53" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> [ [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>      [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>      [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>] ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -465,31 +480,31 @@ window.Quarto = {
 <section id="como-acessar-um-elemento-em-uma-matriz" class="level3">
 <h3 class="anchored" data-anchor-id="como-acessar-um-elemento-em-uma-matriz">Como acessar um elemento em uma matriz?</h3>
 <p>Na programação, quando queremos acessar um elemento específico de uma matriz, usamos dois índices: o primeiro índice corresponde à linha e o segundo índice à coluna. Esses índices nos permitem “navegar” pela matriz de forma organizada.</p>
-<p>Por exemplo, para acessar o valor 5 da matriz acima, precisamos olhar na segunda linha e segunda coluna. Assim, o valor 5 pode ser acessado através dos índices 1 e 1 (lembrando que em Python, as contagens de índices começam a partir de 0).</p>
+<p>Por exemplo, para acessar o valor 5 da matriz abaixo, precisamos olhar na segunda linha e segunda coluna. Assim, o valor 5 pode ser acessado através dos índices 1 e 1 (lembrando que em Python, as contagens de índices começam a partir de 0).</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Índices</th>
-<th>Linha 1</th>
-<th>Linha 2</th>
-<th>Linha 3</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Coluna 1</td>
+<td>0</td>
 <td>1</td>
 <td>4</td>
 <td>7</td>
 </tr>
 <tr class="even">
-<td>Coluna 2</td>
+<td>1</td>
 <td>2</td>
 <td>5</td>
 <td>8</td>
 </tr>
 <tr class="odd">
-<td>Coluna 3</td>
+<td>2</td>
 <td>3</td>
 <td>6</td>
 <td>9</td>
@@ -497,10 +512,10 @@ window.Quarto = {
 </tbody>
 </table>
 <p>Então, para acessar o número 5, usamos:</p>
-<div id="f824e0be" class="cell" data-execution_count="2">
+<div id="12e26159" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>matriz[<span class="dv">1</span>][<span class="dv">1</span>]  <span class="co"># Saída: 5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Aqui:</p>
+<p>Na linha de código acima:</p>
 <p><code>matriz[1]</code> se refere à segunda linha: [4, 5, 6].</p>
 <p><code>matriz[1][1]</code> nos dá o segundo elemento da segunda linha, que é 5.</p>
 <p>Este conceito de acessar dados em posições específicas é fundamental quando estamos lidando com grandes conjuntos de dados ou estruturas organizadas.</p>
@@ -508,7 +523,7 @@ window.Quarto = {
 <section id="acessando-elementos-de-uma-matriz-de-forma-generalizada" class="level3">
 <h3 class="anchored" data-anchor-id="acessando-elementos-de-uma-matriz-de-forma-generalizada">Acessando Elementos de uma Matriz de Forma Generalizada</h3>
 <p>Como vimos anteriormente, para acessar elementos de uma matriz, usamos dois índices: o primeiro índice <span class="math inline">\(i\)</span> representa a linha e o segundo índice <span class="math inline">\(j\)</span> representa a coluna. De forma geral, podemos acessar qualquer elemento da matriz M na posição de linha <span class="math inline">\(i\)</span> e coluna <span class="math inline">\(j\)</span> da seguinte forma:</p>
-<div id="996d3738" class="cell" data-execution_count="3">
+<div id="b5bb1a97" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>M[i][j]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Onde:</p>
@@ -526,44 +541,16 @@ window.Quarto = {
 <section id="exemplo-com-uma-matriz-4x3" class="level5">
 <h5 class="anchored" data-anchor-id="exemplo-com-uma-matriz-4x3">Exemplo com uma Matriz 4x3</h5>
 <p>Considere a seguinte matriz 4x3 (com 4 linhas e 3 colunas):</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th></th>
-<th>Coluna 1</th>
-<th>Coluna 2</th>
-<th>Coluna 3</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Linha 1</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-</tr>
-<tr class="even">
-<td>Linha 2</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-</tr>
-<tr class="odd">
-<td>Linha 3</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-</tr>
-<tr class="even">
-<td>Linha 4</td>
-<td>10</td>
-<td>11</td>
-<td>12</td>
-</tr>
-</tbody>
-</table>
+<p><span class="math display">\[
+\text{matriz} = \begin{bmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6 \\
+7 &amp; 8 &amp; 9 \\
+10 &amp; 11 &amp; 12
+\end{bmatrix}
+\]</span></p>
 <p>A matriz em Python seria representada como:</p>
-<div id="a5fae5eb" class="cell" data-execution_count="4">
+<div id="59de598f" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>matriz <span class="op">=</span> [</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
@@ -573,15 +560,15 @@ window.Quarto = {
 </div>
 <p>Agora, para acessar qualquer posição específica na matriz, basta usar os índices correspondentes.</p>
 <p>Para acessar o valor 5, que está na segunda linha e segunda coluna, usamos:</p>
-<div id="6309fa29" class="cell" data-execution_count="5">
+<div id="94674413" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>matriz[<span class="dv">1</span>][<span class="dv">1</span>]  <span class="co"># Resultado: 5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Para acessar o valor 8, que está na terceira linha e segunda coluna, usamos:</p>
-<div id="69318687" class="cell" data-execution_count="6">
+<div id="355205d9" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>matriz[<span class="dv">2</span>][<span class="dv">1</span>]  <span class="co"># Resultado: 8</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Para acessar o valor 12, que está na quarta linha e terceira coluna, usamos:</p>
-<div id="972a1201" class="cell" data-execution_count="7">
+<div id="9936eac9" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>matriz[<span class="dv">3</span>][<span class="dv">2</span>]  <span class="co"># Resultado: 12</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esse padrão se aplica a qualquer matriz, independentemente do seu tamanho.</p>
@@ -596,7 +583,7 @@ window.Quarto = {
 <p>Para preencher uma matriz, basta utilizar um laço for aninhado: o primeiro laço percorre as linhas e o segundo percorre as colunas. Este processo pode ser útil quando precisamos gerar ou modificar dados em uma matriz.</p>
 <p>Exemplo: Preenchendo uma Matriz com Multiplicação de Índices</p>
 <p>Vamos preencher uma matriz 3x3 com o produto dos índices das linhas e das colunas. A matriz inicial contém apenas valores 0.</p>
-<div id="25e9bcff" class="cell" data-execution_count="8">
+<div id="d7724ece" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definindo uma matriz 3x3 com todos os elementos iguais a 0</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>matriz <span class="op">=</span> [[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]]</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -610,7 +597,7 @@ window.Quarto = {
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(linha)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Resultado:</p>
-<div id="cfee09f5" class="cell" data-execution_count="9">
+<div id="3d3e1b25" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>]</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -627,7 +614,7 @@ window.Quarto = {
 <p>Agora, vamos ver como podemos ler os dados de uma matriz já preenchida utilizando apenas o laço for.</p>
 <p>Exemplo: Lendo uma Matriz 3x3</p>
 <p>Aqui, temos uma matriz 3x3 com valores predefinidos. O objetivo é percorrer cada linha e coluna para imprimir o valor de cada elemento.</p>
-<div id="656fba63" class="cell" data-execution_count="10">
+<div id="e553b587" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definindo uma matriz 3x3 com valores predefinidos</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>matriz <span class="op">=</span> [</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
@@ -697,7 +684,7 @@ Elemento na linha 2, coluna 2: 9</code></pre>
 </tbody>
 </table>
 <p>Em Python, isso poderia ser representado da seguinte forma:</p>
-<div id="a7a34dbc" class="cell" data-execution_count="11">
+<div id="f5688bbb" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pontuacoes <span class="op">=</span> [</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>],  <span class="co"># Time A</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>],  <span class="co"># Time B</span></span>
@@ -747,7 +734,7 @@ Elemento na linha 2, coluna 2: 9</code></pre>
 </tbody>
 </table>
 <p>A representação em Python seria:</p>
-<div id="60c4c944" class="cell" data-execution_count="12">
+<div id="107b9f0b" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>imagem_pb <span class="op">=</span> [</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>],</span>
@@ -796,7 +783,7 @@ Elemento na linha 2, coluna 2: 9</code></pre>
 </tbody>
 </table>
 <p>A matriz em Python seria:</p>
-<div id="dfce03a3" class="cell" data-execution_count="13">
+<div id="b634300b" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tabela_multiplicacao <span class="op">=</span> [</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>],</span>
@@ -950,7 +937,7 @@ Elemento na linha 2, coluna 2: 9</code></pre>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="5babf2a4" class="cell" data-execution_count="14">
+<div id="b199e20d" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>matriz <span class="op">=</span> [</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>],</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>],</span>
@@ -1041,7 +1028,7 @@ a_{(n-1)0} &amp; a_{(n-1)1} &amp; \cdots &amp; a_{(n-1)(n-1)}
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="39700ee7" class="cell" data-execution_count="15">
+<div id="93d26d55" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>],</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>],</span>
@@ -1066,7 +1053,7 @@ a_{(n-1)0} &amp; a_{(n-1)1} &amp; \cdots &amp; a_{(n-1)(n-1)}
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="c6110261" class="cell" data-execution_count="16">
+<div id="37be52d9" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">0</span>][<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
@@ -1087,7 +1074,7 @@ a_{(n-1)0} &amp; a_{(n-1)1} &amp; \cdots &amp; a_{(n-1)(n-1)}
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="f5087990" class="cell" data-execution_count="17">
+<div id="45babbe0" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">1</span>][<span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
@@ -1097,7 +1084,7 @@ a_{(n-1)0} &amp; a_{(n-1)1} &amp; \cdots &amp; a_{(n-1)(n-1)}
 <section id="exercício-6" class="level3">
 <h3 class="anchored" data-anchor-id="exercício-6">Exercício 6</h3>
 <p>Considere a seguinte matriz em Python:</p>
-<div id="827cfe91" class="cell" data-execution_count="18">
+<div id="b5621d2d" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> [</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>],</span>
@@ -1188,7 +1175,7 @@ M = \begin{bmatrix}
 <ol start="5" type="1">
 <li>Qual será o resultado do seguinte código:</li>
 </ol>
-<div id="ea3ca84b" class="cell" data-execution_count="19">
+<div id="dbaa5d9a" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M[<span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
@@ -1205,7 +1192,7 @@ M = \begin{bmatrix}
 <div class="callout-body-container callout-body">
 <p>Como na programação uma matriz é nada mais que uma lista de listas (pelo menos por enquanto), acessar a matriz M na posição 1, sem especificar um segundo índice, siginifica acessar uma lista inteira da lista de listas.</p>
 <p>Ou seja, o resultado deste código é:</p>
-<div id="76346185" class="cell" data-execution_count="20">
+<div id="8722144f" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Execute o código na sua máquina!</strong></p>
@@ -1228,7 +1215,7 @@ M = \begin{bmatrix}
 <div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Para alterar um elemento da matriz, basta acessá-lo e alterar seu valor, portanto, este é o código que altera o elemento <span class="math inline">\((0, 0)\)</span> para 90:</p>
-<div id="cf7c4b81" class="cell" data-execution_count="21">
+<div id="18bb90bc" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">0</span>][<span class="dv">0</span>] <span class="op">=</span> <span class="dv">90</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Execute o código na sua máquina!</strong></p>
@@ -1239,7 +1226,7 @@ M = \begin{bmatrix}
 <section id="exercício-7" class="level3">
 <h3 class="anchored" data-anchor-id="exercício-7">Exercício 7</h3>
 <p>Considere a seguinte matriz:</p>
-<div id="cd1bf105" class="cell" data-execution_count="22">
+<div id="183200cb" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> [</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">3</span>, <span class="dv">4</span>]</span>
@@ -1248,7 +1235,7 @@ M = \begin{bmatrix}
 <ol type="1">
 <li>Escreva um código que, utilizando duas estruturas de repetição do tipo for com range(), seja capaz de imprimir todos os elementos, ou seja, a saída deve ser:</li>
 </ol>
-<div id="40434412" class="cell" data-execution_count="23">
+<div id="de0d50ed" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span></span>
@@ -1267,7 +1254,7 @@ M = \begin{bmatrix}
 <div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Aqui está o código capaz de realizar isto:</p>
-<div id="8a36fcf9" class="cell" data-execution_count="24">
+<div id="14ac839e" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># declaração da matriz</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> [</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">2</span>],</span>
@@ -1305,7 +1292,7 @@ M = \begin{bmatrix}
 <div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Aqui está o código adaptado:</p>
-<div id="28f07026" class="cell" data-execution_count="25">
+<div id="7de110a7" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># declaração da matriz</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> [</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">2</span>],</span>
@@ -1327,7 +1314,7 @@ M = \begin{bmatrix}
 <section id="exercício-8" class="level3">
 <h3 class="anchored" data-anchor-id="exercício-8">Exercício 8</h3>
 <p>Considerando a seguinte matriz:</p>
-<div id="f0005c76" class="cell" data-execution_count="26">
+<div id="fe221bfc" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>],</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>]</span>
@@ -1347,7 +1334,7 @@ M = \begin{bmatrix}
 <div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Aqui está o código capaz de realizar isto:</p>
-<div id="476351dc" class="cell" data-execution_count="27">
+<div id="3a02ec78" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># declaração da matriz</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>],</span>
@@ -1367,7 +1354,7 @@ M = \begin{bmatrix}
 <section id="exercício-9" class="level3">
 <h3 class="anchored" data-anchor-id="exercício-9">Exercício 9</h3>
 <p>Considerando a seguinte matriz:</p>
-<div id="bcd7a0b8" class="cell" data-execution_count="28">
+<div id="7c14d19b" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>matriz_valores <span class="op">=</span> [</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>],</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>, <span class="dv">3</span>]</span>
@@ -1389,7 +1376,7 @@ M = \begin{bmatrix}
 <div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Aqui está um código capaz de realizar isto:</p>
-<div id="bd1413b4" class="cell" data-execution_count="29">
+<div id="7d005933" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># declaração da matriz</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>matriz_valores <span class="op">=</span> [</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>],</span>
@@ -1431,7 +1418,7 @@ M = \begin{bmatrix}
 <div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>As únicas modificações necessárias são a troca do valor inicial da variável de multiplicação para 1 e a troca do operador <code>+=</code> para <code>*=</code>. Aqui está o código adaptado:</p>
-<div id="d2882c6f" class="cell" data-execution_count="30">
+<div id="504cbdc4" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># declaração da matriz</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>matriz_valores <span class="op">=</span> [</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>],</span>
@@ -1473,7 +1460,7 @@ M = \begin{bmatrix}
 <div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Aqui está o código adaptado:</p>
-<div id="24c7506d" class="cell" data-execution_count="31">
+<div id="0a4cf254" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># declaração da matriz</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>matriz_valores <span class="op">=</span> [</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>],</span>
@@ -1532,7 +1519,7 @@ M = \begin{bmatrix}
 <div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Aqui segue uma possível solução simples:</p>
-<div id="63502912" class="cell" data-execution_count="32">
+<div id="58a017ec" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># declaração da matriz original</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>matriz_original <span class="op">=</span> [</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>

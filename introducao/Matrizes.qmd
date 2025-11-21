@@ -10,10 +10,25 @@ Uma matriz é uma estrutura matemática bidimensional composta por linhas e colu
 
 Uma matriz pode ser representada como uma tabela de números, e a sua principal característica é que ela organiza os dados de forma estruturada. A matriz é uma ferramenta amplamente usada em áreas como álgebra linear, computação gráfica, estatísticas, e muitos outros campos da matemática e ciência da computação.
 
+::: {.panel-tabset}
+
+## Representação de tabela
+
 |         | Coluna 1 | Coluna 2 | Coluna 3 |
 | ------- | -------- | -------- | -------- |
 | Linha 1 | 1        | 2        | 3        |
 | Linha 2 | 4        | 5        | 6        |
+
+## Representação matemática
+
+$$
+\begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6
+\end{bmatrix}
+$$
+
+:::
 
 
 Neste caso, a matriz tem 2 linhas e 3 colunas. Podemos referir-nos a cada valor dessa tabela através de dois índices: o índice da linha (que nos diz em qual linha o número está) e o índice da coluna (que nos diz em qual coluna o número está).
@@ -57,13 +72,13 @@ Aqui, a primeira linha é [1, 2, 3], a segunda linha é [4, 5, 6] e a terceira l
 
 Na programação, quando queremos acessar um elemento específico de uma matriz, usamos dois índices: o primeiro índice corresponde à linha e o segundo índice à coluna. Esses índices nos permitem "navegar" pela matriz de forma organizada.
 
-Por exemplo, para acessar o valor 5 da matriz acima, precisamos olhar na segunda linha e segunda coluna. Assim, o valor 5 pode ser acessado através dos índices 1 e 1 (lembrando que em Python, as contagens de índices começam a partir de 0).
+Por exemplo, para acessar o valor 5 da matriz abaixo, precisamos olhar na segunda linha e segunda coluna. Assim, o valor 5 pode ser acessado através dos índices 1 e 1 (lembrando que em Python, as contagens de índices começam a partir de 0).
 
-| Índices  | Linha 1 | Linha 2 | Linha 3 |
+| Índices  | 0       | 1       | 2       |
 | -------- | ------- | ------- | ------- |
-| Coluna 1 | 1       | 4       | 7       |
-| Coluna 2 | 2       | 5       | 8       |
-| Coluna 3 | 3       | 6       | 9       |
+| 0        | 1       | 4       | 7       |
+| 1        | 2       | 5       | 8       |
+| 2        | 3       | 6       | 9       |
 
 Então, para acessar o número 5, usamos:
 
@@ -72,7 +87,7 @@ Então, para acessar o número 5, usamos:
 matriz[1][1]  # Saída: 5
 ```
 
-Aqui:
+Na linha de código acima:
 
 `matriz[1]` se refere à segunda linha: [4, 5, 6].
 
@@ -107,12 +122,14 @@ Independentemente do tamanho da matriz (seja 2x2, 3x3, 4x4 ou maior), o processo
 
 Considere a seguinte matriz 4x3 (com 4 linhas e 3 colunas):
 
-|         | Coluna 1 | Coluna 2 | Coluna 3 |
-| ------- | -------- | -------- | -------- |
-| Linha 1 | 1        | 2        | 3        |
-| Linha 2 | 4        | 5        | 6        |
-| Linha 3 | 7        | 8        | 9        |
-| Linha 4 | 10       | 11       | 12       |
+$$
+\text{matriz} = \begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9 \\
+10 & 11 & 12
+\end{bmatrix}
+$$
 
 
 A matriz em Python seria representada como:
