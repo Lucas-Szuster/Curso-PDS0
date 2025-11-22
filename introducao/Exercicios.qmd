@@ -760,7 +760,7 @@ else:
 
 ### Exercício 1
 
-1. Aproximação do número $e$ usando a Série de Taylor
+Aproximação do número $e$ usando a Série de Taylor
 
 O número $e$ e é uma das constantes mais importantes da matemática, assim como $\pi$. Ele aparece naturalmente em várias áreas: crescimento populacional, juros compostos, probabilidade, estatística, equações diferenciais, física, computação e muito mais.
 
