@@ -803,25 +803,25 @@ Exemplos de resultado:
 * Quando o número de termos é 1, a soma é definida como:
 
   $$
+  e \approx \sum_{n = 0}^{0} \frac{1}{n!}
+  $$
+
+  E esta aproximação se da como:
+
+  $$
+  \sum_{n = 0}^{0} \frac{1}{n!} = \frac{1}{0!} = \frac{1}{1} = 1
+  $$
+
+* Quando o número de termos é 2, a soma é definida como:
+
+  $$
   e \approx \sum_{n = 0}^{1} \frac{1}{n!}
   $$
 
   E esta aproximação se da como:
 
   $$
-  \sum_{n = 0}^{1} \frac{1}{n!} = \frac{1}{0!} = \frac{1}{1} = 1
-  $$
-
-* Quando o número de termos é 2, a soma é definida como:
-
-  $$
-  e \approx \sum_{n = 0}^{2} \frac{1}{n!}
-  $$
-
-  E esta aproximação se da como:
-
-  $$
-  \sum_{n = 0}^{2} \frac{1}{n!} = \frac{1}{0!} + \frac{1}{1!} = \frac{1}{1} + \frac{1}{1} = 1 + 1 = 2
+  \sum_{n = 0}^{1} \frac{1}{n!} = \frac{1}{0!} + \frac{1}{1!} = \frac{1}{1} + \frac{1}{1} = 1 + 1 = 2
   $$
 
 * Quando o número de termos é 3, a aproximação de $e$ deve ser $2.5$
