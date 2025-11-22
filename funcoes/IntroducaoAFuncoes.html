@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>introducaoafuncoes – PDS-0</title>
+<title>Introdução à funções – PDS-0</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -69,6 +104,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -81,7 +145,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../funcoes/IntroducaoAFuncoes.html">Funções</a></li><li class="breadcrumb-item"><a href="../funcoes/IntroducaoAFuncoes.html">IntroducaoAFuncoes.html</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../funcoes/IntroducaoAFuncoes.html">Funções</a></li><li class="breadcrumb-item"><a href="../funcoes/IntroducaoAFuncoes.html">Introdução à funções</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -214,7 +278,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../funcoes/IntroducaoAFuncoes.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">IntroducaoAFuncoes.html</span></a>
+ <span class="menu-text">Introdução à funções</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -283,17 +347,456 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Conteúdos da página</h2>
+   
+  <ul>
+  <li><a href="#exemplo-motivacional" id="toc-exemplo-motivacional" class="nav-link active" data-scroll-target="#exemplo-motivacional">Exemplo motivacional</a></li>
+  <li><a href="#introdução-a-funções" id="toc-introdução-a-funções" class="nav-link" data-scroll-target="#introdução-a-funções">Introdução a funções</a>
+  <ul class="collapse">
+  <li><a href="#o-que-é-uma-função-formalização" id="toc-o-que-é-uma-função-formalização" class="nav-link" data-scroll-target="#o-que-é-uma-função-formalização">O que é uma função (“formalização”)?</a></li>
+  <li><a href="#entradas-de-uma-função" id="toc-entradas-de-uma-função" class="nav-link" data-scroll-target="#entradas-de-uma-função">Entradas de uma função</a></li>
+  <li><a href="#saídas-de-uma-função-o-retorno" id="toc-saídas-de-uma-função-o-retorno" class="nav-link" data-scroll-target="#saídas-de-uma-função-o-retorno">Saídas de uma função: o retorno</a></li>
+  <li><a href="#por-que-utilizar-funções" id="toc-por-que-utilizar-funções" class="nav-link" data-scroll-target="#por-que-utilizar-funções">Por que utilizar funções?</a></li>
+  <li><a href="#resumo" id="toc-resumo" class="nav-link" data-scroll-target="#resumo">Resumo</a></li>
+  </ul></li>
+  <li><a href="#funções-que-já-conhecemos" id="toc-funções-que-já-conhecemos" class="nav-link" data-scroll-target="#funções-que-já-conhecemos">Funções que já conhecemos</a>
+  <ul class="collapse">
+  <li><a href="#função-print" id="toc-função-print" class="nav-link" data-scroll-target="#função-print">Função print()</a></li>
+  <li><a href="#função-input" id="toc-função-input" class="nav-link" data-scroll-target="#função-input">Função input()</a></li>
+  </ul></li>
+  <li><a href="#sintaxe-de-utilização-de-funções" id="toc-sintaxe-de-utilização-de-funções" class="nav-link" data-scroll-target="#sintaxe-de-utilização-de-funções">Sintaxe de utilização de funções</a>
+  <ul class="collapse">
+  <li><a href="#chamar-uma-função" id="toc-chamar-uma-função" class="nav-link" data-scroll-target="#chamar-uma-função">Chamar uma função</a></li>
+  <li><a href="#funções-com-parâmetros" id="toc-funções-com-parâmetros" class="nav-link" data-scroll-target="#funções-com-parâmetros">Funções com parâmetros</a></li>
+  <li><a href="#funções-sem-parâmetro" id="toc-funções-sem-parâmetro" class="nav-link" data-scroll-target="#funções-sem-parâmetro">Funções sem parâmetro</a></li>
+  <li><a href="#funções-com-retorno-1" id="toc-funções-com-retorno-1" class="nav-link" data-scroll-target="#funções-com-retorno-1">Funções com retorno</a></li>
+  <li><a href="#funções-com-parâmetros-opcionais" id="toc-funções-com-parâmetros-opcionais" class="nav-link" data-scroll-target="#funções-com-parâmetros-opcionais">Funções com parâmetros opcionais</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../funcoes/IntroducaoAFuncoes.html">Funções</a></li><li class="breadcrumb-item"><a href="../funcoes/IntroducaoAFuncoes.html">IntroducaoAFuncoes.html</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../funcoes/IntroducaoAFuncoes.html">Funções</a></li><li class="breadcrumb-item"><a href="../funcoes/IntroducaoAFuncoes.html">Introdução à funções</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Introdução à funções</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
 
+
+<section id="exemplo-motivacional" class="level2">
+<h2 class="anchored" data-anchor-id="exemplo-motivacional">Exemplo motivacional</h2>
+<p>Desde a antiguidade, matemáticos do mundo inteiro buscaram maneiras cada vez mais eficientes de calcular o valor de <span class="math inline">\(\pi\)</span>. Esse número, que nasce da geometria dos círculos, acabou se tornando essencial em áreas como física, computação, engenharia, astronomia e estatística. A busca por métodos rápidos e precisos para calcular <span class="math inline">\(\pi\)</span> é tão antiga quanto a própria matemática, e evoluiu de formas surpreendentes ao longo da história.</p>
+<p>Primeiro vieram as aproximações geométricas, como as de Arquimedes. Mais tarde surgiram séries matemáticas que, ao somar infinitos termos, aproximavam <span class="math inline">\(\pi\)</span> com cada vez mais precisão. Algumas dessas séries funcionam, mas convergem tão lentamente que seriam impraticáveis para cálculos modernos que exigem milhões ou bilhões de casas decimais.</p>
+<p>O grande salto veio no século XX. O matemático indiano Srinivasa Ramanujan descobriu fórmulas extraordinárias, capazes de calcular <span class="math inline">\(\pi\)</span> com rapidez impressionante. Décadas depois, inspirado em seu trabalho, os irmãos David e Gregory Chudnovsky desenvolveram uma fórmula ainda mais eficiente. Ela se tornou a base dos recordes modernos de cálculo de <span class="math inline">\(\pi\)</span>. Vários dos maiores valores já calculados — contendo trilhões de dígitos — foram obtidos usando essa fórmula.</p>
+<p>O motivo? A fórmula de Chudnovsky converge incrivelmente rápido. Cada termo adicionado à série já é suficiente para somar dezenas de casas decimais corretas.</p>
+<p>A fórmula de Chudnovsky é a seguinte:</p>
+<p><span class="math display">\[
+\frac{1}{\pi} = 12 \sum_{n = 0}^{\infty} \frac{(-1)^n (6n)! (545140134n+13591409)}{(3n)!(n!)^3 640320^{3n + \frac{3}{2}}}
+\]</span></p>
+<p>Cada novo termo depende de algumas operações:</p>
+<ul>
+<li><p>um sinal alternado: <span class="math inline">\((-1)^n\)</span></p></li>
+<li><p>um polinômio: <span class="math inline">\(545140134𝑛 +13591409\)</span></p></li>
+<li><p>e, principalmente, fatoriais grandes, como</p>
+<ul>
+<li><p><span class="math inline">\((6n)!\)</span></p></li>
+<li><p><span class="math inline">\((3n)!\)</span></p></li>
+<li><p><span class="math inline">\((n!)^3\)</span></p></li>
+</ul></li>
+</ul>
+<p>Agora vamos tentar montar um programa simples para calcular um único termo desta série, utilizando somente os conhecimentos que possuímos até o momento.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Tente fazer! (clique para revelar a solução)">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Tente fazer! (clique para revelar a solução)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="482de3a6" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># declaração de n (como 0 para o primeiro termo da série)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>n: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo do fatorial de 6n</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>fatorial_6n <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span> <span class="op">*</span> n <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    fatorial_6n <span class="op">*=</span> i</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo do fatorial de 3n</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>fatorial_3n <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">3</span> <span class="op">*</span> n <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    fatorial_3n <span class="op">*=</span> i</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo do fatorial de n</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>fatorial_n <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    fatorial_n <span class="op">*=</span> i</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># calcular o numerador do termo da série</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>numerador: <span class="bu">float</span> <span class="op">=</span> ((<span class="op">-</span><span class="dv">1</span>) <span class="op">**</span> n) <span class="op">*</span> fatorial_6n <span class="op">*</span> ((<span class="dv">545140134</span> <span class="op">*</span> n) <span class="op">+</span> <span class="dv">13591409</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># calcular o denominador do termo da série</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>denominador: <span class="bu">float</span> <span class="op">=</span> fatorial_3n <span class="op">*</span> (fatorial_n <span class="op">**</span> <span class="dv">3</span>) <span class="op">*</span> (<span class="dv">640320</span> <span class="op">**</span> (<span class="dv">3</span> <span class="op">*</span> n)) <span class="op">*</span> (<span class="dv">640320</span> <span class="op">**</span> (<span class="fl">1.5</span>))</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># calcular a divisão dos dois</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>termo_da_serie: <span class="bu">float</span> <span class="op">=</span> numerador <span class="op">/</span> denominador</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># lembrando que 1/pi = 12 * termo_da_serie -&gt; pi = 1/(12 * termo_da_serie)</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">1</span><span class="op">/</span>(<span class="dv">12</span> <span class="op">*</span> termo_da_serie))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Caso não tenha conseguido implementar este código, <strong>execute esta implementação na sua máquina</strong> e busque entender o que está acontecendo exatamente.</p>
+<p>Há também, um detalhe importante no cálcuo do denominador, onde foi utilizado a propriedade que <span class="math inline">\(a^{b + c} = a^b \times a^c\)</span> para reescrever <span class="math inline">\(640320^{3n + \frac{3}{2}}\)</span> como <span class="math inline">\(640320^{3n} \times 640320^{\frac{3}{2}}\)</span>, para melhorar a precisão do resultado no computador.</p>
+</div>
+</div>
+</div>
+<p>Ao escrever o código dessa forma, percebemos uma situação curiosa: para calcular apenas um termo da série, tivemos que repetir várias vezes exatamente o mesmo tipo de processo — calcular o fatorial de um número.</p>
+<p>Veja que:</p>
+<p>o cálculo de <span class="math inline">\((6n)!\)</span> segue um passo a passo, o cálculo de <span class="math inline">\((3n)!\)</span> segue o mesmo passo a passo e o cálculo de <span class="math inline">\(n!\)</span> também segue o mesmo passo a passo!</p>
+<p>A única coisa que muda entre eles é qual número estamos utilizando, mas o que está sendo calculado é a mesma coisa: o fatorial.</p>
+<p>Isso significa que estamos copiando e colando o mesmo raciocínio várias vezes, mudando só um detalhe. Ou seja, estamos fazendo trabalho repetido, manual e desnecessário.</p>
+<p>E nos leva a duas reflexões:</p>
+<section id="estamos-repetindo-a-mesma-lógica-várias-vezes" class="level4">
+<h4 class="anchored" data-anchor-id="estamos-repetindo-a-mesma-lógica-várias-vezes">1. Estamos repetindo a mesma lógica várias vezes</h4>
+<p>Essa repetição já é um problema por si só, pois deixa o código:</p>
+<ul>
+<li><p>mais longo</p></li>
+<li><p>mais difícil de ler</p></li>
+<li><p>mais cansativo de escrever</p></li>
+</ul>
+</section>
+<section id="se-algo-estivesse-errado-teríamos-que-consertar-em-vários-lugares" class="level4">
+<h4 class="anchored" data-anchor-id="se-algo-estivesse-errado-teríamos-que-consertar-em-vários-lugares">2. Se algo estivesse errado, teríamos que consertar em vários lugares</h4>
+<p>Imagine agora que, por algum motivo, cometemos um erro na forma como escrevemos o cálculo do fatorial. Talvez tenhamos começado o loop no número errado, ou multiplicado na ordem incorreta, ou simplesmente esquecido um detalhe importante. (No código acima tudo está correto — estamos apenas imaginando um cenário em que houvesse um erro.)</p>
+<p>Como copiamos esse cálculo três vezes, esse erro estaria:</p>
+<ul>
+<li><p>no fatorial de <span class="math inline">\(6n\)</span></p></li>
+<li><p>no fatorial de <span class="math inline">\(3n\)</span></p></li>
+<li><p>no fatorial de <span class="math inline">\(n\)</span></p></li>
+</ul>
+<p>E então, para corrigir esse erro, precisaríamos:</p>
+<ul>
+<li><p>lembrar de procurar cada trecho repetido</p></li>
+<li><p>corrigir todos eles manualmente</p></li>
+<li><p>garantir que não esquecemos nenhum</p></li>
+</ul>
+<p>Esse tipo de repetição é uma grande fonte de bugs em programas reais. Quanto mais partes iguais espalhadas pelo código, maior a chance de:</p>
+<ul>
+<li><p>esquecer de atualizar uma delas</p></li>
+<li><p>corrigir uma versão e deixar outra errada</p></li>
+<li><p>criar inconsistências difíceis de rastrear</p></li>
+<li><p>Ou seja: além de trabalhoso, é arriscado.</p></li>
+</ul>
+</section>
+<section id="o-que-fazer" class="level4">
+<h4 class="anchored" data-anchor-id="o-que-fazer">O que fazer?</h4>
+<p>Será que precisamos reescrever todo esse processo sempre que quisermos calcular um fatorial diferente?</p>
+<p>Seria muito mais prático se pudéssemos descrever esse processo uma única vez, de forma correta, e depois simplesmente pedir ao computador que o execute para qualquer número.</p>
+<p>Como se disséssemos ao computador:</p>
+<blockquote class="blockquote">
+<p>“Este é o procedimento para calcular um fatorial. Sempre que eu precisar, eu te digo o número e você faz isso pra mim.”</p>
+</blockquote>
+<p>A programação oferece exatamente esse mecanismo: a possibilidade de guardar um procedimento e reutilizá-lo sempre que necessário, mudando apenas a informação de entrada.</p>
+<p>Isso melhora tudo:</p>
+<ul>
+<li><p>evita repetição</p></li>
+<li><p>evita erros de manutenção</p></li>
+<li><p>deixa o código mais curto</p></li>
+<li><p>deixa o programa mais organizado</p></li>
+<li><p>diminui a chance de bugs</p></li>
+</ul>
+<p>Esse mecanismo recebe um nome muito importante: <strong>função</strong>.</p>
+</section>
+</section>
+<section id="introdução-a-funções" class="level2">
+<h2 class="anchored" data-anchor-id="introdução-a-funções">Introdução a funções</h2>
+<p>Após ver o exemplo motivacional sobre o cálculo do fatorial, você provavelmente percebeu que, ao repetir o mesmo processo várias vezes, estamos criando um código difícil de manter, suscetível a erros e redundante. Uma solução muito poderosa para esse problema é a utilização de funções. As funções são um dos conceitos mais importantes na programação, permitindo que você organize melhor o código, evite repetições e torne o programa mais legível.</p>
+<p>Mas, o que são funções exatamente? Como elas funcionam? Como você as usa de forma eficiente? Para responder a essas perguntas, vamos explorar os principais conceitos por trás das funções, como entradas, saídas, parâmetros e retorno.</p>
+<section id="o-que-é-uma-função-formalização" class="level3">
+<h3 class="anchored" data-anchor-id="o-que-é-uma-função-formalização">O que é uma função (“formalização”)?</h3>
+<p>Uma função é um bloco de código que realiza uma tarefa específica. Podemos vê-la como um pequeno algoritmo dentro do programa, que você pode usar várias vezes, sempre que necessário. Funciona da seguinte maneira:</p>
+<ul>
+<li><p>Entrada: A função recebe alguns valores de entrada (chamados de parâmetros).</p></li>
+<li><p>Processamento: A função realiza um processo interno com esses valores (como um cálculo ou qualquer outra operação).</p></li>
+<li><p>Saída: A função devolve um resultado (chamado de retorno), ou então realiza uma ação sem devolver nada.</p></li>
+</ul>
+<p>Vamos agora olhar mais a fundo para os diferentes componentes de uma função, começando pelas entradas, que são essenciais para que a função saiba o que fazer.</p>
+</section>
+<section id="entradas-de-uma-função" class="level3">
+<h3 class="anchored" data-anchor-id="entradas-de-uma-função">Entradas de uma função</h3>
+<p>Quando chamamos uma função, passamos dados para ela. Esses dados são chamados de parâmetros. Eles são valores que a função usa para realizar seu trabalho. Pense nos parâmetros como ingredientes que você passa para a função, para que ela possa gerar um resultado. A principal vantagem dos parâmetros é que eles permitem que uma mesma função seja usada de maneiras diferentes, dependendo do que você fornecer.</p>
+<p>Exemplos do mundo real:</p>
+<ul>
+<li><p>Receita de bolo:</p>
+<p>Ingredientes como açúcar, ovos e farinha são os parâmetros da receita. Se você quiser fazer um bolo diferente, basta alterar a quantidade de um ou mais ingredientes.</p>
+<p>A mesma receita pode ser usada para diferentes bolos, mudando apenas os parâmetros (quantidade de açúcar, farinha, etc.).</p></li>
+<li><p>Aplicativo de mapas:</p>
+<p>Quando você pede para o app calcular a rota de ponto A até o ponto B, os endereços de origem e destino são os parâmetros. O algoritmo de navegação é o mesmo, mas o ponto de partida e chegada que são alterados.</p></li>
+<li><p>Máquina de café:</p>
+<p>Se você passar o parâmetro “tipo de café”, a máquina pode preparar um café espresso, um cappuccino ou um latte, dependendo do que você escolher. O processo de fazer o café (aquecer a água, misturar o pó de café, etc.) é sempre o mesmo, mas o tipo de café que você recebe vai depender do parâmetro que você forneceu.</p></li>
+</ul>
+<p>No contexto da programação, os parâmetros permitem que uma função tenha flexibilidade. A mesma função pode ser chamada várias vezes com valores diferentes e produzir resultados diferentes a partir dos mesmos passos internos.</p>
+<p>No nosso exemplo do fatorial, o número que queremos calcular o fatorial é o parâmetro. Em vez de escrever o cálculo de fatorial várias vezes, com o número alterando de vez em quando, passamos o número como parâmetro para a função e ela faz o trabalho para nós.</p>
+</section>
+<section id="saídas-de-uma-função-o-retorno" class="level3">
+<h3 class="anchored" data-anchor-id="saídas-de-uma-função-o-retorno">Saídas de uma função: o retorno</h3>
+<p>Depois de executar o processo, a função geralmente devolve um resultado. Esse resultado é chamado de retorno. Dependendo do tipo de tarefa que a função realiza, ela pode retornar:</p>
+<ul>
+<li><p>Um valor específico, como um número ou texto</p></li>
+<li><p>Nada (ou seja, ela realiza uma ação mas não retorna nenhum valor).</p></li>
+</ul>
+<section id="funções-com-retorno" class="level4">
+<h4 class="anchored" data-anchor-id="funções-com-retorno">Funções com retorno:</h4>
+<p>Uma função com retorno vai calcular algo com base nas entradas e devolver o resultado. Exemplos disso incluem:</p>
+<ul>
+<li><p>Calcular a soma de dois números.</p></li>
+<li><p>Converter temperatura de Celsius para Fahrenheit.</p></li>
+<li><p>Calcular o fatorial de um número.</p></li>
+</ul>
+<p>Por exemplo, a função que calcula o fatorial de um número deve retornar o resultado do cálculo, para que possamos usá-lo em outra parte do código.</p>
+<p>Funções sem retorno:</p>
+<p>Já uma função sem retorno não devolve um valor diretamente, mas realiza uma ação. Por exemplo:</p>
+<ul>
+<li><p>Imprimir uma mensagem na tela.</p></li>
+<li><p>Tocar um som.</p></li>
+<li><p>Salvar um arquivo no computador.</p></li>
+</ul>
+<p>Essas funções são úteis para executar tarefas que não precisam de um resultado imediato, como mostrar uma mensagem ou realizar um efeito visual no programa.</p>
+</section>
+</section>
+<section id="por-que-utilizar-funções" class="level3">
+<h3 class="anchored" data-anchor-id="por-que-utilizar-funções">Por que utilizar funções?</h3>
+<p>Agora que entendemos o conceito básico de funções e seus componentes (parâmetros, entradas, saídas, retorno), vamos refletir sobre as principais vantagens de usá-las:</p>
+<ol type="1">
+<li>Evita repetição</li>
+</ol>
+<p>Ao usar funções, você escreve um conjunto de instruções uma única vez e pode chamá-lo quantas vezes for necessário. No caso do fatorial, você escreveria o cálculo uma vez dentro de uma função e poderia chamá-la sempre que precisasse calcular um fatorial para qualquer número.</p>
+<ol start="2" type="1">
+<li>Reduz erros</li>
+</ol>
+<p>Se você precisa corrigir ou otimizar algo, basta alterar a função em um único lugar. Sem funções, teríamos que atualizar várias partes do código, o que aumenta a chance de deixar algo passar batido. Com funções, isso fica bem mais seguro e eficiente.</p>
+<ol start="3" type="1">
+<li>Facilita a manutenção</li>
+</ol>
+<p>Código que utiliza funções é muito mais fácil de entender e manter, porque você pode pensar nas funções como pequenos blocos de construção. Se você precisar alterar algo, pode se concentrar apenas na função específica, sem se preocupar em revisar o código inteiro.</p>
+<ol start="4" type="1">
+<li>Permite a abstração</li>
+</ol>
+<p>Funções permitem que você se concentre no que uma parte do programa faz, sem se preocupar com o como ela faz. Em vez de entender todos os detalhes de um cálculo ou tarefa, você só precisa saber qual função chamar e qual valor passar para ela.</p>
+</section>
+<section id="resumo" class="level3">
+<h3 class="anchored" data-anchor-id="resumo">Resumo</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 72%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Conceito</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Parâmetro(s)</strong> / <strong>Entrada</strong></td>
+<td>Valores que a função recebe como entrada, dados fornecidos para a função</td>
+</tr>
+<tr class="even">
+<td><strong>Processo</strong></td>
+<td>As instruções internas que a função executa com esses dados</td>
+</tr>
+<tr class="odd">
+<td><strong>Saída</strong></td>
+<td>O que a função produz após executar seu processo</td>
+</tr>
+<tr class="even">
+<td><strong>Retorno</strong></td>
+<td>O valor que a função devolve (ou nada, se não houver retorno)</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="funções-que-já-conhecemos" class="level2">
+<h2 class="anchored" data-anchor-id="funções-que-já-conhecemos">Funções que já conhecemos</h2>
+<p>Você já está usando funções no seu código, sem nem perceber! Dois exemplos que você provavelmente usa o tempo todo em Python são as funções print() e input(). Ambas são essenciais para a interação com o usuário e a exibição de informações. No entanto, embora você já as tenha usado, talvez não tenha notado que ambas são funções completas, com entradas (valores que você passa para elas) e saídas (valores que elas retornam ou ações que realizam).</p>
+<p>Agora que começamos a entender o que são funções, vamos analisar como essas duas funções que você já conhece funcionam internamente, e o que elas fazem com as entradas e saídas.</p>
+<section id="função-print" class="level3">
+<h3 class="anchored" data-anchor-id="função-print">Função print()</h3>
+<p>A função print() é provavelmente a função mais usada em Python. Ela permite que você mostre informações na tela durante a execução do seu programa. Sempre que você quer que algo apareça para o usuário — seja uma mensagem, um valor ou o resultado de um cálculo — você usa print().</p>
+<section id="entradas-o-que-a-função-print-recebe" class="level4">
+<h4 class="anchored" data-anchor-id="entradas-o-que-a-função-print-recebe">Entradas: o que a função print() recebe</h4>
+<p>A função print() pode receber um ou mais parâmetros, que são os valores que você deseja exibir na tela. Cada valor é separado por vírgula dentro dos parênteses. Esses valores podem ser strings, números, ou variáveis.</p>
+<p>Por exemplo:</p>
+<div id="ef00e6c1" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Olá, Mundo!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Aqui, a função print() recebe uma string (“Olá, Mundo!”) como parâmetro e exibe essa string na tela. Você pode também passar várias informações de uma vez, separadas por vírgulas, e o Python irá automaticamente adicionar espaços entre elas:</p>
+<div id="df74097b" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>nome <span class="op">=</span> <span class="st">"Maria"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>idade <span class="op">=</span> <span class="dv">25</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Nome:"</span>, nome, <span class="st">"Idade:"</span>, idade)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Neste caso, a função print() recebe três parâmetros: a string “Nome:”, a variável nome e a string “Idade:”. Ela imprime esses valores na tela, com espaços entre eles.</p>
+</section>
+<section id="saída-o-que-a-função-print-retorna" class="level4">
+<h4 class="anchored" data-anchor-id="saída-o-que-a-função-print-retorna">Saída: o que a função print() retorna</h4>
+<p>A função print() não retorna nenhum valor. Ela apenas exibe as entradas fornecidas na tela. Em outras palavras, não há um valor retornado por print() que você possa usar em outros cálculos ou variáveis. Se quisermos usar a terminologia de funções:</p>
+<ul>
+<li>Saída/Retorno: <code>None</code> (não há um valor retornado, a saída é apenas o efeito de exibir algo na tela)</li>
+</ul>
+</section>
+<section id="resumo-da-função-print" class="level4">
+<h4 class="anchored" data-anchor-id="resumo-da-função-print">Resumo da função print()</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 79%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Conceito</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Parâmetro(s)</strong></td>
+<td>O(s) valor(es) que você quer exibir (ex: uma string ou variável)</td>
+</tr>
+<tr class="even">
+<td><strong>Entrada</strong></td>
+<td>O que você quer mostrar na tela</td>
+</tr>
+<tr class="odd">
+<td><strong>Saída/Retorno</strong></td>
+<td>Não retorna valor, apenas exibe a informação</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="função-input" class="level3">
+<h3 class="anchored" data-anchor-id="função-input">Função input()</h3>
+<p>A função input() é outra função muito comum em Python. Ela permite que você obtenha dados do usuário. Sempre que você precisa fazer uma pergunta ao usuário e obter uma resposta, você usa input().</p>
+<section id="entradas-o-que-a-função-input-recebe" class="level4">
+<h4 class="anchored" data-anchor-id="entradas-o-que-a-função-input-recebe">Entradas: o que a função input() recebe</h4>
+<p>A função input() pode receber um parâmetro, que é o texto que você deseja exibir para o usuário antes que ele digite a resposta. Esse texto é normalmente uma pergunta ou uma mensagem explicativa.</p>
+<p>Por exemplo:</p>
+<div id="2d19ae9c" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>nome <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Qual é o seu nome? "</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Olá, "</span> <span class="op">+</span> nome <span class="op">+</span> <span class="st">"!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Aqui, a função input() recebe o parâmetro “Qual é o seu nome?” e exibe essa mensagem na tela. O Python então espera que o usuário digite uma resposta. Quando o usuário digita, a função retorna a resposta como uma string. A resposta do usuário é armazenada na variável nome, que pode ser utilizada posteriormente.</p>
+</section>
+<section id="saída-o-que-a-função-input-retorna" class="level4">
+<h4 class="anchored" data-anchor-id="saída-o-que-a-função-input-retorna">Saída: o que a função input() retorna</h4>
+<p>A função input() sempre retorna uma string, independentemente do que o usuário digite. Isso significa que, mesmo que o usuário digite números, a entrada será interpretada como texto.</p>
+<p>Por exemplo, se o usuário digitar “25” (para idade), ele será armazenado como a string “25”. Se quisermos tratar esse valor como um número, precisamos convertê-lo para o tipo correto usando funções como int() ou float().</p>
+<div id="3c54bab3" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>idade <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Quantos anos você tem? "</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>idade <span class="op">=</span> <span class="bu">int</span>(idade)  <span class="co"># Converte a resposta para um número inteiro</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Você tem"</span>, idade, <span class="st">"anos."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Aqui, a função input() retorna a resposta do usuário como uma string. Depois, usamos int() para converter essa string em um número inteiro.</p>
+</section>
+<section id="resumo-da-função-input" class="level4">
+<h4 class="anchored" data-anchor-id="resumo-da-função-input">Resumo da função input()</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 80%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Conceito</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Parâmetro(s)</strong></td>
+<td>O texto exibido para o usuário (ex: uma pergunta ou mensagem)</td>
+</tr>
+<tr class="even">
+<td><strong>Entrada</strong></td>
+<td>O que o usuário digita como resposta</td>
+</tr>
+<tr class="odd">
+<td><strong>Saída/Retorno</strong></td>
+<td>A função retorna uma <strong>string</strong> (mesmo que o usuário digite números)</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="sintaxe-de-utilização-de-funções" class="level2">
+<h2 class="anchored" data-anchor-id="sintaxe-de-utilização-de-funções">Sintaxe de utilização de funções</h2>
+<p>Agora que já sabemos o que são funções e por que elas são úteis, vamos entender como chamá-las corretamente. Chamar uma função significa pedir ao Python para executar o código dentro daquela função. Quando você chama uma função, o programa “vai até a função”, executa as instruções que estão nela e, em muitos casos, retorna um resultado.</p>
+<p>Em termos simples, chamar uma função é como fazer um pedido para o programa realizar uma tarefa específica. Quando você chama a função, ela faz algo por você, seja exibindo algo na tela, realizando um cálculo, ou até recebendo dados de entrada do usuário.</p>
+<p>Agora, vamos ver como a sintaxe de uma função funciona em Python, incluindo como passar parâmetros, como chamar funções sem parâmetros e como lidar com valores retornados.</p>
+<section id="chamar-uma-função" class="level3">
+<h3 class="anchored" data-anchor-id="chamar-uma-função">Chamar uma função</h3>
+<p>Em Python, chamar uma função é bem simples, mas precisa seguir uma estrutura específica. Toda vez que você quiser usar uma função, você deve incluir parênteses após o nome da função.</p>
+<div id="aefbba7b" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>nome_da_funcao()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="funções-com-parâmetros" class="level3">
+<h3 class="anchored" data-anchor-id="funções-com-parâmetros">Funções com parâmetros</h3>
+<p>As funções podem receber parâmetros, que são os valores que você passa para elas para que possam realizar algum processamento. Esses parâmetros são colocados dentro dos parênteses ao chamar a função.</p>
+<div id="63a63cbd" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nome_da_funcao(parametro_1, parametro_2, ...)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="funções-sem-parâmetro" class="level3">
+<h3 class="anchored" data-anchor-id="funções-sem-parâmetro">Funções sem parâmetro</h3>
+<p>Algumas funções não exigem nenhum parâmetro. Nesse caso, você ainda deve usar os parênteses ao chamar a função, mas não há necessidade de colocar nada dentro deles.</p>
+<div id="b0b6f035" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>nome_da_funcao()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="funções-com-retorno-1" class="level3">
+<h3 class="anchored" data-anchor-id="funções-com-retorno-1">Funções com retorno</h3>
+<p>Funções podem retornar um valor após a execução. O valor retornado pode ser armazenado em uma variável ou utilizado diretamente em cálculos ou outras operações.</p>
+<p>Quando uma função tem retorno, a sintaxe para usá-la fica da seguinte forma:</p>
+<div id="ed778940" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>variavel <span class="op">=</span> nome_da_funcao(parametros)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="funções-com-parâmetros-opcionais" class="level3">
+<h3 class="anchored" data-anchor-id="funções-com-parâmetros-opcionais">Funções com parâmetros opcionais</h3>
+<p>Às vezes, as funções podem ter parâmetros com valores padrão, o que significa que, se você não passar um valor para aquele parâmetro, o Python usará algum valor pré-definido.</p>
+<p>Ou seja, se temos uma função, por exemplo, que tem um parâmetro “parametro_1” pré-definido para o valor 10, se um novo valor de a não for especificado na chamada, da seguinte forma:</p>
+<div id="a73af9fc" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>nome_da_funcao(parametro_1 <span class="op">=</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>A função é executada com o valor de “parametro_1” igual a 10.</p>
+
+
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
