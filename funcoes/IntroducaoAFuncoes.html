@@ -181,7 +181,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
- <span class="menu-text">Introdução</span></a>
+ <span class="menu-text">Fundamentos de programação</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -282,6 +282,12 @@ window.Quarto = {
   </div>
 </li>
           <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../funcoes/FuncoesPython.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Funções nativas de Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
  <span class="menu-text">funcoes/Exercicios.qmd</span>
   </li>
       </ul>
@@ -365,6 +371,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#função-print" id="toc-função-print" class="nav-link" data-scroll-target="#função-print">Função print()</a></li>
   <li><a href="#função-input" id="toc-função-input" class="nav-link" data-scroll-target="#função-input">Função input()</a></li>
+  <li><a href="#função-range" id="toc-função-range" class="nav-link" data-scroll-target="#função-range">Função range()</a></li>
   </ul></li>
   <li><a href="#sintaxe-de-utilização-de-funções" id="toc-sintaxe-de-utilização-de-funções" class="nav-link" data-scroll-target="#sintaxe-de-utilização-de-funções">Sintaxe de utilização de funções</a>
   <ul class="collapse">
@@ -373,6 +380,12 @@ window.Quarto = {
   <li><a href="#funções-sem-parâmetro" id="toc-funções-sem-parâmetro" class="nav-link" data-scroll-target="#funções-sem-parâmetro">Funções sem parâmetro</a></li>
   <li><a href="#funções-com-retorno-1" id="toc-funções-com-retorno-1" class="nav-link" data-scroll-target="#funções-com-retorno-1">Funções com retorno</a></li>
   <li><a href="#funções-com-parâmetros-opcionais" id="toc-funções-com-parâmetros-opcionais" class="nav-link" data-scroll-target="#funções-com-parâmetros-opcionais">Funções com parâmetros opcionais</a></li>
+  </ul></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios">Exercícios</a>
+  <ul class="collapse">
+  <li><a href="#exercício-1" id="toc-exercício-1" class="nav-link" data-scroll-target="#exercício-1">Exercício 1</a></li>
+  <li><a href="#exercício-2" id="toc-exercício-2" class="nav-link" data-scroll-target="#exercício-2">Exercício 2</a></li>
+  <li><a href="#exercício-3" id="toc-exercício-3" class="nav-link" data-scroll-target="#exercício-3">Exercício 3</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -433,7 +446,7 @@ window.Quarto = {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="482de3a6" class="cell" data-execution_count="1">
+<div id="381c6919" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># declaração de n (como 0 para o primeiro termo da série)</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>n: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -639,7 +652,7 @@ window.Quarto = {
 </section>
 <section id="funções-que-já-conhecemos" class="level2">
 <h2 class="anchored" data-anchor-id="funções-que-já-conhecemos">Funções que já conhecemos</h2>
-<p>Você já está usando funções no seu código, sem nem perceber! Dois exemplos que você provavelmente usa o tempo todo em Python são as funções print() e input(). Ambas são essenciais para a interação com o usuário e a exibição de informações. No entanto, embora você já as tenha usado, talvez não tenha notado que ambas são funções completas, com entradas (valores que você passa para elas) e saídas (valores que elas retornam ou ações que realizam).</p>
+<p>Você já está usando funções no seu código, sem nem perceber! Três exemplos que você provavelmente usa o tempo todo em Python são as funções print(), input() e range(). Todas são essenciais para a interação com o usuário e a exibição de informações. No entanto, embora você já as tenha usado, talvez não tenha notado que ambas são funções completas, com entradas (valores que você passa para elas) e saídas (valores que elas retornam ou ações que realizam).</p>
 <p>Agora que começamos a entender o que são funções, vamos analisar como essas duas funções que você já conhece funcionam internamente, e o que elas fazem com as entradas e saídas.</p>
 <section id="função-print" class="level3">
 <h3 class="anchored" data-anchor-id="função-print">Função print()</h3>
@@ -648,11 +661,11 @@ window.Quarto = {
 <h4 class="anchored" data-anchor-id="entradas-o-que-a-função-print-recebe">Entradas: o que a função print() recebe</h4>
 <p>A função print() pode receber um ou mais parâmetros, que são os valores que você deseja exibir na tela. Cada valor é separado por vírgula dentro dos parênteses. Esses valores podem ser strings, números, ou variáveis.</p>
 <p>Por exemplo:</p>
-<div id="ef00e6c1" class="cell" data-execution_count="2">
+<div id="d8138d32" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Olá, Mundo!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Aqui, a função print() recebe uma string (“Olá, Mundo!”) como parâmetro e exibe essa string na tela. Você pode também passar várias informações de uma vez, separadas por vírgulas, e o Python irá automaticamente adicionar espaços entre elas:</p>
-<div id="df74097b" class="cell" data-execution_count="3">
+<div id="76067488" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>nome <span class="op">=</span> <span class="st">"Maria"</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>idade <span class="op">=</span> <span class="dv">25</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Nome:"</span>, nome, <span class="st">"Idade:"</span>, idade)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -703,7 +716,7 @@ window.Quarto = {
 <h4 class="anchored" data-anchor-id="entradas-o-que-a-função-input-recebe">Entradas: o que a função input() recebe</h4>
 <p>A função input() pode receber um parâmetro, que é o texto que você deseja exibir para o usuário antes que ele digite a resposta. Esse texto é normalmente uma pergunta ou uma mensagem explicativa.</p>
 <p>Por exemplo:</p>
-<div id="2d19ae9c" class="cell" data-execution_count="4">
+<div id="240f54c6" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>nome <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Qual é o seu nome? "</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Olá, "</span> <span class="op">+</span> nome <span class="op">+</span> <span class="st">"!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -713,7 +726,7 @@ window.Quarto = {
 <h4 class="anchored" data-anchor-id="saída-o-que-a-função-input-retorna">Saída: o que a função input() retorna</h4>
 <p>A função input() sempre retorna uma string, independentemente do que o usuário digite. Isso significa que, mesmo que o usuário digite números, a entrada será interpretada como texto.</p>
 <p>Por exemplo, se o usuário digitar “25” (para idade), ele será armazenado como a string “25”. Se quisermos tratar esse valor como um número, precisamos convertê-lo para o tipo correto usando funções como int() ou float().</p>
-<div id="3c54bab3" class="cell" data-execution_count="5">
+<div id="84f73897" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>idade <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Quantos anos você tem? "</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>idade <span class="op">=</span> <span class="bu">int</span>(idade)  <span class="co"># Converte a resposta para um número inteiro</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Você tem"</span>, idade, <span class="st">"anos."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -750,6 +763,56 @@ window.Quarto = {
 </table>
 </section>
 </section>
+<section id="função-range" class="level3">
+<h3 class="anchored" data-anchor-id="função-range">Função range()</h3>
+<p>Você já está familiarizado com a função range(), uma das funções mais usadas em Python para controlar loops. Ela gera uma sequência de números, o que é perfeito quando queremos repetir uma ação várias vezes com controle preciso sobre os números.</p>
+<section id="entradas-o-que-a-função-range-recebe" class="level4">
+<h4 class="anchored" data-anchor-id="entradas-o-que-a-função-range-recebe">Entradas: o que a função range() recebe</h4>
+<p>A função range() pode receber até três parâmetros:</p>
+<ul>
+<li><p>início: O número onde a sequência começa (inclusivo). O valor padrão é 0.</p></li>
+<li><p>fim: O número onde a sequência termina (exclusivo).</p></li>
+<li><p>passo: O valor que define o incremento entre os números. O valor padrão é 1.</p></li>
+</ul>
+<p>Organizados da seguinte maneira:</p>
+<div id="2e7d7b39" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">range</span>(início, fim, passo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="saída-o-que-a-função-range-retorna" class="level4">
+<h4 class="anchored" data-anchor-id="saída-o-que-a-função-range-retorna">Saída: o que a função range() retorna</h4>
+<p>A função range() retorna um objeto iterável que gera os números da sequência solicitada. Ele não cria uma lista de números, mas gera cada número conforme o loop vai sendo executado, o que é mais eficiente.</p>
+</section>
+<section id="resumo-da-função-range" class="level4">
+<h4 class="anchored" data-anchor-id="resumo-da-função-range">Resumo da função range()</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 75%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Conceito</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Parâmetro(s)</strong></td>
+<td><code>início</code>, <code>fim</code>, e <code>passo</code> (todos são opcionais)</td>
+</tr>
+<tr class="even">
+<td><strong>Entrada</strong></td>
+<td>A sequência de números que você deseja gerar</td>
+</tr>
+<tr class="odd">
+<td><strong>Saída/Retorno</strong></td>
+<td>Um objeto iterável que gera os números da sequência</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
 </section>
 <section id="sintaxe-de-utilização-de-funções" class="level2">
 <h2 class="anchored" data-anchor-id="sintaxe-de-utilização-de-funções">Sintaxe de utilização de funções</h2>
@@ -759,40 +822,111 @@ window.Quarto = {
 <section id="chamar-uma-função" class="level3">
 <h3 class="anchored" data-anchor-id="chamar-uma-função">Chamar uma função</h3>
 <p>Em Python, chamar uma função é bem simples, mas precisa seguir uma estrutura específica. Toda vez que você quiser usar uma função, você deve incluir parênteses após o nome da função.</p>
-<div id="aefbba7b" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>nome_da_funcao()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="21a8b5b3" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nome_da_funcao()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="funções-com-parâmetros" class="level3">
 <h3 class="anchored" data-anchor-id="funções-com-parâmetros">Funções com parâmetros</h3>
 <p>As funções podem receber parâmetros, que são os valores que você passa para elas para que possam realizar algum processamento. Esses parâmetros são colocados dentro dos parênteses ao chamar a função.</p>
-<div id="63a63cbd" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nome_da_funcao(parametro_1, parametro_2, ...)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="2c1694ba" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>nome_da_funcao(parametro_1, parametro_2, ...)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="funções-sem-parâmetro" class="level3">
 <h3 class="anchored" data-anchor-id="funções-sem-parâmetro">Funções sem parâmetro</h3>
 <p>Algumas funções não exigem nenhum parâmetro. Nesse caso, você ainda deve usar os parênteses ao chamar a função, mas não há necessidade de colocar nada dentro deles.</p>
-<div id="b0b6f035" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>nome_da_funcao()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="b4359bac" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>nome_da_funcao()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="funções-com-retorno-1" class="level3">
 <h3 class="anchored" data-anchor-id="funções-com-retorno-1">Funções com retorno</h3>
 <p>Funções podem retornar um valor após a execução. O valor retornado pode ser armazenado em uma variável ou utilizado diretamente em cálculos ou outras operações.</p>
 <p>Quando uma função tem retorno, a sintaxe para usá-la fica da seguinte forma:</p>
-<div id="ed778940" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>variavel <span class="op">=</span> nome_da_funcao(parametros)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="bd677a3f" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>variavel <span class="op">=</span> nome_da_funcao(parametros)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="funções-com-parâmetros-opcionais" class="level3">
 <h3 class="anchored" data-anchor-id="funções-com-parâmetros-opcionais">Funções com parâmetros opcionais</h3>
 <p>Às vezes, as funções podem ter parâmetros com valores padrão, o que significa que, se você não passar um valor para aquele parâmetro, o Python usará algum valor pré-definido.</p>
 <p>Ou seja, se temos uma função, por exemplo, que tem um parâmetro “parametro_1” pré-definido para o valor 10, se um novo valor de a não for especificado na chamada, da seguinte forma:</p>
-<div id="a73af9fc" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>nome_da_funcao(parametro_1 <span class="op">=</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="77c48ce4" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>nome_da_funcao(parametro_1 <span class="op">=</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>A função é executada com o valor de “parametro_1” igual a 10.</p>
+</section>
+</section>
+<section id="exercícios" class="level2">
+<h2 class="anchored" data-anchor-id="exercícios">Exercícios</h2>
+<section id="exercício-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-1">Exercício 1</h3>
+<p>Imagine uma função que calcule a soma de dois números. Quais seriam as entradas e saídas dessa função? Quais são os possíveis tipos de dados que esta função aceita?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Entradas e saídas:</p>
+<div class="line-block">——– | —————— |<br>
+entradas | dois números: a, b |<br>
+saídas | a soma de a e b |</div>
+<p>a e b poderiam ser números inteiros ou floats, mas provavelmente não faria muito sentido eles serem diferentes disto.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-2" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-2">Exercício 2</h3>
+<p>Como a definição de funções pode tornar a manutenção de um código mais fácil? Quais problemas podem surgir se não usarmos funções e acabarmos repetindo o mesmo código em várias partes do programa?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A definição de funções torna um codigo muito mais simples, pois se o código da função está errado, é necessário alterá-lo em somente um lugar, evitando com que partes estejam corretas e partes estejam incorretas. Caso não sejam utilizadas funções em código, é possível que a repetição de trechos de código leve a problemas que são praticmanete impossíveis de rastrear.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercício-3" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-3">Exercício 3</h3>
+<p>Imagine que você tenha pontos 3D no espaço. A fórmula para calcular a distância entre dois destes pontos (<span class="math inline">\(P1(x_1, y_1, z_1)\)</span> e <span class="math inline">\(P2(x_2, y_2, z_2)\)</span>) é a seguinte:</p>
+<p><span class="math display">\[
+d(P1, p2) = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}
+\]</span></p>
+<p>Como isto poderia ser adaptado para uma função (quais entradas e saídas)?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Para adaptar isto para função, é necessário somente que as entradas sejam os dois pontos (<span class="math inline">\(P1\)</span> e <span class="math inline">\(P2\)</span>), pois com eles será feito o processamento de coordenadas para retornar, como saída, a distância entre eles.</p>
+</div>
+</div>
+</div>
 
 
 </section>
