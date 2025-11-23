@@ -8,7 +8,7 @@ website:
     collapse-level: 1
     contents:
       - index.qmd
-      - section: "Introdução"
+      - section: "Fundamentos de programação"
         contents:
           - introducao/Algoritmos.qmd
           - introducao/RepresentacoesDeAlgoritmos.qmd
@@ -26,6 +26,7 @@ website:
       - section: "Funções"
         contents:
           - funcoes/IntroducaoAFuncoes.qmd
+          - funcoes/FuncoesPython.qmd
           - funcoes/Exercicios.qmd
       - section: "Módulos"
         contents:

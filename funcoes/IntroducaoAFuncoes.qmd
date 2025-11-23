@@ -263,7 +263,7 @@ Funções permitem que você se concentre no que uma parte do programa faz, sem 
 
 ## Funções que já conhecemos
 
-Você já está usando funções no seu código, sem nem perceber! Dois exemplos que você provavelmente usa o tempo todo em Python são as funções print() e input(). Ambas são essenciais para a interação com o usuário e a exibição de informações. No entanto, embora você já as tenha usado, talvez não tenha notado que ambas são funções completas, com entradas (valores que você passa para elas) e saídas (valores que elas retornam ou ações que realizam).
+Você já está usando funções no seu código, sem nem perceber! Três exemplos que você provavelmente usa o tempo todo em Python são as funções print(), input() e range(). Todas são essenciais para a interação com o usuário e a exibição de informações. No entanto, embora você já as tenha usado, talvez não tenha notado que ambas são funções completas, com entradas (valores que você passa para elas) e saídas (valores que elas retornam ou ações que realizam).
 
 Agora que começamos a entender o que são funções, vamos analisar como essas duas funções que você já conhece funcionam internamente, e o que elas fazem com as entradas e saídas.
 
@@ -348,6 +348,39 @@ Aqui, a função input() retorna a resposta do usuário como uma string. Depois,
 | **Entrada**       | O que o usuário digita como resposta                                 |
 | **Saída/Retorno** | A função retorna uma **string** (mesmo que o usuário digite números) |
 
+### Função range()
+
+Você já está familiarizado com a função range(), uma das funções mais usadas em Python para controlar loops. Ela gera uma sequência de números, o que é perfeito quando queremos repetir uma ação várias vezes com controle preciso sobre os números.
+
+#### Entradas: o que a função range() recebe
+
+A função range() pode receber até três parâmetros:
+
+* início: O número onde a sequência começa (inclusivo). O valor padrão é 0.
+
+* fim: O número onde a sequência termina (exclusivo).
+
+* passo: O valor que define o incremento entre os números. O valor padrão é 1.
+
+Organizados da seguinte maneira:
+
+```{python}
+#| eval: false
+range(início, fim, passo)
+```
+
+#### Saída: o que a função range() retorna
+
+A função range() retorna um objeto iterável que gera os números da sequência solicitada. Ele não cria uma lista de números, mas gera cada número conforme o loop vai sendo executado, o que é mais eficiente.
+
+#### Resumo da função range()
+
+| Conceito          | Descrição                                           |
+| ----------------- | --------------------------------------------------- |
+| **Parâmetro(s)**  | `início`, `fim`, e `passo` (todos são opcionais)    |
+| **Entrada**       | A sequência de números que você deseja gerar        |
+| **Saída/Retorno** | Um objeto iterável que gera os números da sequência |
+
 ## Sintaxe de utilização de funções
 
 Agora que já sabemos o que são funções e por que elas são úteis, vamos entender como chamá-las corretamente. Chamar uma função significa pedir ao Python para executar o código dentro daquela função. Quando você chama uma função, o programa "vai até a função", executa as instruções que estão nela e, em muitos casos, retorna um resultado.
@@ -406,3 +439,48 @@ nome_da_funcao(parametro_1 = 3)
 ```
 
 A função é executada com o valor de "parametro_1" igual a 10.
+
+## Exercícios
+
+### Exercício 1
+
+Imagine uma função que calcule a soma de dois números. Quais seriam as entradas e saídas dessa função? Quais são os possíveis tipos de dados que esta função aceita? 
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+Entradas e saídas:
+
+| -------- | ------------------ |
+| entradas | dois números: a, b |
+| saídas   | a soma de a e b    |
+
+a e b poderiam ser números inteiros ou floats, mas provavelmente não faria muito sentido eles serem diferentes disto.
+
+:::
+
+### Exercício 2
+
+Como a definição de funções pode tornar a manutenção de um código mais fácil? Quais problemas podem surgir se não usarmos funções e acabarmos repetindo o mesmo código em várias partes do programa?
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+A definição de funções torna um codigo muito mais simples, pois se o código da função está errado, é necessário alterá-lo em somente um lugar, evitando com que partes estejam corretas e partes estejam incorretas. Caso não sejam utilizadas funções em código, é possível que a repetição de trechos de código leve a problemas que são praticmanete impossíveis de rastrear.
+
+:::
+
+### Exercício 3
+
+Imagine que você tenha pontos 3D no espaço. A fórmula para calcular a distância entre dois destes pontos ($P1(x_1, y_1, z_1)$ e $P2(x_2, y_2, z_2)$) é a seguinte:
+
+$$
+d(P1, p2) = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2} 
+$$
+
+Como isto poderia ser adaptado para uma função (quais entradas e saídas)?
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+Para adaptar isto para função, é necessário somente que as entradas sejam os dois pontos ($P1$ e $P2$), pois com eles será feito o processamento de coordenadas para retornar, como saída, a distância entre eles.
+
+:::
+

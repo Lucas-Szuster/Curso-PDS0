@@ -1,0 +1,408 @@
+---
+title: "Funções nativas de Python"
+toc: true
+toc-title: "Conteúdos da página"
+---
+
+## Introdução
+
+Python é uma linguagem de programação poderosa, simples e extremamente flexível. Parte de sua popularidade vem da grande quantidade de funções nativas (ou integradas) que ela oferece. Essas funções já estão prontas para uso e são parte essencial da linguagem, permitindo que os programadores realizem operações comuns de forma rápida, eficiente e sem a necessidade de reinventar a roda.
+
+As funções nativas em Python fornecem uma ampla gama de funcionalidades que podem ser utilizadas em diversas áreas da programação, como manipulação de dados, operações matemáticas, interação com o sistema de arquivos, e até mesmo comunicação com o usuário. Elas são essenciais para otimizar o processo de desenvolvimento, tornando o código mais claro e menos propenso a erros.
+
+Neste material, vamos explorar algumas das funções mais importantes e frequentemente utilizadas em Python, explicando como elas funcionam, como usá-las e em que situações elas são úteis. Ao final, você terá um bom entendimento sobre como utilizar essas funções para escrever código mais eficiente e legível.
+
+## Funções matemáticas
+
+### Função abs()
+
+A função abs() retorna o valor absoluto de um número, que é definido com base na seguinte fórmula:
+
+$$
+|x| = \begin{cases} 
+x & \text{se } x \geq 0, \\
+-x & \text{se } x < 0.
+\end{cases}
+$$
+
+#### Entradas e saídas de abs()
+
+* Entrada: um número negativo ou positivo.
+
+* Saída: o valor absoluto (positivo) do número.
+
+#### Sintaxe geral de abs()
+
+```{python}
+#| eval: false
+abs(numero)
+```
+
+#### Exemplo
+
+```{python}
+#| eval: false
+numero: int = abs(-5)
+
+print(numero)
+```
+
+A saíde deste código será 5.
+
+### Função round()
+
+A função round() arredonda um número para um número específico de casas decimais. Se você passar dois argumentos, ela arredonda o número para o número especificado de casas decimais. Caso contrário, ela arredonda para o número inteiro mais próximo.
+
+#### Entradas e saídas de round()
+
+* Entrada: um número e o número de casas decimais (opcional).
+
+* Saída: o número arredondado.
+
+#### Sintaxe geral de round()
+
+Para arredondar um número para o inteiro mais próximo:
+
+```{python}
+#| eval: false
+round(numero)
+```
+
+Para arredondar um número para uma quantidade de casas decimais:
+
+```{python}
+#| eval: false
+round(numero, quantidade_de_casas_decimais)
+```
+
+#### Exemplo
+
+::: {.panel-tabset}
+
+## round() para o inteiro mais próximo
+
+```{python}
+#| eval: false
+numero: int = round(2.9)
+
+print(numero) 
+```
+
+A saída deste código será 3.
+
+## round() para um número de casas decimais
+
+```{python}
+#| eval: false
+numero: int = round(2.7182, 2)
+
+print(numero) 
+```
+
+A saída deste código será 2.72
+
+:::
+
+### Funções min() e max()
+
+As funções max() e min() retornam, respectivamente, o maior e o menor valor de uma sequência (como uma lista, tupla ou conjunto).
+
+#### Entradas e saídas de min() e max()
+
+* Entrada: uma sequência de valores (lista, tupla, etc.).
+
+* Saída: o maior (max()) ou o menor (min()) valor da sequência.
+
+#### Sintaxe geral de min() e max()
+
+```{python}
+#| eval: false
+min(conjunto_de_elementos)
+max(conjunto_de_elementos)
+```
+
+#### Exemplo
+
+::: {.panel-tabset}
+
+## min()
+
+```{python}
+#| eval: false
+lista: list = [1, 2, 3]
+
+print(min(lista))
+```
+
+A saída deste código será 1
+
+## max()
+
+```{python}
+#| eval: false
+lista: list = [1, 2, 3]
+
+print(max(lista))
+```
+
+A saída deste código será 3
+
+:::
+
+## Funções com variáveis de conjunto
+
+### Função enumerate()
+
+A função enumerate() é usada para iterar sobre um iterável (como uma lista), retornando tanto o índice quanto o valor de cada item. Isso é útil quando você precisa de um contador durante a iteração.
+
+#### Entradas e saídas de enumerate()
+
+* Entrada: um iterável (como uma lista).
+
+* Saída: uma sequência de [tuplas](https://www.w3schools.com/python/python_tuples.asp) com índice e valor.
+
+#### Sintaxe geral de enumerate()
+
+```{python}
+#| eval: false
+enumerate(lista)
+```
+
+#### Exemplo
+
+```{python}
+#| eval: false
+lista: list = ['um', 'dois', 'três']
+
+for indice, item in enumerate(lista):
+    print(indice, item)
+```
+
+A saída deste código será:
+
+```{ObjectiveC}
+0 um
+1 dois
+2 três
+```
+
+### Função sorted()
+
+A função sorted() retorna uma nova lista contendo os itens de um iterável ordenados. A ordenação pode ser feita de forma crescente ou decrescente, e você também pode personalizar a ordenação com uma função chave.
+
+#### Entradas e saídas de sorted()
+
+* Entrada: um iterável (lista, tupla, etc.), uma chave opcional (função personalizada de ordenação) e uma opção para ordenar e ordem decrescente.
+
+* Saída: uma nova lista ordenada.
+
+#### Sintaxe geral de sorted()
+
+::: {.panel-tabset}
+
+## Ordenação crescente
+
+```{python}
+#| eval: false
+sorted(lista)
+```
+
+## Ordenação decrescente
+
+```{python}
+#| eval: false
+sorted(lista, reverse = True)
+```
+
+:::
+
+#### Exemplo
+
+::: {.panel-tabset}
+
+## Ordenação crescente
+
+```{python}
+#| eval: false
+lista: list = [8, 5, 0, 8, 7, 5, 3]
+
+print(sorted(lista))
+```
+
+A saída do código acima será:
+
+```{ObjectiveC}
+[0, 3, 5, 5, 7, 8, 8]
+```
+
+## Ordenação decrescente
+
+```{python}
+#| eval: false
+lista: list = [8, 5, 0, 8, 7, 5, 3]
+
+print(sorted(lista, reverse = True))
+```
+
+A saída do código acima será:
+
+```{ObjectiveC}
+[8, 8, 7, 5, 5, 3, 0]
+```
+
+:::
+
+### Função len()
+
+A função len() é uma das funções mais utilizadas em Python. Ela retorna o número de elementos de um objeto iterável (como uma string, lista, tupla, dicionário, etc.). É muito útil para verificar o tamanho de coleções e realizar operações condicionais com base nesse tamanho.
+
+#### Entradas e saídas de len()
+
+* Entrada: um objeto iterável (como lista, string, tupla, dicionário, etc.).
+
+* Saída: o número de itens presentes no objeto iterável.
+
+#### Sintaxe geral de len()
+
+```{python}
+#| eval: false
+len(lista)
+```
+
+#### Exemplo
+
+```{python}
+#| eval: false
+lista: list = [1, 2, 3, 4, 5, 6, 7]
+
+print(len(lista))
+```
+
+A saída deste código será 7.
+
+## Todas as funções em python
+
+[clique aqui](https://docs.python.org/3/library/functions.html#iter)
+
+## Exercícios
+
+### Exercício 1
+
+Crie um programa capaz de ler um número e exibir seu valor absoluto
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+Aqui está um programa que faz isto:
+
+```{python}
+#| eval: false
+# ler a entrada
+num: int = int(input('Insira um número: '))
+
+# exibir o valor absoluto
+print(abs(num))
+```
+
+:::
+
+### Exercício 2
+
+Você é professor de 5 turmas diferentes, e para cada turma você possui uma lista com todas as notas da turma:
+
+```{python}
+turma_a: list = [56, 78, 90, 43, 32, 88, 90, 71, 90]
+turma_b: list = [96, 67, 96, 53, 67, 88, 71, 71, 93]
+turma_c: list = [53, 44, 90, 43, 67, 53, 93, 71, 71]
+turma_d: list = [67, 43, 96, 93, 53, 90, 90, 53, 49]
+turma_e: list = [54, 75, 96, 53, 32, 67, 90, 71, 67]
+```
+
+1. Você deve fazer um programa que seja capaz de calcular a maior nota de cada turma e calcular a maior nota geral.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+Aqui está um programa que faz isto:
+
+```{python}
+#| eval: false
+# declaração das notas
+turma_a: list = [56, 78, 90, 43, 32, 88, 90, 71, 90]
+turma_b: list = [96, 67, 96, 53, 67, 88, 71, 71, 93]
+turma_c: list = [53, 44, 90, 43, 67, 53, 93, 71, 71]
+turma_d: list = [67, 43, 96, 93, 53, 90, 90, 53, 49]
+turma_e: list = [54, 75, 96, 53, 32, 67, 90, 71, 67]
+
+# maiores notas
+maior_nota_turma_a: int = max(turma_a)
+maior_nota_turma_b: int = max(turma_b)
+maior_nota_turma_c: int = max(turma_c)
+maior_nota_turma_d: int = max(turma_d)
+maior_nota_turma_e: int = max(turma_e)
+
+# lista com as maiores notas
+maiores_notas: list = [
+    maior_nota_turma_a,
+    maior_nota_turma_b,
+    maior_nota_turma_c,
+    maior_nota_turma_d,
+    maior_nota_turma_e
+]
+
+# maior nota geral
+maior_nota_geral: int = max(maiores_notas)
+
+# exibir resultados
+print('Maior nota da turma a:', maior_nota_turma_a)
+print('Maior nota da turma a:', maior_nota_turma_b)
+print('Maior nota da turma a:', maior_nota_turma_c)
+print('Maior nota da turma a:', maior_nota_turma_d)
+print('Maior nota da turma a:', maior_nota_turma_e)
+print('Maior nota geral:', maior_nota_geral)
+```
+
+:::
+
+2. Adapte o programa que você fez para calcular as menores notas.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+Aqui está um programa que faz isto:
+
+```{python}
+#| eval: false
+# declaração das notas
+turma_a: list = [56, 78, 90, 43, 32, 88, 90, 71, 90]
+turma_b: list = [96, 67, 96, 53, 67, 88, 71, 71, 93]
+turma_c: list = [53, 44, 90, 43, 67, 53, 93, 71, 71]
+turma_d: list = [67, 43, 96, 93, 53, 90, 90, 53, 49]
+turma_e: list = [54, 75, 96, 53, 32, 67, 90, 71, 67]
+
+# menores notas
+menor_nota_turma_a: int = min(turma_a)
+menor_nota_turma_b: int = min(turma_b)
+menor_nota_turma_c: int = min(turma_c)
+menor_nota_turma_d: int = min(turma_d)
+menor_nota_turma_e: int = min(turma_e)
+
+# lista com as menores notas
+menores_notas: list = [
+    menor_nota_turma_a,
+    menor_nota_turma_b,
+    menor_nota_turma_c,
+    menor_nota_turma_d,
+    menor_nota_turma_e
+]
+
+# maior nota geral
+menor_nota_geral: int = min(menores_notas)
+
+# exibir resultados
+print('Menor nota da turma a:', menor_nota_turma_a)
+print('Menor nota da turma a:', menor_nota_turma_b)
+print('Menor nota da turma a:', menor_nota_turma_c)
+print('Menor nota da turma a:', menor_nota_turma_d)
+print('Menor nota da turma a:', menor_nota_turma_e)
+print('Menor nota geral:', menor_nota_geral)
+```
+
+:::
