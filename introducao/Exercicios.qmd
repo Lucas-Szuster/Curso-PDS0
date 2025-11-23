@@ -781,7 +781,7 @@ $$
 Que corresponde à soma:
 
 $$
-e = 1 + 1 + \frac{1}{2!} + \frac{1}{3!} + \frac{1}{4!} + \dots
+e = \frac{1}{0!} + \frac{1}{1!} + \frac{1}{2!} + \frac{1}{3!} + \frac{1}{4!} + \dots
 $$
 
 Essa série é especialmente interessante porque converge rapidamente, e é simples de implementar computacionalmente.
@@ -824,7 +824,17 @@ Exemplos de resultado:
   \sum_{n = 0}^{1} \frac{1}{n!} = \frac{1}{0!} + \frac{1}{1!} = \frac{1}{1} + \frac{1}{1} = 1 + 1 = 2
   $$
 
-* Quando o número de termos é 3, a aproximação de $e$ deve ser $2.5$
+* Quando o número de termos é 3, a soma é definida como:
+
+  $$
+  e \approx \sum_{n = 0}^{2} \frac{1}{n!}
+  $$
+
+  E esta aproximação se da como:
+
+  $$
+  \sum_{n = 0}^{2} \frac{1}{n!} = \frac{1}{0!} + \frac{1}{1!} + \frac{1}{2!} = \frac{1}{1} + \frac{1}{1} + \frac{1}{2} = 1 + 1 + 0.5 = 2.5
+  $$
 
 * Quando o número de termos é 4, a aproximação de $e$ deve ser $2.6666666666666665$
 
@@ -854,5 +864,161 @@ for n in range(0, qtd_de_termos_da_aproximacao):
 print(e_aprox)
 ```
 
-
 ::: 
+
+### Exercício 2
+
+A cidade de Mazochilândia acaba de eleger um novo prefeito: Doutor Élcio Moloccini, conhecido por suas ideias ousadas sobre urbanismo ecológico. Logo no primeiro mês de mandato, ele aprovou um documento chamado "O Ato Mazochal das Ruas".
+
+Segundo o prefeito, as ruas da cidade andavam "cinzentas demais", e era necessário reorganizar tudo para trazer mais verde, melhor convivência urbana e menos conflitos entre vizinhos e atividades econômicas.
+
+Para isso, ele estabeleceu duas novas leis municipais que passam a valer imediatamente:
+
+#### Lei 1 — Equilíbrio Ambiental
+
+> “Toda rua deve possuir verde suficiente para compensar seus usos urbanos.”
+
+Em termos práticos, isso significa que, dado uma rua com um certo número $A$ de árvores, um número $C$ de comércios e um número $R$ de residências, estes números devem seguir a seguinte relação:
+
+$$
+A \ge C + R
+$$
+
+#### Lei 2 — Separação de Usos Sensíveis
+
+> “Para evitar barulho, conflitos e reclamações oficiais, comércios não podem ficar colados em residências.”
+
+Ou seja, em uma rua, não pode haver nenhum comércio ao lado de uma casa ou casa ao lado de um comércio.
+
+#### O Problema
+
+Você faz parte da equipe de análise urbana da prefeitura e precisa criar um programa simples que verifique se uma rua está em conformidade com o Ato Mazochal das Ruas.
+
+A rua será representada por uma `string` onde cada caractere significa:
+
+* A = árvore
+
+* C = comércio
+
+* R = residência
+
+O programa deve:
+
+1. Receber a string da rua.
+
+2. Receber a quantidade de elementos da rua.
+
+3. Contar quantos A, C e R existem.
+
+4. Verificar se a rua cumpre a Lei 1.
+
+5. Verificar se cumpre a Lei 2.
+
+6. Exibir:
+
+    - “Lei 1: SIM/NÃO”
+
+    - “Lei 2: SIM/NÃO”
+
+    - “RUA APROVADA” se cumprir ambas
+
+    - “RUA REPROVADA” caso contrário
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+```{python}
+#| eval: false
+# receber a string
+rua: str = input('Insira a string que representa a rua: ')
+
+# receber quantidade de elementos da rua
+qnt_elementos_da_rua: int = int(input('Insira quantidade de elementos da rua: '))
+
+# declarar variáveis das leis
+lei_um: bool = False
+lei_dois: bool = True
+
+# declarar contadores
+contador_arvores: int = 0
+contador_comercios: int = 0
+contador_residencias: int = 0
+
+# contar arvores, comercios e residencias
+for elemento in rua:
+    if(elemento == 'A'):
+        contador_arvores += 1
+    elif(elemento == 'C'):
+        contador_comercios += 1
+    elif(elemento == 'R'):
+        contador_residencias += 1
+
+# checar lei um
+if(contador_arvores >= (contador_residencias + contador_comercios)):
+    lei_um = True
+
+# checar lei dois
+for i in range(qnt_elementos_da_rua - 1):
+    # checar comércio depois residência
+    if(rua[i] == 'C' and rua[(i + 1)] == 'R'):
+        lei_dois = False
+
+    # checar residência depois comércio
+    if(rua[i] == 'R' and rua[(i + 1)] == 'C'):
+        lei_dois = False
+
+# relatório final
+if(lei_um == True):
+    print('Lei 1: Sim')
+else:
+    print('Lei 1: Não')
+
+if(lei_dois == True):
+    print('Lei 2: Sim')
+else:
+    print('Lei 2: Não')
+
+if(lei_um == True and lei_dois == True):
+    print('RUA APROVADA')
+else:
+    print('RUA REPROVADA')
+```
+
+:::
+
+### Exercício 3
+
+Mazochilândia é famosa por suas vastas fazendas, mas o prefeito Doutor Élcio Moloccini decidiu que é hora de cuidar da sustentabilidade da pecuária e garantir que o pasto não seja sobrecarregado. Por isso, criou o Imposto Pecuário, que incide sobre as fazendas que possuem mais gado do que o permitido por área.
+
+O sistema funciona assim:
+
+* Cada fazenda é dividida em setores (como quadras dentro do terreno).
+
+* Cada linha de uma matriz representa uma fazenda.
+
+* Cada coluna representa um setor da fazenda.
+
+* Cada célula $(i, j)$ contém o número de cabeças de gado no setor $j$ da fazenda $i$.
+
+* Todas as fazendas possuem a mesma área total.
+
+#### Regra do Imposto
+
+Uma fazenda deve pagar imposto se a densidade de gado ($\sigma$) ultrapassar o limite legal $\sigma_{max}$, e $\sigma$ é definido da seguinte maneira:
+
+$$
+\sigma = \frac{\text{quantidade total de gado}}{\text{área total da fazenda}}
+$$
+
+O limite $\sigma_{max}$ é definido pelo prefeito com base em estudos ambientais e nutricionais do pasto. Fazendas com densidade abaixo ou igual a $\sigma_{max}$ não pagam imposto, para incentivar a boa gestão da criação.
+
+#### Problema
+
+Você deve criar um programa que faça o seguinte:
+
+* Leia a matriz representando as fazendas e setores.
+
+* Leia a área total das fazenda (um valor que igual para todas) e o valor de $\sigma_{max}$.
+
+* Calcule a densidade de gado ($\sigma$) de cada fazenda.
+
+* Informe quais fazendas (identificadas pelo seu valor $i$ na matriz) devem pagar imposto.

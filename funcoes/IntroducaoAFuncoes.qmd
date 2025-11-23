@@ -473,7 +473,7 @@ A definição de funções torna um codigo muito mais simples, pois se o código
 Imagine que você tenha pontos 3D no espaço. A fórmula para calcular a distância entre dois destes pontos ($P1(x_1, y_1, z_1)$ e $P2(x_2, y_2, z_2)$) é a seguinte:
 
 $$
-d(P1, p2) = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2} 
+d(P1, P2) = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2} 
 $$
 
 Como isto poderia ser adaptado para uma função (quais entradas e saídas)?
