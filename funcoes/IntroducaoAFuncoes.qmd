@@ -257,9 +257,8 @@ Funções permitem que você se concentre no que uma parte do programa faz, sem 
 | Conceito                    | Descrição                                                                |
 | --------------------------- | ------------------------------------------------------------------------ |
 | **Parâmetro(s)** / **Entrada** | Valores que a função recebe como entrada, dados fornecidos para a função |
-| **Processo**                | As instruções internas que a função executa com esses dados   |
-| **Saída**                   | O que a função produz após executar seu processo              |
-| **Retorno**                 | O valor que a função devolve (ou nada, se não houver retorno) |
+| **Processamento**                | As instruções internas que a função executa com esses dados   |
+| **Saída** / **Retorno**           | O valor que a função devolve (ou nada, se não houver retorno) |
 
 ## Funções que já conhecemos
 
@@ -301,11 +300,10 @@ A função print() não retorna nenhum valor. Ela apenas exibe as entradas forne
 
 #### Resumo da função print()
 
-| Conceito          | Descrição                                                        |
-| ----------------- | ---------------------------------------------------------------- |
-| **Parâmetro(s)**  | O(s) valor(es) que você quer exibir (ex: uma string ou variável) |
-| **Entrada**       | O que você quer mostrar na tela                                  |
-| **Saída/Retorno** | Não retorna valor, apenas exibe a informação                     |
+| Conceito                  | Descrição                                                        |
+| ------------------------- | ---------------------------------------------------------------- |
+| **Parâmetro(s)/Entrada**  | O(s) valor(es) que você quer exibir (ex: uma string ou variável) |
+| **Saída/Retorno**         | Não retorna valor, apenas exibe a informação                     |
 
 ### Função input()
 
@@ -342,11 +340,10 @@ Aqui, a função input() retorna a resposta do usuário como uma string. Depois,
 
 #### Resumo da função input()
 
-| Conceito          | Descrição                                                            |
-| ----------------- | -------------------------------------------------------------------- |
-| **Parâmetro(s)**  | O texto exibido para o usuário (ex: uma pergunta ou mensagem)        |
-| **Entrada**       | O que o usuário digita como resposta                                 |
-| **Saída/Retorno** | A função retorna uma **string** (mesmo que o usuário digite números) |
+| Conceito                  | Descrição                                                            |
+| ------------------------- | -------------------------------------------------------------------- |
+| **Parâmetro(s)/Entrada**  | O texto exibido para o usuário (ex: uma pergunta ou mensagem)        |
+| **Saída/Retorno**         | A função retorna uma **string** (mesmo que o usuário digite números) |
 
 ### Função range()
 
@@ -375,11 +372,10 @@ A função range() retorna um objeto iterável que gera os números da sequênci
 
 #### Resumo da função range()
 
-| Conceito          | Descrição                                           |
-| ----------------- | --------------------------------------------------- |
-| **Parâmetro(s)**  | `início`, `fim`, e `passo` (todos são opcionais)    |
-| **Entrada**       | A sequência de números que você deseja gerar        |
-| **Saída/Retorno** | Um objeto iterável que gera os números da sequência |
+| Conceito                  | Descrição                                           |
+| ------------------------- | --------------------------------------------------- |
+| **Parâmetro(s)/Entrada**  | `início`, `fim`, e `passo` (todos são opcionais)    |
+| **Saída/Retorno**         | Um objeto iterável que gera os números da sequência |
 
 ## Sintaxe de utilização de funções
 

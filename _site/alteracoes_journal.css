@@ -1,0 +1,24 @@
+/* custom-font.css */
+
+/* Define a global font variable */
+:root {
+    --main-font: "Courier New";
+    --code-font: "Courier New", monospace;
+}
+
+/* Apply it everywhere */
+body {
+    font-family: var(--main-font);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--main-font);
+}
+
+p, li, blockquote {
+    font-family: var(--main-font);
+}
+
+code, pre {
+    font-family: var(--code-font);
+}

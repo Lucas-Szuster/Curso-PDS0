@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -72,10 +73,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-716b725abaa98b7d660ef9e3c10d6f53.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d3e4d584c9d20e12f8e9992c870a042d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -231,6 +232,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../introducao/IntroducaoAsBoasPraticas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdução às boas práticas de programção</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../introducao/Matrizes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Matrizes</span></a>
   </div>
@@ -288,8 +295,11 @@ window.Quarto = {
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">funcoes/Exercicios.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../funcoes/Exercicios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercícios</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -376,6 +386,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#exercício-1" id="toc-exercício-1" class="nav-link" data-scroll-target="#exercício-1">Exercício 1</a></li>
   <li><a href="#exercício-2" id="toc-exercício-2" class="nav-link" data-scroll-target="#exercício-2">Exercício 2</a></li>
+  <li><a href="#exercício-3" id="toc-exercício-3" class="nav-link" data-scroll-target="#exercício-3">Exercício 3</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -428,13 +439,13 @@ x &amp; \text{se } x \geq 0, \\
 </section>
 <section id="sintaxe-geral-de-abs" class="level4">
 <h4 class="anchored" data-anchor-id="sintaxe-geral-de-abs">Sintaxe geral de abs()</h4>
-<div id="02e4d86e" class="cell" data-execution_count="1">
+<div id="25ed1a74" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">abs</span>(numero)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="exemplo" class="level4">
 <h4 class="anchored" data-anchor-id="exemplo">Exemplo</h4>
-<div id="f3ea4538" class="cell" data-execution_count="2">
+<div id="08f5236f" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>numero: <span class="bu">int</span> <span class="op">=</span> <span class="bu">abs</span>(<span class="op">-</span><span class="dv">5</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numero)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -455,11 +466,11 @@ x &amp; \text{se } x \geq 0, \\
 <section id="sintaxe-geral-de-round" class="level4">
 <h4 class="anchored" data-anchor-id="sintaxe-geral-de-round">Sintaxe geral de round()</h4>
 <p>Para arredondar um número para o inteiro mais próximo:</p>
-<div id="febe938d" class="cell" data-execution_count="3">
+<div id="6328ccf6" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">round</span>(numero)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Para arredondar um número para uma quantidade de casas decimais:</p>
-<div id="715b1e52" class="cell" data-execution_count="4">
+<div id="fc75bfc2" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">round</span>(numero, quantidade_de_casas_decimais)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -469,7 +480,7 @@ x &amp; \text{se } x \geq 0, \\
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">round() para o inteiro mais próximo</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">round() para um número de casas decimais</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div id="c90430bc" class="cell" data-execution_count="5">
+<div id="b107a5b3" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>numero: <span class="bu">int</span> <span class="op">=</span> <span class="bu">round</span>(<span class="fl">2.9</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numero) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -477,7 +488,7 @@ x &amp; \text{se } x \geq 0, \\
 <p>A saída deste código será 3.</p>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div id="664476b5" class="cell" data-execution_count="6">
+<div id="d9cbdfbc" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>numero: <span class="bu">int</span> <span class="op">=</span> <span class="bu">round</span>(<span class="fl">2.7182</span>, <span class="dv">2</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numero) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -500,7 +511,7 @@ x &amp; \text{se } x \geq 0, \\
 </section>
 <section id="sintaxe-geral-de-min-e-max" class="level4">
 <h4 class="anchored" data-anchor-id="sintaxe-geral-de-min-e-max">Sintaxe geral de min() e max()</h4>
-<div id="5dc03a63" class="cell" data-execution_count="7">
+<div id="41f141f8" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">min</span>(conjunto_de_elementos)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">max</span>(conjunto_de_elementos)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -511,7 +522,7 @@ x &amp; \text{se } x \geq 0, \\
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">min()</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">max()</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<div id="18114d60" class="cell" data-execution_count="8">
+<div id="b4ba2b7d" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>lista: <span class="bu">list</span> <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">min</span>(lista))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -519,7 +530,7 @@ x &amp; \text{se } x \geq 0, \\
 <p>A saída deste código será 1</p>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<div id="21ec9698" class="cell" data-execution_count="9">
+<div id="9cf01a40" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>lista: <span class="bu">list</span> <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">max</span>(lista))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -545,13 +556,13 @@ x &amp; \text{se } x \geq 0, \\
 </section>
 <section id="sintaxe-geral-de-enumerate" class="level4">
 <h4 class="anchored" data-anchor-id="sintaxe-geral-de-enumerate">Sintaxe geral de enumerate()</h4>
-<div id="dbcbf21e" class="cell" data-execution_count="10">
+<div id="a00f6add" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">enumerate</span>(lista)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="exemplo-3" class="level4">
 <h4 class="anchored" data-anchor-id="exemplo-3">Exemplo</h4>
-<div id="5e0dac5b" class="cell" data-execution_count="11">
+<div id="64b32a7b" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>lista: <span class="bu">list</span> <span class="op">=</span> [<span class="st">'um'</span>, <span class="st">'dois'</span>, <span class="st">'três'</span>]</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> indice, item <span class="kw">in</span> <span class="bu">enumerate</span>(lista):</span>
@@ -579,12 +590,12 @@ x &amp; \text{se } x \geq 0, \\
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Ordenação crescente</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Ordenação decrescente</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
-<div id="06d45634" class="cell" data-execution_count="12">
+<div id="833f0f81" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>(lista)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
-<div id="4c523391" class="cell" data-execution_count="13">
+<div id="ad6445fc" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>(lista, reverse <span class="op">=</span> <span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
@@ -597,7 +608,7 @@ x &amp; \text{se } x \geq 0, \\
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Ordenação crescente</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Ordenação decrescente</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
-<div id="587e8d67" class="cell" data-execution_count="14">
+<div id="f391b770" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>lista: <span class="bu">list</span> <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">8</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">3</span>]</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">sorted</span>(lista))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -606,7 +617,7 @@ x &amp; \text{se } x \geq 0, \\
 <pre class="{ObjectiveC}"><code>[0, 3, 5, 5, 7, 8, 8]</code></pre>
 </div>
 <div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
-<div id="81910847" class="cell" data-execution_count="15">
+<div id="ca3fa421" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>lista: <span class="bu">list</span> <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">8</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">3</span>]</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">sorted</span>(lista, reverse <span class="op">=</span> <span class="va">True</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -630,13 +641,13 @@ x &amp; \text{se } x \geq 0, \\
 </section>
 <section id="sintaxe-geral-de-len" class="level4">
 <h4 class="anchored" data-anchor-id="sintaxe-geral-de-len">Sintaxe geral de len()</h4>
-<div id="1c0bea89" class="cell" data-execution_count="16">
+<div id="0d2c0c03" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(lista)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="exemplo-5" class="level4">
 <h4 class="anchored" data-anchor-id="exemplo-5">Exemplo</h4>
-<div id="68831bfb" class="cell" data-execution_count="17">
+<div id="bd224bf3" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>lista: <span class="bu">list</span> <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>]</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(lista))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -667,7 +678,7 @@ x &amp; \text{se } x \geq 0, \\
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Aqui está um programa que faz isto:</p>
-<div id="cf6da8df" class="cell" data-execution_count="18">
+<div id="ccdae64d" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ler a entrada</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>num: <span class="bu">int</span> <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">'Insira um número: '</span>))</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -681,7 +692,7 @@ x &amp; \text{se } x \geq 0, \\
 <section id="exercício-2" class="level3">
 <h3 class="anchored" data-anchor-id="exercício-2">Exercício 2</h3>
 <p>Você é professor de 5 turmas diferentes, e para cada turma você possui uma lista com todas as notas da turma:</p>
-<div id="4f89ed76" class="cell" data-execution_count="19">
+<div id="932ef5df" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>turma_a: <span class="bu">list</span> <span class="op">=</span> [<span class="dv">56</span>, <span class="dv">78</span>, <span class="dv">90</span>, <span class="dv">43</span>, <span class="dv">32</span>, <span class="dv">88</span>, <span class="dv">90</span>, <span class="dv">71</span>, <span class="dv">90</span>]</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>turma_b: <span class="bu">list</span> <span class="op">=</span> [<span class="dv">96</span>, <span class="dv">67</span>, <span class="dv">96</span>, <span class="dv">53</span>, <span class="dv">67</span>, <span class="dv">88</span>, <span class="dv">71</span>, <span class="dv">71</span>, <span class="dv">93</span>]</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>turma_c: <span class="bu">list</span> <span class="op">=</span> [<span class="dv">53</span>, <span class="dv">44</span>, <span class="dv">90</span>, <span class="dv">43</span>, <span class="dv">67</span>, <span class="dv">53</span>, <span class="dv">93</span>, <span class="dv">71</span>, <span class="dv">71</span>]</span>
@@ -704,7 +715,7 @@ x &amp; \text{se } x \geq 0, \\
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Aqui está um programa que faz isto:</p>
-<div id="279a4146" class="cell" data-execution_count="20">
+<div id="63160ba2" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># declaração das notas</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>turma_a: <span class="bu">list</span> <span class="op">=</span> [<span class="dv">56</span>, <span class="dv">78</span>, <span class="dv">90</span>, <span class="dv">43</span>, <span class="dv">32</span>, <span class="dv">88</span>, <span class="dv">90</span>, <span class="dv">71</span>, <span class="dv">90</span>]</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>turma_b: <span class="bu">list</span> <span class="op">=</span> [<span class="dv">96</span>, <span class="dv">67</span>, <span class="dv">96</span>, <span class="dv">53</span>, <span class="dv">67</span>, <span class="dv">88</span>, <span class="dv">71</span>, <span class="dv">71</span>, <span class="dv">93</span>]</span>
@@ -758,7 +769,7 @@ x &amp; \text{se } x \geq 0, \\
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Aqui está um programa que faz isto:</p>
-<div id="f1679cff" class="cell" data-execution_count="21">
+<div id="b8f2a322" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># declaração das notas</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>turma_a: <span class="bu">list</span> <span class="op">=</span> [<span class="dv">56</span>, <span class="dv">78</span>, <span class="dv">90</span>, <span class="dv">43</span>, <span class="dv">32</span>, <span class="dv">88</span>, <span class="dv">90</span>, <span class="dv">71</span>, <span class="dv">90</span>]</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>turma_b: <span class="bu">list</span> <span class="op">=</span> [<span class="dv">96</span>, <span class="dv">67</span>, <span class="dv">96</span>, <span class="dv">53</span>, <span class="dv">67</span>, <span class="dv">88</span>, <span class="dv">71</span>, <span class="dv">71</span>, <span class="dv">93</span>]</span>
@@ -796,6 +807,9 @@ x &amp; \text{se } x \geq 0, \\
 </div>
 </div>
 </div>
+</section>
+<section id="exercício-3" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-3">Exercício 3</h3>
 
 
 </section>

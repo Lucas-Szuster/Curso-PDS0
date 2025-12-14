@@ -756,6 +756,389 @@ else:
 
 :::
 
+## Exercícios de implementação com estruturas de repetição
+
+### Exercício 1
+
+1. Implemente um programa capaz de descorbrir qual o menor número da seguinte lista:
+
+```{python}
+#| eval: false
+lista_de_numeros: list = [
+    29538, 690188, 189130, 821693, 876709, 906758, 470392, 485388, 308468, 358734, 
+    736021, 893093, 559598, 157302, 21169, 151670, 179671, 395737, 109068, 608474, 
+    8834, 668804, 509309, 977665, 46269, 844234, 542512, 873743, 500626, 43145, 
+    207760, 521203, 52495, 100116, 321994, 678868, 647870, 598770, 50196, 5788, 
+    792648, 863580, 962660, 372296, 465603, 408959, 608872, 137921, 52691, 756749, 
+    833649, 875620, 329003, 499386, 658702, 267697, 378477, 504649, 202723, 580527, 
+    799994, 675131, 841086, 302652, 16883, 68415, 746637, 453785, 626416, 654378, 
+    307983, 457009, 915016, 152660, 44970, 652553, 121578, 139873, 123397, 563729, 
+    574961, 399038, 343754, 551352, 215971, 998233, 750942, 162020, 863550, 462764, 
+    636779, 972026, 690119, 461144, 87993, 177373, 553780, 603819, 818041, 229354, 
+    48977, 794853, 61516, 370125, 731722, 442370, 555879, 864091, 22676, 415990, 
+    404694, 416344, 113914, 785038, 550040, 473795, 640780, 488974, 348732, 449737, 
+    766278, 759026, 809038, 14067, 289346, 73367, 788195, 85030, 245709, 408662, 
+    903062, 831203, 176081, 361461, 635253, 346009, 53793, 627915, 83270, 331645, 
+    991272, 712993, 78923, 79192, 427915, 794353, 784351, 2539, 902578, 363842, 
+    727225, 27119, 804767, 334035, 572588, 897345, 655959, 732571, 535572, 751019, 
+    87471, 973329, 831712, 192522, 834351, 241419, 882584, 635873, 613729, 490420, 
+    396933, 380870, 613703, 553085, 751105, 358317, 122963, 548258, 879365, 889973, 
+    43490, 382880, 442714, 814620, 552297, 168440, 418645, 569276, 835422, 297848, 
+    334135, 440719, 540715, 961237, 388975, 484085, 365913, 1981, 790582, 773419, 
+    522185, 278268, 997634, 998177, 517327, 304668, 206865, 76881, 772722, 971523, 
+    396772, 855841, 34457, 671187, 458553, 561998, 626902, 891487, 172414, 499531, 
+    279322, 54756, 691627, 912780, 938099, 549712, 938935, 590838, 788957, 633722, 
+    56790, 452098, 38593, 282537, 475976, 98557, 339994, 632560, 536765, 477451, 
+    199454, 690299, 127693, 48996, 215104, 27642, 239176, 467254, 755925, 486141, 
+    253652, 673829, 955175, 962887, 311204, 657762, 788094, 260058, 646517, 362195, 
+    973905, 388880, 254755, 62596, 372918, 981823, 224710, 54201, 253300, 494449, 
+    645978, 863709, 931999, 755168, 525438, 856061, 172433, 948532, 80574, 173558, 
+    809081, 8077, 735774, 634550, 70281, 276278, 709129, 547582, 391112, 314708, 
+    227784, 481930, 249334, 415812, 792262, 947268, 760126, 101050, 277101, 86843, 
+    527732, 223484, 434561, 969175, 760014, 757129, 191310, 335110, 453691, 128553, 
+    301166, 720735, 774016, 756493, 686196, 93010, 497685, 379519, 251289, 895478, 
+    106476, 968691, 51699, 371735, 146722, 981127, 250081, 750656, 822654, 377045, 
+    641145, 990371, 144640, 213590, 110928, 837007, 890954, 855145, 405597, 501804, 
+    257052, 862515, 147926, 357943, 877228, 588392, 313815, 315918, 284764, 82996, 
+    479385, 816499, 811963, 976932, 100996, 237383, 109445, 17323, 86089, 344436, 
+    878771, 980391, 291757, 337436, 439249, 24480, 535983, 112648, 538992, 882008, 
+    923466, 319375, 948980, 49509, 611170, 864493, 40572, 994879, 651593, 783901, 
+    773933, 470141, 837146, 170007, 829159, 72428, 857317, 983024, 46168, 577194, 
+    585984, 68233, 453116, 24810, 259509, 834995, 593532, 542972, 231104, 32445, 
+    624728, 569817, 408435, 727863, 253922, 19400, 327184, 629941, 435299, 396098, 
+    165033, 288672, 481066, 601372, 138629, 626699, 644927, 158747, 749832, 935174, 
+    625334, 611345, 943720, 636633, 445088, 884968, 842825, 173404, 537110, 329647, 
+    826025, 280898, 548809, 333624, 579421, 466274, 860556, 696633, 787785, 150485, 
+    995366, 603049, 443859, 497678, 524307, 36557, 609436, 810786, 154741, 624142, 
+    989263, 250184, 134475, 481695, 166283, 46286, 915657, 962874, 273302, 604806, 
+    733960, 598313, 633854, 409712, 909271, 100721, 406834, 546354, 694382, 47899, 
+    795204, 808265, 24947, 169639, 595883, 140971, 778032, 993410, 447277, 224293, 
+    382644, 737537, 834688, 802061, 502282, 670140, 848397, 484884, 371584, 980658, 
+    727561, 591138, 569087, 331409, 664209, 355817, 64219, 36037, 727985, 712134
+]
+```
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+```{python}
+#| eval: false
+# declarar a lista de números que será utilizada
+lista_de_numeros: list = [
+    29538, 690188, 189130, 821693, 876709, 906758, 470392, 485388, 308468, 358734, 
+    736021, 893093, 559598, 157302, 21169, 151670, 179671, 395737, 109068, 608474, 
+    8834, 668804, 509309, 977665, 46269, 844234, 542512, 873743, 500626, 43145, 
+    207760, 521203, 52495, 100116, 321994, 678868, 647870, 598770, 50196, 5788, 
+    792648, 863580, 962660, 372296, 465603, 408959, 608872, 137921, 52691, 756749, 
+    833649, 875620, 329003, 499386, 658702, 267697, 378477, 504649, 202723, 580527, 
+    799994, 675131, 841086, 302652, 16883, 68415, 746637, 453785, 626416, 654378, 
+    307983, 457009, 915016, 152660, 44970, 652553, 121578, 139873, 123397, 563729, 
+    574961, 399038, 343754, 551352, 215971, 998233, 750942, 162020, 863550, 462764, 
+    636779, 972026, 690119, 461144, 87993, 177373, 553780, 603819, 818041, 229354, 
+    48977, 794853, 61516, 370125, 731722, 442370, 555879, 864091, 22676, 415990, 
+    404694, 416344, 113914, 785038, 550040, 473795, 640780, 488974, 348732, 449737, 
+    766278, 759026, 809038, 14067, 289346, 73367, 788195, 85030, 245709, 408662, 
+    903062, 831203, 176081, 361461, 635253, 346009, 53793, 627915, 83270, 331645, 
+    991272, 712993, 78923, 79192, 427915, 794353, 784351, 2539, 902578, 363842, 
+    727225, 27119, 804767, 334035, 572588, 897345, 655959, 732571, 535572, 751019, 
+    87471, 973329, 831712, 192522, 834351, 241419, 882584, 635873, 613729, 490420, 
+    396933, 380870, 613703, 553085, 751105, 358317, 122963, 548258, 879365, 889973, 
+    43490, 382880, 442714, 814620, 552297, 168440, 418645, 569276, 835422, 297848, 
+    334135, 440719, 540715, 961237, 388975, 484085, 365913, 1981, 790582, 773419, 
+    522185, 278268, 997634, 998177, 517327, 304668, 206865, 76881, 772722, 971523, 
+    396772, 855841, 34457, 671187, 458553, 561998, 626902, 891487, 172414, 499531, 
+    279322, 54756, 691627, 912780, 938099, 549712, 938935, 590838, 788957, 633722, 
+    56790, 452098, 38593, 282537, 475976, 98557, 339994, 632560, 536765, 477451, 
+    199454, 690299, 127693, 48996, 215104, 27642, 239176, 467254, 755925, 486141, 
+    253652, 673829, 955175, 962887, 311204, 657762, 788094, 260058, 646517, 362195, 
+    973905, 388880, 254755, 62596, 372918, 981823, 224710, 54201, 253300, 494449, 
+    645978, 863709, 931999, 755168, 525438, 856061, 172433, 948532, 80574, 173558, 
+    809081, 8077, 735774, 634550, 70281, 276278, 709129, 547582, 391112, 314708, 
+    227784, 481930, 249334, 415812, 792262, 947268, 760126, 101050, 277101, 86843, 
+    527732, 223484, 434561, 969175, 760014, 757129, 191310, 335110, 453691, 128553, 
+    301166, 720735, 774016, 756493, 686196, 93010, 497685, 379519, 251289, 895478, 
+    106476, 968691, 51699, 371735, 146722, 981127, 250081, 750656, 822654, 377045, 
+    641145, 990371, 144640, 213590, 110928, 837007, 890954, 855145, 405597, 501804, 
+    257052, 862515, 147926, 357943, 877228, 588392, 313815, 315918, 284764, 82996, 
+    479385, 816499, 811963, 976932, 100996, 237383, 109445, 17323, 86089, 344436, 
+    878771, 980391, 291757, 337436, 439249, 24480, 535983, 112648, 538992, 882008, 
+    923466, 319375, 948980, 49509, 611170, 864493, 40572, 994879, 651593, 783901, 
+    773933, 470141, 837146, 170007, 829159, 72428, 857317, 983024, 46168, 577194, 
+    585984, 68233, 453116, 24810, 259509, 834995, 593532, 542972, 231104, 32445, 
+    624728, 569817, 408435, 727863, 253922, 19400, 327184, 629941, 435299, 396098, 
+    165033, 288672, 481066, 601372, 138629, 626699, 644927, 158747, 749832, 935174, 
+    625334, 611345, 943720, 636633, 445088, 884968, 842825, 173404, 537110, 329647, 
+    826025, 280898, 548809, 333624, 579421, 466274, 860556, 696633, 787785, 150485, 
+    995366, 603049, 443859, 497678, 524307, 36557, 609436, 810786, 154741, 624142, 
+    989263, 250184, 134475, 481695, 166283, 46286, 915657, 962874, 273302, 604806, 
+    733960, 598313, 633854, 409712, 909271, 100721, 406834, 546354, 694382, 47899, 
+    795204, 808265, 24947, 169639, 595883, 140971, 778032, 993410, 447277, 224293, 
+    382644, 737537, 834688, 802061, 502282, 670140, 848397, 484884, 371584, 980658, 
+    727561, 591138, 569087, 331409, 664209, 355817, 64219, 36037, 727985, 712134
+]
+
+# declarar uma variável que irá guardar o menor valor, incialmente a 1a posição da lista
+menor_valor: int = lista_de_numeros[0]
+
+# passar por todos os números da lista
+for num in lista_de_numeros:
+    # checar se o número é menor que o menor valor
+    if(num < menor_valor):
+        # caso seja, atualizar o menor valor
+        menor_valor = num
+
+# exibir o resultado
+print(menor_valor)
+```
+
+:::
+
+2. Agora, sabendo que esta lista possui 500 números, adapte o código que você implementou para o item 1 a fim de descobrir a posição (com indexação em python) do menor valor.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+```{python}
+#| eval: false
+# declarar a lista de números que será utilizada
+lista_de_numeros: list = [
+    29538, 690188, 189130, 821693, 876709, 906758, 470392, 485388, 308468, 358734, 
+    736021, 893093, 559598, 157302, 21169, 151670, 179671, 395737, 109068, 608474, 
+    8834, 668804, 509309, 977665, 46269, 844234, 542512, 873743, 500626, 43145, 
+    207760, 521203, 52495, 100116, 321994, 678868, 647870, 598770, 50196, 5788, 
+    792648, 863580, 962660, 372296, 465603, 408959, 608872, 137921, 52691, 756749, 
+    833649, 875620, 329003, 499386, 658702, 267697, 378477, 504649, 202723, 580527, 
+    799994, 675131, 841086, 302652, 16883, 68415, 746637, 453785, 626416, 654378, 
+    307983, 457009, 915016, 152660, 44970, 652553, 121578, 139873, 123397, 563729, 
+    574961, 399038, 343754, 551352, 215971, 998233, 750942, 162020, 863550, 462764, 
+    636779, 972026, 690119, 461144, 87993, 177373, 553780, 603819, 818041, 229354, 
+    48977, 794853, 61516, 370125, 731722, 442370, 555879, 864091, 22676, 415990, 
+    404694, 416344, 113914, 785038, 550040, 473795, 640780, 488974, 348732, 449737, 
+    766278, 759026, 809038, 14067, 289346, 73367, 788195, 85030, 245709, 408662, 
+    903062, 831203, 176081, 361461, 635253, 346009, 53793, 627915, 83270, 331645, 
+    991272, 712993, 78923, 79192, 427915, 794353, 784351, 2539, 902578, 363842, 
+    727225, 27119, 804767, 334035, 572588, 897345, 655959, 732571, 535572, 751019, 
+    87471, 973329, 831712, 192522, 834351, 241419, 882584, 635873, 613729, 490420, 
+    396933, 380870, 613703, 553085, 751105, 358317, 122963, 548258, 879365, 889973, 
+    43490, 382880, 442714, 814620, 552297, 168440, 418645, 569276, 835422, 297848, 
+    334135, 440719, 540715, 961237, 388975, 484085, 365913, 1981, 790582, 773419, 
+    522185, 278268, 997634, 998177, 517327, 304668, 206865, 76881, 772722, 971523, 
+    396772, 855841, 34457, 671187, 458553, 561998, 626902, 891487, 172414, 499531, 
+    279322, 54756, 691627, 912780, 938099, 549712, 938935, 590838, 788957, 633722, 
+    56790, 452098, 38593, 282537, 475976, 98557, 339994, 632560, 536765, 477451, 
+    199454, 690299, 127693, 48996, 215104, 27642, 239176, 467254, 755925, 486141, 
+    253652, 673829, 955175, 962887, 311204, 657762, 788094, 260058, 646517, 362195, 
+    973905, 388880, 254755, 62596, 372918, 981823, 224710, 54201, 253300, 494449, 
+    645978, 863709, 931999, 755168, 525438, 856061, 172433, 948532, 80574, 173558, 
+    809081, 8077, 735774, 634550, 70281, 276278, 709129, 547582, 391112, 314708, 
+    227784, 481930, 249334, 415812, 792262, 947268, 760126, 101050, 277101, 86843, 
+    527732, 223484, 434561, 969175, 760014, 757129, 191310, 335110, 453691, 128553, 
+    301166, 720735, 774016, 756493, 686196, 93010, 497685, 379519, 251289, 895478, 
+    106476, 968691, 51699, 371735, 146722, 981127, 250081, 750656, 822654, 377045, 
+    641145, 990371, 144640, 213590, 110928, 837007, 890954, 855145, 405597, 501804, 
+    257052, 862515, 147926, 357943, 877228, 588392, 313815, 315918, 284764, 82996, 
+    479385, 816499, 811963, 976932, 100996, 237383, 109445, 17323, 86089, 344436, 
+    878771, 980391, 291757, 337436, 439249, 24480, 535983, 112648, 538992, 882008, 
+    923466, 319375, 948980, 49509, 611170, 864493, 40572, 994879, 651593, 783901, 
+    773933, 470141, 837146, 170007, 829159, 72428, 857317, 983024, 46168, 577194, 
+    585984, 68233, 453116, 24810, 259509, 834995, 593532, 542972, 231104, 32445, 
+    624728, 569817, 408435, 727863, 253922, 19400, 327184, 629941, 435299, 396098, 
+    165033, 288672, 481066, 601372, 138629, 626699, 644927, 158747, 749832, 935174, 
+    625334, 611345, 943720, 636633, 445088, 884968, 842825, 173404, 537110, 329647, 
+    826025, 280898, 548809, 333624, 579421, 466274, 860556, 696633, 787785, 150485, 
+    995366, 603049, 443859, 497678, 524307, 36557, 609436, 810786, 154741, 624142, 
+    989263, 250184, 134475, 481695, 166283, 46286, 915657, 962874, 273302, 604806, 
+    733960, 598313, 633854, 409712, 909271, 100721, 406834, 546354, 694382, 47899, 
+    795204, 808265, 24947, 169639, 595883, 140971, 778032, 993410, 447277, 224293, 
+    382644, 737537, 834688, 802061, 502282, 670140, 848397, 484884, 371584, 980658, 
+    727561, 591138, 569087, 331409, 664209, 355817, 64219, 36037, 727985, 712134
+]
+
+# declarar o tamanho da lista
+tamanho_da_lista: int = 500
+
+# declarar uma variável que irá guardar o menor valor, incialmente a 1a posição da lista
+menor_valor: int = lista_de_numeros[0]
+
+# declarar uma variável que guara o índice do menor valor, inicializada com 0
+posicao_do_menor_valor: int = 0
+
+# passar por todos os números da lista
+for i in range(tamanho_da_lista):
+    # checar se o número é menor que o menor valor
+    if(lista_de_numeros[i] < menor_valor):
+        # caso seja, atualizar o menor valor
+        menor_valor = lista_de_numeros[i]
+
+        # atualizar o índice do menor valor
+        posicao_do_menor_valor = i
+
+# exibir o resultado
+print(posicao_do_menor_valor)
+```
+
+:::
+
+### Exercício 2
+
+Peça um número ao usuário e gere sua tabuada de 1 a 10.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+```{python}
+#| eval: false
+# obter o número do usuário
+num: int = int(input('Insira um número: '))
+
+# gerar uma seuquência de 1 a 10
+for i in range(1, 11):
+    # exibir o número escolhido vezes o i
+    print(i * num)
+```
+
+:::
+
+### Exercício 3
+
+Dada a seguinte lista de idades:
+
+```{python}
+#| eval: false
+lista_idades = [
+    33, 87, 62, 100, 26, 56, 47, 79, 20, 33, 54, 9, 28, 
+    81, 4, 88, 56, 51, 23, 55, 35, 99, 31, 30, 33, 81, 
+    81, 43, 24, 60, 41, 5, 21, 61, 79, 94, 87, 41, 60, 
+    6, 64, 97, 86, 71, 6, 66, 91, 35, 94, 48, 22, 23, 
+    13, 35, 58, 54, 86, 85, 36, 73, 18, 55, 97, 8, 74, 
+    42, 85, 59, 48, 78, 93, 10, 88, 70, 57, 53, 14, 53, 
+    57, 98, 73, 73, 83, 62, 36, 14, 56, 61, 40, 2, 77, 
+    52, 93, 23, 24, 67, 4, 25, 86, 11, 3, 56, 23, 18, 5
+]
+```
+
+Percorra toda a lista e identifique a quantidade de crianças, adolescentes, adultos e idosos com base nos seguintes critérios:
+
+* A idade é de uma criança se for menor que 12.
+
+* A idade é de um adolescente se for menor que 18.
+
+* A idade é de um adulto se for menor que 60.
+
+* A idade é de um idoso se for maior que 60.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+```{python}
+#| eval: false
+# lista de com as idades
+lista_idades = [
+    33, 87, 62, 100, 26, 56, 47, 79, 20, 33, 54, 9, 28, 
+    81, 4, 88, 56, 51, 23, 55, 35, 99, 31, 30, 33, 81, 
+    81, 43, 24, 60, 41, 5, 21, 61, 79, 94, 87, 41, 60, 
+    6, 64, 97, 86, 71, 6, 66, 91, 35, 94, 48, 22, 23, 
+    13, 35, 58, 54, 86, 85, 36, 73, 18, 55, 97, 8, 74, 
+    42, 85, 59, 48, 78, 93, 10, 88, 70, 57, 53, 14, 53, 
+    57, 98, 73, 73, 83, 62, 36, 14, 56, 61, 40, 2, 77, 
+    52, 93, 23, 24, 67, 4, 25, 86, 11, 3, 56, 23, 18, 5
+]
+
+# declarar os diferentes contadores (todos inicializados com 0)
+contador_criancas: int = 0
+contador_adolescentes: int = 0
+contador_adultos: int = 0
+contador_idosos: int = 0
+
+# percorrer toda a lista de idades
+for idade in lista_idades:
+    # fazer checagems
+    if(idade < 12):
+        # se idade < 12, é uma criança
+        contador_criancas += 1
+    elif(idade < 18):
+        # se idade > 12 E idade < 18, é um adolescente
+        contador_adolescentes += 1
+    elif(idade < 60):
+        # se idade > 18 E idade < 60 é um adulto
+        contador_adultos += 1
+    else:
+        # se idade > 60 é um idoso
+        contador_idosos += 1
+
+# exibir resultados
+print('quantidade de crianças:', contador_criancas)
+print('quantidade de adolescentes:', contador_adolescentes)
+print('quantidade de adultos:', contador_adultos)
+print('quantidade de idosos:', contador_idosos)
+```
+
+:::
+
+### Exercício 4
+
+Peça ao usuário uma palavra e busque nela a letra "k" ou "K". Caso a encontre, imprima "Kaio Jorge", caso contrário, apenas imprima a palavra que o usuário inseriu.
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+```{python}
+#| eval: false
+# obter a palavra
+palavra: str = input('Insira uma palavra: ')
+
+# declarar um bool que indica se a palavra tem 'k' ou 'K'
+palavra_tem_k: bool = False
+
+# passar pela palavra toda e checar
+for letra in palavra:
+    # checar se a palavra tem k
+    if(letra == 'k' or letra == 'K'):
+        # se tiver, ativar a flag palavra_tem_k
+        palavra_tem_k = True
+        
+# exibir resultado com base na flag palavra_tem_k
+if(palavra_tem_k == True):
+    print('Kaio Jorge')
+else:
+    print(palavra)
+```
+
+:::
+
+### Exercício 5
+
+Peça ao usuário uma palavra e verifique se todas as letras da palavra são maiúsculas. Caso forem, imprima "Todas as letras maiúsculas", caso contrário imprima "Talvez alguma(s) letra(s) maiúscula(s)".
+
+::: {.callout-tip title="Dica"}
+
+Lembre-se do operador `in` para o tipo `str`, e que você pode gerar uma `string` com todas as letras minúsculas.
+
+:::
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+```{python}
+#| eval: false
+# obter a palavra
+palavra: str = input('Insira uma palavra: ')
+
+# declarar todas as letras minúsculas
+minusculas: str = 'abcdefghijklmopqrstuvwxyz'
+
+# declarar uma flag para todas as letras maiúsculas como verdadeira
+todas_as_letras_maiusculas = True
+
+# checar todas as letras
+for letra in palavra:
+    # checar se a letra está no conjunto de minúsculas
+    if(letra in minusculas):
+        # se estiver, alterar a flag para falsa
+        todas_as_letras_maiusculas = False
+    
+if(todas_as_letras_maiusculas):
+    print('Todas as letras maiúsculas')
+else:
+    print('Talvez alguma(s) letra(s) maiúscula(s)')
+```
+
+:::
+
 ## Exercícios complexos
 
 ### Exercício 1
@@ -987,38 +1370,134 @@ else:
 
 ### Exercício 3
 
-Mazochilândia é famosa por suas vastas fazendas, mas o prefeito Doutor Élcio Moloccini decidiu que é hora de cuidar da sustentabilidade da pecuária e garantir que o pasto não seja sobrecarregado. Por isso, criou o Imposto Pecuário, que incide sobre as fazendas que possuem mais gado do que o permitido por área.
+O município de Mazochilândia, localizado em uma vasta região agropecuária, tornou-se referência na produção de carne e no manejo extensivo de gado. Suas fazendas ocupam grandes áreas abertas, e a pecuária é o pilar econômico da cidade, movimentando tanto o comércio local quanto a exportação.
 
-O sistema funciona assim:
+Nos últimos anos, porém, técnicos ambientais e agrônomos passaram a alertar para um problema crescente: o uso intensivo do pasto sem controle adequado da carga animal. A superlotação compromete a regeneração da vegetação nativa, aumenta processos de erosão e reduz a capacidade produtiva futura das terras.
 
-* Cada fazenda é dividida em setores (como quadras dentro do terreno).
+Diante dessas preocupações, o prefeito Dr. Élcio Moloccini implementou uma nova política pública de gestão sustentável da pecuária. A medida central dessa política é a criação do Imposto Pecuário Sustentável, um tributo regulamentado para estimular boas práticas de criação e prevenir a degradação do solo. O imposto incide apenas sobre as propriedades que mantêm densidade de gado acima do limite ambientalmente recomendado para a área total da fazenda.
 
-* Cada linha de uma matriz representa uma fazenda.
+Essa política exige um método objetivo e padronizado para avaliar cada fazenda, levando à necessidade de um sistema computacional capaz de auxiliar na análise.
 
-* Cada coluna representa um setor da fazenda.
+#### Estrutura do sistema computacional
 
-* Cada célula $(i, j)$ contém o número de cabeças de gado no setor $j$ da fazenda $i$.
+Para automatizar o processo de fiscalização e garantir imparcialidade no cálculo, o sistema adotará uma representação matricial das fazendas. Nessa modelagem:
 
-* Todas as fazendas possuem a mesma área total.
+* Cada linha da matriz corresponde a uma fazenda registrada no município.
 
-#### Regra do Imposto
+* Cada coluna representa um setor interno da fazenda, como se a propriedade fosse dividida em áreas menores para facilitar o acompanhamento.
 
-Uma fazenda deve pagar imposto se a densidade de gado ($\sigma$) ultrapassar o limite legal $\sigma_{max}$, e $\sigma$ é definido da seguinte maneira:
+* A célula $(i, j)$ armazena o número de cabeças de gado presentes no setor $j$ da fazenda $i$.
+
+* Todas as fazendas possuem a mesma área total, definida pelos critérios da secretaria de agricultura municipal.
+
+Esse formato permite que o sistema compute rapidamente a quantidade total de gado, calcule densidades e identifique eventuais irregularidades.
+
+
+#### Regra do imposto
+
+Regra do Imposto
+
+A cobrança do imposto depende da densidade de gado de cada fazenda, calculada por:
 
 $$
-\sigma = \frac{\text{quantidade total de gado}}{\text{área total da fazenda}}
+\sigma = \frac{\text{Quantidade de cabeças de gado}}{\text{Área total da fazenda}}
 $$
 
-O limite $\sigma_{max}$ é definido pelo prefeito com base em estudos ambientais e nutricionais do pasto. Fazendas com densidade abaixo ou igual a $\sigma_{max}$ não pagam imposto, para incentivar a boa gestão da criação.
+O valor máximo permitido, chamado de limite de densidade ($\sigma_{\text{max}}$), é estabelecido pela prefeitura com base em estudos ambientais, recomendações técnicas e índices de sustentabilidade rural.
 
-#### Problema
+As regras de cobrança são:
 
-Você deve criar um programa que faça o seguinte:
+Se a densidade $\sigma$ for maior que $\sigma_{\text{max}}$, a fazenda deve pagar o Imposto Pecuário Sustentável.
 
-* Leia a matriz representando as fazendas e setores.
+Se for menor ou igual, a fazenda fica isenta, como forma de incentivo às boas práticas e ao manejo responsável.
 
-* Leia a área total das fazenda (um valor que igual para todas) e o valor de $\sigma_{max}$.
+#### Tarefa
 
-* Calcule a densidade de gado ($\sigma$) de cada fazenda.
+Você deverá desenvolver um programa que:
 
-* Informe quais fazendas (identificadas pelo seu valor $i$ na matriz) devem pagar imposto.
+* Leia a matriz que representa as fazendas e seus setores (no caso serão 4 fazendas, cada uma com 4 setores).
+
+* Leia a área total (mesma para todas as propriedades) e o valor do limite $\sigma_{\text{max}}$.
+
+* Calcule a densidade pecuária de cada fazenda.
+
+* Indique quais fazendas (identificadas pelo índice da linha na matriz) estão sujeitas ao pagamento do imposto.
+
+#### Exemplo
+
+Dado $\sigma_{max} = 2$, a área de cada fazenda é igual a $4$ e a disposição das fazendas é a seguinte:
+
+$$
+\begin{bmatrix}
+1 & 1 & 1 & 1 \\
+2 & 2 & 2 & 2 \\
+3 & 3 & 3 & 3 \\
+4 & 4 & 4 & 4
+\end{bmatrix}
+$$
+
+As fazendas identificadas pelos valores 2 e 3 (considerando a indexação padrão do Python) são aquelas que devem pagar imposto.
+
+::: {.callout-note title="Dica"} 
+
+Utilize [f-strings](https://www.geeksforgeeks.org/python/formatted-string-literals-f-strings-python/) para conseguir ler facilmente dados para a matriz.
+
+:::
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+```{python}
+#| eval: false
+# declarar dados
+qnt_fazendas: int = 4
+qnt_setores_por_fazenda: int = 4
+
+# declarar a matriz de dados
+matriz: list = [
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0]
+]
+
+# declarar a lista de fazendas com sigma maior que sigma_max (inicialmente todas falsas)
+fazendas_com_sigma_maior_que_permitido: list = [False, False, False, False]
+
+# passar por todas as fazendas
+for i in range(qnt_fazendas):
+    # passar por todos os setores
+    for j in range(qnt_setores_por_fazenda):
+        # coletar dados
+        matriz[i][j] = int(input(f'Insira a quantidade de gado no setor {j} da fazenda {i}: '))
+
+# coletar sigma_max
+sigma_max: int = int(input('Insira sigma_max: '))
+
+# coletar a área das fazendas
+area_fazenda: int = int(input('Insira a área: '))
+
+# passar por todas as fazendas
+for i in range(qnt_fazendas):   
+    # quantidade de gado
+    qnt_gado_da_fazenda: int = 0
+
+    # passar por todos os setores
+    for j in range(qnt_setores_por_fazenda):
+        # adicionar o gado no setor ao total
+        qnt_gado_da_fazenda += matriz[i][j]
+
+    # calcular sigma da fazenda
+    sigma: float = qnt_gado_da_fazenda / area_fazenda
+
+    # checar se é maior que sigma max
+    if(sigma > sigma_max):
+        # alterar no vetor de fazendas com sigma impróprio
+        fazendas_com_sigma_maior_que_permitido[i] = True
+
+# passar pelo vetor de fazendas com sigma errado e indicar quais estão fora da lei
+for i in range(qnt_fazendas):
+    if(fazendas_com_sigma_maior_que_permitido[i] == True):
+        print(f'Fazenda {i} deve pagar imposto!')
+```
+
+:::

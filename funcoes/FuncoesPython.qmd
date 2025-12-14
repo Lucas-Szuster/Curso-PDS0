@@ -406,3 +406,5 @@ print('Menor nota geral:', menor_nota_geral)
 ```
 
 :::
+
+### Exercício 3

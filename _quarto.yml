@@ -2,6 +2,7 @@ project:
   type: website
 
 website:
+  favicon: "favicon.ico"    
   title: "PDS-0"
   sidebar:
     title: "PDS-0"
@@ -17,6 +18,7 @@ website:
           - introducao/IntroducaoAPython.qmd
           - introducao/CondicionaisEmPython.qmd
           - introducao/EstruturasDeRepeticaoEmPython.qmd
+          - introducao/IntroducaoAsBoasPraticas.qmd
           - introducao/Matrizes.qmd  
           - introducao/Exercicios.qmd
           - section: "Projeto"
@@ -43,5 +45,6 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme: 
+      - cosmo
     toc: true

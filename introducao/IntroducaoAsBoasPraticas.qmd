@@ -1,0 +1,243 @@
+---
+title: "Introdução às boas práticas de programção"
+toc: true
+toc-title: "Conteúdos da página"
+---
+
+## O que são boas práticas de programação?
+
+Boas práticas de programação são um conjunto de princípios e diretrizes que orientam a forma como o código deve ser escrito para ser mais claro, organizado e compreensível. Elas não se limitam apenas ao funcionamento do programa, mas abrangem também a maneira como o código é estruturado e apresentado, facilitando sua leitura e interpretação.
+
+Essas práticas surgem da experiência acumulada de profissionais da área, que ao longo do tempo identificaram padrões que tornam o desenvolvimento mais eficiente e confiável. Por isso, elas funcionam como um guia para ajudar programadores a evitar problemas comuns, reduzir erros e tornar o processo de criação de software mais previsível e seguro.
+
+Além disso, boas práticas de programação contribuem diretamente para a manutenção e evolução de um sistema. Quando o código segue padrões consistentes, qualquer desenvolvedor — incluindo o próprio autor — consegue entender rapidamente seu funcionamento, realizar ajustes com mais facilidade e garantir que o software continue estável mesmo à medida que cresce e se torna mais complexo.
+
+## Boas práticas fundamentais
+
+### Nomes claros para variáveis
+
+Um dos elementos mais importantes — senão o mais essencial — dentro da programação é o conceito de variáveis. Elas funcionam como recipientes que armazenam informações e permitem que o programa manipule, transforme e utilize dados ao longo de sua execução. Por representarem praticamente todos os valores e estados necessários para que um software funcione, as variáveis constituem a base sobre a qual qualquer lógica de programação é construída.
+
+Justamente por desempenharem um papel tão central, as variáveis precisam ser tratadas com cuidado e atenção. A forma como são nomeadas influencia diretamente a clareza, a legibilidade e a compreensão do código. Um nome bem escolhido transmite imediatamente o propósito daquela informação, evitando ambiguidades e facilitando a leitura tanto para o programador original quanto para qualquer outra pessoa que venha a trabalhar no mesmo projeto.
+
+Por isso, é fundamental que as variáveis recebam nomes claros, expressivos e de fácil entendimento, permitindo que o código comunique sua intenção de maneira natural. Embora existam exceções pontuais — geralmente ligadas a convenções específicas, padrões amplamente aceitos ou situações onde a simplicidade é realmente preferível — a regra geral é priorizar sempre nomes que descrevam com precisão o papel desempenhado pela variável dentro da lógica do programa. Assim, além de tornar o código mais elegante, também se fortalece sua manutenibilidade e reduz-se a chance de erros futuros.
+
+#### Exemplos
+
+Observe o seguinte código:
+
+```{python}
+#| eval: false
+a = 100
+b = 15
+
+c = a * (b / 100)
+d = a - c
+
+print(d)
+```
+
+O que está sendo calculado? O que representam as diferentes variáveis utilizadas? Este código é praticamente ilegível, mesmo sendo extremamente simples. Se aplicarmos bons nomes à este código, sua intenção é extremente clara:
+
+```{python}
+#| eval: false
+preco_produto = 100
+desconto_percentual = 15
+
+valor_desconto = preco_produto * (desconto_percentual / 100)
+preco_final = preco_produto - valor_desconto
+
+print(preco_final)
+```
+
+Embora o exemplo anterior seja bastante extremo, é importante perceber que mesmo nomes que não chegam ao nível de $a$, $b$, $c$ ou $d$ ainda podem prejudicar significativamente a legibilidade do código. Muitas vezes, o problema não está em nomes completamente aleatórios, mas em nomes vagos, ambíguos ou pouco descritivos, que não comunicam claramente a intenção do programador. Observe o exemplo abaixo:
+
+```{python}
+#| eval: false
+ps = 70
+alt = 1.75
+
+i = ps / (alt * alt)
+print(i)
+```
+
+Os nomes extremamente abreviados dificultam bastante a legibilidade do código implementado. Para melhorar isto, os nomes devem ser mais descritivos e escritos por extenso, desta forma:
+
+```{python}
+#| eval: false
+peso_kg = 70
+altura_m = 1.75
+
+imc = peso_kg / (altura_m * altura_m)
+print(imc)
+```
+
+#### Exceção principal
+
+Uma das grandes exceções à regra de sempre usar nomes claros e descritivos diz respeito aos índices em estruturas de repetição. Na programação, é extremamente comum utilizar letras simples, principalmente a letra $i$, para representar o índice de um laço, especialmente em *loops* do tipo for. Essa convenção é amplamente aceita por sua tradição e por tornar o código mais conciso sem comprometer a compreensão em contextos simples.
+
+Quando lidamos com estruturas de repetição aninhadas, ou seja, loops dentro de outros loops, é prática comum utilizar letras subsequentes do alfabeto, como $j$ e $k$, para os índices das estruturas internas. Isso ajuda a diferenciar claramente cada nível de iteração e mantém o código organizado, evitando confusão entre os diferentes contadores.
+
+Embora essas abreviações sejam aceitáveis e bem entendidas por programadores experientes, é importante usar com moderação e sempre garantir que o contexto seja simples o suficiente para que o significado do índice seja óbvio. Em loops mais complexos ou quando o índice tem um papel específico no cálculo, pode ser mais apropriado utilizar nomes descritivos, como linha, coluna ou posicao, tornando o código ainda mais legível e compreensível.
+
+### Convenções de escrita
+
+Além de escolher nomes claros e significativos para variáveis, é fundamental seguir consistentemente alguma convenção de escrita estabelecida para o projeto. Isso ajuda a manter o código legível, organizado e fácil de manter, especialmente em equipes de desenvolvimento. Por exemplo, é importante decidir, no início do projeto, se será utilizado [snake_case](https://en.wikipedia.org/wiki/Snake_case) (como `minha_variavel`) ou [camelCase](https://pt.wikipedia.org/wiki/CamelCase) (como `minhaVariavel`) e aplicar essa escolha de forma uniforme em todo o código. Alternar entre estilos diferentes pode gerar confusão e dificultar a compreensão, além de aumentar a probabilidade de erros.
+
+Seguir convenções de escrita não se limita apenas à nomenclatura: inclui também padrões de indentação, uso de espaços, comentários e formatação de blocos de código. A consistência nesses aspectos contribui para que o código seja mais fácil de revisar, depurar e expandir no futuro.
+
+#### Exemplo
+
+Observe o seguinte código:
+
+```{python}
+#| eval: false
+Lista_Notas = [12, 15, 11, 10, 18]
+quantidadeDeNotas = 5
+
+soma__notas = 0
+
+for i in range(quantidadeDeNotas):
+    soma__notas += Lista_Notas[i]
+
+print(soma__notas)
+```
+
+Este código segue vários diferentes tipos de conveções para nomeclatura de varíaveis. Para torná-lo mais legível, é necessário padronizar o código inteiro, da seguinte forma:
+
+::: {.panel-tabset}
+
+## snake_case
+
+```{python}
+#| eval: false
+lista_notas = [12, 15, 11, 10, 18]
+quantidade_de_notas = 5
+
+soma_notas = 0
+
+for i in range(quantidade_de_notas):
+    soma_notas += lista_notas[i]
+
+print(soma_notas)
+```
+
+
+## camelCase
+
+```{python}
+#| eval: false
+listaNotas = [12, 15, 11, 10, 18]
+quantidadeDeNotas = 5
+
+somaNotas = 0
+
+for i in range(quantidadeDeNotas):
+    somaNotas += listaNotas[i]
+
+print(somaNotas)
+```
+
+:::
+
+::: {.callout-note title="Observação importante"}
+
+Em python, geralmente é utilizado o [snake_case](https://en.wikipedia.org/wiki/Snake_case), portante vale a pena ler e pesquisar sobre suas conveções e tentar aplicar em seus projetos.
+
+:::
+
+### Comentários
+
+Comentários em código são trechos de texto inseridos para explicar ou documentar o que o código faz, sem interferir na sua execução. Em Python, qualquer texto que venha após o símbolo # em uma linha é considerado um comentário e é totalmente ignorado pelo interpretador.
+
+Por exemplo:
+
+```{python}
+#| eval: false
+# Esta linha define uma lista de notas
+notas = [12, 15, 11, 10, 18]
+```
+
+Comentários são fundamentais para a legibilidade e manutenção do código, especialmente em projetos maiores ou quando outras pessoas vão trabalhar no mesmo código. Uma boa prática é escrever comentários que explorem a lógica do código ou a intenção por trás de uma decisão, evitando comentários óbvios ou redundantes, como i = 0 # define i como zero, que apenas repete o que o código já mostra.
+
+::: {.callout-note title="Observação importante"}
+
+Escrever comentários redundantes é, de fato, uma má prática de programação. No entanto, nos códigos da seção introdutória do curso, as linhas serão comentadas ao máximo para facilitar o entendimento.
+
+:::
+
+Em resumo, comentários bem escritos tornam o código mais claro, compreensível e fácil de manter, facilitando tanto a vida do programador original quanto de qualquer pessoa que precise ler ou modificar o código no futuro.
+
+### Evitar número mágicos
+
+"Números mágicos" (*magic numbers*) são valores numéricos inseridos diretamente no código sem qualquer explicação, contexto ou associação a um nome significativo. Esses números aparecem de forma “misteriosa” dentro de expressões, condicionais ou cálculos, tornando difícil compreender de onde vieram, o que representam e por que foram escolhidos.
+
+Eles são considerados uma má prática de programação, pois reduzem a legibilidade do código, dificultam a manutenção e aumentam a chance de erros quando o valor precisa ser reutilizado ou ajustado em diferentes partes do programa.
+
+#### Por que números mágicos são um problema?
+
+Quando um valor é escrito diretamente no código, sem contexto, surgem diversos problemas:
+
+* Falta de clareza: quem lê o código não entende o que aquele número significa.
+
+* Dificuldade de manutenção: se o valor precisar mudar futuramente, é necessário procurar manualmente todas as ocorrências.
+
+* Maior risco de erro: o mesmo valor pode aparecer várias vezes; alterar um único lugar e esquecer outros gera bugs.
+
+* Código frágil: mudanças simples se tornam arriscadas e difíceis de verificar.
+
+#### Exemplos
+
+Observe o seguinte código:
+
+```{python}
+#| eval: false
+salario = 2500
+bonus = salario * 0.12
+salario_final = salario + bonus
+
+print(salario_final)
+```
+
+O que é 0.12? De onde veio esse número? Ele representa um bônus fixo? Um imposto? Uma taxa qualquer?
+
+Sem contexto, o código fica vago e exige esforço adicional para ser entendido. Uma forma simples de torná-lo mais claro é substituir o número 0.12 por uma variável com um nome descritivo, deixando explícita sua função dentro do cálculo. Assim, o significado do valor passa a ser compreendido diretamente pelo código, sem depender de conhecimento externo:
+
+```{python}
+#| eval: false
+salario = 2500
+bonus_porcentual = 12
+
+bonus = salario * (bonus_porcentual / 100)
+salario_final = salario + bonus
+
+print(salario_final)
+```
+
+Outro exemplo comum de onde números mágicos podem ser evitados é na quantidade de iterações de estruturas de repetição. Veja o código abaixo:
+
+```{python}
+#| eval: false
+for i in range(10):
+    # faça algo
+```
+
+O valor 10 aparece de forma isolada, sem indicar o que representa. Ele poderia significar andares de um prédio, tentativas de uma operação, número de itens… nada disso está explícito no código.
+
+Se esse laço estiver percorrendo, por exemplo, a quantidade de andares de um edifício, é muito mais claro transformar esse valor em uma variável nomeada:
+
+```{python}
+#| eval: false
+numero_de_andares: int = 10
+
+for i in range(numero_de_andares):
+    # faça algo
+```
+
+Dessa forma, a intenção do código fica evidente, e qualquer ajuste futuro pode ser feito com segurança em um único lugar.
+
+## Exercícios
+
+### Exercício 
+
+Como exercício principal, revise os códigos mais complexos que você já desenvolveu até agora e atualize-os aplicando as boas práticas apresentadas. Procure identificar variáveis com nomes pouco descritivos, padronizar o estilo de escrita, adicionar comentários realmente relevantes e substituir números mágicos por constantes ou variáveis nomeadas. Essas melhorias tornarão seu código mais claro, organizado e fácil de manter.

@@ -341,6 +341,91 @@ for nome in nomes:
     print(nome)  # Imprime cada nome na lista
 ```
 
+### O comando break
+
+Em algumas situações, é necessário interromper um loop antes que sua condição natural de parada seja atingida. Para isso, Python oferece o comando break.
+
+O break encerra imediatamente a estrutura de repetição em que está inserido — seja um while ou um for. Após o break, o programa continua sua execução na primeira linha após o loop.
+
+Esse comando é útil quando existe uma condição especial que, ao ser atendida, torna desnecessário continuar repetindo o bloco de código.
+
+#### Funcionamento geral
+
+:::: {.columns}
+
+::: {.column}
+
+### Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    ENQUANTO condição FAÇA
+        SE condição_de_parada_especial ENTÃO
+            PARE
+        FIM SE
+        // bloco de instruções
+    FIM ENQUANTO
+FIM
+```
+
+:::
+
+::: {.column}
+
+```{python}
+#| eval: false
+while condição:
+    if condição_de_parada_especial:
+        break  # interrompe imediatamente o loop
+    # bloco de instruções
+```
+
+:::
+
+::::
+
+#### Exemplo
+
+O programa abaixo recebe números do usuário. Se o valor 999 for digitado, o loop é encerrado imediatamente — independentemente de outras condições.
+
+::: {.panel-tabset}
+
+## Python
+
+```{python}
+#| eval: false
+while True:
+    # obtem um novo número do usuário
+    numero = int(input("Digite um número (999 para parar): "))
+
+    # checa se o número é igual a 999
+    if numero == 999:
+        break  # termina o loop imediatamente
+```
+
+## Pseudocódigo
+
+```{ObjectiveC}
+INÍCIO
+    ENQUANTO verdadeiro FAÇA
+        ESCREVA "Digite um número (999 para parar): "
+        LEIA numero
+
+        SE numero = 999 ENTÃO
+            PARE
+        FIM SE
+    FIM ENQUANTO
+FIM
+```
+
+:::
+
+::: {.callout-note title="Observação importante"}
+
+Como um while executa enquanto sua condição for verdadeira, escrever `while True` cria um loop cuja condição é sempre verdadeira, já que o valor `True` nunca se torna `False`. Isso gera um loop infinito, que só pode ser interrompido utilizando o comando break. Em outras palavras, sem o break, esse tipo de loop não teria um ponto natural de encerramento.
+
+:::
+
 ### Considerações e Observações
 
 Uso do range():
