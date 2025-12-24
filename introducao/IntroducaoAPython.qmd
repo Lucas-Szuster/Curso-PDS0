@@ -4,6 +4,8 @@ toc: true
 toc-title: "Conteúdos da página"
 ---
 
+[Apresentação de slides do tema](slides/slides-variaveis.pdf)
+
 ## Variáveis em python
 
 Em Python, as variáveis representam espaços na memória utilizados para armazenar dados que podem ser manipulados durante a execução de um programa. Esses dados podem ser de diferentes tipos, como números (`int` e `float`), textos (`string`), listas (`list`), dicionários (`dict`) ou até objetos mais complexos (cenas dos próximos capítulos). Uma das principais características da linguagem é sua tipagem dinâmica, o que significa que não é necessário declarar previamente o tipo de uma variável — o interpretador identifica automaticamente o tipo de dado com base no valor atribuído a ela. Assim, uma variável pode receber um número em um momento e, posteriormente, um texto, sem que o programador precise realizar uma redefinição explícita do tipo.

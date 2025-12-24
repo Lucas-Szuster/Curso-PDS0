@@ -1,9 +1,11 @@
 ---
-title: "Algorítmos"
+title: "Algoritmos"
 toc: true
 toc-title: "Conteúdos da página"
 toc-depth: 5
 ---
+
+[Apresentação de slides do tema](slides/slides-algoritmos.pdf)
 
 ## O que é um Algoritmo?
 

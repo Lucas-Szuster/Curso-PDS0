@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Algorítmos – PDS-0</title>
+<title>Algoritmos – PDS-0</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-edea2f37dd155b60faf08ba51f9639de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -71,7 +71,6 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../alteracoes_journal.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -83,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../introducao/Algoritmos.html">Fundamentos de programação</a></li><li class="breadcrumb-item"><a href="../introducao/Algoritmos.html">Algorítmos</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../introducao/Algoritmos.html">Fundamentos de programação</a></li><li class="breadcrumb-item"><a href="../introducao/Algoritmos.html">Algoritmos</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -128,7 +127,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../introducao/Algoritmos.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Algorítmos</span></a>
+ <span class="menu-text">Algoritmos</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -165,6 +164,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../introducao/EstruturasDeRepeticaoEmPython.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Estruturas de repetição em python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introducao/IntroducaoAsBoasPraticas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introdução às boas práticas de programção</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -226,8 +231,11 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">funcoes/Exercicios.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../funcoes/Exercicios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercícios</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -342,9 +350,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../introducao/Algoritmos.html">Fundamentos de programação</a></li><li class="breadcrumb-item"><a href="../introducao/Algoritmos.html">Algorítmos</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../introducao/Algoritmos.html">Fundamentos de programação</a></li><li class="breadcrumb-item"><a href="../introducao/Algoritmos.html">Algoritmos</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Algorítmos</h1>
+<h1 class="title">Algoritmos</h1>
 </div>
 
 
@@ -361,6 +369,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p><a href="slides/slides-algoritmos.pdf">Apresentação de slides do tema</a></p>
 <section id="o-que-é-um-algoritmo" class="level2">
 <h2 class="anchored" data-anchor-id="o-que-é-um-algoritmo">O que é um Algoritmo?</h2>
 <p>Um algoritmo é um conjunto de instruções organizadas de maneira lógica e finita, criado para resolver um problema ou executar uma tarefa específica. Em termos simples, pode-se compará-lo a uma receita de cozinha: ele indica passo a passo o que deve ser feito, em que ordem e com quais dados, garantindo que qualquer pessoa ou sistema que siga essas instruções possa chegar ao resultado esperado. Cada passo tem um propósito claro, e a sequência completa define o caminho do início até a conclusão da tarefa.</p>
