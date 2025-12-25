@@ -4,6 +4,8 @@ toc: true
 toc-title: "Conteúdos da página"
 ---
 
+[Apresentação de slides sobre pseudocódigo](slides/representacoes-de-algoritmos.pdf)
+
 ## Pseudocódigo
 
 O pseudocódigo é uma forma simplificada e estruturada de descrever um algoritmo, usando uma linguagem próxima da linguagem humana, mas organizada de maneira lógica, semelhante à de um programa de computador. Ele serve como uma ponte entre o pensamento humano e a linguagem de programação, permitindo que a lógica de um problema seja planejada antes de ser implementada em código real.
