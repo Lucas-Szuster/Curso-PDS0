@@ -29,6 +29,7 @@ website:
         contents:
           - funcoes/IntroducaoAFuncoes.qmd
           - funcoes/FuncoesPython.qmd
+          - funcoes/FuncoesProprias.qmd
           - funcoes/Exercicios.qmd
       - section: "Módulos"
         contents:

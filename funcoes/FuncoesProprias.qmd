@@ -1,0 +1,118 @@
+---
+title: "Criando funções em Python"
+toc: true
+toc-title: "Conteúdos da página"
+---
+
+## Introdução
+
+Como já foi explicado, é possível compartimentalizar algoritmos específicos em pequenos módulos, o que torna o nosso código mais legível, organizado e conciso. Essa prática é fundamental na programação, pois permite dividir problemas complexos em partes menores e mais fáceis de entender, testar e manter. Além disso, a modularização reduz a repetição de código e facilita a identificação e correção de erros.
+
+Até o momento, vimos como utilizar esses módulos — as funções — que já foram previamente definidas pela linguagem Python. Essas funções prontas nos ajudam a resolver problemas comuns de forma rápida e eficiente. No entanto, à medida que os programas se tornam mais complexos, surge a necessidade de criar soluções mais específicas, que atendam exatamente aos requisitos do problema que estamos resolvendo.
+
+Nesse contexto, torna-se essencial aprender a criar as nossas próprias funções. Ao definir funções personalizadas, podemos encapsular trechos de código que realizam tarefas bem definidas, promovendo a reutilização, a clareza e a organização do programa. Assim, conseguimos desenvolver aplicações mais flexíveis, escaláveis e fáceis de compreender, além de tornar o processo de desenvolvimento mais eficiente e profissional.
+
+## Definições teóricas para criação de uma função
+
+Para criar uma nova função, o primeiro passo é definir a sua interface. Esse termo refere-se à forma como a função se comunica com o restante do código, ou seja, como ela recebe informações e como devolve um resultado após a sua execução. De maneira geral, a interface de uma função é composta por entradas (parâmetros ou argumentos) e saídas (valores retornados). Pensar cuidadosamente nesses dois aspectos é essencial para garantir que a função seja clara, reutilizável e fácil de entender.
+
+Podemos analisar a interface de uma função considerando as seguintes dimensões:
+
+### Entradas
+
+| Fator      | Descrição                              |
+| ---------- | -------------------------------------- |
+| Quantidade | Quantidade ilimitada de parâmetros     |
+| Tipo       | Qualquer tipo de dado                  |
+
+### Saídas
+
+| Fator      | Descrição                      |
+| ---------- | ------------------------------ |
+| Quantidade | Quantidade limitada de valores |
+| Tipo       | Qualquer tipo de dado          |
+
+Uma vez definidas essas diferentes dimensões da função — suas entradas e saídas —, é necessário também escolher um nome apropriado para ela. Esse nome será utilizado para chamar a função no código principal e, por isso, deve ser claro, consistente e fácil de compreender.
+
+A escolha de um bom nome é uma prática fundamental na programação, pois contribui diretamente para a legibilidade do código e facilita a manutenção e o entendimento por outros desenvolvedores (ou por você mesmo no futuro). Para isso, algumas diretrizes de boas práticas devem ser seguidas:
+
+* O nome escolhido deve ser **o mais curto possível**, sem comprometer a clareza, evitando nomes desnecessariamente longos;
+* O nome deve **descrever claramente o propósito ou o funcionamento da função**;
+* O nome deve seguir um **padrão de nomenclatura consistente**, como o [snake_case](https://en.wikipedia.org/wiki/Snake_case) (ex.: `minha_funcao`) ou o [camelCase](https://pt.wikipedia.org/wiki/CamelCase) (ex.: `minhaFuncao`).
+
+Com isto então, nos possuímos a definição completa para a interface de uma função: o seu nome, o que ela necessita de entradas e quais são suas saídas.
+
+### Processamento
+
+O processamento de uma função constitui o seu núcleo essencial, sendo responsável por manipular as entradas de forma específica e bem definida, com o objetivo de produzir uma saída coerente e correta. É nesse trecho que se concentra a lógica principal do comportamento da função, razão pela qual deve ser projetado e implementado com especial cuidado, atenção e rigor.
+
+Apesar de sua importância, o processamento não deixa de ser, do ponto de vista estrutural, apenas um segmento de código, semelhante a qualquer outro. Ele segue as mesmas regras da linguagem, utiliza os mesmos mecanismos de controle de fluxo e está sujeito às mesmas boas práticas de programação. 
+
+Dessa forma, compreender o papel do processamento dentro de uma função é fundamental para o desenvolvimento de soluções confiáveis, legíveis e fáceis de manter.
+
+## Criação prática de uma função
+
+Vamos agora percorrer todo o processo prático de criação de uma função, utilizando um exemplo. O objetivo é ilustrar cada etapa de forma clara e progressiva. Como exemplo, será considerada a resolução de uma equação do segundo grau. 
+
+### Definição geral de uma equação quadrática
+
+De forma geral, uma equação do segundo grau pode ser representada pela expressão:
+
+$$
+ax^2 + bx + c = 0
+$$
+
+em que:
+
+- $a$, $b$ e $c$ são números reais;
+- $a \neq 0$, condição indispensável para que a equação seja classificada como de segundo grau.
+
+O objetivo é determinar os valores de $x$ que satisfazem essa igualdade, ou seja, os valores para os quais a equação é verdadeira.
+
+### Definições teóricas
+
+Com base na forma geral de uma equação do segundo grau, podemos estabelecer as definições teóricas necessárias para a construção da função que irá resolvê-la. Isso envolve identificar claramente quais serão suas **entradas** e **saídas**, bem como os tipos de dados mais adequados para cada caso.
+
+#### Entradas
+
+As entradas da função devem corresponder aos coeficientes $a$, $b$ e $c$, pois são eles que definem completamente a equação quadrática e serão utilizados no processo de resolução.  
+
+Como já mencionado, todos esses coeficientes são números reais. Dessa forma, as variáveis que os representam devem ser do tipo `float`.
+
+#### Saídas
+
+Como saída, desejamos obter a(s) solução(ões) correspondente(s) ao(s) valor(es) de $x$ que satisfaz(em) a equação definida. Para isso, é necessário resolver dois pontos principais:
+
+1. **Como retornar mais de uma solução em uma única função**, uma vez que uma equação do segundo grau pode possuir duas raízes;
+2. **Qual tipo de dado utilizar para representar cada solução**.
+
+Para o primeiro ponto, precisamos retornar um tipo de dado capaz de **agrupar múltiplos valores**. Embora tipos como `dict`, `set` ou `tuple` possam ser utilizados para esse fim, optaremos por uma estrutura do tipo `list`, pois ela já foi estudada e é suficiente para representar as duas soluções da equação. Assim, armazenaremos o valor de $x_1$ em uma posição da lista e o valor de $x_2$ em outra.
+
+Em relação ao segundo ponto, as raízes de uma equação quadrática são números reais e, portanto, podem possuir casas decimais. Dessa forma, cada solução será representada por uma variável do tipo `float`.
+
+Com isso, a função terá como saída uma lista de números reais, conforme ilustrado a seguir:
+
+```{python}
+#| eval: false
+resposta: list[float] = [x1, x2]
+```
+
+#### Processamento
+
+Para o **processamento** desta função, iremos implementar um algoritmo baseado na fórmula de Bhaskara, que utiliza os coeficientes $a$, $b$ e $c$ para determinar as raízes da equação do segundo grau.
+
+A fórmula é dada por:
+
+$$
+x = \frac{-b \pm \sqrt{\Delta}}{2a}
+$$
+
+em que o termo $\Delta$, denominado **discriminante**, é definido por:
+
+$$
+\Delta = b^2 - 4ac
+$$
+
+### Implementação prática
+
+Para implementar uma função

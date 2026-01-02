@@ -3,3 +3,43 @@ title: "Exercícios"
 toc: true
 toc-title: "Secções de exercícios"
 ---
+
+## Exercícios com funções nativas de Python
+
+### Exercício 1
+
+Adapte o seguinte código para que ele seja mais simples, utilizando a função `len()`:
+
+```{python}
+#| eval: false
+nums: list[int] = [3, 5, 2, 3, 4, 5, 6, 3]
+qnt_nums: int = 8
+
+for i in range(qnt_nums):
+    print(nums[i])
+```
+
+::: {.callout-tip collapse="true" title="Ver Solução"}
+
+Para esta adaptação. basta eliminar a variável `qnt_nums` e subsitutuí-la por algo que calcule a quantidade de números. Como a quantidade de números é justamente a quantidade de elementos da lista `nums`, para calcular este valor basta utilziar a função `len()` passando `nums` como argumento, da seguinte forma:
+
+```{python}
+#| eval: false
+len(nums)
+```
+
+Assim, substituindo esta expressão no código, obtemos o seguinte:
+
+```{python}
+#| eval: false
+nums: list[int] = [3, 5, 2, 3, 4, 5, 6, 3]
+
+for i in range(len(nums)):
+    print(nums[i])
+```
+
+:::
+
+### Exercício 2
+
+Imagine que existe 

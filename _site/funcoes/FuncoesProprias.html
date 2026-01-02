@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Exercícios – PDS-0</title>
+<title>Criando funções em Python – PDS-0</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,6 +105,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -117,7 +146,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../funcoes/IntroducaoAFuncoes.html">Funções</a></li><li class="breadcrumb-item"><a href="../funcoes/Exercicios.html">Exercícios</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../funcoes/IntroducaoAFuncoes.html">Funções</a></li><li class="breadcrumb-item"><a href="../funcoes/FuncoesProprias.html">Criando funções em Python</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -267,13 +296,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../funcoes/FuncoesProprias.html" class="sidebar-item-text sidebar-link">
+  <a href="../funcoes/FuncoesProprias.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Criando funções em Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../funcoes/Exercicios.html" class="sidebar-item-text sidebar-link active">
+  <a href="../funcoes/Exercicios.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercícios</span></a>
   </div>
 </li>
@@ -342,13 +371,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Secções de exercícios</h2>
+    <h2 id="toc-title">Conteúdos da página</h2>
    
   <ul>
-  <li><a href="#exercícios-com-funções-nativas-de-python" id="toc-exercícios-com-funções-nativas-de-python" class="nav-link active" data-scroll-target="#exercícios-com-funções-nativas-de-python">Exercícios com funções nativas de Python</a>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução">Introdução</a></li>
+  <li><a href="#definições-teóricas-para-criação-de-uma-função" id="toc-definições-teóricas-para-criação-de-uma-função" class="nav-link" data-scroll-target="#definições-teóricas-para-criação-de-uma-função">Definições teóricas para criação de uma função</a>
   <ul class="collapse">
-  <li><a href="#exercício-1" id="toc-exercício-1" class="nav-link" data-scroll-target="#exercício-1">Exercício 1</a></li>
-  <li><a href="#exercício-2" id="toc-exercício-2" class="nav-link" data-scroll-target="#exercício-2">Exercício 2</a></li>
+  <li><a href="#entradas" id="toc-entradas" class="nav-link" data-scroll-target="#entradas">Entradas</a></li>
+  <li><a href="#saídas" id="toc-saídas" class="nav-link" data-scroll-target="#saídas">Saídas</a></li>
+  <li><a href="#processamento" id="toc-processamento" class="nav-link" data-scroll-target="#processamento">Processamento</a></li>
+  </ul></li>
+  <li><a href="#criação-prática-de-uma-função" id="toc-criação-prática-de-uma-função" class="nav-link" data-scroll-target="#criação-prática-de-uma-função">Criação prática de uma função</a>
+  <ul class="collapse">
+  <li><a href="#definição-geral-de-uma-equação-quadrática" id="toc-definição-geral-de-uma-equação-quadrática" class="nav-link" data-scroll-target="#definição-geral-de-uma-equação-quadrática">Definição geral de uma equação quadrática</a></li>
+  <li><a href="#definições-teóricas" id="toc-definições-teóricas" class="nav-link" data-scroll-target="#definições-teóricas">Definições teóricas</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -356,9 +392,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../funcoes/IntroducaoAFuncoes.html">Funções</a></li><li class="breadcrumb-item"><a href="../funcoes/Exercicios.html">Exercícios</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../funcoes/IntroducaoAFuncoes.html">Funções</a></li><li class="breadcrumb-item"><a href="../funcoes/FuncoesProprias.html">Criando funções em Python</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Exercícios</h1>
+<h1 class="title">Criando funções em Python</h1>
 </div>
 
 
@@ -375,50 +411,125 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="exercícios-com-funções-nativas-de-python" class="level2">
-<h2 class="anchored" data-anchor-id="exercícios-com-funções-nativas-de-python">Exercícios com funções nativas de Python</h2>
-<section id="exercício-1" class="level3">
-<h3 class="anchored" data-anchor-id="exercício-1">Exercício 1</h3>
-<p>Adapte o seguinte código para que ele seja mais simples, utilizando a função <code>len()</code>:</p>
-<div id="e3adfc2c" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>nums: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">3</span>]</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>qnt_nums: <span class="bu">int</span> <span class="op">=</span> <span class="dv">8</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(qnt_nums):</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(nums[i])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Ver Solução">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Ver Solução
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Para esta adaptação. basta eliminar a variável <code>qnt_nums</code> e subsitutuí-la por algo que calcule a quantidade de números. Como a quantidade de números é justamente a quantidade de elementos da lista <code>nums</code>, para calcular este valor basta utilziar a função <code>len()</code> passando <code>nums</code> como argumento, da seguinte forma:</p>
-<div id="9e9e090b" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(nums)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Assim, substituindo esta expressão no código, obtemos o seguinte:</p>
-<div id="bf4735db" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>nums: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">3</span>]</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(nums)):</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(nums[i])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
+<section id="introdução" class="level2">
+<h2 class="anchored" data-anchor-id="introdução">Introdução</h2>
+<p>Como já foi explicado, é possível compartimentalizar algoritmos específicos em pequenos módulos, o que torna o nosso código mais legível, organizado e conciso. Essa prática é fundamental na programação, pois permite dividir problemas complexos em partes menores e mais fáceis de entender, testar e manter. Além disso, a modularização reduz a repetição de código e facilita a identificação e correção de erros.</p>
+<p>Até o momento, vimos como utilizar esses módulos — as funções — que já foram previamente definidas pela linguagem Python. Essas funções prontas nos ajudam a resolver problemas comuns de forma rápida e eficiente. No entanto, à medida que os programas se tornam mais complexos, surge a necessidade de criar soluções mais específicas, que atendam exatamente aos requisitos do problema que estamos resolvendo.</p>
+<p>Nesse contexto, torna-se essencial aprender a criar as nossas próprias funções. Ao definir funções personalizadas, podemos encapsular trechos de código que realizam tarefas bem definidas, promovendo a reutilização, a clareza e a organização do programa. Assim, conseguimos desenvolver aplicações mais flexíveis, escaláveis e fáceis de compreender, além de tornar o processo de desenvolvimento mais eficiente e profissional.</p>
+</section>
+<section id="definições-teóricas-para-criação-de-uma-função" class="level2">
+<h2 class="anchored" data-anchor-id="definições-teóricas-para-criação-de-uma-função">Definições teóricas para criação de uma função</h2>
+<p>Para criar uma nova função, o primeiro passo é definir a sua interface. Esse termo refere-se à forma como a função se comunica com o restante do código, ou seja, como ela recebe informações e como devolve um resultado após a sua execução. De maneira geral, a interface de uma função é composta por entradas (parâmetros ou argumentos) e saídas (valores retornados). Pensar cuidadosamente nesses dois aspectos é essencial para garantir que a função seja clara, reutilizável e fácil de entender.</p>
+<p>Podemos analisar a interface de uma função considerando as seguintes dimensões:</p>
+<section id="entradas" class="level3">
+<h3 class="anchored" data-anchor-id="entradas">Entradas</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Fator</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Quantidade</td>
+<td>Quantidade ilimitada de parâmetros</td>
+</tr>
+<tr class="even">
+<td>Tipo</td>
+<td>Qualquer tipo de dado</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="saídas" class="level3">
+<h3 class="anchored" data-anchor-id="saídas">Saídas</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Fator</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Quantidade</td>
+<td>Quantidade limitada de valores</td>
+</tr>
+<tr class="even">
+<td>Tipo</td>
+<td>Qualquer tipo de dado</td>
+</tr>
+</tbody>
+</table>
+<p>Uma vez definidas essas diferentes dimensões da função — suas entradas e saídas —, é necessário também escolher um nome apropriado para ela. Esse nome será utilizado para chamar a função no código principal e, por isso, deve ser claro, consistente e fácil de compreender.</p>
+<p>A escolha de um bom nome é uma prática fundamental na programação, pois contribui diretamente para a legibilidade do código e facilita a manutenção e o entendimento por outros desenvolvedores (ou por você mesmo no futuro). Para isso, algumas diretrizes de boas práticas devem ser seguidas:</p>
+<ul>
+<li>O nome escolhido deve ser <strong>o mais curto possível</strong>, sem comprometer a clareza, evitando nomes desnecessariamente longos;</li>
+<li>O nome deve <strong>descrever claramente o propósito ou o funcionamento da função</strong>;</li>
+<li>O nome deve seguir um <strong>padrão de nomenclatura consistente</strong>, como o <a href="https://en.wikipedia.org/wiki/Snake_case">snake_case</a> (ex.: <code>minha_funcao</code>) ou o <a href="https://pt.wikipedia.org/wiki/CamelCase">camelCase</a> (ex.: <code>minhaFuncao</code>).</li>
+</ul>
+<p>Com isto então, nos possuímos a definição completa para a interface de uma função: o seu nome, o que ela necessita de entradas e quais são suas saídas.</p>
+</section>
+<section id="processamento" class="level3">
+<h3 class="anchored" data-anchor-id="processamento">Processamento</h3>
+<p>O processamento de uma função constitui o seu núcleo essencial, sendo responsável por manipular as entradas de forma específica e bem definida, com o objetivo de produzir uma saída coerente e correta. É nesse trecho que se concentra a lógica principal do comportamento da função, razão pela qual deve ser projetado e implementado com especial cuidado, atenção e rigor.</p>
+<p>Apesar de sua importância, o processamento não deixa de ser, do ponto de vista estrutural, apenas um segmento de código, semelhante a qualquer outro. Ele segue as mesmas regras da linguagem, utiliza os mesmos mecanismos de controle de fluxo e está sujeito às mesmas boas práticas de programação.</p>
+<p>Dessa forma, compreender o papel do processamento dentro de uma função é fundamental para o desenvolvimento de soluções confiáveis, legíveis e fáceis de manter.</p>
+</section>
+</section>
+<section id="criação-prática-de-uma-função" class="level2">
+<h2 class="anchored" data-anchor-id="criação-prática-de-uma-função">Criação prática de uma função</h2>
+<p>Vamos agora percorrer todo o processo prático de criação de uma função, utilizando um exemplo. O objetivo é ilustrar cada etapa de forma clara e progressiva. Como exemplo, será considerada a resolução de uma equação do segundo grau.</p>
+<section id="definição-geral-de-uma-equação-quadrática" class="level3">
+<h3 class="anchored" data-anchor-id="definição-geral-de-uma-equação-quadrática">Definição geral de uma equação quadrática</h3>
+<p>De forma geral, uma equação do segundo grau pode ser representada pela expressão:</p>
+<p><span class="math display">\[
+ax^2 + bx + c = 0
+\]</span></p>
+<p>em que:</p>
+<ul>
+<li><span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> e <span class="math inline">\(c\)</span> são números reais;</li>
+<li><span class="math inline">\(a \neq 0\)</span>, condição indispensável para que a equação seja classificada como de segundo grau.</li>
+</ul>
+<p>O objetivo é determinar os valores de <span class="math inline">\(x\)</span> que satisfazem essa igualdade, ou seja, os valores para os quais a equação é verdadeira.</p>
+</section>
+<section id="definições-teóricas" class="level3">
+<h3 class="anchored" data-anchor-id="definições-teóricas">Definições teóricas</h3>
+<p>Com base na forma geral de uma equação do segundo grau, podemos estabelecer as definições teóricas necessárias para a construção da função que irá resolvê-la. Isso envolve identificar claramente quais serão suas <strong>entradas</strong> e <strong>saídas</strong>, bem como os tipos de dados mais adequados para cada caso.</p>
+<section id="entradas-1" class="level4">
+<h4 class="anchored" data-anchor-id="entradas-1">Entradas</h4>
+<p>As entradas da função devem corresponder aos coeficientes <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> e <span class="math inline">\(c\)</span>, pois são eles que definem completamente a equação quadrática e serão utilizados no processo de resolução.</p>
+<p>Como já mencionado, todos esses coeficientes são números reais. Dessa forma, as variáveis que os representam devem ser do tipo <code>float</code>.</p>
+</section>
+<section id="saídas-1" class="level4">
+<h4 class="anchored" data-anchor-id="saídas-1">Saídas</h4>
+<p>Como saída, desejamos obter a(s) solução(ões) correspondente(s) ao(s) valor(es) de <span class="math inline">\(x\)</span> que satisfaz(em) a equação definida. Para isso, é necessário resolver dois pontos principais:</p>
+<ol type="1">
+<li><strong>Como retornar mais de uma solução em uma única função</strong>, uma vez que uma equação do segundo grau pode possuir duas raízes;</li>
+<li><strong>Qual tipo de dado utilizar para representar cada solução</strong>.</li>
+</ol>
+<p>Para o primeiro ponto, precisamos retornar um tipo de dado capaz de <strong>agrupar múltiplos valores</strong>. Embora tipos como <code>dict</code>, <code>set</code> ou <code>tuple</code> possam ser utilizados para esse fim, optaremos por uma estrutura do tipo <code>list</code>, pois ela já foi estudada e é suficiente para representar as duas soluções da equação. Assim, armazenaremos o valor de <span class="math inline">\(x_1\)</span> em uma posição da lista e o valor de <span class="math inline">\(x_2\)</span> em outra.</p>
+<p>Em relação ao segundo ponto, as raízes de uma equação quadrática são números reais e, portanto, podem possuir casas decimais. Dessa forma, cada solução será representada por uma variável do tipo <code>float</code>.</p>
+<p>Com isso, a função terá como saída uma lista de números reais, conforme ilustrado a seguir:</p>
+<div id="b11e927c" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>resposta: <span class="bu">list</span>[<span class="bu">float</span>] <span class="op">=</span> [x1, x2]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="exercício-2" class="level3">
-<h3 class="anchored" data-anchor-id="exercício-2">Exercício 2</h3>
-<p>Imagine que existe</p>
+<section id="processamento-1" class="level4">
+<h4 class="anchored" data-anchor-id="processamento-1">Processamento</h4>
+<p>Para o <strong>processamento</strong> desta função, iremos implementar um algoritmo baseado na fórmula de Bhaskara, que utiliza os coeficientes <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> e <span class="math inline">\(c\)</span> para determinar as raízes da equação do segundo grau.</p>
+<p>A fórmula é dada por:</p>
+<p><span class="math display">\[
+x = \frac{-b \pm \sqrt{\Delta}}{2a}
+\]</span></p>
+<p>em que o termo <span class="math inline">\(\Delta\)</span>, denominado <strong>discriminante</strong>, é definido por:</p>
+<p><span class="math display">\[
+\Delta = b^2 - 4ac
+\]</span></p>
 
 
+</section>
 </section>
 </section>
 
