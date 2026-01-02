@@ -296,6 +296,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../funcoes/FuncoesProprias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Criando funções em Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../funcoes/Exercicios.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercícios</span></a>
   </div>
@@ -506,7 +512,7 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <p>Para realizar esta impressão alterando o valor de X e Y, dentro de duas estrutura de repetição alinhadas que partem de (0, 0), utilize a seguinte <code>string</code> dentro da função input():</p>
-<div id="cc06c234" class="cell" data-execution_count="1">
+<div id="04d579fa" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ss">f'Insira o nível de insolação (0 a 10) da janela </span><span class="sc">{</span>contador_de_janelas <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss"> do andar </span><span class="sc">{</span><span class="dv">10</span> <span class="op">-</span> contador_de_andares<span class="sc">}</span><span class="ss">: '</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Onde contador_de_janelas e contador_de_andares são variáveis e podem possuir um nome diferente no seu código. (Tente entender a lógica do porque que são feitas as operações: contador_de_janelas + 1 e 10 - contador_de_andares)</p>
@@ -563,11 +569,11 @@ window.Quarto = {
 <ul>
 <li><p>Lembre-se que uma variável não precisa de ter o seu valor alterado, e pode ser utilizada para aumentar a clareza do código escrito.</p>
 <p>Por exemplo, analise o código abaixo:</p>
-<div id="905e238a" class="cell" data-execution_count="2">
+<div id="04536f6c" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> (<span class="dv">2</span> <span class="op">**</span> <span class="dv">2</span>) <span class="op">*</span> <span class="fl">3.14</span> <span class="op">*</span> <span class="dv">5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Não é possível identificar com facilidade o que está sendo feito. Uma melhoria possível para tornar este código simples muito mais claro é a utilização de variáveis com valores fixos:</p>
-<div id="ac1e14ec" class="cell" data-execution_count="3">
+<div id="fa060704" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pi: <span class="bu">float</span> <span class="op">=</span> <span class="fl">3.14</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>raio_do_cilindro: <span class="bu">int</span> <span class="op">=</span> <span class="dv">2</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>altura_do_cilindro: <span class="bu">int</span> <span class="op">=</span> <span class="dv">5</span></span>

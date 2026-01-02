@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introdução às boas práticas de programção – PDS-0</title>
+<title>Criando funções em Python – PDS-0</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -146,7 +146,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../introducao/Algoritmos.html">Fundamentos de programação</a></li><li class="breadcrumb-item"><a href="../introducao/IntroducaoAsBoasPraticas.html">Introdução às boas práticas de programção</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../funcoes/IntroducaoAFuncoes.html">Funções</a></li><li class="breadcrumb-item"><a href="../funcoes/FuncoesProprias.html">Criando funções em Python</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -181,13 +181,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Fundamentos de programação</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../introducao/Algoritmos.html" class="sidebar-item-text sidebar-link">
@@ -232,7 +232,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../introducao/IntroducaoAsBoasPraticas.html" class="sidebar-item-text sidebar-link active">
+  <a href="../introducao/IntroducaoAsBoasPraticas.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introdução às boas práticas de programção</span></a>
   </div>
 </li>
@@ -275,13 +275,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Funções</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../funcoes/IntroducaoAFuncoes.html" class="sidebar-item-text sidebar-link">
@@ -296,7 +296,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../funcoes/FuncoesProprias.html" class="sidebar-item-text sidebar-link">
+  <a href="../funcoes/FuncoesProprias.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Criando funções em Python</span></a>
   </div>
 </li>
@@ -374,17 +374,18 @@ window.Quarto = {
     <h2 id="toc-title">Conteúdos da página</h2>
    
   <ul>
-  <li><a href="#o-que-são-boas-práticas-de-programação" id="toc-o-que-são-boas-práticas-de-programação" class="nav-link active" data-scroll-target="#o-que-são-boas-práticas-de-programação">O que são boas práticas de programação?</a></li>
-  <li><a href="#boas-práticas-fundamentais" id="toc-boas-práticas-fundamentais" class="nav-link" data-scroll-target="#boas-práticas-fundamentais">Boas práticas fundamentais</a>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução">Introdução</a></li>
+  <li><a href="#definições-teóricas-para-criação-de-uma-função" id="toc-definições-teóricas-para-criação-de-uma-função" class="nav-link" data-scroll-target="#definições-teóricas-para-criação-de-uma-função">Definições teóricas para criação de uma função</a>
   <ul class="collapse">
-  <li><a href="#nomes-claros-para-variáveis" id="toc-nomes-claros-para-variáveis" class="nav-link" data-scroll-target="#nomes-claros-para-variáveis">Nomes claros para variáveis</a></li>
-  <li><a href="#convenções-de-escrita" id="toc-convenções-de-escrita" class="nav-link" data-scroll-target="#convenções-de-escrita">Convenções de escrita</a></li>
-  <li><a href="#comentários" id="toc-comentários" class="nav-link" data-scroll-target="#comentários">Comentários</a></li>
-  <li><a href="#evitar-número-mágicos" id="toc-evitar-número-mágicos" class="nav-link" data-scroll-target="#evitar-número-mágicos">Evitar número mágicos</a></li>
+  <li><a href="#entradas" id="toc-entradas" class="nav-link" data-scroll-target="#entradas">Entradas</a></li>
+  <li><a href="#saídas" id="toc-saídas" class="nav-link" data-scroll-target="#saídas">Saídas</a></li>
+  <li><a href="#processamento" id="toc-processamento" class="nav-link" data-scroll-target="#processamento">Processamento</a></li>
   </ul></li>
-  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios">Exercícios</a>
+  <li><a href="#criação-prática-de-uma-função" id="toc-criação-prática-de-uma-função" class="nav-link" data-scroll-target="#criação-prática-de-uma-função">Criação prática de uma função</a>
   <ul class="collapse">
-  <li><a href="#exercício" id="toc-exercício" class="nav-link" data-scroll-target="#exercício">Exercício</a></li>
+  <li><a href="#definição-geral-de-uma-equação-quadrática" id="toc-definição-geral-de-uma-equação-quadrática" class="nav-link" data-scroll-target="#definição-geral-de-uma-equação-quadrática">Definição geral de uma equação quadrática</a></li>
+  <li><a href="#definições-teóricas" id="toc-definições-teóricas" class="nav-link" data-scroll-target="#definições-teóricas">Definições teóricas</a></li>
+  <li><a href="#implementação-prática" id="toc-implementação-prática" class="nav-link" data-scroll-target="#implementação-prática">Implementação prática</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -392,9 +393,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../introducao/Algoritmos.html">Fundamentos de programação</a></li><li class="breadcrumb-item"><a href="../introducao/IntroducaoAsBoasPraticas.html">Introdução às boas práticas de programção</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../funcoes/IntroducaoAFuncoes.html">Funções</a></li><li class="breadcrumb-item"><a href="../funcoes/FuncoesProprias.html">Criando funções em Python</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Introdução às boas práticas de programção</h1>
+<h1 class="title">Criando funções em Python</h1>
 </div>
 
 
@@ -411,211 +412,127 @@ window.Quarto = {
 </header>
 
 
-<section id="o-que-são-boas-práticas-de-programação" class="level2">
-<h2 class="anchored" data-anchor-id="o-que-são-boas-práticas-de-programação">O que são boas práticas de programação?</h2>
-<p>Boas práticas de programação são um conjunto de princípios e diretrizes que orientam a forma como o código deve ser escrito para ser mais claro, organizado e compreensível. Elas não se limitam apenas ao funcionamento do programa, mas abrangem também a maneira como o código é estruturado e apresentado, facilitando sua leitura e interpretação.</p>
-<p>Essas práticas surgem da experiência acumulada de profissionais da área, que ao longo do tempo identificaram padrões que tornam o desenvolvimento mais eficiente e confiável. Por isso, elas funcionam como um guia para ajudar programadores a evitar problemas comuns, reduzir erros e tornar o processo de criação de software mais previsível e seguro.</p>
-<p>Além disso, boas práticas de programação contribuem diretamente para a manutenção e evolução de um sistema. Quando o código segue padrões consistentes, qualquer desenvolvedor — incluindo o próprio autor — consegue entender rapidamente seu funcionamento, realizar ajustes com mais facilidade e garantir que o software continue estável mesmo à medida que cresce e se torna mais complexo.</p>
+<section id="introdução" class="level2">
+<h2 class="anchored" data-anchor-id="introdução">Introdução</h2>
+<p>Como já foi explicado, é possível compartimentalizar algoritmos específicos em pequenos módulos, o que torna o nosso código mais legível, organizado e conciso. Essa prática é fundamental na programação, pois permite dividir problemas complexos em partes menores e mais fáceis de entender, testar e manter. Além disso, a modularização reduz a repetição de código e facilita a identificação e correção de erros.</p>
+<p>Até o momento, vimos como utilizar esses módulos — as funções — que já foram previamente definidas pela linguagem Python. Essas funções prontas nos ajudam a resolver problemas comuns de forma rápida e eficiente. No entanto, à medida que os programas se tornam mais complexos, surge a necessidade de criar soluções mais específicas, que atendam exatamente aos requisitos do problema que estamos resolvendo.</p>
+<p>Nesse contexto, torna-se essencial aprender a criar as nossas próprias funções. Ao definir funções personalizadas, podemos encapsular trechos de código que realizam tarefas bem definidas, promovendo a reutilização, a clareza e a organização do programa. Assim, conseguimos desenvolver aplicações mais flexíveis, escaláveis e fáceis de compreender, além de tornar o processo de desenvolvimento mais eficiente e profissional.</p>
 </section>
-<section id="boas-práticas-fundamentais" class="level2">
-<h2 class="anchored" data-anchor-id="boas-práticas-fundamentais">Boas práticas fundamentais</h2>
-<section id="nomes-claros-para-variáveis" class="level3">
-<h3 class="anchored" data-anchor-id="nomes-claros-para-variáveis">Nomes claros para variáveis</h3>
-<p>Um dos elementos mais importantes — senão o mais essencial — dentro da programação é o conceito de variáveis. Elas funcionam como recipientes que armazenam informações e permitem que o programa manipule, transforme e utilize dados ao longo de sua execução. Por representarem praticamente todos os valores e estados necessários para que um software funcione, as variáveis constituem a base sobre a qual qualquer lógica de programação é construída.</p>
-<p>Justamente por desempenharem um papel tão central, as variáveis precisam ser tratadas com cuidado e atenção. A forma como são nomeadas influencia diretamente a clareza, a legibilidade e a compreensão do código. Um nome bem escolhido transmite imediatamente o propósito daquela informação, evitando ambiguidades e facilitando a leitura tanto para o programador original quanto para qualquer outra pessoa que venha a trabalhar no mesmo projeto.</p>
-<p>Por isso, é fundamental que as variáveis recebam nomes claros, expressivos e de fácil entendimento, permitindo que o código comunique sua intenção de maneira natural. Embora existam exceções pontuais — geralmente ligadas a convenções específicas, padrões amplamente aceitos ou situações onde a simplicidade é realmente preferível — a regra geral é priorizar sempre nomes que descrevam com precisão o papel desempenhado pela variável dentro da lógica do programa. Assim, além de tornar o código mais elegante, também se fortalece sua manutenibilidade e reduz-se a chance de erros futuros.</p>
-<section id="exemplos" class="level4">
-<h4 class="anchored" data-anchor-id="exemplos">Exemplos</h4>
-<p>Observe o seguinte código:</p>
-<div id="eea5b2fc" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">15</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> a <span class="op">*</span> (b <span class="op">/</span> <span class="dv">100</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> a <span class="op">-</span> c</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(d)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>O que está sendo calculado? O que representam as diferentes variáveis utilizadas? Este código é praticamente ilegível, mesmo sendo extremamente simples. Se aplicarmos bons nomes à este código, sua intenção é extremente clara:</p>
-<div id="8799b1e2" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>preco_produto <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>desconto_percentual <span class="op">=</span> <span class="dv">15</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>valor_desconto <span class="op">=</span> preco_produto <span class="op">*</span> (desconto_percentual <span class="op">/</span> <span class="dv">100</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>preco_final <span class="op">=</span> preco_produto <span class="op">-</span> valor_desconto</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(preco_final)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Embora o exemplo anterior seja bastante extremo, é importante perceber que mesmo nomes que não chegam ao nível de <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, <span class="math inline">\(c\)</span> ou <span class="math inline">\(d\)</span> ainda podem prejudicar significativamente a legibilidade do código. Muitas vezes, o problema não está em nomes completamente aleatórios, mas em nomes vagos, ambíguos ou pouco descritivos, que não comunicam claramente a intenção do programador. Observe o exemplo abaixo:</p>
-<div id="f4ba653e" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ps <span class="op">=</span> <span class="dv">70</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>alt <span class="op">=</span> <span class="fl">1.75</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> ps <span class="op">/</span> (alt <span class="op">*</span> alt)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Os nomes extremamente abreviados dificultam bastante a legibilidade do código implementado. Para melhorar isto, os nomes devem ser mais descritivos e escritos por extenso, desta forma:</p>
-<div id="8d2fbdbb" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>peso_kg <span class="op">=</span> <span class="dv">70</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>altura_m <span class="op">=</span> <span class="fl">1.75</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>imc <span class="op">=</span> peso_kg <span class="op">/</span> (altura_m <span class="op">*</span> altura_m)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(imc)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<section id="definições-teóricas-para-criação-de-uma-função" class="level2">
+<h2 class="anchored" data-anchor-id="definições-teóricas-para-criação-de-uma-função">Definições teóricas para criação de uma função</h2>
+<p>Para criar uma nova função, o primeiro passo é definir a sua interface. Esse termo refere-se à forma como a função se comunica com o restante do código, ou seja, como ela recebe informações e como devolve um resultado após a sua execução. De maneira geral, a interface de uma função é composta por entradas (parâmetros ou argumentos) e saídas (valores retornados). Pensar cuidadosamente nesses dois aspectos é essencial para garantir que a função seja clara, reutilizável e fácil de entender.</p>
+<p>Podemos analisar a interface de uma função considerando as seguintes dimensões:</p>
+<section id="entradas" class="level3">
+<h3 class="anchored" data-anchor-id="entradas">Entradas</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Fator</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Quantidade</td>
+<td>Quantidade ilimitada de parâmetros</td>
+</tr>
+<tr class="even">
+<td>Tipo</td>
+<td>Qualquer tipo de dado</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="exceção-principal" class="level4">
-<h4 class="anchored" data-anchor-id="exceção-principal">Exceção principal</h4>
-<p>Uma das grandes exceções à regra de sempre usar nomes claros e descritivos diz respeito aos índices em estruturas de repetição. Na programação, é extremamente comum utilizar letras simples, principalmente a letra <span class="math inline">\(i\)</span>, para representar o índice de um laço, especialmente em <em>loops</em> do tipo for. Essa convenção é amplamente aceita por sua tradição e por tornar o código mais conciso sem comprometer a compreensão em contextos simples.</p>
-<p>Quando lidamos com estruturas de repetição aninhadas, ou seja, loops dentro de outros loops, é prática comum utilizar letras subsequentes do alfabeto, como <span class="math inline">\(j\)</span> e <span class="math inline">\(k\)</span>, para os índices das estruturas internas. Isso ajuda a diferenciar claramente cada nível de iteração e mantém o código organizado, evitando confusão entre os diferentes contadores.</p>
-<p>Embora essas abreviações sejam aceitáveis e bem entendidas por programadores experientes, é importante usar com moderação e sempre garantir que o contexto seja simples o suficiente para que o significado do índice seja óbvio. Em loops mais complexos ou quando o índice tem um papel específico no cálculo, pode ser mais apropriado utilizar nomes descritivos, como linha, coluna ou posicao, tornando o código ainda mais legível e compreensível.</p>
-</section>
-</section>
-<section id="convenções-de-escrita" class="level3">
-<h3 class="anchored" data-anchor-id="convenções-de-escrita">Convenções de escrita</h3>
-<p>Além de escolher nomes claros e significativos para variáveis, é fundamental seguir consistentemente alguma convenção de escrita estabelecida para o projeto. Isso ajuda a manter o código legível, organizado e fácil de manter, especialmente em equipes de desenvolvimento. Por exemplo, é importante decidir, no início do projeto, se será utilizado <a href="https://en.wikipedia.org/wiki/Snake_case">snake_case</a> (como <code>minha_variavel</code>) ou <a href="https://pt.wikipedia.org/wiki/CamelCase">camelCase</a> (como <code>minhaVariavel</code>) e aplicar essa escolha de forma uniforme em todo o código. Alternar entre estilos diferentes pode gerar confusão e dificultar a compreensão, além de aumentar a probabilidade de erros.</p>
-<p>Seguir convenções de escrita não se limita apenas à nomenclatura: inclui também padrões de indentação, uso de espaços, comentários e formatação de blocos de código. A consistência nesses aspectos contribui para que o código seja mais fácil de revisar, depurar e expandir no futuro.</p>
-<section id="exemplo" class="level4">
-<h4 class="anchored" data-anchor-id="exemplo">Exemplo</h4>
-<p>Observe o seguinte código:</p>
-<div id="594d13d4" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Lista_Notas <span class="op">=</span> [<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">11</span>, <span class="dv">10</span>, <span class="dv">18</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>quantidadeDeNotas <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>soma__notas <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(quantidadeDeNotas):</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    soma__notas <span class="op">+=</span> Lista_Notas[i]</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(soma__notas)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Este código segue vários diferentes tipos de conveções para nomeclatura de varíaveis. Para torná-lo mais legível, é necessário padronizar o código inteiro, da seguinte forma:</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">snake_case</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">camelCase</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div id="0a577890" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lista_notas <span class="op">=</span> [<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">11</span>, <span class="dv">10</span>, <span class="dv">18</span>]</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>quantidade_de_notas <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>soma_notas <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(quantidade_de_notas):</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    soma_notas <span class="op">+=</span> lista_notas[i]</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(soma_notas)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div id="66df23a6" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>listaNotas <span class="op">=</span> [<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">11</span>, <span class="dv">10</span>, <span class="dv">18</span>]</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>quantidadeDeNotas <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>somaNotas <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(quantidadeDeNotas):</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    somaNotas <span class="op">+=</span> listaNotas[i]</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(somaNotas)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="Observação importante">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Observação importante
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Em python, geralmente é utilizado o <a href="https://en.wikipedia.org/wiki/Snake_case">snake_case</a>, portante vale a pena ler e pesquisar sobre suas conveções e tentar aplicar em seus projetos.</p>
-</div>
-</div>
-</section>
-</section>
-<section id="comentários" class="level3">
-<h3 class="anchored" data-anchor-id="comentários">Comentários</h3>
-<p>Comentários em código são trechos de texto inseridos para explicar ou documentar o que o código faz, sem interferir na sua execução. Em Python, qualquer texto que venha após o símbolo # em uma linha é considerado um comentário e é totalmente ignorado pelo interpretador.</p>
-<p>Por exemplo:</p>
-<div id="28801791" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Esta linha define uma lista de notas</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>notas <span class="op">=</span> [<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">11</span>, <span class="dv">10</span>, <span class="dv">18</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Comentários são fundamentais para a legibilidade e manutenção do código, especialmente em projetos maiores ou quando outras pessoas vão trabalhar no mesmo código. Uma boa prática é escrever comentários que explorem a lógica do código ou a intenção por trás de uma decisão, evitando comentários óbvios ou redundantes, como i = 0 # define i como zero, que apenas repete o que o código já mostra.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Observação importante">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Observação importante
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Escrever comentários redundantes é, de fato, uma má prática de programação. No entanto, nos códigos da seção introdutória do curso, as linhas serão comentadas ao máximo para facilitar o entendimento.</p>
-</div>
-</div>
-<p>Em resumo, comentários bem escritos tornam o código mais claro, compreensível e fácil de manter, facilitando tanto a vida do programador original quanto de qualquer pessoa que precise ler ou modificar o código no futuro.</p>
-</section>
-<section id="evitar-número-mágicos" class="level3">
-<h3 class="anchored" data-anchor-id="evitar-número-mágicos">Evitar número mágicos</h3>
-<p>“Números mágicos” (<em>magic numbers</em>) são valores numéricos inseridos diretamente no código sem qualquer explicação, contexto ou associação a um nome significativo. Esses números aparecem de forma “misteriosa” dentro de expressões, condicionais ou cálculos, tornando difícil compreender de onde vieram, o que representam e por que foram escolhidos.</p>
-<p>Eles são considerados uma má prática de programação, pois reduzem a legibilidade do código, dificultam a manutenção e aumentam a chance de erros quando o valor precisa ser reutilizado ou ajustado em diferentes partes do programa.</p>
-<section id="por-que-números-mágicos-são-um-problema" class="level4">
-<h4 class="anchored" data-anchor-id="por-que-números-mágicos-são-um-problema">Por que números mágicos são um problema?</h4>
-<p>Quando um valor é escrito diretamente no código, sem contexto, surgem diversos problemas:</p>
+<section id="saídas" class="level3">
+<h3 class="anchored" data-anchor-id="saídas">Saídas</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Fator</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Quantidade</td>
+<td>Quantidade limitada de valores</td>
+</tr>
+<tr class="even">
+<td>Tipo</td>
+<td>Qualquer tipo de dado</td>
+</tr>
+</tbody>
+</table>
+<p>Uma vez definidas essas diferentes dimensões da função — suas entradas e saídas —, é necessário também escolher um nome apropriado para ela. Esse nome será utilizado para chamar a função no código principal e, por isso, deve ser claro, consistente e fácil de compreender.</p>
+<p>A escolha de um bom nome é uma prática fundamental na programação, pois contribui diretamente para a legibilidade do código e facilita a manutenção e o entendimento por outros desenvolvedores (ou por você mesmo no futuro). Para isso, algumas diretrizes de boas práticas devem ser seguidas:</p>
 <ul>
-<li><p>Falta de clareza: quem lê o código não entende o que aquele número significa.</p></li>
-<li><p>Dificuldade de manutenção: se o valor precisar mudar futuramente, é necessário procurar manualmente todas as ocorrências.</p></li>
-<li><p>Maior risco de erro: o mesmo valor pode aparecer várias vezes; alterar um único lugar e esquecer outros gera bugs.</p></li>
-<li><p>Código frágil: mudanças simples se tornam arriscadas e difíceis de verificar.</p></li>
+<li>O nome escolhido deve ser <strong>o mais curto possível</strong>, sem comprometer a clareza, evitando nomes desnecessariamente longos;</li>
+<li>O nome deve <strong>descrever claramente o propósito ou o funcionamento da função</strong>;</li>
+<li>O nome deve seguir um <strong>padrão de nomenclatura consistente</strong>, como o <a href="https://en.wikipedia.org/wiki/Snake_case">snake_case</a> (ex.: <code>minha_funcao</code>) ou o <a href="https://pt.wikipedia.org/wiki/CamelCase">camelCase</a> (ex.: <code>minhaFuncao</code>).</li>
 </ul>
+<p>Com isto então, nos possuímos a definição completa para a interface de uma função: o seu nome, o que ela necessita de entradas e quais são suas saídas.</p>
 </section>
-<section id="exemplos-1" class="level4">
-<h4 class="anchored" data-anchor-id="exemplos-1">Exemplos</h4>
-<p>Observe o seguinte código:</p>
-<div id="034f5dde" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>salario <span class="op">=</span> <span class="dv">2500</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>bonus <span class="op">=</span> salario <span class="op">*</span> <span class="fl">0.12</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>salario_final <span class="op">=</span> salario <span class="op">+</span> bonus</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salario_final)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>O que é 0.12? De onde veio esse número? Ele representa um bônus fixo? Um imposto? Uma taxa qualquer?</p>
-<p>Sem contexto, o código fica vago e exige esforço adicional para ser entendido. Uma forma simples de torná-lo mais claro é substituir o número 0.12 por uma variável com um nome descritivo, deixando explícita sua função dentro do cálculo. Assim, o significado do valor passa a ser compreendido diretamente pelo código, sem depender de conhecimento externo:</p>
-<div id="dceb03d5" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>salario <span class="op">=</span> <span class="dv">2500</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>bonus_porcentual <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>bonus <span class="op">=</span> salario <span class="op">*</span> (bonus_porcentual <span class="op">/</span> <span class="dv">100</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>salario_final <span class="op">=</span> salario <span class="op">+</span> bonus</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salario_final)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Outro exemplo comum de onde números mágicos podem ser evitados é na quantidade de iterações de estruturas de repetição. Veja o código abaixo:</p>
-<div id="3bf8eb37" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># faça algo</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>O valor 10 aparece de forma isolada, sem indicar o que representa. Ele poderia significar andares de um prédio, tentativas de uma operação, número de itens… nada disso está explícito no código.</p>
-<p>Se esse laço estiver percorrendo, por exemplo, a quantidade de andares de um edifício, é muito mais claro transformar esse valor em uma variável nomeada:</p>
-<div id="118e1add" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>numero_de_andares: <span class="bu">int</span> <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(numero_de_andares):</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># faça algo</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Dessa forma, a intenção do código fica evidente, e qualquer ajuste futuro pode ser feito com segurança em um único lugar.</p>
+<section id="processamento" class="level3">
+<h3 class="anchored" data-anchor-id="processamento">Processamento</h3>
+<p>O processamento de uma função constitui o seu núcleo essencial, sendo responsável por manipular as entradas de forma específica e bem definida, com o objetivo de produzir uma saída coerente e correta. É nesse trecho que se concentra a lógica principal do comportamento da função, razão pela qual deve ser projetado e implementado com especial cuidado, atenção e rigor.</p>
+<p>Apesar de sua importância, o processamento não deixa de ser, do ponto de vista estrutural, apenas um segmento de código, semelhante a qualquer outro. Ele segue as mesmas regras da linguagem, utiliza os mesmos mecanismos de controle de fluxo e está sujeito às mesmas boas práticas de programação.</p>
+<p>Dessa forma, compreender o papel do processamento dentro de uma função é fundamental para o desenvolvimento de soluções confiáveis, legíveis e fáceis de manter.</p>
 </section>
 </section>
+<section id="criação-prática-de-uma-função" class="level2">
+<h2 class="anchored" data-anchor-id="criação-prática-de-uma-função">Criação prática de uma função</h2>
+<p>Vamos agora percorrer todo o processo prático de criação de uma função, utilizando um exemplo. O objetivo é ilustrar cada etapa de forma clara e progressiva. Como exemplo, será considerada a resolução de uma equação do segundo grau.</p>
+<section id="definição-geral-de-uma-equação-quadrática" class="level3">
+<h3 class="anchored" data-anchor-id="definição-geral-de-uma-equação-quadrática">Definição geral de uma equação quadrática</h3>
+<p>De forma geral, uma equação do segundo grau pode ser representada pela expressão:</p>
+<p><span class="math display">\[
+ax^2 + bx + c = 0
+\]</span></p>
+<p>em que:</p>
+<ul>
+<li><span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> e <span class="math inline">\(c\)</span> são números reais;</li>
+<li><span class="math inline">\(a \neq 0\)</span>, condição indispensável para que a equação seja classificada como de segundo grau.</li>
+</ul>
+<p>O objetivo é determinar os valores de <span class="math inline">\(x\)</span> que satisfazem essa igualdade, ou seja, os valores para os quais a equação é verdadeira.</p>
 </section>
-<section id="exercícios" class="level2">
-<h2 class="anchored" data-anchor-id="exercícios">Exercícios</h2>
-<section id="exercício" class="level3">
-<h3 class="anchored" data-anchor-id="exercício">Exercício</h3>
-<p>Como exercício principal, revise os códigos mais complexos que você já desenvolveu até agora e atualize-os aplicando as boas práticas apresentadas. Procure identificar variáveis com nomes pouco descritivos, padronizar o estilo de escrita, adicionar comentários realmente relevantes e substituir números mágicos por constantes ou variáveis nomeadas. Essas melhorias tornarão seu código mais claro, organizado e fácil de manter.</p>
+<section id="definições-teóricas" class="level3">
+<h3 class="anchored" data-anchor-id="definições-teóricas">Definições teóricas</h3>
+<p>Com base na forma geral de uma equação do segundo grau, podemos estabelecer as definições teóricas necessárias para a construção da função que irá resolvê-la. Isso envolve identificar claramente quais serão suas <strong>entradas</strong> e <strong>saídas</strong>, bem como os tipos de dados mais adequados para cada caso.</p>
+<section id="entradas-1" class="level4">
+<h4 class="anchored" data-anchor-id="entradas-1">Entradas</h4>
+<p>As entradas da função devem corresponder aos coeficientes <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> e <span class="math inline">\(c\)</span>, pois são eles que definem completamente a equação quadrática e serão utilizados no processo de resolução.</p>
+<p>Como já mencionado, todos esses coeficientes são números reais. Dessa forma, as variáveis que os representam devem ser do tipo <code>float</code>.</p>
+</section>
+<section id="saídas-1" class="level4">
+<h4 class="anchored" data-anchor-id="saídas-1">Saídas</h4>
+<p>Como saída, desejamos obter a(s) solução(ões) correspondente(s) ao(s) valor(es) de <span class="math inline">\(x\)</span> que satisfaz(em) a equação definida. Para isso, é necessário resolver dois pontos principais:</p>
+<ol type="1">
+<li><strong>Como retornar mais de uma solução em uma única função</strong>, uma vez que uma equação do segundo grau pode possuir duas raízes;</li>
+<li><strong>Qual tipo de dado utilizar para representar cada solução</strong>.</li>
+</ol>
+<p>Para o primeiro ponto, precisamos retornar um tipo de dado capaz de <strong>agrupar múltiplos valores</strong>. Embora tipos como <code>dict</code>, <code>set</code> ou <code>tuple</code> possam ser utilizados para esse fim, optaremos por uma estrutura do tipo <code>list</code>, pois ela já foi estudada e é suficiente para representar as duas soluções da equação. Assim, armazenaremos o valor de <span class="math inline">\(x_1\)</span> em uma posição da lista e o valor de <span class="math inline">\(x_2\)</span> em outra.</p>
+<p>Em relação ao segundo ponto, as raízes de uma equação quadrática são números reais e, portanto, podem possuir casas decimais. Dessa forma, cada solução será representada por uma variável do tipo <code>float</code>.</p>
+<p>Com isso, a função terá como saída uma lista de números reais, conforme ilustrado a seguir:</p>
+<div id="8c9e746a" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>resposta: <span class="bu">list</span>[<span class="bu">float</span>] <span class="op">=</span> [x1, x2]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="processamento-1" class="level4">
+<h4 class="anchored" data-anchor-id="processamento-1">Processamento</h4>
+<p>Para o <strong>processamento</strong> desta função, iremos implementar um algoritmo baseado na fórmula de Bhaskara, que utiliza os coeficientes <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> e <span class="math inline">\(c\)</span> para determinar as raízes da equação do segundo grau.</p>
+<p>A fórmula é dada por:</p>
+<p><span class="math display">\[
+x = \frac{-b \pm \sqrt{\Delta}}{2a}
+\]</span></p>
+<p>em que o termo <span class="math inline">\(\Delta\)</span>, denominado <strong>discriminante</strong>, é definido por:</p>
+<p><span class="math display">\[
+\Delta = b^2 - 4ac
+\]</span></p>
+</section>
+</section>
+<section id="implementação-prática" class="level3">
+<h3 class="anchored" data-anchor-id="implementação-prática">Implementação prática</h3>
+<p>Para implementar uma função</p>
 
 
 </section>
